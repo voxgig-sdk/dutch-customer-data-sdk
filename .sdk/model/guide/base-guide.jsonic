@@ -1,0 +1,72 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 18
+  metrics: count: method: 19
+
+  entity: eu_ap_i: {
+    path: "/tender": {
+      op: list: method: *GET
+    }
+    path: "/vat": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: global_ap_i: {
+    path: "/bic": {
+      op: load: method: *GET
+    }
+    path: "/city": {
+      op: list: method: *GET
+    }
+    path: "/currency": {
+      op: load: method: *GET
+    }
+    path: "/dns": {
+      op: load: method: *GET
+    }
+    path: "/email": {
+      op: load: method: *GET
+    }
+    path: "/geocoding": {
+      op: list: method: *GET
+    }
+    path: "/iban": {
+      op: load: method: *GET
+    }
+    path: "/ip": {
+      op: load: method: *GET
+    }
+    path: "/lei": {
+      op: load: method: *GET
+    }
+    path: "/password": {
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+    path: "/phone": {
+      op: load: method: *GET
+    }
+    path: "/postcode": {
+      op: list: method: *GET
+    }
+    path: "/url": {
+      op: load: method: *GET
+    }
+    path: "/webrank": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: netherlands_ap_i: {
+    path: "/bag": {
+      op: list: method: *GET
+    }
+    path: "/kvk": {
+      op: list: method: *GET
+    }
+  }
+
+}

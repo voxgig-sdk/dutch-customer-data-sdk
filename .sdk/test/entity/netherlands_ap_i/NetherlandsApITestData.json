@@ -1,0 +1,101 @@
+{
+  "existing": {
+    "netherlands_ap_i": {
+      "NETHERLANDS_AP_I00": {
+        "active": "sd2",
+        "addition": "sd3",
+        "city": "sd4",
+        "coc": "sd5",
+        "construction_year": "sd6",
+        "floor_area": "sd7",
+        "freeformaddress": "sd8",
+        "id": "NETHERLANDS_AP_I00",
+        "lat": 218,
+        "letter": "sdb",
+        "lon": 220,
+        "municipality": "sdd",
+        "name": "sde",
+        "number": "sdf",
+        "postcode": "se0",
+        "province": "se1",
+        "province_code": "se2",
+        "purpose": "se3",
+        "street": "se4",
+        "type": "se5",
+        "vestiging": "se6"
+      },
+      "NETHERLANDS_AP_I01": {
+        "active": "s1a4",
+        "addition": "s1a5",
+        "city": "s1a6",
+        "coc": "s1a7",
+        "construction_year": "s1a8",
+        "floor_area": "s1a9",
+        "freeformaddress": "s1aa",
+        "id": "NETHERLANDS_AP_I01",
+        "lat": 428,
+        "letter": "s1ad",
+        "lon": 430,
+        "municipality": "s1af",
+        "name": "s1b0",
+        "number": "s1b1",
+        "postcode": "s1b2",
+        "province": "s1b3",
+        "province_code": "s1b4",
+        "purpose": "s1b5",
+        "street": "s1b6",
+        "type": "s1b7",
+        "vestiging": "s1b8"
+      },
+      "NETHERLANDS_AP_I02": {
+        "active": "s276",
+        "addition": "s277",
+        "city": "s278",
+        "coc": "s279",
+        "construction_year": "s27a",
+        "floor_area": "s27b",
+        "freeformaddress": "s27c",
+        "id": "NETHERLANDS_AP_I02",
+        "lat": 638,
+        "letter": "s27f",
+        "lon": 640,
+        "municipality": "s281",
+        "name": "s282",
+        "number": "s283",
+        "postcode": "s284",
+        "province": "s285",
+        "province_code": "s286",
+        "purpose": "s287",
+        "street": "s288",
+        "type": "s289",
+        "vestiging": "s28a"
+      }
+    }
+  },
+  "new": {
+    "netherlands_ap_i": {
+      "netherlands_ap_i_ref01": {
+        "active": "s348",
+        "addition": "s349",
+        "city": "s34a",
+        "coc": "s34b",
+        "construction_year": "s34c",
+        "floor_area": "s34d",
+        "freeformaddress": "s34e",
+        "lat": 848,
+        "letter": "s351",
+        "lon": 850,
+        "municipality": "s353",
+        "name": "s354",
+        "number": "s355",
+        "postcode": "s356",
+        "province": "s357",
+        "province_code": "s358",
+        "purpose": "s359",
+        "street": "s35a",
+        "type": "s35b",
+        "vestiging": "s35c"
+      }
+    }
+  }
+}

@@ -1,0 +1,677 @@
+# Entity: global_ap_i
+
+main: kit: entity: global_ap_i: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "addition"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "admin1"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "admin2"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "admin3"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "bic"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "city"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "currency"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "dns"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "email"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "found"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "freeformaddress"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "from_currency"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "iban"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "ip"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "lat"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "lei"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "letter"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "lon"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "municipality"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "number"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "password"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "phone"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "population"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "postcode"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "province"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "province_code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "score"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "street"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "webrank"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "global_ap_i"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/password"
+          parts: [
+            "password"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "Haarlem"
+                kind: "query"
+                name: "city"
+                orig: "city"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "NL"
+                kind: "query"
+                name: "country_code"
+                orig: "country_code"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "full"
+                orig: "full"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/city"
+          parts: [
+            "city"
+          ]
+          select: {
+            exist: [
+              "city"
+              "country_code"
+              "full"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "NL"
+                kind: "query"
+                name: "country_code"
+                orig: "country_code"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "1013PN"
+                kind: "query"
+                name: "postcode"
+                orig: "postcode"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/postcode"
+          parts: [
+            "postcode"
+          ]
+          select: {
+            exist: [
+              "country_code"
+              "postcode"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "nl"
+                kind: "query"
+                name: "country_code"
+                orig: "country_code"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "Kalverstraat 1, 1012NX"
+                kind: "query"
+                name: "q"
+                orig: "q"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/geocoding"
+          parts: [
+            "geocoding"
+          ]
+          select: {
+            exist: [
+              "country_code"
+              "q"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "AKZONL2AXXX"
+                kind: "query"
+                name: "bic"
+                orig: "bic"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "724500XYIJUGXAA5QD70"
+                kind: "query"
+                name: "lei"
+                orig: "lei"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "09007809"
+                kind: "query"
+                name: "local_id"
+                orig: "local_id"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/lei"
+          parts: [
+            "lei"
+          ]
+          select: {
+            exist: [
+              "bic"
+              "lei"
+              "local_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "password"
+                orig: "password"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2c4c3891e2ac6958e9810a1e49c6705784fbfa1a"
+                kind: "query"
+                name: "password_sha1"
+                orig: "password_sha1"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 25
+                kind: "query"
+                name: "threshold"
+                orig: "threshold"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/password"
+          parts: [
+            "password"
+          ]
+          select: {
+            exist: [
+              "password"
+              "password_sha1"
+              "threshold"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "nl"
+                kind: "query"
+                name: "country_code"
+                orig: "country_code"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "+31207895050"
+                kind: "query"
+                name: "phone"
+                orig: "phone"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/phone"
+          parts: [
+            "phone"
+          ]
+          select: {
+            exist: [
+              "country_code"
+              "phone"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "AKZONL2A"
+                kind: "query"
+                name: "bic"
+                orig: "bic"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/bic"
+          parts: [
+            "bic"
+          ]
+          select: {
+            exist: [
+              "bic"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "eur"
+                kind: "query"
+                name: "currency"
+                orig: "currency"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/currency"
+          parts: [
+            "currency"
+          ]
+          select: {
+            exist: [
+              "currency"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "bedrijfsdata.nl"
+                kind: "query"
+                name: "domain"
+                orig: "domain"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/dns"
+          parts: [
+            "dns"
+          ]
+          select: {
+            exist: [
+              "domain"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "google.com"
+                kind: "query"
+                name: "domain"
+                orig: "domain"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/webrank"
+          parts: [
+            "webrank"
+          ]
+          select: {
+            exist: [
+              "domain"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "piet@bedrijfsdata.nl"
+                kind: "query"
+                name: "email"
+                orig: "email"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/email"
+          parts: [
+            "email"
+          ]
+          select: {
+            exist: [
+              "email"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "NL17ADYB2017400505"
+                kind: "query"
+                name: "iban"
+                orig: "iban"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/iban"
+          parts: [
+            "iban"
+          ]
+          select: {
+            exist: [
+              "iban"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "ua"
+                orig: "ua"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/ip"
+          parts: [
+            "ip"
+          ]
+          select: {
+            exist: [
+              "ua"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "http://www.bedrijfsdata.nl"
+                kind: "query"
+                name: "url"
+                orig: "url"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/url"
+          parts: [
+            "url"
+          ]
+          select: {
+            exist: [
+              "url"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

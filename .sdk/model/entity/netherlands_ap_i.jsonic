@@ -1,0 +1,205 @@
+# Entity: netherlands_ap_i
+
+main: kit: entity: netherlands_ap_i: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "active"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "addition"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "city"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "coc"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "construction_year"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "floor_area"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "freeformaddress"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "lat"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "letter"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "lon"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "municipality"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "number"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "postcode"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "province"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "province_code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "purpose"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "street"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "vestiging"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "netherlands_ap_i"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "3"
+                kind: "query"
+                name: "number"
+                orig: "number"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "1011PN"
+                kind: "query"
+                name: "postcode"
+                orig: "postcode"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "a"
+                kind: "query"
+                name: "suffix"
+                orig: "suffix"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/bag"
+          parts: [
+            "bag"
+          ]
+          select: {
+            exist: [
+              "number"
+              "postcode"
+              "suffix"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                example: "89395808"
+                kind: "query"
+                name: "kvk"
+                orig: "kvk"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/kvk"
+          parts: [
+            "kvk"
+          ]
+          select: {
+            exist: [
+              "kvk"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

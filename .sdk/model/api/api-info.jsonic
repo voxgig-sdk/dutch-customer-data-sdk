@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Bedrijfsdata.nl"
+        url: "https://free.bedrijfsdata.nl"
+      }
+      description: "Verify and standardize Dutch customer and business data, including addresses, phone numbers, emails, URLs, VAT, IBAN, Chamber of Commerce (KvK) numbers, and postal codes. Forever free (no auth, https/cors enabled) APIs to check and standardize your data."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://free.bedrijfsdata.nl/v1.1"
+        }
+      ]
+      title: "Dutch Customer Data API"
+      version: "1.1"
+    }
+  }
+}
+
+}

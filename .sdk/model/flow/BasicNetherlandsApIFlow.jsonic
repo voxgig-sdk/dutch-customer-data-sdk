@@ -1,0 +1,22 @@
+# BasicNetherlandsApIFlow
+
+main: kit: flow: BasicNetherlandsApIFlow:
+{
+  entity: "netherlands_ap_i",
+  kind: "basic",
+  name: "BasicNetherlandsApIFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "netherlands_ap_i_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNetherlandsApIFlow"
+}

@@ -1,0 +1,1601 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Dutch Customer Data API",
+    "description": "Verify and standardize Dutch customer and business data, including addresses, phone numbers, emails, URLs, VAT, IBAN, Chamber of Commerce (KvK) numbers, and postal codes. Forever free (no auth, https/cors enabled) APIs to check and standardize your data.",
+    "version": "1.1",
+    "contact": {
+      "name": "Bedrijfsdata.nl",
+      "url": "https://free.bedrijfsdata.nl"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://free.bedrijfsdata.nl/v1.1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/phone": {
+      "get": {
+        "summary": "Verify phone number",
+        "description": "Checks if a phone number could exist (global). Validates format and provides international/national formatting.",
+        "operationId": "verifyPhone",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "Phone number to verify (can include country code with +)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "+31207895050"
+            }
+          },
+          {
+            "name": "country_code",
+            "in": "query",
+            "description": "ISO country code (e.g., 'nl' for Netherlands)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "nl"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "phone": {
+                      "type": "object",
+                      "properties": {
+                        "int": {
+                          "type": "string",
+                          "description": "International format without plus sign"
+                        },
+                        "valid": {
+                          "type": "integer",
+                          "description": "1 if valid, 0 if not"
+                        },
+                        "international": {
+                          "type": "string",
+                          "description": "International formatted phone number"
+                        },
+                        "national": {
+                          "type": "string",
+                          "description": "National formatted phone number"
+                        },
+                        "country": {
+                          "type": "string",
+                          "description": "ISO country code"
+                        },
+                        "region": {
+                          "type": "string",
+                          "description": "Geographic region"
+                        },
+                        "carrier": {
+                          "type": "string",
+                          "description": "Carrier name"
+                        },
+                        "ismobile": {
+                          "type": "integer",
+                          "description": "1 if mobile, 0 if not"
+                        },
+                        "success": {
+                          "type": "integer",
+                          "description": "1 if successful, 0 if not"
+                        },
+                        "wrong_phone": {
+                          "type": "integer",
+                          "description": "1 if wrong, 0 if correct"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/postcode": {
+      "get": {
+        "summary": "Verify postal code",
+        "description": "Checks if a postcode is in the right format (global). Returns location details if found.",
+        "operationId": "verifyPostcode",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "description": "Postal code to verify",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1013PN"
+            }
+          },
+          {
+            "name": "country_code",
+            "in": "query",
+            "description": "ISO country code",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "NL"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "success": {
+                      "type": "integer"
+                    },
+                    "wrong_postcode": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "found": {
+                      "type": "integer"
+                    },
+                    "postcode": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "postcode": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "admin1": {
+                            "type": "string"
+                          },
+                          "admin2": {
+                            "type": "string"
+                          },
+                          "admin3": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "lat": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "lon": {
+                            "type": "number",
+                            "format": "double"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/city": {
+      "get": {
+        "summary": "Search city details",
+        "description": "Search for city details including population and geographic coordinates.",
+        "operationId": "searchCity",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "city",
+            "in": "query",
+            "description": "City name to search",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Haarlem"
+            }
+          },
+          {
+            "name": "country_code",
+            "in": "query",
+            "description": "ISO country code",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "NL"
+            }
+          },
+          {
+            "name": "full",
+            "in": "query",
+            "description": "Set to 1 for city verification instead of suggestion",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "found": {
+                      "type": "integer"
+                    },
+                    "city": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "city": {
+                            "type": "string"
+                          },
+                          "population": {
+                            "type": "integer"
+                          },
+                          "lat": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "lon": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "admin1": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/geocoding": {
+      "get": {
+        "summary": "Geocode address",
+        "description": "Translates a raw address into standardized fields with geographic coordinates. Address autocomplete functionality.",
+        "operationId": "geocodeAddress",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Address query string",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Kalverstraat 1, 1012NX"
+            }
+          },
+          {
+            "name": "country_code",
+            "in": "query",
+            "description": "ISO country code",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "nl"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "found": {
+                      "type": "integer"
+                    },
+                    "geocoding": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "number": {
+                            "type": "integer"
+                          },
+                          "letter": {
+                            "type": "string"
+                          },
+                          "addition": {
+                            "type": "string"
+                          },
+                          "postcode": {
+                            "type": "string"
+                          },
+                          "street": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "municipality": {
+                            "type": "string"
+                          },
+                          "province_code": {
+                            "type": "string"
+                          },
+                          "province": {
+                            "type": "string"
+                          },
+                          "freeformaddress": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "score": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "lat": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "lon": {
+                            "type": "number",
+                            "format": "double"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/email": {
+      "get": {
+        "summary": "Verify email address",
+        "description": "Checks if an email address is a correct format and has an active mailserver (global).",
+        "operationId": "verifyEmail",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Email address to verify",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "email",
+              "example": "piet@bedrijfsdata.nl"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string"
+                        },
+                        "user": {
+                          "type": "string"
+                        },
+                        "domain": {
+                          "type": "string"
+                        },
+                        "mx_host": {
+                          "type": "string"
+                        },
+                        "mx_ip": {
+                          "type": "string"
+                        },
+                        "wrong_email": {
+                          "type": "integer"
+                        },
+                        "wrong_format": {
+                          "type": "integer"
+                        },
+                        "free": {
+                          "type": "integer"
+                        },
+                        "disposable": {
+                          "type": "integer"
+                        },
+                        "success": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/url": {
+      "get": {
+        "summary": "Verify URL",
+        "description": "Checks if a URL exists/redirects and returns the new URL, top level domain (for deduplication) and IP (global).",
+        "operationId": "verifyUrl",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "description": "URL to verify",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uri",
+              "example": "http://www.bedrijfsdata.nl"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string"
+                        },
+                        "domain": {
+                          "type": "string"
+                        },
+                        "http_code": {
+                          "type": "integer"
+                        },
+                        "redirect_count": {
+                          "type": "integer"
+                        },
+                        "content_type": {
+                          "type": "string"
+                        },
+                        "content_length": {
+                          "type": "integer"
+                        },
+                        "ip": {
+                          "type": "string"
+                        },
+                        "success": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webrank": {
+      "get": {
+        "summary": "Get website popularity ranking",
+        "description": "Combines multiple website popularity rankings (Google Crux rank, Tranco rank, Domcop pagerank, etc.) into a single response (global).",
+        "operationId": "getWebrank",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Domain name to check ranking",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "google.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "webrank": {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "type": "string"
+                        },
+                        "webrank": {
+                          "type": "integer"
+                        },
+                        "tranco": {
+                          "type": "integer"
+                        },
+                        "domcop": {
+                          "type": "integer"
+                        },
+                        "hostio": {
+                          "type": "integer"
+                        },
+                        "commoncrawl": {
+                          "type": "integer"
+                        },
+                        "majestic": {
+                          "type": "integer"
+                        },
+                        "crux": {
+                          "type": "integer"
+                        },
+                        "cloudflare": {
+                          "type": "integer"
+                        },
+                        "umbrella": {
+                          "type": "integer"
+                        },
+                        "builtwith": {
+                          "type": "integer",
+                          "nullable": true
+                        },
+                        "pagerank": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/currency": {
+      "get": {
+        "summary": "Get currency conversion rates",
+        "description": "Show the latest currency conversion rates for a given base currency.",
+        "operationId": "getCurrencyRates",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "query",
+            "description": "Base currency code (e.g., 'eur', 'usd')",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "eur"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "from_currency": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "found": {
+                      "type": "integer"
+                    },
+                    "currency": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "number",
+                        "format": "double"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/iban": {
+      "get": {
+        "summary": "Verify IBAN",
+        "description": "Checks if an IBAN account number is correct (global).",
+        "operationId": "verifyIban",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "iban",
+            "in": "query",
+            "description": "IBAN account number to verify",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "NL17ADYB2017400505"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "iban": {
+                      "type": "object",
+                      "properties": {
+                        "iban": {
+                          "type": "string"
+                        },
+                        "iban_human": {
+                          "type": "string"
+                        },
+                        "country_code": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        },
+                        "verified": {
+                          "type": "boolean"
+                        },
+                        "verified_checksum": {
+                          "type": "boolean"
+                        },
+                        "swift": {
+                          "type": "integer"
+                        },
+                        "sepa": {
+                          "type": "integer"
+                        },
+                        "success": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bic": {
+      "get": {
+        "summary": "Verify BIC/SWIFT code",
+        "description": "Check a BIC/SWIFT bank code and retrieve bank details.",
+        "operationId": "verifyBic",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "bic",
+            "in": "query",
+            "description": "BIC/SWIFT code to verify",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "AKZONL2A"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "bic": {
+                      "type": "object",
+                      "properties": {
+                        "bic": {
+                          "type": "string"
+                        },
+                        "success": {
+                          "type": "integer"
+                        },
+                        "bank": {
+                          "type": "string"
+                        },
+                        "city": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        },
+                        "lei": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lei": {
+      "get": {
+        "summary": "Verify LEI",
+        "description": "Check a LEI (Legal Entity Identifier) and retrieve entity details. Can also search by BIC or local ID.",
+        "operationId": "verifyLei",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "lei",
+            "in": "query",
+            "description": "LEI code to verify",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "724500XYIJUGXAA5QD70"
+            }
+          },
+          {
+            "name": "bic",
+            "in": "query",
+            "description": "BIC code to find LEI",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "AKZONL2AXXX"
+            }
+          },
+          {
+            "name": "local_id",
+            "in": "query",
+            "description": "Local registration ID to find LEI",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "09007809"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "lei": {
+                      "type": "object",
+                      "properties": {
+                        "success": {
+                          "type": "integer"
+                        },
+                        "lei": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "address": {
+                          "type": "string"
+                        },
+                        "postcode": {
+                          "type": "string"
+                        },
+                        "city": {
+                          "type": "string"
+                        },
+                        "country_code": {
+                          "type": "string"
+                        },
+                        "local_id": {
+                          "type": "string"
+                        },
+                        "bic": {
+                          "type": "string"
+                        },
+                        "register_id": {
+                          "type": "string"
+                        },
+                        "ocid": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "renewal_date": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dns": {
+      "get": {
+        "summary": "Get DNS details",
+        "description": "Shows the domain's DNS details including A, SOA, TXT, NS, MX records and more.",
+        "operationId": "getDnsDetails",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "description": "Domain name to check DNS records",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "bedrijfsdata.nl"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "dns": {
+                      "type": "object",
+                      "properties": {
+                        "domain": {
+                          "type": "string"
+                        },
+                        "host_type": {
+                          "type": "string"
+                        },
+                        "host": {
+                          "type": "string"
+                        },
+                        "ip": {
+                          "type": "string"
+                        },
+                        "ipint": {
+                          "type": "integer"
+                        },
+                        "dnsserver": {
+                          "type": "string"
+                        },
+                        "mailserver": {
+                          "type": "string"
+                        },
+                        "dns_a": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "dns_soa": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "dns_txt": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "spf": {
+                          "type": "string"
+                        },
+                        "dns_ns": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "dns_mx": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "dns_www_a": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ip": {
+      "get": {
+        "summary": "Get user IP address",
+        "description": "Shows the user's IP address and optionally parses the user agent for device information.",
+        "operationId": "getUserIp",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "ua",
+            "in": "query",
+            "description": "Set to 1 to parse the user agent",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "ip": {
+                      "type": "object",
+                      "properties": {
+                        "ip": {
+                          "type": "string"
+                        },
+                        "user_agent": {
+                          "type": "string"
+                        },
+                        "device_type": {
+                          "type": "string"
+                        },
+                        "device_family": {
+                          "type": "string"
+                        },
+                        "platform": {
+                          "type": "string"
+                        },
+                        "browser": {
+                          "type": "string"
+                        },
+                        "device_name": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/password": {
+      "get": {
+        "summary": "Check password security",
+        "description": "Checks how many times a password has been seen/leaked. Returns wrong_password: 1 if found count exceeds threshold.",
+        "operationId": "checkPassword",
+        "tags": [
+          "Global APIs"
+        ],
+        "parameters": [
+          {
+            "name": "password_sha1",
+            "in": "query",
+            "description": "SHA1 hash of password (recommended)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "2c4c3891e2ac6958e9810a1e49c6705784fbfa1a"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "Plain password (use POST method)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "threshold",
+            "in": "query",
+            "description": "Threshold for leak count (default: 25)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 25
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "object",
+                      "properties": {
+                        "found": {
+                          "type": "integer"
+                        },
+                        "wrong_password": {
+                          "type": "integer"
+                        },
+                        "success": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Check password security (POST)",
+        "description": "Checks how many times a password has been seen/leaked using POST method for security.",
+        "operationId": "checkPasswordPost",
+        "tags": [
+          "Global APIs"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "description": "Plain password to check"
+                  },
+                  "password_sha1": {
+                    "type": "string",
+                    "description": "SHA1 hash of password (recommended)"
+                  },
+                  "threshold": {
+                    "type": "integer",
+                    "default": 25,
+                    "description": "Threshold for leak count"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "object",
+                      "properties": {
+                        "found": {
+                          "type": "integer"
+                        },
+                        "wrong_password": {
+                          "type": "integer"
+                        },
+                        "success": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vat": {
+      "get": {
+        "summary": "Verify EU VAT number",
+        "description": "Checks if a EU VAT number exists and returns company details.",
+        "operationId": "verifyVat",
+        "tags": [
+          "EU APIs"
+        ],
+        "parameters": [
+          {
+            "name": "vat",
+            "in": "query",
+            "description": "EU VAT number to verify",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "NL001672022B01"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "vat": {
+                      "type": "object",
+                      "properties": {
+                        "vat": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "response_date": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "address": {
+                          "type": "string"
+                        },
+                        "postcode": {
+                          "type": "string"
+                        },
+                        "city": {
+                          "type": "string"
+                        },
+                        "active": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tender": {
+      "get": {
+        "summary": "Search EU tenders",
+        "description": "Search fulltext in all European tenders (open and closed), for example by name or chamber of commerce number.",
+        "operationId": "searchTenders",
+        "tags": [
+          "EU APIs"
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search query (name, KvK number, etc.)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "37080091"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "found": {
+                      "type": "integer"
+                    },
+                    "tender": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "publication_date": {
+                            "type": "string",
+                            "format": "date"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "buyer": {
+                            "type": "string"
+                          },
+                          "place_of_performance": {
+                            "type": "string"
+                          },
+                          "notice_type": {
+                            "type": "string"
+                          },
+                          "procedure_type": {
+                            "type": "string"
+                          },
+                          "official_language": {
+                            "type": "string"
+                          },
+                          "contract_nature": {
+                            "type": "string"
+                          },
+                          "buyer_country": {
+                            "type": "string"
+                          },
+                          "link": {
+                            "type": "string",
+                            "format": "uri"
+                          },
+                          "html": {
+                            "type": "string",
+                            "format": "uri"
+                          },
+                          "pdf": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/kvk": {
+      "get": {
+        "summary": "Verify Dutch KvK number",
+        "description": "Checks if a Chamber of Commerce number exists in the Netherlands.",
+        "operationId": "verifyKvk",
+        "tags": [
+          "Netherlands APIs"
+        ],
+        "parameters": [
+          {
+            "name": "kvk",
+            "in": "query",
+            "description": "Dutch Chamber of Commerce (KvK) number",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "89395808"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "found": {
+                      "type": "integer"
+                    },
+                    "kvk": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "coc": {
+                            "type": "string"
+                          },
+                          "vestiging": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "active": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bag": {
+      "get": {
+        "summary": "Verify Dutch address (BAG)",
+        "description": "Checks if an address exists in the Netherlands by postcode, number and optional suffix (letter or addition).",
+        "operationId": "verifyBag",
+        "tags": [
+          "Netherlands APIs"
+        ],
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "query",
+            "description": "Dutch postcode",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "1011PN"
+            }
+          },
+          {
+            "name": "number",
+            "in": "query",
+            "description": "House number",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "3"
+            }
+          },
+          {
+            "name": "suffix",
+            "in": "query",
+            "description": "House number suffix (letter or addition)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "a"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "found": {
+                      "type": "integer"
+                    },
+                    "bag": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "number": {
+                            "type": "string"
+                          },
+                          "letter": {
+                            "type": "string"
+                          },
+                          "addition": {
+                            "type": "string"
+                          },
+                          "postcode": {
+                            "type": "string"
+                          },
+                          "street": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "municipality": {
+                            "type": "string"
+                          },
+                          "province_code": {
+                            "type": "string"
+                          },
+                          "province": {
+                            "type": "string"
+                          },
+                          "lat": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "lon": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "purpose": {
+                            "type": "string"
+                          },
+                          "construction_year": {
+                            "type": "integer"
+                          },
+                          "floor_area": {
+                            "type": "integer"
+                          },
+                          "freeformaddress": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Global APIs",
+      "description": "APIs for global data verification and standardization"
+    },
+    {
+      "name": "EU APIs",
+      "description": "APIs specific to European Union data"
+    },
+    {
+      "name": "Netherlands APIs",
+      "description": "APIs specific to Netherlands (NL) data"
+    }
+  ]
+}

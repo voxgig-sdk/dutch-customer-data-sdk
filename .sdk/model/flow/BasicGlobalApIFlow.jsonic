@@ -1,0 +1,48 @@
+# BasicGlobalApIFlow
+
+main: kit: flow: BasicGlobalApIFlow:
+{
+  entity: "global_ap_i",
+  kind: "basic",
+  name: "BasicGlobalApIFlow",
+  step: [
+    {
+      input: {
+        ref: "global_ap_i_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "global_ap_i_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "global_ap_i_ref01",
+        srcdatavar: "global_ap_i_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-global_ap_i_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGlobalApIFlow"
+}

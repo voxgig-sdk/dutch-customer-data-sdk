@@ -1,0 +1,162 @@
+# Entity: eu_ap_i
+
+main: kit: entity: eu_ap_i: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "buyer"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "buyer_country"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "contract_nature"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "html"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "link"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "notice_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "official_language"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "pdf"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "place_of_performance"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "procedure_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "publication_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "title"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "vat"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "eu_ap_i"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "37080091"
+                kind: "query"
+                name: "q"
+                orig: "q"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/tender"
+          parts: [
+            "tender"
+          ]
+          select: {
+            exist: [
+              "q"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "NL001672022B01"
+                kind: "query"
+                name: "vat"
+                orig: "vat"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/vat"
+          parts: [
+            "vat"
+          ]
+          select: {
+            exist: [
+              "vat"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

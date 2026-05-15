@@ -1,0 +1,40 @@
+# BasicEuApIFlow
+
+main: kit: flow: BasicEuApIFlow:
+{
+  entity: "eu_ap_i",
+  kind: "basic",
+  name: "BasicEuApIFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "eu_ap_i_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "eu_ap_i_ref01",
+        srcdatavar: "eu_ap_i_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-eu_ap_i_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEuApIFlow"
+}

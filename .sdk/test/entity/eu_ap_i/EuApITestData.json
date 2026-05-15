@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "eu_ap_i": {
+      "EU_AP_I00": {
+        "buyer": "s96",
+        "buyer_country": "s97",
+        "contract_nature": "s98",
+        "html": "s99",
+        "id": "EU_AP_I00",
+        "link": "s9b",
+        "notice_type": "s9c",
+        "official_language": "s9d",
+        "pdf": "s9e",
+        "place_of_performance": "s9f",
+        "procedure_type": "sa0",
+        "publication_date": "sa1",
+        "status": "sa2",
+        "title": "sa3",
+        "vat": {}
+      },
+      "EU_AP_I01": {
+        "buyer": "s12c",
+        "buyer_country": "s12d",
+        "contract_nature": "s12e",
+        "html": "s12f",
+        "id": "EU_AP_I01",
+        "link": "s131",
+        "notice_type": "s132",
+        "official_language": "s133",
+        "pdf": "s134",
+        "place_of_performance": "s135",
+        "procedure_type": "s136",
+        "publication_date": "s137",
+        "status": "s138",
+        "title": "s139",
+        "vat": {}
+      },
+      "EU_AP_I02": {
+        "buyer": "s1c2",
+        "buyer_country": "s1c3",
+        "contract_nature": "s1c4",
+        "html": "s1c5",
+        "id": "EU_AP_I02",
+        "link": "s1c7",
+        "notice_type": "s1c8",
+        "official_language": "s1c9",
+        "pdf": "s1ca",
+        "place_of_performance": "s1cb",
+        "procedure_type": "s1cc",
+        "publication_date": "s1cd",
+        "status": "s1ce",
+        "title": "s1cf",
+        "vat": {}
+      }
+    }
+  },
+  "new": {
+    "eu_ap_i": {
+      "eu_ap_i_ref01": {
+        "buyer": "s258",
+        "buyer_country": "s259",
+        "contract_nature": "s25a",
+        "html": "s25b",
+        "link": "s25d",
+        "notice_type": "s25e",
+        "official_language": "s25f",
+        "pdf": "s260",
+        "place_of_performance": "s261",
+        "procedure_type": "s262",
+        "publication_date": "s263",
+        "status": "s264",
+        "title": "s265",
+        "vat": {}
+      }
+    }
+  }
+}
