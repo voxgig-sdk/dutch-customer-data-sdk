@@ -34,7 +34,8 @@
         "street": "s167",
         "type": "s168",
         "url": {},
-        "webrank": {}
+        "webrank": {},
+        "id": "GLOBAL_AP_I00"
       },
       "GLOBAL_AP_I01": {
         "addition": "s294",
@@ -69,7 +70,8 @@
         "street": "s2b1",
         "type": "s2b2",
         "url": {},
-        "webrank": {}
+        "webrank": {},
+        "id": "GLOBAL_AP_I01"
       },
       "GLOBAL_AP_I02": {
         "addition": "s3de",
@@ -104,7 +106,8 @@
         "street": "s3fb",
         "type": "s3fc",
         "url": {},
-        "webrank": {}
+        "webrank": {},
+        "id": "GLOBAL_AP_I02"
       }
     }
   },

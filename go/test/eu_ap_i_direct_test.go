@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/dutch-customer-data-sdk"
-	"github.com/voxgig-sdk/dutch-customer-data-sdk/core"
+	sdk "github.com/voxgig-sdk/dutch-customer-data-sdk/go"
+	"github.com/voxgig-sdk/dutch-customer-data-sdk/go/core"
 )
 
 func TestEuApIDirect(t *testing.T) {

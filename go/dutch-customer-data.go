@@ -1,10 +1,10 @@
 package voxgigdutchcustomerdatasdk
 
 import (
-	"github.com/voxgig-sdk/dutch-customer-data-sdk/core"
-	"github.com/voxgig-sdk/dutch-customer-data-sdk/entity"
-	"github.com/voxgig-sdk/dutch-customer-data-sdk/feature"
-	_ "github.com/voxgig-sdk/dutch-customer-data-sdk/utility"
+	"github.com/voxgig-sdk/dutch-customer-data-sdk/go/core"
+	"github.com/voxgig-sdk/dutch-customer-data-sdk/go/entity"
+	"github.com/voxgig-sdk/dutch-customer-data-sdk/go/feature"
+	_ "github.com/voxgig-sdk/dutch-customer-data-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

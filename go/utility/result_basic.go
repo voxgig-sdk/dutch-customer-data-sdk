@@ -3,7 +3,7 @@ package utility
 import (
 	"fmt"
 
-	"github.com/voxgig-sdk/dutch-customer-data-sdk/core"
+	"github.com/voxgig-sdk/dutch-customer-data-sdk/go/core"
 )
 
 func resultBasicUtil(ctx *core.Context) *core.Result {
