@@ -20,9 +20,7 @@ loading a specific record.
 <?php
 require_once 'dutchcustomerdata_sdk.php';
 
-$client = new DutchCustomerDataSDK([
-    "apikey" => getenv("DUTCH-CUSTOMER-DATA_APIKEY"),
-]);
+$client = new DutchCustomerDataSDK([]);
 ```
 
 ### 2. List euapis
@@ -127,7 +125,6 @@ Create a `.env.local` file at the project root:
 
 ```
 DUTCH-CUSTOMER-DATA_TEST_LIVE=TRUE
-DUTCH-CUSTOMER-DATA_APIKEY=<your-key>
 ```
 
 Then run:
@@ -150,7 +147,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

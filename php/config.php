@@ -20,9 +20,6 @@ class DutchCustomerDataConfig
             ],
             "options" => [
                 "base" => "https://free.bedrijfsdata.nl/v1.1",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

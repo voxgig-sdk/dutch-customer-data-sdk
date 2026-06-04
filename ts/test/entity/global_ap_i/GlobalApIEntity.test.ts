@@ -127,7 +127,6 @@ function basicSetup(extra?: any) {
     'DUTCH_CUSTOMER_DATA_TEST_GLOBAL_AP_I_ENTID': idmap,
     'DUTCH_CUSTOMER_DATA_TEST_LIVE': 'FALSE',
     'DUTCH_CUSTOMER_DATA_TEST_EXPLAIN': 'FALSE',
-    'DUTCH_CUSTOMER_DATA_APIKEY': 'NONE',
   })
 
   idmap = env['DUTCH_CUSTOMER_DATA_TEST_GLOBAL_AP_I_ENTID']
@@ -137,7 +136,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new DutchCustomerDataSDK(merge([
       {
-        apikey: env.DUTCH_CUSTOMER_DATA_APIKEY,
       },
       extra
     ]))

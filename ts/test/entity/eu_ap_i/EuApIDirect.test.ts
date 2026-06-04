@@ -139,14 +139,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'DUTCHCUSTOMERDATA_TEST_EU_AP_I_ENTID': {},
     'DUTCHCUSTOMERDATA_TEST_LIVE': 'FALSE',
-    'DUTCHCUSTOMERDATA_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.DUTCHCUSTOMERDATA_TEST_LIVE
 
   if (live) {
     const client = new DutchCustomerDataSDK({
-      apikey: env.DUTCHCUSTOMERDATA_APIKEY,
     })
 
     let idmap: any = env['DUTCHCUSTOMERDATA_TEST_EU_AP_I_ENTID']

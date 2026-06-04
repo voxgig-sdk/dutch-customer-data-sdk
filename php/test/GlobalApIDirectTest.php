@@ -113,14 +113,12 @@ function global_ap_i_direct_setup($mockres)
     $env = Runner::env_override([
         "DUTCHCUSTOMERDATA_TEST_GLOBAL_AP_I_ENTID" => [],
         "DUTCHCUSTOMERDATA_TEST_LIVE" => "FALSE",
-        "DUTCHCUSTOMERDATA_APIKEY" => "NONE",
     ]);
 
     $live = $env["DUTCHCUSTOMERDATA_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["DUTCHCUSTOMERDATA_APIKEY"],
         ];
         $client = new DutchCustomerDataSDK($merged_opts);
         return [

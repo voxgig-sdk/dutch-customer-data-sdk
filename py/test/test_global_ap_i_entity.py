@@ -105,7 +105,6 @@ def _global_ap_i_basic_setup(extra):
         "DUTCHCUSTOMERDATA_TEST_GLOBAL_AP_I_ENTID": idmap,
         "DUTCHCUSTOMERDATA_TEST_LIVE": "FALSE",
         "DUTCHCUSTOMERDATA_TEST_EXPLAIN": "FALSE",
-        "DUTCHCUSTOMERDATA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -116,7 +115,6 @@ def _global_ap_i_basic_setup(extra):
     if env.get("DUTCHCUSTOMERDATA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("DUTCHCUSTOMERDATA_APIKEY"),
             },
             extra or {},
         ])
