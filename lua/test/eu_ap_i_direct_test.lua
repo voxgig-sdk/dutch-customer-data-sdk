@@ -113,12 +113,14 @@ function eu_ap_i_direct_setup(mockres)
   local env = runner.env_override({
     ["DUTCHCUSTOMERDATA_TEST_EU_AP_I_ENTID"] = {},
     ["DUTCHCUSTOMERDATA_TEST_LIVE"] = "FALSE",
+    ["DUTCHCUSTOMERDATA_APIKEY"] = "NONE",
   })
 
   local live = env["DUTCHCUSTOMERDATA_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["DUTCHCUSTOMERDATA_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

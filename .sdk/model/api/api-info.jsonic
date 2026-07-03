@@ -17,32 +17,7 @@ main: {
       ]
       title: "Dutch Customer Data API"
       version: "1.1"
-      tagline: "Verify and standardize Dutch customer and business data — addresses, phone, email, VAT, IBAN, KvK and postal codes"
-      homepage: "https://bedrijfsdata.nl"
-      docs_url: "https://free.bedrijfsdata.nl/v1.1"
-      license_short: "Free public endpoint, no authentication; license terms not published"
-      license_md: `- Hosted as a free public endpoint at \`free.bedrijfsdata.nl/v1.1\` by [Bedrijfsdata.nl](https://bedrijfsdata.nl), an Amsterdam-based Dutch business-data provider.
-- No authentication is required for the free tier.
-- No explicit licence or terms of use are published alongside the free endpoint — treat the data as for development and validation use only, and check directly with the operator before commercial redistribution.
-- CORS is not enabled, so calls must be made from a server-side context.`
-      about_md: `This SDK wraps the free validation endpoint at \`https://free.bedrijfsdata.nl/v1.1\`, operated by [Bedrijfsdata.nl](https://bedrijfsdata.nl) — a Dutch B2B data company based in Amsterdam that maintains profiles on more than 3.7 million Dutch companies and organisations.
-
-The free service is aimed at verifying and standardising Dutch customer and business records. Typical inputs and outputs cover:
-
-- Dutch and international phone numbers (with country code)
-- Postal addresses and Dutch postal codes
-- Email addresses and website URLs
-- VAT (BTW) numbers
-- IBAN bank account numbers
-- KvK (Chamber of Commerce) registration numbers
-
-The endpoint requires no API key and is intended for lightweight validation use. Rate limits and a formal licence are not published; for higher-volume or commercial use, contact Bedrijfsdata.nl about their paid datasets and enrichment products.`
-      entity_desc: {
-        eu_ap_i: "EU-scoped validation helpers — checks for data formats that are common across the European Union, such as VAT (BTW) numbers and IBAN bank account numbers."
-        global_ap_i: "Globally-scoped validation helpers — generic checks that are not country-specific, such as email address and URL validation."
-        netherlands_ap_i: "Netherlands-specific validation helpers — Dutch phone numbers, postal codes, addresses and KvK (Chamber of Commerce) numbers, e.g. `GET /v1.1/phone`."
-      }
-      auth: false
     }
   }
 }
+

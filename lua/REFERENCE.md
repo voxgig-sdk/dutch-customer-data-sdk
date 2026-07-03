@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -122,7 +122,7 @@ local eu_ap_i = client:EuApI(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:EuApI(nil):list(nil, nil)
+local results, err = client:EuApI():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -130,7 +130,7 @@ local results, err = client:EuApI(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:EuApI(nil):load({ id = "eu_ap_i_id" }, nil)
+local result, err = client:EuApI():load({ id = "eu_ap_i_id" })
 ```
 
 ### Common Methods
@@ -214,8 +214,8 @@ local global_ap_i = client:GlobalApI(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:GlobalApI(nil):create({
-}, nil)
+local result, err = client:GlobalApI():create({
+})
 ```
 
 #### `list(reqmatch, ctrl) -> any, err`
@@ -223,7 +223,7 @@ local result, err = client:GlobalApI(nil):create({
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:GlobalApI(nil):list(nil, nil)
+local results, err = client:GlobalApI():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -231,7 +231,7 @@ local results, err = client:GlobalApI(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GlobalApI(nil):load({ id = "global_ap_i_id" }, nil)
+local result, err = client:GlobalApI():load({ id = "global_ap_i_id" })
 ```
 
 ### Common Methods
@@ -303,7 +303,7 @@ local netherlands_ap_i = client:NetherlandsApI(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:NetherlandsApI(nil):list(nil, nil)
+local results, err = client:NetherlandsApI():list()
 ```
 
 ### Common Methods

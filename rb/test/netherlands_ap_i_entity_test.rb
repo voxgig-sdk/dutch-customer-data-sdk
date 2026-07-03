@@ -83,6 +83,7 @@ def netherlands_ap_i_basic_setup(extra)
     "DUTCHCUSTOMERDATA_TEST_NETHERLANDS_AP_I_ENTID" => idmap,
     "DUTCHCUSTOMERDATA_TEST_LIVE" => "FALSE",
     "DUTCHCUSTOMERDATA_TEST_EXPLAIN" => "FALSE",
+    "DUTCHCUSTOMERDATA_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,6 +95,7 @@ def netherlands_ap_i_basic_setup(extra)
   if env["DUTCHCUSTOMERDATA_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["DUTCHCUSTOMERDATA_APIKEY"],
       },
       extra || {},
     ])
