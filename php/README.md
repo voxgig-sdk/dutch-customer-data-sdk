@@ -10,7 +10,7 @@ The PHP SDK for the DutchCustomerData API — an entity-oriented client using PH
 
 ## Install
 ```bash
-composer require voxgig/dutch-customer-data-sdk
+composer require voxgig-sdk/dutch-customer-data
 ```
 
 

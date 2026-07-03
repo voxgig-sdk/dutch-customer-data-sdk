@@ -10,7 +10,7 @@ The TypeScript SDK for the DutchCustomerData API — a type-safe, entity-oriente
 
 ## Install
 ```bash
-npm install dutch-customer-data
+npm install @voxgig-sdk/dutch-customer-data
 ```
 ## Tutorial: your first API call
 

@@ -10,7 +10,7 @@ The Lua SDK for the DutchCustomerData API — an entity-oriented client using Lu
 
 ## Install
 ```bash
-luarocks install dutch-customer-data-sdk
+luarocks install voxgig-sdk-dutch-customer-data
 ```
 
 If the module is not yet published, add the source directory to

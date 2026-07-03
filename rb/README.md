@@ -10,13 +10,13 @@ The Ruby SDK for the DutchCustomerData API — an entity-oriented client using i
 
 ## Install
 ```bash
-gem install dutch-customer-data-sdk
+gem install voxgig-sdk-dutch-customer-data
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "dutch-customer-data-sdk"
+gem "voxgig-sdk-dutch-customer-data"
 ```
 
 Then run:

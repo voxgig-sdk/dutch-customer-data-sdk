@@ -10,7 +10,7 @@ The Python SDK for the DutchCustomerData API — an entity-oriented client follo
 
 ## Install
 ```bash
-pip install dutch-customer-data-sdk
+pip install voxgig-sdk-dutch-customer-data
 ```
 
 Or install from source:
