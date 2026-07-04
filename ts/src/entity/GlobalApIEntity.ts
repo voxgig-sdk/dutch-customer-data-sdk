@@ -14,9 +14,15 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GlobalApI,
+  GlobalApILoadMatch,
+  GlobalApIListMatch,
+  GlobalApICreateData,
+} from '../DutchCustomerDataTypes'
 
 // TODO: needs Entity superclass
-class GlobalApIEntity extends DutchCustomerDataEntityBase {
+class GlobalApIEntity extends DutchCustomerDataEntityBase<GlobalApI> {
 
   constructor(client: DutchCustomerDataSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +38,7 @@ class GlobalApIEntity extends DutchCustomerDataEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GlobalApILoadMatch, ctrl?: Control): Promise<GlobalApI> {
 
     const utility = this._utility
 
@@ -136,14 +142,16 @@ class GlobalApIEntity extends DutchCustomerDataEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GlobalApI> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: GlobalApIListMatch, ctrl?: Control): Promise<GlobalApI[]> {
 
     const utility = this._utility
 
@@ -243,14 +251,16 @@ class GlobalApIEntity extends DutchCustomerDataEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GlobalApI[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async create(this: any, reqdata?: any, ctrl?: Control) {
+  async create(this: any, reqdata?: GlobalApICreateData, ctrl?: Control): Promise<GlobalApI> {
 
     const utility = this._utility
     const {
@@ -349,7 +359,9 @@ class GlobalApIEntity extends DutchCustomerDataEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GlobalApI> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

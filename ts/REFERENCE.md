@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -134,7 +133,7 @@ Alias for `DutchCustomerDataSDK.test()`.
 ## EuApIEntity
 
 ```ts
-const eu_ap_i = client.EuApI()
+const eu_ap_i = client.eu_ap_i
 ```
 
 ### Fields
@@ -164,7 +163,7 @@ const eu_ap_i = client.EuApI()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.EuApI().list()
+const results = await client.eu_ap_i.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -172,7 +171,7 @@ const results = await client.EuApI().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.EuApI().load({ id: 'eu_ap_i_id' })
+const result = await client.eu_ap_i.load({ id: 'eu_ap_i_id' })
 ```
 
 ### Common Methods
@@ -206,7 +205,7 @@ Return a copy of the entity options.
 ## GlobalApIEntity
 
 ```ts
-const global_ap_i = client.GlobalApI()
+const global_ap_i = client.global_ap_i
 ```
 
 ### Fields
@@ -254,7 +253,7 @@ const global_ap_i = client.GlobalApI()
 Create a new entity with the given data.
 
 ```ts
-const result = await client.GlobalApI().create({
+const result = await client.global_ap_i.create({
 })
 ```
 
@@ -263,7 +262,7 @@ const result = await client.GlobalApI().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.GlobalApI().list()
+const results = await client.global_ap_i.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -271,7 +270,7 @@ const results = await client.GlobalApI().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GlobalApI().load({ id: 'global_ap_i_id' })
+const result = await client.global_ap_i.load({ id: 'global_ap_i_id' })
 ```
 
 ### Common Methods
@@ -305,7 +304,7 @@ Return a copy of the entity options.
 ## NetherlandsApIEntity
 
 ```ts
-const netherlands_ap_i = client.NetherlandsApI()
+const netherlands_ap_i = client.netherlands_ap_i
 ```
 
 ### Fields
@@ -341,7 +340,7 @@ const netherlands_ap_i = client.NetherlandsApI()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.NetherlandsApI().list()
+const results = await client.netherlands_ap_i.list()
 ```
 
 ### Common Methods

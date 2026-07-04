@@ -245,16 +245,25 @@ func (sdk *DutchCustomerDataSDK) Direct(fetchargs map[string]any) (map[string]an
 }
 
 
+// EuApI returns a EuApI entity bound to this client.
+// Idiomatic usage: client.EuApI(nil).List(nil, nil) or
+// client.EuApI(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DutchCustomerDataSDK) EuApI(data map[string]any) DutchCustomerDataEntity {
 	return NewEuApIEntityFunc(sdk, data)
 }
 
 
+// GlobalApI returns a GlobalApI entity bound to this client.
+// Idiomatic usage: client.GlobalApI(nil).List(nil, nil) or
+// client.GlobalApI(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DutchCustomerDataSDK) GlobalApI(data map[string]any) DutchCustomerDataEntity {
 	return NewGlobalApIEntityFunc(sdk, data)
 }
 
 
+// NetherlandsApI returns a NetherlandsApI entity bound to this client.
+// Idiomatic usage: client.NetherlandsApI(nil).List(nil, nil) or
+// client.NetherlandsApI(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *DutchCustomerDataSDK) NetherlandsApI(data map[string]any) DutchCustomerDataEntity {
 	return NewNetherlandsApIEntityFunc(sdk, data)
 }

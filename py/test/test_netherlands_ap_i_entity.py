@@ -50,8 +50,7 @@ class TestNetherlandsApIEntity:
         netherlands_ap_i_ref01_ent = client.NetherlandsApI(None)
         netherlands_ap_i_ref01_match = {}
 
-        netherlands_ap_i_ref01_list_result, err = netherlands_ap_i_ref01_ent.list(netherlands_ap_i_ref01_match, None)
-        assert err is None
+        netherlands_ap_i_ref01_list_result = netherlands_ap_i_ref01_ent.list(netherlands_ap_i_ref01_match, None)
         assert isinstance(netherlands_ap_i_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _netherlands_ap_i_basic_setup(extra):
         "DUTCHCUSTOMERDATA_TEST_NETHERLANDS_AP_I_ENTID": idmap,
         "DUTCHCUSTOMERDATA_TEST_LIVE": "FALSE",
         "DUTCHCUSTOMERDATA_TEST_EXPLAIN": "FALSE",
-        "DUTCHCUSTOMERDATA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _netherlands_ap_i_basic_setup(extra):
     if env.get("DUTCHCUSTOMERDATA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("DUTCHCUSTOMERDATA_APIKEY"),
             },
             extra or {},
         ])

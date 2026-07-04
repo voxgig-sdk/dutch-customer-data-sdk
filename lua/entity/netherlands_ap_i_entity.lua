@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch NetherlandsApIListMatch
+---@param ctrl? table
+---@return NetherlandsApI[]
+---@return string? err
 function NetherlandsApIEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  EuApI,
+  EuApILoadMatch,
+  EuApIListMatch,
+} from '../DutchCustomerDataTypes'
 
 // TODO: needs Entity superclass
-class EuApIEntity extends DutchCustomerDataEntityBase {
+class EuApIEntity extends DutchCustomerDataEntityBase<EuApI> {
 
   constructor(client: DutchCustomerDataSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class EuApIEntity extends DutchCustomerDataEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: EuApILoadMatch, ctrl?: Control): Promise<EuApI> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class EuApIEntity extends DutchCustomerDataEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<EuApI> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: EuApIListMatch, ctrl?: Control): Promise<EuApI[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class EuApIEntity extends DutchCustomerDataEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<EuApI[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

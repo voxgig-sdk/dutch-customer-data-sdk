@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'DutchCustomerData_types'
+
 
 class DutchCustomerDataSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class DutchCustomerDataSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class DutchCustomerDataSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue DutchCustomerDataError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = DutchCustomerDataHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class DutchCustomerDataSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,28 +198,49 @@ class DutchCustomerDataSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.eu_ap_i.list / client.eu_ap_i.load({ "id" => ... })
+  def eu_ap_i
+    require_relative 'entity/eu_ap_i_entity'
+    @eu_ap_i ||= EuApIEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.eu_ap_i instead.
   def EuApI(data = nil)
     require_relative 'entity/eu_ap_i_entity'
     EuApIEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.global_ap_i.list / client.global_ap_i.load({ "id" => ... })
+  def global_ap_i
+    require_relative 'entity/global_ap_i_entity'
+    @global_ap_i ||= GlobalApIEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.global_ap_i instead.
   def GlobalApI(data = nil)
     require_relative 'entity/global_ap_i_entity'
     GlobalApIEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.netherlands_ap_i.list / client.netherlands_ap_i.load({ "id" => ... })
+  def netherlands_ap_i
+    require_relative 'entity/netherlands_ap_i_entity'
+    @netherlands_ap_i ||= NetherlandsApIEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.netherlands_ap_i instead.
   def NetherlandsApI(data = nil)
     require_relative 'entity/netherlands_ap_i_entity'
     NetherlandsApIEntity.new(self, data)

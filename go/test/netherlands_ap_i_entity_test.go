@@ -119,7 +119,6 @@ func netherlands_ap_iBasicSetup(extra map[string]any) *entityTestSetup {
 		"DUTCHCUSTOMERDATA_TEST_NETHERLANDS_AP_I_ENTID": idmap,
 		"DUTCHCUSTOMERDATA_TEST_LIVE":      "FALSE",
 		"DUTCHCUSTOMERDATA_TEST_EXPLAIN":   "FALSE",
-		"DUTCHCUSTOMERDATA_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["DUTCHCUSTOMERDATA_TEST_NETHERLANDS_AP_I_ENTID"])
@@ -130,7 +129,6 @@ func netherlands_ap_iBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["DUTCHCUSTOMERDATA_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["DUTCHCUSTOMERDATA_APIKEY"],
 			},
 			extra,
 		})

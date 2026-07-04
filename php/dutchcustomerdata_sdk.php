@@ -103,7 +103,7 @@ class DutchCustomerDataSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class DutchCustomerDataSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class DutchCustomerDataSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,38 +216,71 @@ class DutchCustomerDataSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function EuApI($data = null)
+    private $_eu_ap_i = null;
+
+    // Idiomatic facade: $client->eu_ap_i()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias EuApI() (PHP method
+    // names are case-insensitive).
+    public function eu_ap_i($data = null)
     {
         require_once __DIR__ . '/entity/eu_ap_i_entity.php';
+        if ($data === null) {
+            if ($this->_eu_ap_i === null) {
+                $this->_eu_ap_i = new EuApIEntity($this, null);
+            }
+            return $this->_eu_ap_i;
+        }
         return new EuApIEntity($this, $data);
     }
 
 
-    public function GlobalApI($data = null)
+    private $_global_ap_i = null;
+
+    // Idiomatic facade: $client->global_ap_i()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias GlobalApI() (PHP method
+    // names are case-insensitive).
+    public function global_ap_i($data = null)
     {
         require_once __DIR__ . '/entity/global_ap_i_entity.php';
+        if ($data === null) {
+            if ($this->_global_ap_i === null) {
+                $this->_global_ap_i = new GlobalApIEntity($this, null);
+            }
+            return $this->_global_ap_i;
+        }
         return new GlobalApIEntity($this, $data);
     }
 
 
-    public function NetherlandsApI($data = null)
+    private $_netherlands_ap_i = null;
+
+    // Idiomatic facade: $client->netherlands_ap_i()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias NetherlandsApI() (PHP method
+    // names are case-insensitive).
+    public function netherlands_ap_i($data = null)
     {
         require_once __DIR__ . '/entity/netherlands_ap_i_entity.php';
+        if ($data === null) {
+            if ($this->_netherlands_ap_i === null) {
+                $this->_netherlands_ap_i = new NetherlandsApIEntity($this, null);
+            }
+            return $this->_netherlands_ap_i;
+        }
         return new NetherlandsApIEntity($this, $data);
     }
 

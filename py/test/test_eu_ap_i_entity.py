@@ -50,16 +50,14 @@ class TestEuApIEntity:
         eu_ap_i_ref01_ent = client.EuApI(None)
         eu_ap_i_ref01_match = {}
 
-        eu_ap_i_ref01_list_result, err = eu_ap_i_ref01_ent.list(eu_ap_i_ref01_match, None)
-        assert err is None
+        eu_ap_i_ref01_list_result = eu_ap_i_ref01_ent.list(eu_ap_i_ref01_match, None)
         assert isinstance(eu_ap_i_ref01_list_result, list)
 
         # LOAD
         eu_ap_i_ref01_match_dt0 = {
             "id": eu_ap_i_ref01_data["id"],
         }
-        eu_ap_i_ref01_data_dt0_loaded, err = eu_ap_i_ref01_ent.load(eu_ap_i_ref01_match_dt0, None)
-        assert err is None
+        eu_ap_i_ref01_data_dt0_loaded = eu_ap_i_ref01_ent.load(eu_ap_i_ref01_match_dt0, None)
         eu_ap_i_ref01_data_dt0_load_result = helpers.to_map(eu_ap_i_ref01_data_dt0_loaded)
         assert eu_ap_i_ref01_data_dt0_load_result is not None
         assert eu_ap_i_ref01_data_dt0_load_result["id"] == eu_ap_i_ref01_data["id"]
@@ -102,7 +100,6 @@ def _eu_ap_i_basic_setup(extra):
         "DUTCHCUSTOMERDATA_TEST_EU_AP_I_ENTID": idmap,
         "DUTCHCUSTOMERDATA_TEST_LIVE": "FALSE",
         "DUTCHCUSTOMERDATA_TEST_EXPLAIN": "FALSE",
-        "DUTCHCUSTOMERDATA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _eu_ap_i_basic_setup(extra):
     if env.get("DUTCHCUSTOMERDATA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("DUTCHCUSTOMERDATA_APIKEY"),
             },
             extra or {},
         ])

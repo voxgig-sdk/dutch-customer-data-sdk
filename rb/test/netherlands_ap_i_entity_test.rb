@@ -43,8 +43,7 @@ class NetherlandsApIEntityTest < Minitest::Test
     netherlands_ap_i_ref01_ent = client.NetherlandsApI(nil)
     netherlands_ap_i_ref01_match = {}
 
-    netherlands_ap_i_ref01_list_result, err = netherlands_ap_i_ref01_ent.list(netherlands_ap_i_ref01_match, nil)
-    assert_nil err
+    netherlands_ap_i_ref01_list_result = netherlands_ap_i_ref01_ent.list(netherlands_ap_i_ref01_match, nil)
     assert netherlands_ap_i_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def netherlands_ap_i_basic_setup(extra)
     "DUTCHCUSTOMERDATA_TEST_NETHERLANDS_AP_I_ENTID" => idmap,
     "DUTCHCUSTOMERDATA_TEST_LIVE" => "FALSE",
     "DUTCHCUSTOMERDATA_TEST_EXPLAIN" => "FALSE",
-    "DUTCHCUSTOMERDATA_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def netherlands_ap_i_basic_setup(extra)
   if env["DUTCHCUSTOMERDATA_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["DUTCHCUSTOMERDATA_APIKEY"],
       },
       extra || {},
     ])

@@ -9,9 +9,10 @@ The PHP SDK for the DutchCustomerData API — an entity-oriented client using PH
 
 
 ## Install
-```bash
-composer require voxgig-sdk/dutch-customer-data
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'dutchcustomerdata_sdk.php';
 
-$client = new DutchCustomerDataSDK([
-    "apikey" => getenv("DUTCH-CUSTOMER-DATA_APIKEY"),
-]);
+$client = new DutchCustomerDataSDK();
 ```
 
 ### 2. List euapis
 
 ```php
-[$result, $err] = $client->EuApI()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->euapi()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
-### 3. Load a euapi
+### 3. Load an euapi
 
 ```php
-[$result, $err] = $client->EuApI()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->euapi()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = DutchCustomerDataSDK::test();
 
-[$result, $err] = $client->DutchCustomerData()->load(["id" => "test01"]);
+$result = $client->euapi()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +136,7 @@ $client = new DutchCustomerDataSDK([
 Create a `.env.local` file at the project root:
 
 ```
-DUTCH-CUSTOMER-DATA_TEST_LIVE=TRUE
-DUTCH-CUSTOMER-DATA_APIKEY=<your-key>
+DUTCH_CUSTOMER_DATA_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -201,8 +206,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -318,7 +327,7 @@ API path: `/bag`
 
 ### EuApI
 
-Create an instance: `const eu_ap_i = client.EuApI()`
+Create an instance: `const eu_ap_i = client.eu_ap_i`
 
 #### Operations
 
@@ -350,19 +359,19 @@ Create an instance: `const eu_ap_i = client.EuApI()`
 #### Example: Load
 
 ```ts
-const eu_ap_i = await client.EuApI().load({ id: 'eu_ap_i_id' })
+const eu_ap_i = await client.eu_ap_i.load({ id: 'eu_ap_i_id' })
 ```
 
 #### Example: List
 
 ```ts
-const eu_ap_is = await client.EuApI().list()
+const eu_ap_is = await client.eu_ap_i.list()
 ```
 
 
 ### GlobalApI
 
-Create an instance: `const global_ap_i = client.GlobalApI()`
+Create an instance: `const global_ap_i = client.global_ap_i`
 
 #### Operations
 
@@ -413,26 +422,26 @@ Create an instance: `const global_ap_i = client.GlobalApI()`
 #### Example: Load
 
 ```ts
-const global_ap_i = await client.GlobalApI().load({ id: 'global_ap_i_id' })
+const global_ap_i = await client.global_ap_i.load({ id: 'global_ap_i_id' })
 ```
 
 #### Example: List
 
 ```ts
-const global_ap_is = await client.GlobalApI().list()
+const global_ap_is = await client.global_ap_i.list()
 ```
 
 #### Example: Create
 
 ```ts
-const global_ap_i = await client.GlobalApI().create({
+const global_ap_i = await client.global_ap_i.create({
 })
 ```
 
 
 ### NetherlandsApI
 
-Create an instance: `const netherlands_ap_i = client.NetherlandsApI()`
+Create an instance: `const netherlands_ap_i = client.netherlands_ap_i`
 
 #### Operations
 
@@ -469,7 +478,7 @@ Create an instance: `const netherlands_ap_i = client.NetherlandsApI()`
 #### Example: List
 
 ```ts
-const netherlands_ap_is = await client.NetherlandsApI().list()
+const netherlands_ap_is = await client.netherlands_ap_i.list()
 ```
 
 
@@ -544,11 +553,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$euapi = $client->euapi();
+$euapi->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $euapi->dataGet() now returns the loaded euapi data
+// $euapi->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

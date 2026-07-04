@@ -55,6 +55,9 @@ class GlobalApIEntity
         return new GlobalApIEntity($this->_client, $opts);
     }
 
+    /**
+     * @param GlobalApI|array $args GlobalApI data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class GlobalApIEntity
         }
     }
 
+    /**
+     * @return GlobalApI|array The current GlobalApI data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of GlobalApI fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class GlobalApIEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of GlobalApI fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class GlobalApIEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single GlobalApI.
+     *
+     * @param GlobalApILoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed GlobalApILoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return GlobalApI|array The loaded GlobalApI as an assoc-array at the
+     *   SDK boundary; throws DutchCustomerDataError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class GlobalApIEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List GlobalApI items matching the given filter.
+     *
+     * @param GlobalApIListMatch|array|null $reqmatch Match filter (any subset
+     *   of GlobalApI fields) as an assoc-array; GlobalApIListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return GlobalApI[]|array A list of GlobalApI items as assoc-arrays at
+     *   the SDK boundary; throws DutchCustomerDataError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -133,7 +163,16 @@ class GlobalApIEntity
 
 
     
-    public function create($reqdata, $ctrl = null): array
+    /**
+     * Create a new GlobalApI.
+     *
+     * @param GlobalApICreateData|array|null $reqdata Body data as an assoc-array;
+     *   a typed GlobalApICreateData names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return GlobalApI|array The created GlobalApI as an assoc-array at the
+     *   SDK boundary; throws DutchCustomerDataError on failure (item-5 convention).
+     */
+    public function create(?array $reqdata = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -159,7 +198,7 @@ class GlobalApIEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

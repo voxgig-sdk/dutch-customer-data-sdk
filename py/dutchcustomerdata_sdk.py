@@ -144,16 +144,23 @@ class DutchCustomerDataSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class DutchCustomerDataSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,25 +212,58 @@ class DutchCustomerDataSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def eu_ap_i(self):
+        """Idiomatic facade: client.eu_ap_i.list() / client.eu_ap_i.load({"id": ...})."""
+        from entity.eu_ap_i_entity import EuApIEntity
+        cached = getattr(self, "_eu_ap_i", None)
+        if cached is None:
+            cached = EuApIEntity(self, None)
+            self._eu_ap_i = cached
+        return cached
 
     def EuApI(self, data=None):
+        # Deprecated: use client.eu_ap_i instead.
         from entity.eu_ap_i_entity import EuApIEntity
         return EuApIEntity(self, data)
 
 
+    @property
+    def global_ap_i(self):
+        """Idiomatic facade: client.global_ap_i.list() / client.global_ap_i.load({"id": ...})."""
+        from entity.global_ap_i_entity import GlobalApIEntity
+        cached = getattr(self, "_global_ap_i", None)
+        if cached is None:
+            cached = GlobalApIEntity(self, None)
+            self._global_ap_i = cached
+        return cached
+
     def GlobalApI(self, data=None):
+        # Deprecated: use client.global_ap_i instead.
         from entity.global_ap_i_entity import GlobalApIEntity
         return GlobalApIEntity(self, data)
 
 
+    @property
+    def netherlands_ap_i(self):
+        """Idiomatic facade: client.netherlands_ap_i.list() / client.netherlands_ap_i.load({"id": ...})."""
+        from entity.netherlands_ap_i_entity import NetherlandsApIEntity
+        cached = getattr(self, "_netherlands_ap_i", None)
+        if cached is None:
+            cached = NetherlandsApIEntity(self, None)
+            self._netherlands_ap_i = cached
+        return cached
+
     def NetherlandsApI(self, data=None):
+        # Deprecated: use client.netherlands_ap_i instead.
         from entity.netherlands_ap_i_entity import NetherlandsApIEntity
         return NetherlandsApIEntity(self, data)
 

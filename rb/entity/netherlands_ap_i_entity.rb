@@ -45,6 +45,7 @@ class NetherlandsApIEntity
     end
   end
 
+  # @return [NetherlandsApI, Hash] the current NetherlandsApI data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class NetherlandsApIEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of NetherlandsApI fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class NetherlandsApIEntity
   
 
   
+  # List NetherlandsApI items matching the given filter.
+  #
+  # @param reqmatch [NetherlandsApIListMatch, Hash, nil] match filter (any subset of NetherlandsApI fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<NetherlandsApI>, Array] the matching NetherlandsApI items; raises DutchCustomerDataError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

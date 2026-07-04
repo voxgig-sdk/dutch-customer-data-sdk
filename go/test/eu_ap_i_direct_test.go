@@ -170,14 +170,12 @@ func eu_ap_iDirectSetup(mockres any) *eu_ap_iDirectSetupResult {
 	env := envOverride(map[string]any{
 		"DUTCHCUSTOMERDATA_TEST_EU_AP_I_ENTID": map[string]any{},
 		"DUTCHCUSTOMERDATA_TEST_LIVE":    "FALSE",
-		"DUTCHCUSTOMERDATA_APIKEY":       "NONE",
 	})
 
 	live := env["DUTCHCUSTOMERDATA_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["DUTCHCUSTOMERDATA_APIKEY"],
 		}
 		client := sdk.NewDutchCustomerDataSDK(mergedOpts)
 

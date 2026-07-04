@@ -9,12 +9,9 @@ The Lua SDK for the DutchCustomerData API — an entity-oriented client using Lu
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-dutch-customer-data
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("dutch-customer-data_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("DUTCH-CUSTOMER-DATA_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List euapis
 
 ```lua
-local result, err = client:EuApI():list()
+local result, err = client:euapi():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -50,10 +45,10 @@ if type(result) == "table" then
 end
 ```
 
-### 3. Load a euapi
+### 3. Load an euapi
 
 ```lua
-local result, err = client:EuApI():load({ id = "example_id" })
+local result, err = client:euapi():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:DutchCustomerData():load({ id = "test01" })
+local result, err = client:euapi():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -134,8 +129,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-DUTCH-CUSTOMER-DATA_TEST_LIVE=TRUE
-DUTCH-CUSTOMER-DATA_APIKEY=<your-key>
+DUTCH_CUSTOMER_DATA_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -158,7 +152,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -323,7 +316,7 @@ API path: `/bag`
 
 ### EuApI
 
-Create an instance: `const eu_ap_i = client.EuApI()`
+Create an instance: `const eu_ap_i = client.eu_ap_i`
 
 #### Operations
 
@@ -355,19 +348,19 @@ Create an instance: `const eu_ap_i = client.EuApI()`
 #### Example: Load
 
 ```ts
-const eu_ap_i = await client.EuApI().load({ id: 'eu_ap_i_id' })
+const eu_ap_i = await client.eu_ap_i.load({ id: 'eu_ap_i_id' })
 ```
 
 #### Example: List
 
 ```ts
-const eu_ap_is = await client.EuApI().list()
+const eu_ap_is = await client.eu_ap_i.list()
 ```
 
 
 ### GlobalApI
 
-Create an instance: `const global_ap_i = client.GlobalApI()`
+Create an instance: `const global_ap_i = client.global_ap_i`
 
 #### Operations
 
@@ -418,26 +411,26 @@ Create an instance: `const global_ap_i = client.GlobalApI()`
 #### Example: Load
 
 ```ts
-const global_ap_i = await client.GlobalApI().load({ id: 'global_ap_i_id' })
+const global_ap_i = await client.global_ap_i.load({ id: 'global_ap_i_id' })
 ```
 
 #### Example: List
 
 ```ts
-const global_ap_is = await client.GlobalApI().list()
+const global_ap_is = await client.global_ap_i.list()
 ```
 
 #### Example: Create
 
 ```ts
-const global_ap_i = await client.GlobalApI().create({
+const global_ap_i = await client.global_ap_i.create({
 })
 ```
 
 
 ### NetherlandsApI
 
-Create an instance: `const netherlands_ap_i = client.NetherlandsApI()`
+Create an instance: `const netherlands_ap_i = client.netherlands_ap_i`
 
 #### Operations
 
@@ -474,7 +467,7 @@ Create an instance: `const netherlands_ap_i = client.NetherlandsApI()`
 #### Example: List
 
 ```ts
-const netherlands_ap_is = await client.NetherlandsApI().list()
+const netherlands_ap_is = await client.netherlands_ap_i.list()
 ```
 
 
@@ -549,11 +542,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local euapi = client:euapi()
+euapi:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- euapi:data_get() now returns the loaded euapi data
+-- euapi:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

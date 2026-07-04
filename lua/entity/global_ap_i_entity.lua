@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GlobalApILoadMatch
+---@param ctrl? table
+---@return GlobalApI
+---@return string? err
 function GlobalApIEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch GlobalApIListMatch
+---@param ctrl? table
+---@return GlobalApI[]
+---@return string? err
 function GlobalApIEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -126,6 +134,10 @@ end
 
 
 
+---@param reqdata GlobalApICreateData
+---@param ctrl? table
+---@return GlobalApI
+---@return string? err
 function GlobalApIEntity:create(reqdata, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -44,16 +44,13 @@ class TestGlobalApIEntity:
         global_ap_i_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.global_ap_i"), "global_ap_i_ref01"))
 
-        global_ap_i_ref01_data_result, err = global_ap_i_ref01_ent.create(global_ap_i_ref01_data, None)
-        assert err is None
-        global_ap_i_ref01_data = helpers.to_map(global_ap_i_ref01_data_result)
+        global_ap_i_ref01_data = helpers.to_map(global_ap_i_ref01_ent.create(global_ap_i_ref01_data, None))
         assert global_ap_i_ref01_data is not None
 
         # LIST
         global_ap_i_ref01_match = {}
 
-        global_ap_i_ref01_list_result, err = global_ap_i_ref01_ent.list(global_ap_i_ref01_match, None)
-        assert err is None
+        global_ap_i_ref01_list_result = global_ap_i_ref01_ent.list(global_ap_i_ref01_match, None)
         assert isinstance(global_ap_i_ref01_list_result, list)
 
         found_item = vs.select(
@@ -63,8 +60,7 @@ class TestGlobalApIEntity:
 
         # LOAD
         global_ap_i_ref01_match_dt0 = {}
-        global_ap_i_ref01_data_dt0_loaded, err = global_ap_i_ref01_ent.load(global_ap_i_ref01_match_dt0, None)
-        assert err is None
+        global_ap_i_ref01_data_dt0_loaded = global_ap_i_ref01_ent.load(global_ap_i_ref01_match_dt0, None)
         assert global_ap_i_ref01_data_dt0_loaded is not None
 
 
@@ -105,7 +101,6 @@ def _global_ap_i_basic_setup(extra):
         "DUTCHCUSTOMERDATA_TEST_GLOBAL_AP_I_ENTID": idmap,
         "DUTCHCUSTOMERDATA_TEST_LIVE": "FALSE",
         "DUTCHCUSTOMERDATA_TEST_EXPLAIN": "FALSE",
-        "DUTCHCUSTOMERDATA_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -116,7 +111,6 @@ def _global_ap_i_basic_setup(extra):
     if env.get("DUTCHCUSTOMERDATA_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("DUTCHCUSTOMERDATA_APIKEY"),
             },
             extra or {},
         ])

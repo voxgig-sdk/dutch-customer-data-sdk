@@ -50,16 +50,14 @@ class EuApIEntityTest extends TestCase
         $eu_ap_i_ref01_ent = $client->EuApI(null);
         $eu_ap_i_ref01_match = [];
 
-        [$eu_ap_i_ref01_list_result, $err] = $eu_ap_i_ref01_ent->list($eu_ap_i_ref01_match, null);
-        $this->assertNull($err);
+        $eu_ap_i_ref01_list_result = $eu_ap_i_ref01_ent->list($eu_ap_i_ref01_match, null);
         $this->assertIsArray($eu_ap_i_ref01_list_result);
 
         // LOAD
         $eu_ap_i_ref01_match_dt0 = [
             "id" => $eu_ap_i_ref01_data["id"],
         ];
-        [$eu_ap_i_ref01_data_dt0_loaded, $err] = $eu_ap_i_ref01_ent->load($eu_ap_i_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $eu_ap_i_ref01_data_dt0_loaded = $eu_ap_i_ref01_ent->load($eu_ap_i_ref01_match_dt0, null);
         $eu_ap_i_ref01_data_dt0_load_result = Helpers::to_map($eu_ap_i_ref01_data_dt0_loaded);
         $this->assertNotNull($eu_ap_i_ref01_data_dt0_load_result);
         $this->assertEquals($eu_ap_i_ref01_data_dt0_load_result["id"], $eu_ap_i_ref01_data["id"]);
@@ -96,7 +94,6 @@ function eu_ap_i_basic_setup($extra)
         "DUTCHCUSTOMERDATA_TEST_EU_AP_I_ENTID" => $idmap,
         "DUTCHCUSTOMERDATA_TEST_LIVE" => "FALSE",
         "DUTCHCUSTOMERDATA_TEST_EXPLAIN" => "FALSE",
-        "DUTCHCUSTOMERDATA_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function eu_ap_i_basic_setup($extra)
     if ($env["DUTCHCUSTOMERDATA_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["DUTCHCUSTOMERDATA_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch EuApILoadMatch
+---@param ctrl? table
+---@return EuApI
+---@return string? err
 function EuApIEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch EuApIListMatch
+---@param ctrl? table
+---@return EuApI[]
+---@return string? err
 function EuApIEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

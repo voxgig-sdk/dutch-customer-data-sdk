@@ -9,9 +9,12 @@ The TypeScript SDK for the DutchCustomerData API — a type-safe, entity-oriente
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/dutch-customer-data
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { DutchCustomerDataSDK } from 'dutch-customer-data'
+import { DutchCustomerDataSDK } from '@voxgig-sdk/dutch-customer-data'
 
-const client = new DutchCustomerDataSDK({
-  apikey: process.env.DUTCH-CUSTOMER-DATA_APIKEY,
-})
+const client = new DutchCustomerDataSDK()
 ```
 
 ### 2. List euapis
 
 ```ts
-const result = await client.EuApI().list()
+const result = await client.euapi.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -39,10 +40,10 @@ if (result.ok) {
 }
 ```
 
-### 3. Load a euapi
+### 3. Load an euapi
 
 ```ts
-const result = await client.EuApI().load({ id: 'example_id' })
+const result = await client.euapi.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = DutchCustomerDataSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.euapi.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new DutchCustomerDataSDK({ apikey: '...' })
+const client = new DutchCustomerDataSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.euapi
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new DutchCustomerDataSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new DutchCustomerDataSDK({
 Create a `.env.local` file at the project root:
 
 ```
-DUTCH-CUSTOMER-DATA_TEST_LIVE=TRUE
-DUTCH-CUSTOMER-DATA_APIKEY=<your-key>
+DUTCH_CUSTOMER_DATA_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new DutchCustomerDataSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new DutchCustomerDataSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -366,7 +363,7 @@ API path: `/bag`
 
 ### EuApI
 
-Create an instance: `const eu_ap_i = client.EuApI()`
+Create an instance: `const eu_ap_i = client.eu_ap_i`
 
 #### Operations
 
@@ -398,19 +395,19 @@ Create an instance: `const eu_ap_i = client.EuApI()`
 #### Example: Load
 
 ```ts
-const eu_ap_i = await client.EuApI().load({ id: 'eu_ap_i_id' })
+const eu_ap_i = await client.eu_ap_i.load({ id: 'eu_ap_i_id' })
 ```
 
 #### Example: List
 
 ```ts
-const eu_ap_is = await client.EuApI().list()
+const eu_ap_is = await client.eu_ap_i.list()
 ```
 
 
 ### GlobalApI
 
-Create an instance: `const global_ap_i = client.GlobalApI()`
+Create an instance: `const global_ap_i = client.global_ap_i`
 
 #### Operations
 
@@ -461,26 +458,26 @@ Create an instance: `const global_ap_i = client.GlobalApI()`
 #### Example: Load
 
 ```ts
-const global_ap_i = await client.GlobalApI().load({ id: 'global_ap_i_id' })
+const global_ap_i = await client.global_ap_i.load({ id: 'global_ap_i_id' })
 ```
 
 #### Example: List
 
 ```ts
-const global_ap_is = await client.GlobalApI().list()
+const global_ap_is = await client.global_ap_i.list()
 ```
 
 #### Example: Create
 
 ```ts
-const global_ap_i = await client.GlobalApI().create({
+const global_ap_i = await client.global_ap_i.create({
 })
 ```
 
 
 ### NetherlandsApI
 
-Create an instance: `const netherlands_ap_i = client.NetherlandsApI()`
+Create an instance: `const netherlands_ap_i = client.netherlands_ap_i`
 
 #### Operations
 
@@ -517,7 +514,7 @@ Create an instance: `const netherlands_ap_i = client.NetherlandsApI()`
 #### Example: List
 
 ```ts
-const netherlands_ap_is = await client.NetherlandsApI().list()
+const netherlands_ap_is = await client.netherlands_ap_i.list()
 ```
 
 
@@ -578,7 +575,7 @@ dutch-customer-data/
 Import the SDK from the package root:
 
 ```ts
-import { DutchCustomerDataSDK } from 'dutch-customer-data'
+import { DutchCustomerDataSDK } from '@voxgig-sdk/dutch-customer-data'
 ```
 
 ### Entity state
@@ -588,11 +585,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const euapi = client.euapi
+await euapi.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// euapi.data() now returns the loaded euapi data
+// euapi.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

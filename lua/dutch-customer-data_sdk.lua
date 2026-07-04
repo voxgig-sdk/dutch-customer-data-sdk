@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:eu_ap_i():list() / client:eu_ap_i():load({ id = ... })
+function DutchCustomerDataSDK:eu_ap_i(data)
+  local EntityMod = require("entity.eu_ap_i_entity")
+  if data == nil then
+    if self._eu_ap_i == nil then
+      self._eu_ap_i = EntityMod.new(self, nil)
+    end
+    return self._eu_ap_i
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:eu_ap_i() instead.
 function DutchCustomerDataSDK:EuApI(data)
   local EntityMod = require("entity.eu_ap_i_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:global_ap_i():list() / client:global_ap_i():load({ id = ... })
+function DutchCustomerDataSDK:global_ap_i(data)
+  local EntityMod = require("entity.global_ap_i_entity")
+  if data == nil then
+    if self._global_ap_i == nil then
+      self._global_ap_i = EntityMod.new(self, nil)
+    end
+    return self._global_ap_i
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:global_ap_i() instead.
 function DutchCustomerDataSDK:GlobalApI(data)
   local EntityMod = require("entity.global_ap_i_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:netherlands_ap_i():list() / client:netherlands_ap_i():load({ id = ... })
+function DutchCustomerDataSDK:netherlands_ap_i(data)
+  local EntityMod = require("entity.netherlands_ap_i_entity")
+  if data == nil then
+    if self._netherlands_ap_i == nil then
+      self._netherlands_ap_i = EntityMod.new(self, nil)
+    end
+    return self._netherlands_ap_i
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:netherlands_ap_i() instead.
 function DutchCustomerDataSDK:NetherlandsApI(data)
   local EntityMod = require("entity.netherlands_ap_i_entity")
   return EntityMod.new(self, data)

@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -92,7 +91,7 @@ same parameters as `direct()`.
 ## EuApIEntity
 
 ```lua
-local eu_ap_i = client:EuApI(nil)
+local eu_ap_i = client:eu_ap_i(nil)
 ```
 
 ### Fields
@@ -122,7 +121,7 @@ local eu_ap_i = client:EuApI(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:EuApI():list()
+local results, err = client:eu_ap_i():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -130,7 +129,7 @@ local results, err = client:EuApI():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:EuApI():load({ id = "eu_ap_i_id" })
+local result, err = client:eu_ap_i():load({ id = "eu_ap_i_id" })
 ```
 
 ### Common Methods
@@ -166,7 +165,7 @@ Return the entity name.
 ## GlobalApIEntity
 
 ```lua
-local global_ap_i = client:GlobalApI(nil)
+local global_ap_i = client:global_ap_i(nil)
 ```
 
 ### Fields
@@ -214,7 +213,7 @@ local global_ap_i = client:GlobalApI(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:GlobalApI():create({
+local result, err = client:global_ap_i():create({
 })
 ```
 
@@ -223,7 +222,7 @@ local result, err = client:GlobalApI():create({
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:GlobalApI():list()
+local results, err = client:global_ap_i():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -231,7 +230,7 @@ local results, err = client:GlobalApI():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GlobalApI():load({ id = "global_ap_i_id" })
+local result, err = client:global_ap_i():load({ id = "global_ap_i_id" })
 ```
 
 ### Common Methods
@@ -267,7 +266,7 @@ Return the entity name.
 ## NetherlandsApIEntity
 
 ```lua
-local netherlands_ap_i = client:NetherlandsApI(nil)
+local netherlands_ap_i = client:netherlands_ap_i(nil)
 ```
 
 ### Fields
@@ -303,7 +302,7 @@ local netherlands_ap_i = client:NetherlandsApI(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:NetherlandsApI():list()
+local results, err = client:netherlands_ap_i():list()
 ```
 
 ### Common Methods
