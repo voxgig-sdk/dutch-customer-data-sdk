@@ -233,10 +233,10 @@ class DutchCustomerDataSDK
 
     private $_eu_ap_i = null;
 
-    // Idiomatic facade: $client->eu_ap_i()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias EuApI() (PHP method
-    // names are case-insensitive).
-    public function eu_ap_i($data = null)
+    // Canonical facade: $client->EuApI()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->eu_ap_i()
+    // resolves here too.
+    public function EuApI($data = null)
     {
         require_once __DIR__ . '/entity/eu_ap_i_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class DutchCustomerDataSDK
 
     private $_global_ap_i = null;
 
-    // Idiomatic facade: $client->global_ap_i()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GlobalApI() (PHP method
-    // names are case-insensitive).
-    public function global_ap_i($data = null)
+    // Canonical facade: $client->GlobalApI()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->global_ap_i()
+    // resolves here too.
+    public function GlobalApI($data = null)
     {
         require_once __DIR__ . '/entity/global_ap_i_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class DutchCustomerDataSDK
 
     private $_netherlands_ap_i = null;
 
-    // Idiomatic facade: $client->netherlands_ap_i()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias NetherlandsApI() (PHP method
-    // names are case-insensitive).
-    public function netherlands_ap_i($data = null)
+    // Canonical facade: $client->NetherlandsApI()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->netherlands_ap_i()
+    // resolves here too.
+    public function NetherlandsApI($data = null)
     {
         require_once __DIR__ . '/entity/netherlands_ap_i_entity.php';
         if ($data === null) {

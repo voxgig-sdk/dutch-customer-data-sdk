@@ -31,24 +31,28 @@ from dutchcustomerdata_sdk import DutchCustomerDataSDK
 client = DutchCustomerDataSDK()
 ```
 
-### 2. List euapis
+### 2. List euapi records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.euapi.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    euapis = client.EuApI().list({})
+    for euapi in euapis:
+        print(euapi)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load an euapi
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.euapi.load({"id": "example_id"})
-    print(result)
+    euapi = client.EuApI().load({"id": "example_id"})
+    print(euapi)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = DutchCustomerDataSDK.test()
 
-result = client.euapi.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+euapi = client.EuApI().load({"id": "test01"})
+# euapi contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -173,7 +178,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `EuApI` | `(data) -> EuApIEntity` | Create a EuApI entity instance. |
+| `EuApI` | `(data) -> EuApIEntity` | Create an EuApI entity instance. |
 | `GlobalApI` | `(data) -> GlobalApIEntity` | Create a GlobalApI entity instance. |
 | `NetherlandsApI` | `(data) -> NetherlandsApIEntity` | Create a NetherlandsApI entity instance. |
 
@@ -318,7 +323,7 @@ API path: `/bag`
 
 ### EuApI
 
-Create an instance: `const eu_ap_i = client.eu_ap_i`
+Create an instance: `eu_ap_i = client.EuApI()`
 
 #### Operations
 
@@ -349,20 +354,20 @@ Create an instance: `const eu_ap_i = client.eu_ap_i`
 
 #### Example: Load
 
-```ts
-const eu_ap_i = await client.eu_ap_i.load({ id: 'eu_ap_i_id' })
+```python
+eu_ap_i = client.EuApI().load({"id": "eu_ap_i_id"})
 ```
 
 #### Example: List
 
-```ts
-const eu_ap_is = await client.eu_ap_i.list()
+```python
+eu_ap_is = client.EuApI().list({})
 ```
 
 
 ### GlobalApI
 
-Create an instance: `const global_ap_i = client.global_ap_i`
+Create an instance: `global_ap_i = client.GlobalApI()`
 
 #### Operations
 
@@ -412,27 +417,27 @@ Create an instance: `const global_ap_i = client.global_ap_i`
 
 #### Example: Load
 
-```ts
-const global_ap_i = await client.global_ap_i.load({ id: 'global_ap_i_id' })
+```python
+global_ap_i = client.GlobalApI().load({"id": "global_ap_i_id"})
 ```
 
 #### Example: List
 
-```ts
-const global_ap_is = await client.global_ap_i.list()
+```python
+global_ap_is = client.GlobalApI().list({})
 ```
 
 #### Example: Create
 
-```ts
-const global_ap_i = await client.global_ap_i.create({
+```python
+global_ap_i = client.GlobalApI().create({
 })
 ```
 
 
 ### NetherlandsApI
 
-Create an instance: `const netherlands_ap_i = client.netherlands_ap_i`
+Create an instance: `netherlands_ap_i = client.NetherlandsApI()`
 
 #### Operations
 
@@ -468,8 +473,8 @@ Create an instance: `const netherlands_ap_i = client.netherlands_ap_i`
 
 #### Example: List
 
-```ts
-const netherlands_ap_is = await client.netherlands_ap_i.list()
+```python
+netherlands_ap_is = client.NetherlandsApI().list({})
 ```
 
 
@@ -543,7 +548,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-euapi = client.euapi
+euapi = client.EuApI()
 euapi.load({"id": "example_id"})
 
 # euapi.data_get() now returns the loaded euapi data

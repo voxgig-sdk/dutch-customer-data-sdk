@@ -88,7 +88,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## EuApIEntity
 
 ```python
-eu_ap_i = client.eu_ap_i
+eu_ap_i = client.EuApI()
 ```
 
 ### Fields
@@ -118,7 +118,9 @@ eu_ap_i = client.eu_ap_i
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.eu_ap_i.list({})
+results = client.EuApI().list({})
+for eu_ap_i in results:
+    print(eu_ap_i)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -126,7 +128,7 @@ results = client.eu_ap_i.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.eu_ap_i.load({"id": "eu_ap_i_id"})
+result = client.EuApI().load({"id": "eu_ap_i_id"})
 ```
 
 ### Common Methods
@@ -161,7 +163,7 @@ Return the entity name.
 ## GlobalApIEntity
 
 ```python
-global_ap_i = client.global_ap_i
+global_ap_i = client.GlobalApI()
 ```
 
 ### Fields
@@ -209,7 +211,7 @@ global_ap_i = client.global_ap_i
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.global_ap_i.create({
+result = client.GlobalApI().create({
 })
 ```
 
@@ -218,7 +220,9 @@ result = client.global_ap_i.create({
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.global_ap_i.list({})
+results = client.GlobalApI().list({})
+for global_ap_i in results:
+    print(global_ap_i)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -226,7 +230,7 @@ results = client.global_ap_i.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.global_ap_i.load({"id": "global_ap_i_id"})
+result = client.GlobalApI().load({"id": "global_ap_i_id"})
 ```
 
 ### Common Methods
@@ -261,7 +265,7 @@ Return the entity name.
 ## NetherlandsApIEntity
 
 ```python
-netherlands_ap_i = client.netherlands_ap_i
+netherlands_ap_i = client.NetherlandsApI()
 ```
 
 ### Fields
@@ -297,7 +301,9 @@ netherlands_ap_i = client.netherlands_ap_i
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.netherlands_ap_i.list({})
+results = client.NetherlandsApI().list({})
+for netherlands_ap_i in results:
+    print(netherlands_ap_i)
 ```
 
 ### Common Methods

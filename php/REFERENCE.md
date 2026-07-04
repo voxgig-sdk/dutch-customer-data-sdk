@@ -93,7 +93,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## EuApIEntity
 
 ```php
-$eu_ap_i = $client->eu_ap_i();
+$eu_ap_i = $client->EuApI();
 ```
 
 ### Fields
@@ -123,7 +123,7 @@ $eu_ap_i = $client->eu_ap_i();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->eu_ap_i()->list([]);
+$results = $client->EuApI()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -131,7 +131,7 @@ $results = $client->eu_ap_i()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->eu_ap_i()->load(["id" => "eu_ap_i_id"]);
+$result = $client->EuApI()->load(["id" => "eu_ap_i_id"]);
 ```
 
 ### Common Methods
@@ -167,7 +167,7 @@ Return the entity name.
 ## GlobalApIEntity
 
 ```php
-$global_ap_i = $client->global_ap_i();
+$global_ap_i = $client->GlobalApI();
 ```
 
 ### Fields
@@ -215,7 +215,7 @@ $global_ap_i = $client->global_ap_i();
 Create a new entity with the given data. Throws on error.
 
 ```php
-$result = $client->global_ap_i()->create([
+$result = $client->GlobalApI()->create([
 ]);
 ```
 
@@ -224,7 +224,7 @@ $result = $client->global_ap_i()->create([
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->global_ap_i()->list([]);
+$results = $client->GlobalApI()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -232,7 +232,7 @@ $results = $client->global_ap_i()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->global_ap_i()->load(["id" => "global_ap_i_id"]);
+$result = $client->GlobalApI()->load(["id" => "global_ap_i_id"]);
 ```
 
 ### Common Methods
@@ -268,7 +268,7 @@ Return the entity name.
 ## NetherlandsApIEntity
 
 ```php
-$netherlands_ap_i = $client->netherlands_ap_i();
+$netherlands_ap_i = $client->NetherlandsApI();
 ```
 
 ### Fields
@@ -304,7 +304,7 @@ $netherlands_ap_i = $client->netherlands_ap_i();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->netherlands_ap_i()->list([]);
+$results = $client->NetherlandsApI()->list([]);
 ```
 
 ### Common Methods

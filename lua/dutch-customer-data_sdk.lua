@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:eu_ap_i():list() / client:eu_ap_i():load({ id = ... })
-function DutchCustomerDataSDK:eu_ap_i(data)
+-- Idiomatic facade: client:EuApI():list() / client:EuApI():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DutchCustomerDataSDK:EuApI(data)
   local EntityMod = require("entity.eu_ap_i_entity")
   if data == nil then
     if self._eu_ap_i == nil then
@@ -256,15 +257,10 @@ function DutchCustomerDataSDK:eu_ap_i(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:eu_ap_i() instead.
-function DutchCustomerDataSDK:EuApI(data)
-  local EntityMod = require("entity.eu_ap_i_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:global_ap_i():list() / client:global_ap_i():load({ id = ... })
-function DutchCustomerDataSDK:global_ap_i(data)
+-- Idiomatic facade: client:GlobalApI():list() / client:GlobalApI():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DutchCustomerDataSDK:GlobalApI(data)
   local EntityMod = require("entity.global_ap_i_entity")
   if data == nil then
     if self._global_ap_i == nil then
@@ -275,15 +271,10 @@ function DutchCustomerDataSDK:global_ap_i(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:global_ap_i() instead.
-function DutchCustomerDataSDK:GlobalApI(data)
-  local EntityMod = require("entity.global_ap_i_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:netherlands_ap_i():list() / client:netherlands_ap_i():load({ id = ... })
-function DutchCustomerDataSDK:netherlands_ap_i(data)
+-- Idiomatic facade: client:NetherlandsApI():list() / client:NetherlandsApI():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function DutchCustomerDataSDK:NetherlandsApI(data)
   local EntityMod = require("entity.netherlands_ap_i_entity")
   if data == nil then
     if self._netherlands_ap_i == nil then
@@ -291,12 +282,6 @@ function DutchCustomerDataSDK:netherlands_ap_i(data)
     end
     return self._netherlands_ap_i
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:netherlands_ap_i() instead.
-function DutchCustomerDataSDK:NetherlandsApI(data)
-  local EntityMod = require("entity.netherlands_ap_i_entity")
   return EntityMod.new(self, data)
 end
 

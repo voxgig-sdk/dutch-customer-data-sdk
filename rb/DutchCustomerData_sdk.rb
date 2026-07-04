@@ -208,39 +208,21 @@ class DutchCustomerDataSDK
   end
 
 
-  # Idiomatic facade: client.eu_ap_i.list / client.eu_ap_i.load({ "id" => ... })
-  def eu_ap_i
-    require_relative 'entity/eu_ap_i_entity'
-    @eu_ap_i ||= EuApIEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.eu_ap_i instead.
+  # Canonical facade: client.EuApI.list / client.EuApI.load({ "id" => ... })
   def EuApI(data = nil)
     require_relative 'entity/eu_ap_i_entity'
     EuApIEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.global_ap_i.list / client.global_ap_i.load({ "id" => ... })
-  def global_ap_i
-    require_relative 'entity/global_ap_i_entity'
-    @global_ap_i ||= GlobalApIEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.global_ap_i instead.
+  # Canonical facade: client.GlobalApI.list / client.GlobalApI.load({ "id" => ... })
   def GlobalApI(data = nil)
     require_relative 'entity/global_ap_i_entity'
     GlobalApIEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.netherlands_ap_i.list / client.netherlands_ap_i.load({ "id" => ... })
-  def netherlands_ap_i
-    require_relative 'entity/netherlands_ap_i_entity'
-    @netherlands_ap_i ||= NetherlandsApIEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.netherlands_ap_i instead.
+  # Canonical facade: client.NetherlandsApI.list / client.NetherlandsApI.load({ "id" => ... })
   def NetherlandsApI(data = nil)
     require_relative 'entity/netherlands_ap_i_entity'
     NetherlandsApIEntity.new(self, data)

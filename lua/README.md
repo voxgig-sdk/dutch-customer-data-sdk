@@ -31,26 +31,26 @@ local sdk = require("dutch-customer-data_sdk")
 local client = sdk.new()
 ```
 
-### 2. List euapis
+### 2. List euapi records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:euapi():list()
+local euapis, err = client:EuApI():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(euapis) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load an euapi
 
 ```lua
-local result, err = client:euapi():load({ id = "example_id" })
+local euapi, err = client:EuApI():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(euapi)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:euapi():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:EuApI():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -175,7 +175,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `EuApI` | `(data) -> EuApIEntity` | Create a EuApI entity instance. |
+| `EuApI` | `(data) -> EuApIEntity` | Create an EuApI entity instance. |
 | `GlobalApI` | `(data) -> GlobalApIEntity` | Create a GlobalApI entity instance. |
 | `NetherlandsApI` | `(data) -> NetherlandsApIEntity` | Create a NetherlandsApI entity instance. |
 
@@ -199,17 +199,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local eu_ap_i, err = client:EuApI():load({ id = "example_id" })
+    if err then error(err) end
+    -- eu_ap_i is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -316,7 +321,7 @@ API path: `/bag`
 
 ### EuApI
 
-Create an instance: `const eu_ap_i = client.eu_ap_i`
+Create an instance: `local eu_ap_i = client:EuApI(nil)`
 
 #### Operations
 
@@ -347,20 +352,20 @@ Create an instance: `const eu_ap_i = client.eu_ap_i`
 
 #### Example: Load
 
-```ts
-const eu_ap_i = await client.eu_ap_i.load({ id: 'eu_ap_i_id' })
+```lua
+local eu_ap_i, err = client:EuApI():load({ id = "eu_ap_i_id" })
 ```
 
 #### Example: List
 
-```ts
-const eu_ap_is = await client.eu_ap_i.list()
+```lua
+local eu_ap_is, err = client:EuApI():list()
 ```
 
 
 ### GlobalApI
 
-Create an instance: `const global_ap_i = client.global_ap_i`
+Create an instance: `local global_ap_i = client:GlobalApI(nil)`
 
 #### Operations
 
@@ -410,27 +415,27 @@ Create an instance: `const global_ap_i = client.global_ap_i`
 
 #### Example: Load
 
-```ts
-const global_ap_i = await client.global_ap_i.load({ id: 'global_ap_i_id' })
+```lua
+local global_ap_i, err = client:GlobalApI():load({ id = "global_ap_i_id" })
 ```
 
 #### Example: List
 
-```ts
-const global_ap_is = await client.global_ap_i.list()
+```lua
+local global_ap_is, err = client:GlobalApI():list()
 ```
 
 #### Example: Create
 
-```ts
-const global_ap_i = await client.global_ap_i.create({
+```lua
+local global_ap_i, err = client:GlobalApI():create({
 })
 ```
 
 
 ### NetherlandsApI
 
-Create an instance: `const netherlands_ap_i = client.netherlands_ap_i`
+Create an instance: `local netherlands_ap_i = client:NetherlandsApI(nil)`
 
 #### Operations
 
@@ -466,8 +471,8 @@ Create an instance: `const netherlands_ap_i = client.netherlands_ap_i`
 
 #### Example: List
 
-```ts
-const netherlands_ap_is = await client.netherlands_ap_i.list()
+```lua
+local netherlands_ap_is, err = client:NetherlandsApI():list()
 ```
 
 
@@ -542,7 +547,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local euapi = client:euapi()
+local euapi = client:EuApI()
 euapi:load({ id = "example_id" })
 
 -- euapi:data_get() now returns the loaded euapi data

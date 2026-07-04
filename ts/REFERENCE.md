@@ -133,7 +133,7 @@ Alias for `DutchCustomerDataSDK.test()`.
 ## EuApIEntity
 
 ```ts
-const eu_ap_i = client.eu_ap_i
+const eu_ap_i = client.EuApI()
 ```
 
 ### Fields
@@ -163,7 +163,7 @@ const eu_ap_i = client.eu_ap_i
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.eu_ap_i.list()
+const results = await client.EuApI().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -171,7 +171,7 @@ const results = await client.eu_ap_i.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.eu_ap_i.load({ id: 'eu_ap_i_id' })
+const result = await client.EuApI().load({ id: 'eu_ap_i_id' })
 ```
 
 ### Common Methods
@@ -205,7 +205,7 @@ Return a copy of the entity options.
 ## GlobalApIEntity
 
 ```ts
-const global_ap_i = client.global_ap_i
+const global_ap_i = client.GlobalApI()
 ```
 
 ### Fields
@@ -253,7 +253,7 @@ const global_ap_i = client.global_ap_i
 Create a new entity with the given data.
 
 ```ts
-const result = await client.global_ap_i.create({
+const result = await client.GlobalApI().create({
 })
 ```
 
@@ -262,7 +262,7 @@ const result = await client.global_ap_i.create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.global_ap_i.list()
+const results = await client.GlobalApI().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -270,7 +270,7 @@ const results = await client.global_ap_i.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.global_ap_i.load({ id: 'global_ap_i_id' })
+const result = await client.GlobalApI().load({ id: 'global_ap_i_id' })
 ```
 
 ### Common Methods
@@ -304,7 +304,7 @@ Return a copy of the entity options.
 ## NetherlandsApIEntity
 
 ```ts
-const netherlands_ap_i = client.netherlands_ap_i
+const netherlands_ap_i = client.NetherlandsApI()
 ```
 
 ### Fields
@@ -340,7 +340,7 @@ const netherlands_ap_i = client.netherlands_ap_i
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.netherlands_ap_i.list()
+const results = await client.NetherlandsApI().list()
 ```
 
 ### Common Methods

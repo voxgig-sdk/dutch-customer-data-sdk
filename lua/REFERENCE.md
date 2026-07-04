@@ -91,7 +91,7 @@ same parameters as `direct()`.
 ## EuApIEntity
 
 ```lua
-local eu_ap_i = client:eu_ap_i(nil)
+local eu_ap_i = client:EuApI(nil)
 ```
 
 ### Fields
@@ -121,7 +121,7 @@ local eu_ap_i = client:eu_ap_i(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:eu_ap_i():list()
+local results, err = client:EuApI():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -129,7 +129,7 @@ local results, err = client:eu_ap_i():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:eu_ap_i():load({ id = "eu_ap_i_id" })
+local result, err = client:EuApI():load({ id = "eu_ap_i_id" })
 ```
 
 ### Common Methods
@@ -165,7 +165,7 @@ Return the entity name.
 ## GlobalApIEntity
 
 ```lua
-local global_ap_i = client:global_ap_i(nil)
+local global_ap_i = client:GlobalApI(nil)
 ```
 
 ### Fields
@@ -213,7 +213,7 @@ local global_ap_i = client:global_ap_i(nil)
 Create a new entity with the given data.
 
 ```lua
-local result, err = client:global_ap_i():create({
+local result, err = client:GlobalApI():create({
 })
 ```
 
@@ -222,7 +222,7 @@ local result, err = client:global_ap_i():create({
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:global_ap_i():list()
+local results, err = client:GlobalApI():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -230,7 +230,7 @@ local results, err = client:global_ap_i():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:global_ap_i():load({ id = "global_ap_i_id" })
+local result, err = client:GlobalApI():load({ id = "global_ap_i_id" })
 ```
 
 ### Common Methods
@@ -266,7 +266,7 @@ Return the entity name.
 ## NetherlandsApIEntity
 
 ```lua
-local netherlands_ap_i = client:netherlands_ap_i(nil)
+local netherlands_ap_i = client:NetherlandsApI(nil)
 ```
 
 ### Fields
@@ -302,7 +302,7 @@ local netherlands_ap_i = client:netherlands_ap_i(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:netherlands_ap_i():list()
+local results, err = client:NetherlandsApI():list()
 ```
 
 ### Common Methods

@@ -206,42 +206,21 @@ class DutchCustomerDataSDK {
 
 
 
-  _eu_ap_i?: EuApIEntity
-
-  // Idiomatic facade: `client.eu_ap_i.list()` / `client.eu_ap_i.load({ id })`.
-  get eu_ap_i(): EuApIEntity {
-    return (this._eu_ap_i ??= new EuApIEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.eu_ap_i` instead. */
+  // Entity access: `client.EuApI().list()` / `client.EuApI().load({ id })`.
   EuApI(data?: any) {
     const self = this
     return new EuApIEntity(self,data)
   }
 
 
-  _global_ap_i?: GlobalApIEntity
-
-  // Idiomatic facade: `client.global_ap_i.list()` / `client.global_ap_i.load({ id })`.
-  get global_ap_i(): GlobalApIEntity {
-    return (this._global_ap_i ??= new GlobalApIEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.global_ap_i` instead. */
+  // Entity access: `client.GlobalApI().list()` / `client.GlobalApI().load({ id })`.
   GlobalApI(data?: any) {
     const self = this
     return new GlobalApIEntity(self,data)
   }
 
 
-  _netherlands_ap_i?: NetherlandsApIEntity
-
-  // Idiomatic facade: `client.netherlands_ap_i.list()` / `client.netherlands_ap_i.load({ id })`.
-  get netherlands_ap_i(): NetherlandsApIEntity {
-    return (this._netherlands_ap_i ??= new NetherlandsApIEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.netherlands_ap_i` instead. */
+  // Entity access: `client.NetherlandsApI().list()` / `client.NetherlandsApI().load({ id })`.
   NetherlandsApI(data?: any) {
     const self = this
     return new NetherlandsApIEntity(self,data)

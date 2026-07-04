@@ -29,18 +29,16 @@ require_once 'dutchcustomerdata_sdk.php';
 $client = new DutchCustomerDataSDK();
 ```
 
-### 2. List euapis
+### 2. List euapi records
 
 ```php
 try {
-    $result = $client->euapi()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of EuApI records — iterate directly.
+    $euapis = $client->EuApI()->list();
+    foreach ($euapis as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->euapi()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare EuApI record (throws on error).
+    $euapi = $client->EuApI()->load(["id" => "example_id"]);
+    print_r($euapi);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = DutchCustomerDataSDK::test();
+$client = DutchCustomerDataSDK::test([
+    "entity" => ["euapi" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->euapi()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$euapi = $client->EuApI()->load(["id" => "test01"]);
+print_r($euapi);
 ```
 
 ### Use a custom fetch function
@@ -182,7 +185,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `get_utility` | `(): Utility` | Copy of the SDK utility object. |
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
-| `EuApI` | `($data): EuApIEntity` | Create a EuApI entity instance. |
+| `EuApI` | `($data): EuApIEntity` | Create an EuApI entity instance. |
 | `GlobalApI` | `($data): GlobalApIEntity` | Create a GlobalApI entity instance. |
 | `NetherlandsApI` | `($data): NetherlandsApIEntity` | Create a NetherlandsApI entity instance. |
 
@@ -327,7 +330,7 @@ API path: `/bag`
 
 ### EuApI
 
-Create an instance: `const eu_ap_i = client.eu_ap_i`
+Create an instance: `$eu_ap_i = $client->EuApI();`
 
 #### Operations
 
@@ -358,20 +361,22 @@ Create an instance: `const eu_ap_i = client.eu_ap_i`
 
 #### Example: Load
 
-```ts
-const eu_ap_i = await client.eu_ap_i.load({ id: 'eu_ap_i_id' })
+```php
+// load() returns the bare EuApI record (throws on error).
+$eu_ap_i = $client->EuApI()->load(["id" => "eu_ap_i_id"]);
 ```
 
 #### Example: List
 
-```ts
-const eu_ap_is = await client.eu_ap_i.list()
+```php
+// list() returns an array of EuApI records (throws on error).
+$eu_ap_is = $client->EuApI()->list();
 ```
 
 
 ### GlobalApI
 
-Create an instance: `const global_ap_i = client.global_ap_i`
+Create an instance: `$global_ap_i = $client->GlobalApI();`
 
 #### Operations
 
@@ -421,27 +426,29 @@ Create an instance: `const global_ap_i = client.global_ap_i`
 
 #### Example: Load
 
-```ts
-const global_ap_i = await client.global_ap_i.load({ id: 'global_ap_i_id' })
+```php
+// load() returns the bare GlobalApI record (throws on error).
+$global_ap_i = $client->GlobalApI()->load(["id" => "global_ap_i_id"]);
 ```
 
 #### Example: List
 
-```ts
-const global_ap_is = await client.global_ap_i.list()
+```php
+// list() returns an array of GlobalApI records (throws on error).
+$global_ap_is = $client->GlobalApI()->list();
 ```
 
 #### Example: Create
 
-```ts
-const global_ap_i = await client.global_ap_i.create({
-})
+```php
+$global_ap_i = $client->GlobalApI()->create([
+]);
 ```
 
 
 ### NetherlandsApI
 
-Create an instance: `const netherlands_ap_i = client.netherlands_ap_i`
+Create an instance: `$netherlands_ap_i = $client->NetherlandsApI();`
 
 #### Operations
 
@@ -477,8 +484,9 @@ Create an instance: `const netherlands_ap_i = client.netherlands_ap_i`
 
 #### Example: List
 
-```ts
-const netherlands_ap_is = await client.netherlands_ap_i.list()
+```php
+// list() returns an array of NetherlandsApI records (throws on error).
+$netherlands_ap_is = $client->NetherlandsApI()->list();
 ```
 
 
@@ -553,7 +561,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$euapi = $client->euapi();
+$euapi = $client->EuApI();
 $euapi->load(["id" => "example_id"]);
 
 // $euapi->dataGet() now returns the loaded euapi data

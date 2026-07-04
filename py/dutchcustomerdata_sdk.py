@@ -220,57 +220,27 @@ class DutchCustomerDataSDK:
         }
 
 
-    @property
-    def eu_ap_i(self):
-        """Idiomatic facade: client.eu_ap_i.list() / client.eu_ap_i.load({"id": ...})."""
-        from entity.eu_ap_i_entity import EuApIEntity
-        cached = getattr(self, "_eu_ap_i", None)
-        if cached is None:
-            cached = EuApIEntity(self, None)
-            self._eu_ap_i = cached
-        return cached
-
-    def EuApI(self, data=None):
-        # Deprecated: use client.eu_ap_i instead.
+    def EuApI(self, data=None) -> "EuApIEntity":
+        """Entity factory: client.EuApI().list({}) / client.EuApI().load({"id": ...})."""
         from entity.eu_ap_i_entity import EuApIEntity
         return EuApIEntity(self, data)
 
 
-    @property
-    def global_ap_i(self):
-        """Idiomatic facade: client.global_ap_i.list() / client.global_ap_i.load({"id": ...})."""
-        from entity.global_ap_i_entity import GlobalApIEntity
-        cached = getattr(self, "_global_ap_i", None)
-        if cached is None:
-            cached = GlobalApIEntity(self, None)
-            self._global_ap_i = cached
-        return cached
-
-    def GlobalApI(self, data=None):
-        # Deprecated: use client.global_ap_i instead.
+    def GlobalApI(self, data=None) -> "GlobalApIEntity":
+        """Entity factory: client.GlobalApI().list({}) / client.GlobalApI().load({"id": ...})."""
         from entity.global_ap_i_entity import GlobalApIEntity
         return GlobalApIEntity(self, data)
 
 
-    @property
-    def netherlands_ap_i(self):
-        """Idiomatic facade: client.netherlands_ap_i.list() / client.netherlands_ap_i.load({"id": ...})."""
-        from entity.netherlands_ap_i_entity import NetherlandsApIEntity
-        cached = getattr(self, "_netherlands_ap_i", None)
-        if cached is None:
-            cached = NetherlandsApIEntity(self, None)
-            self._netherlands_ap_i = cached
-        return cached
-
-    def NetherlandsApI(self, data=None):
-        # Deprecated: use client.netherlands_ap_i instead.
+    def NetherlandsApI(self, data=None) -> "NetherlandsApIEntity":
+        """Entity factory: client.NetherlandsApI().list({}) / client.NetherlandsApI().load({"id": ...})."""
         from entity.netherlands_ap_i_entity import NetherlandsApIEntity
         return NetherlandsApIEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "DutchCustomerDataSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class DutchCustomerDataSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.eu_ap_i_entity import EuApIEntity
+    from entity.global_ap_i_entity import GlobalApIEntity
+    from entity.netherlands_ap_i_entity import NetherlandsApIEntity

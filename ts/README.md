@@ -28,25 +28,28 @@ import { DutchCustomerDataSDK } from '@voxgig-sdk/dutch-customer-data'
 const client = new DutchCustomerDataSDK()
 ```
 
-### 2. List euapis
+### 2. List euapi records
+
+`list()` resolves to an array of EuApI objects — iterate it directly:
 
 ```ts
-const result = await client.euapi.list()
+const euapis = await client.EuApI().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const euapi of euapis) {
+  console.log(euapi)
 }
 ```
 
 ### 3. Load an euapi
 
-```ts
-const result = await client.euapi.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const euapi = await client.EuApI().load({ id: 'example_id' })
+  console.log(euapi)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -64,6 +67,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -92,9 +98,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = DutchCustomerDataSDK.test()
 
-const result = await client.euapi.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const euapi = await client.EuApI().load({ id: 'test01' })
+// euapi is a bare entity populated with mock response data
+console.log(euapi)
 ```
 
 You can also use the instance method:
@@ -109,7 +115,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.euapi
+const entity = client.EuApI()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -187,7 +193,7 @@ new DutchCustomerDataSDK(options?: {
 | `utility()` | `Utility` | Deep copy of the SDK utility object. |
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
-| `EuApI(data?)` | `EuApIEntity` | Create a EuApI entity instance. |
+| `EuApI(data?)` | `EuApIEntity` | Create an EuApI entity instance. |
 | `GlobalApI(data?)` | `GlobalApIEntity` | Create a GlobalApI entity instance. |
 | `NetherlandsApI(data?)` | `NetherlandsApIEntity` | Create a NetherlandsApI entity instance. |
 | `tester(testopts?, sdkopts?)` | `DutchCustomerDataSDK` | Create a test-mode client instance. |
@@ -206,29 +212,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): DutchCustomerDataSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -363,7 +370,7 @@ API path: `/bag`
 
 ### EuApI
 
-Create an instance: `const eu_ap_i = client.eu_ap_i`
+Create an instance: `const eu_ap_i = client.EuApI()`
 
 #### Operations
 
@@ -395,19 +402,19 @@ Create an instance: `const eu_ap_i = client.eu_ap_i`
 #### Example: Load
 
 ```ts
-const eu_ap_i = await client.eu_ap_i.load({ id: 'eu_ap_i_id' })
+const eu_ap_i = await client.EuApI().load({ id: 'eu_ap_i_id' })
 ```
 
 #### Example: List
 
 ```ts
-const eu_ap_is = await client.eu_ap_i.list()
+const eu_ap_is = await client.EuApI().list()
 ```
 
 
 ### GlobalApI
 
-Create an instance: `const global_ap_i = client.global_ap_i`
+Create an instance: `const global_ap_i = client.GlobalApI()`
 
 #### Operations
 
@@ -458,26 +465,26 @@ Create an instance: `const global_ap_i = client.global_ap_i`
 #### Example: Load
 
 ```ts
-const global_ap_i = await client.global_ap_i.load({ id: 'global_ap_i_id' })
+const global_ap_i = await client.GlobalApI().load({ id: 'global_ap_i_id' })
 ```
 
 #### Example: List
 
 ```ts
-const global_ap_is = await client.global_ap_i.list()
+const global_ap_is = await client.GlobalApI().list()
 ```
 
 #### Example: Create
 
 ```ts
-const global_ap_i = await client.global_ap_i.create({
+const global_ap_i = await client.GlobalApI().create({
 })
 ```
 
 
 ### NetherlandsApI
 
-Create an instance: `const netherlands_ap_i = client.netherlands_ap_i`
+Create an instance: `const netherlands_ap_i = client.NetherlandsApI()`
 
 #### Operations
 
@@ -514,7 +521,7 @@ Create an instance: `const netherlands_ap_i = client.netherlands_ap_i`
 #### Example: List
 
 ```ts
-const netherlands_ap_is = await client.netherlands_ap_i.list()
+const netherlands_ap_is = await client.NetherlandsApI().list()
 ```
 
 
@@ -585,7 +592,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const euapi = client.euapi
+const euapi = client.EuApI()
 await euapi.load({ id: "example_id" })
 
 // euapi.data() now returns the loaded euapi data

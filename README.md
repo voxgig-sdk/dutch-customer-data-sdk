@@ -26,9 +26,11 @@ import { DutchCustomerDataSDK } from '@voxgig-sdk/dutch-customer-data'
 
 const client = new DutchCustomerDataSDK()
 
-// List all euapis
-const euapis = await client.euapi.list()
-console.log(euapis.data)
+// List all euapis (returns EuApI[])
+const euapis = await client.EuApI().list()
+for (const euapi of euapis) {
+  console.log(euapi)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,12 +87,13 @@ from dutchcustomerdata_sdk import DutchCustomerDataSDK
 
 client = DutchCustomerDataSDK()
 
-# List all euapis
-euapis = client.euapi.list()
-print(euapis)
+# List all euapis (returns a list, raises on error)
+euapis = client.EuApI().list({})
+for euapi in euapis:
+    print(euapi)
 
-# Load a specific euapi
-euapi = client.euapi.load({"id": "example_id"})
+# Load a specific euapi (returns the record, raises on error)
+euapi = client.EuApI().load({"id": "example_id"})
 print(euapi)
 ```
 
@@ -102,12 +105,12 @@ require_once 'dutchcustomerdata_sdk.php';
 
 $client = new DutchCustomerDataSDK();
 
-// List all euapis (throws on error)
-$euapis = $client->euapi()->list();
+// List all euapis (returns an array; throws on error)
+$euapis = $client->EuApI()->list();
 print_r($euapis);
 
-// Load a specific euapi
-$euapi = $client->euapi()->load(["id" => "example_id"]);
+// Load a specific euapi (returns the bare record; throws on error)
+$euapi = $client->EuApI()->load(["id" => "example_id"]);
 print_r($euapi);
 ```
 
@@ -130,12 +133,12 @@ require_relative "DutchCustomerData_sdk"
 
 client = DutchCustomerDataSDK.new
 
-# List all euapis
-euapis = client.euapi.list
+# List all euapis (returns an Array; raises on error)
+euapis = client.EuApI.list
 puts euapis
 
-# Load a specific euapi
-euapi = client.euapi.load({ "id" => "example_id" })
+# Load a specific euapi (returns the bare record; raises on error)
+euapi = client.EuApI.load({ "id" => "example_id" })
 puts euapi
 ```
 
@@ -147,11 +150,11 @@ local sdk = require("dutch-customer-data_sdk")
 local client = sdk.new()
 
 -- List all euapis
-local euapis, err = client:euapi():list()
+local euapis, err = client:EuApI():list()
 print(euapis)
 
 -- Load a specific euapi
-local euapi, err = client:euapi():load({ id = "example_id" })
+local euapi, err = client:EuApI():load({ id = "example_id" })
 print(euapi)
 ```
 
@@ -164,22 +167,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = DutchCustomerDataSDK.test()
-const result = await client.euapi.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const euapi = await client.EuApI().load({ id: 'test01' })
+// euapi is a bare EuApI populated with mock data
+console.log(euapi)
 ```
 
 ### Python
 
 ```python
 client = DutchCustomerDataSDK.test()
-result = client.euapi.load({"id": "test01"})
+euapi = client.EuApI().load({"id": "test01"})
+print(euapi)
 ```
 
 ### PHP
 
 ```php
-$client = DutchCustomerDataSDK::test();
-$result = $client->euapi()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = DutchCustomerDataSDK::test([
+    "entity" => ["euapi" => ["test01" => ["id" => "test01"]]],
+]);
+$euapi = $client->EuApI()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -194,15 +202,18 @@ result, err := client.EuApI(nil).Load(
 ### Ruby
 
 ```ruby
-client = DutchCustomerDataSDK.test
-result = client.euapi.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = DutchCustomerDataSDK.test({
+  "entity" => { "euapi" => { "test01" => { "id" => "test01" } } },
+})
+euapi = client.EuApI.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:euapi():load({ id = "test01" })
+local result, err = client:EuApI():load({ id = "test01" })
 ```
 
 ## How it works
@@ -250,6 +261,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 
