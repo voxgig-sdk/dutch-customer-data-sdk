@@ -221,19 +221,19 @@ class DutchCustomerDataSDK:
 
 
     def EuApI(self, data=None) -> "EuApIEntity":
-        """Entity factory: client.EuApI().list({}) / client.EuApI().load({"id": ...})."""
+        """Entity factory: client.EuApI().list() / client.EuApI().load({"id": ...})."""
         from entity.eu_ap_i_entity import EuApIEntity
         return EuApIEntity(self, data)
 
 
     def GlobalApI(self, data=None) -> "GlobalApIEntity":
-        """Entity factory: client.GlobalApI().list({}) / client.GlobalApI().load({"id": ...})."""
+        """Entity factory: client.GlobalApI().list() / client.GlobalApI().load({"id": ...})."""
         from entity.global_ap_i_entity import GlobalApIEntity
         return GlobalApIEntity(self, data)
 
 
     def NetherlandsApI(self, data=None) -> "NetherlandsApIEntity":
-        """Entity factory: client.NetherlandsApI().list({}) / client.NetherlandsApI().load({"id": ...})."""
+        """Entity factory: client.NetherlandsApI().list() / client.NetherlandsApI().load({"id": ...})."""
         from entity.netherlands_ap_i_entity import NetherlandsApIEntity
         return NetherlandsApIEntity(self, data)
 

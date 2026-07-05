@@ -32,14 +32,14 @@ class EuApI
     public ?array $vat = null;
 }
 
-/** Match filter for EuApI#load (any subset of EuApI fields). */
+/** Request payload for EuApI#load. */
 class EuApILoadMatch
 {
     public ?string $buyer = null;
     public ?string $buyer_country = null;
     public ?string $contract_nature = null;
     public ?string $html = null;
-    public ?string $id = null;
+    public string $id;
     public ?string $link = null;
     public ?string $notice_type = null;
     public ?string $official_language = null;
@@ -52,7 +52,7 @@ class EuApILoadMatch
     public ?array $vat = null;
 }
 
-/** Match filter for EuApI#list (any subset of EuApI fields). */
+/** Request payload for EuApI#list. */
 class EuApIListMatch
 {
     public ?string $buyer = null;
@@ -110,7 +110,7 @@ class GlobalApI
     public ?array $webrank = null;
 }
 
-/** Match filter for GlobalApI#load (any subset of GlobalApI fields). */
+/** Request payload for GlobalApI#load. */
 class GlobalApILoadMatch
 {
     public ?string $addition = null;
@@ -148,7 +148,7 @@ class GlobalApILoadMatch
     public ?array $webrank = null;
 }
 
-/** Match filter for GlobalApI#list (any subset of GlobalApI fields). */
+/** Request payload for GlobalApI#list. */
 class GlobalApIListMatch
 {
     public ?string $addition = null;
@@ -186,7 +186,7 @@ class GlobalApIListMatch
     public ?array $webrank = null;
 }
 
-/** Match filter for GlobalApI#create (any subset of GlobalApI fields). */
+/** Request payload for GlobalApI#create. */
 class GlobalApICreateData
 {
     public ?string $addition = null;
@@ -250,7 +250,7 @@ class NetherlandsApI
     public ?string $vestiging = null;
 }
 
-/** Match filter for NetherlandsApI#list (any subset of NetherlandsApI fields). */
+/** Request payload for NetherlandsApI#list. */
 class NetherlandsApIListMatch
 {
     public ?int $active = null;

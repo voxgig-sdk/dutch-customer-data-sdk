@@ -8,7 +8,7 @@ Complete API reference for the DutchCustomerData PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/dutch-customer-data_sdk.php';
+require_once __DIR__ . '/dutchcustomerdata_sdk.php';
 
 $client = new DutchCustomerDataSDK($options);
 ```
@@ -53,11 +53,11 @@ Create a new `GlobalApIEntity` instance. Pass `null` for no initial data.
 
 Create a new `NetherlandsApIEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): DutchCustomerDataUtility`
 
 Return a copy of the SDK utility object.
 
@@ -100,30 +100,30 @@ $eu_ap_i = $client->EuApI();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buyer` | ``$STRING`` | No |  |
-| `buyer_country` | ``$STRING`` | No |  |
-| `contract_nature` | ``$STRING`` | No |  |
-| `html` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$STRING`` | No |  |
-| `notice_type` | ``$STRING`` | No |  |
-| `official_language` | ``$STRING`` | No |  |
-| `pdf` | ``$STRING`` | No |  |
-| `place_of_performance` | ``$STRING`` | No |  |
-| `procedure_type` | ``$STRING`` | No |  |
-| `publication_date` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `vat` | ``$OBJECT`` | No |  |
+| `buyer` | `string` | No |  |
+| `buyer_country` | `string` | No |  |
+| `contract_nature` | `string` | No |  |
+| `html` | `string` | No |  |
+| `id` | `string` | No |  |
+| `link` | `string` | No |  |
+| `notice_type` | `string` | No |  |
+| `official_language` | `string` | No |  |
+| `pdf` | `string` | No |  |
+| `place_of_performance` | `string` | No |  |
+| `procedure_type` | `string` | No |  |
+| `publication_date` | `string` | No |  |
+| `status` | `string` | No |  |
+| `title` | `string` | No |  |
+| `vat` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->EuApI()->list([]);
+$results = $client->EuApI()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -136,19 +136,19 @@ $result = $client->EuApI()->load(["id" => "eu_ap_i_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -157,7 +157,7 @@ Set the entity match criteria.
 Create a new `EuApIEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -174,39 +174,39 @@ $global_ap_i = $client->GlobalApI();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addition` | ``$STRING`` | No |  |
-| `admin1` | ``$STRING`` | No |  |
-| `admin2` | ``$STRING`` | No |  |
-| `admin3` | ``$STRING`` | No |  |
-| `bic` | ``$OBJECT`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `currency` | ``$OBJECT`` | No |  |
-| `date` | ``$STRING`` | No |  |
-| `dns` | ``$OBJECT`` | No |  |
-| `email` | ``$OBJECT`` | No |  |
-| `found` | ``$INTEGER`` | No |  |
-| `freeformaddress` | ``$STRING`` | No |  |
-| `from_currency` | ``$STRING`` | No |  |
-| `iban` | ``$OBJECT`` | No |  |
-| `ip` | ``$OBJECT`` | No |  |
-| `lat` | ``$NUMBER`` | No |  |
-| `lei` | ``$OBJECT`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `lon` | ``$NUMBER`` | No |  |
-| `municipality` | ``$STRING`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `password` | ``$OBJECT`` | No |  |
-| `phone` | ``$OBJECT`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
-| `postcode` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `province_code` | ``$STRING`` | No |  |
-| `score` | ``$NUMBER`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `street` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$OBJECT`` | No |  |
-| `webrank` | ``$OBJECT`` | No |  |
+| `addition` | `string` | No |  |
+| `admin1` | `string` | No |  |
+| `admin2` | `string` | No |  |
+| `admin3` | `string` | No |  |
+| `bic` | `array` | No |  |
+| `city` | `string` | No |  |
+| `currency` | `array` | No |  |
+| `date` | `string` | No |  |
+| `dns` | `array` | No |  |
+| `email` | `array` | No |  |
+| `found` | `int` | No |  |
+| `freeformaddress` | `string` | No |  |
+| `from_currency` | `string` | No |  |
+| `iban` | `array` | No |  |
+| `ip` | `array` | No |  |
+| `lat` | `float` | No |  |
+| `lei` | `array` | No |  |
+| `letter` | `string` | No |  |
+| `lon` | `float` | No |  |
+| `municipality` | `string` | No |  |
+| `number` | `int` | No |  |
+| `password` | `array` | No |  |
+| `phone` | `array` | No |  |
+| `population` | `int` | No |  |
+| `postcode` | `string` | No |  |
+| `province` | `string` | No |  |
+| `province_code` | `string` | No |  |
+| `score` | `float` | No |  |
+| `status` | `string` | No |  |
+| `street` | `string` | No |  |
+| `type` | `string` | No |  |
+| `url` | `array` | No |  |
+| `webrank` | `array` | No |  |
 
 ### Operations
 
@@ -219,12 +219,12 @@ $result = $client->GlobalApI()->create([
 ]);
 ```
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->GlobalApI()->list([]);
+$results = $client->GlobalApI()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -232,24 +232,24 @@ $results = $client->GlobalApI()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GlobalApI()->load(["id" => "global_ap_i_id"]);
+$result = $client->GlobalApI()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -258,7 +258,7 @@ Set the entity match criteria.
 Create a new `GlobalApIEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -275,53 +275,53 @@ $netherlands_ap_i = $client->NetherlandsApI();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active` | ``$INTEGER`` | No |  |
-| `addition` | ``$STRING`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `coc` | ``$STRING`` | No |  |
-| `construction_year` | ``$INTEGER`` | No |  |
-| `floor_area` | ``$INTEGER`` | No |  |
-| `freeformaddress` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `lat` | ``$NUMBER`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `lon` | ``$NUMBER`` | No |  |
-| `municipality` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `number` | ``$STRING`` | No |  |
-| `postcode` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `province_code` | ``$STRING`` | No |  |
-| `purpose` | ``$STRING`` | No |  |
-| `street` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `vestiging` | ``$STRING`` | No |  |
+| `active` | `int` | No |  |
+| `addition` | `string` | No |  |
+| `city` | `string` | No |  |
+| `coc` | `string` | No |  |
+| `construction_year` | `int` | No |  |
+| `floor_area` | `int` | No |  |
+| `freeformaddress` | `string` | No |  |
+| `id` | `string` | No |  |
+| `lat` | `float` | No |  |
+| `letter` | `string` | No |  |
+| `lon` | `float` | No |  |
+| `municipality` | `string` | No |  |
+| `name` | `string` | No |  |
+| `number` | `string` | No |  |
+| `postcode` | `string` | No |  |
+| `province` | `string` | No |  |
+| `province_code` | `string` | No |  |
+| `purpose` | `string` | No |  |
+| `street` | `string` | No |  |
+| `type` | `string` | No |  |
+| `vestiging` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->NetherlandsApI()->list([]);
+$results = $client->NetherlandsApI()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -330,7 +330,7 @@ Set the entity match criteria.
 Create a new `NetherlandsApIEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

@@ -24,8 +24,38 @@
 ---@field vat? table
 
 ---@class EuApILoadMatch
+---@field buyer? string
+---@field buyer_country? string
+---@field contract_nature? string
+---@field html? string
+---@field id string
+---@field link? string
+---@field notice_type? string
+---@field official_language? string
+---@field pdf? string
+---@field place_of_performance? string
+---@field procedure_type? string
+---@field publication_date? string
+---@field status? string
+---@field title? string
+---@field vat? table
 
 ---@class EuApIListMatch
+---@field buyer? string
+---@field buyer_country? string
+---@field contract_nature? string
+---@field html? string
+---@field id? string
+---@field link? string
+---@field notice_type? string
+---@field official_language? string
+---@field pdf? string
+---@field place_of_performance? string
+---@field procedure_type? string
+---@field publication_date? string
+---@field status? string
+---@field title? string
+---@field vat? table
 
 ---@class GlobalApI
 ---@field addition? string
@@ -63,10 +93,109 @@
 ---@field webrank? table
 
 ---@class GlobalApILoadMatch
+---@field addition? string
+---@field admin1? string
+---@field admin2? string
+---@field admin3? string
+---@field bic? table
+---@field city? string
+---@field currency? table
+---@field date? string
+---@field dns? table
+---@field email? table
+---@field found? number
+---@field freeformaddress? string
+---@field from_currency? string
+---@field iban? table
+---@field ip? table
+---@field lat? number
+---@field lei? table
+---@field letter? string
+---@field lon? number
+---@field municipality? string
+---@field number? number
+---@field password? table
+---@field phone? table
+---@field population? number
+---@field postcode? string
+---@field province? string
+---@field province_code? string
+---@field score? number
+---@field status? string
+---@field street? string
+---@field type? string
+---@field url? table
+---@field webrank? table
 
 ---@class GlobalApIListMatch
+---@field addition? string
+---@field admin1? string
+---@field admin2? string
+---@field admin3? string
+---@field bic? table
+---@field city? string
+---@field currency? table
+---@field date? string
+---@field dns? table
+---@field email? table
+---@field found? number
+---@field freeformaddress? string
+---@field from_currency? string
+---@field iban? table
+---@field ip? table
+---@field lat? number
+---@field lei? table
+---@field letter? string
+---@field lon? number
+---@field municipality? string
+---@field number? number
+---@field password? table
+---@field phone? table
+---@field population? number
+---@field postcode? string
+---@field province? string
+---@field province_code? string
+---@field score? number
+---@field status? string
+---@field street? string
+---@field type? string
+---@field url? table
+---@field webrank? table
 
 ---@class GlobalApICreateData
+---@field addition? string
+---@field admin1? string
+---@field admin2? string
+---@field admin3? string
+---@field bic? table
+---@field city? string
+---@field currency? table
+---@field date? string
+---@field dns? table
+---@field email? table
+---@field found? number
+---@field freeformaddress? string
+---@field from_currency? string
+---@field iban? table
+---@field ip? table
+---@field lat? number
+---@field lei? table
+---@field letter? string
+---@field lon? number
+---@field municipality? string
+---@field number? number
+---@field password? table
+---@field phone? table
+---@field population? number
+---@field postcode? string
+---@field province? string
+---@field province_code? string
+---@field score? number
+---@field status? string
+---@field street? string
+---@field type? string
+---@field url? table
+---@field webrank? table
 
 ---@class NetherlandsApI
 ---@field active? number
@@ -92,6 +221,27 @@
 ---@field vestiging? string
 
 ---@class NetherlandsApIListMatch
+---@field active? number
+---@field addition? string
+---@field city? string
+---@field coc? string
+---@field construction_year? number
+---@field floor_area? number
+---@field freeformaddress? string
+---@field id? string
+---@field lat? number
+---@field letter? string
+---@field lon? number
+---@field municipality? string
+---@field name? string
+---@field number? string
+---@field postcode? string
+---@field province? string
+---@field province_code? string
+---@field purpose? string
+---@field street? string
+---@field type? string
+---@field vestiging? string
 
 local M = {}
 

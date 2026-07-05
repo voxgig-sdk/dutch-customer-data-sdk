@@ -34,12 +34,15 @@ class EuApI(TypedDict, total=False):
     vat: dict
 
 
-class EuApILoadMatch(TypedDict, total=False):
+class EuApILoadMatchRequired(TypedDict):
+    id: str
+
+
+class EuApILoadMatch(EuApILoadMatchRequired, total=False):
     buyer: str
     buyer_country: str
     contract_nature: str
     html: str
-    id: str
     link: str
     notice_type: str
     official_language: str

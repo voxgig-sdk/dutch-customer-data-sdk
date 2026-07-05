@@ -4,6 +4,8 @@
 
 The PHP SDK for the DutchCustomerData API — an entity-oriented client using PHP conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->EuApI()` — with named operations (`list`/`load`/`create`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -36,7 +38,7 @@ try {
     // list() returns an array of EuApI records — iterate directly.
     $euapis = $client->EuApI()->list();
     foreach ($euapis as $item) {
-        echo $item["id"] . " " . $item["name"] . "\n";
+        echo $item["id"] . " " . $item["buyer"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -52,6 +54,37 @@ try {
     print_r($euapi);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
+}
+```
+
+
+## Error handling
+
+Entity operations throw a `\Throwable` on failure, so wrap them in
+`try` / `catch`:
+
+```php
+try {
+    $euapis = $client->EuApI()->list();
+} catch (\Throwable $err) {
+    echo "Error: " . $err->getMessage();
+}
+```
+
+`direct()` does **not** throw — it returns the result array. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```php
+$result = $client->direct([
+    "path" => "/api/resource/{id}",
+    "method" => "GET",
+    "params" => ["id" => "example_id"],
+]);
+
+if (! $result["ok"]) {
+    $err = $result["err"] ?? null;
+    echo "request failed: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -75,7 +108,10 @@ if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
 } else {
-    echo "Error: " . $result["err"]->getMessage();
+    // On an HTTP error status there is no err (only a transport failure sets
+    // it), so fall back to the status code.
+    $err = $result["err"] ?? null;
+    echo "Error: " . ($err ? $err->getMessage() : "HTTP " . $result["status"]);
 }
 ```
 
@@ -104,8 +140,8 @@ $client = DutchCustomerDataSDK::test([
     "entity" => ["euapi" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// load() returns the bare mock record (throws on error).
-$euapi = $client->EuApI()->load(["id" => "test01"]);
+// Entity ops return the bare mock record (throws on error).
+$euapi = $client->EuApI()->list();
 print_r($euapi);
 ```
 
@@ -196,10 +232,8 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `($reqmatch, $ctrl): array` | List entities matching the criteria. |
+| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
 | `create` | `($reqdata, $ctrl): array` | Create a new entity. |
-| `update` | `($reqdata, $ctrl): array` | Update an existing entity. |
-| `remove` | `($reqmatch, $ctrl): array` | Remove an entity. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -343,21 +377,21 @@ Create an instance: `$eu_ap_i = $client->EuApI();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buyer` | ``$STRING`` |  |
-| `buyer_country` | ``$STRING`` |  |
-| `contract_nature` | ``$STRING`` |  |
-| `html` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `link` | ``$STRING`` |  |
-| `notice_type` | ``$STRING`` |  |
-| `official_language` | ``$STRING`` |  |
-| `pdf` | ``$STRING`` |  |
-| `place_of_performance` | ``$STRING`` |  |
-| `procedure_type` | ``$STRING`` |  |
-| `publication_date` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
-| `vat` | ``$OBJECT`` |  |
+| `buyer` | `string` |  |
+| `buyer_country` | `string` |  |
+| `contract_nature` | `string` |  |
+| `html` | `string` |  |
+| `id` | `string` |  |
+| `link` | `string` |  |
+| `notice_type` | `string` |  |
+| `official_language` | `string` |  |
+| `pdf` | `string` |  |
+| `place_of_performance` | `string` |  |
+| `procedure_type` | `string` |  |
+| `publication_date` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string` |  |
+| `vat` | `array` |  |
 
 #### Example: Load
 
@@ -390,45 +424,45 @@ Create an instance: `$global_ap_i = $client->GlobalApI();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addition` | ``$STRING`` |  |
-| `admin1` | ``$STRING`` |  |
-| `admin2` | ``$STRING`` |  |
-| `admin3` | ``$STRING`` |  |
-| `bic` | ``$OBJECT`` |  |
-| `city` | ``$STRING`` |  |
-| `currency` | ``$OBJECT`` |  |
-| `date` | ``$STRING`` |  |
-| `dns` | ``$OBJECT`` |  |
-| `email` | ``$OBJECT`` |  |
-| `found` | ``$INTEGER`` |  |
-| `freeformaddress` | ``$STRING`` |  |
-| `from_currency` | ``$STRING`` |  |
-| `iban` | ``$OBJECT`` |  |
-| `ip` | ``$OBJECT`` |  |
-| `lat` | ``$NUMBER`` |  |
-| `lei` | ``$OBJECT`` |  |
-| `letter` | ``$STRING`` |  |
-| `lon` | ``$NUMBER`` |  |
-| `municipality` | ``$STRING`` |  |
-| `number` | ``$INTEGER`` |  |
-| `password` | ``$OBJECT`` |  |
-| `phone` | ``$OBJECT`` |  |
-| `population` | ``$INTEGER`` |  |
-| `postcode` | ``$STRING`` |  |
-| `province` | ``$STRING`` |  |
-| `province_code` | ``$STRING`` |  |
-| `score` | ``$NUMBER`` |  |
-| `status` | ``$STRING`` |  |
-| `street` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `url` | ``$OBJECT`` |  |
-| `webrank` | ``$OBJECT`` |  |
+| `addition` | `string` |  |
+| `admin1` | `string` |  |
+| `admin2` | `string` |  |
+| `admin3` | `string` |  |
+| `bic` | `array` |  |
+| `city` | `string` |  |
+| `currency` | `array` |  |
+| `date` | `string` |  |
+| `dns` | `array` |  |
+| `email` | `array` |  |
+| `found` | `int` |  |
+| `freeformaddress` | `string` |  |
+| `from_currency` | `string` |  |
+| `iban` | `array` |  |
+| `ip` | `array` |  |
+| `lat` | `float` |  |
+| `lei` | `array` |  |
+| `letter` | `string` |  |
+| `lon` | `float` |  |
+| `municipality` | `string` |  |
+| `number` | `int` |  |
+| `password` | `array` |  |
+| `phone` | `array` |  |
+| `population` | `int` |  |
+| `postcode` | `string` |  |
+| `province` | `string` |  |
+| `province_code` | `string` |  |
+| `score` | `float` |  |
+| `status` | `string` |  |
+| `street` | `string` |  |
+| `type` | `string` |  |
+| `url` | `array` |  |
+| `webrank` | `array` |  |
 
 #### Example: Load
 
 ```php
 // load() returns the bare GlobalApI record (throws on error).
-$global_ap_i = $client->GlobalApI()->load(["id" => "global_ap_i_id"]);
+$global_ap_i = $client->GlobalApI()->load();
 ```
 
 #### Example: List
@@ -460,27 +494,27 @@ Create an instance: `$netherlands_ap_i = $client->NetherlandsApI();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active` | ``$INTEGER`` |  |
-| `addition` | ``$STRING`` |  |
-| `city` | ``$STRING`` |  |
-| `coc` | ``$STRING`` |  |
-| `construction_year` | ``$INTEGER`` |  |
-| `floor_area` | ``$INTEGER`` |  |
-| `freeformaddress` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `lat` | ``$NUMBER`` |  |
-| `letter` | ``$STRING`` |  |
-| `lon` | ``$NUMBER`` |  |
-| `municipality` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `number` | ``$STRING`` |  |
-| `postcode` | ``$STRING`` |  |
-| `province` | ``$STRING`` |  |
-| `province_code` | ``$STRING`` |  |
-| `purpose` | ``$STRING`` |  |
-| `street` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `vestiging` | ``$STRING`` |  |
+| `active` | `int` |  |
+| `addition` | `string` |  |
+| `city` | `string` |  |
+| `coc` | `string` |  |
+| `construction_year` | `int` |  |
+| `floor_area` | `int` |  |
+| `freeformaddress` | `string` |  |
+| `id` | `string` |  |
+| `lat` | `float` |  |
+| `letter` | `string` |  |
+| `lon` | `float` |  |
+| `municipality` | `string` |  |
+| `name` | `string` |  |
+| `number` | `string` |  |
+| `postcode` | `string` |  |
+| `province` | `string` |  |
+| `province_code` | `string` |  |
+| `purpose` | `string` |  |
+| `street` | `string` |  |
+| `type` | `string` |  |
+| `vestiging` | `string` |  |
 
 #### Example: List
 
@@ -490,12 +524,16 @@ $netherlands_ap_is = $client->NetherlandsApI()->list();
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -512,8 +550,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return array.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -557,15 +596,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
 $euapi = $client->EuApI();
-$euapi->load(["id" => "example_id"]);
+$euapi->list();
 
-// $euapi->dataGet() now returns the loaded euapi data
-// $euapi->matchGet() returns the last match criteria
+// $euapi->data_get() now returns the euapi data from the last list
+// $euapi->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

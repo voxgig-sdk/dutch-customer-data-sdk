@@ -4,6 +4,11 @@
 
 The Python SDK for the DutchCustomerData API — an entity-oriented client following Pythonic conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.EuApI()` — each
+carrying a small, uniform set of operations (`list`, `load`, `create`) instead of raw URL
+paths and query strings. You work with named resources and verbs, which
+keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -38,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    euapis = client.EuApI().list({})
+    euapis = client.EuApI().list()
     for euapi in euapis:
         print(euapi)
 except Exception as err:
@@ -55,6 +60,34 @@ try:
     print(euapi)
 except Exception as err:
     print(f"load failed: {err}")
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so wrap them in `try` / `except`:
+
+```python
+try:
+    euapis = client.EuApI().list()
+    print(euapis)
+except Exception as err:
+    print(f"list failed: {err}")
+```
+
+`direct()` does **not** raise — it returns the result envelope. Branch
+on `ok`; on failure `status` holds the HTTP status (for error responses)
+and `err` holds a transport error, so read both defensively:
+
+```python
+result = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example_id"},
+})
+
+if not result["ok"]:
+    print("request failed:", result.get("status"), result.get("err"))
 ```
 
 
@@ -75,7 +108,10 @@ if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
 else:
-    print(result["err"])     # error value
+    # A non-2xx response carries status + data (the error body); a
+    # transport-level failure carries err instead. Only one is present, so
+    # read both with .get() rather than indexing a key that may be absent.
+    print(result.get("status"), result.get("err"))
 ```
 
 ### Prepare a request without sending it
@@ -101,7 +137,7 @@ Create a mock client for unit testing — no server required:
 client = DutchCustomerDataSDK.test()
 
 # Entity ops return the bare record and raise on error.
-euapi = client.EuApI().load({"id": "test01"})
+euapi = client.EuApI().list()
 # euapi contains the mock response record
 ```
 
@@ -191,8 +227,6 @@ All entities share the same interface.
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
 | `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
 | `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -329,28 +363,28 @@ Create an instance: `eu_ap_i = client.EuApI()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buyer` | ``$STRING`` |  |
-| `buyer_country` | ``$STRING`` |  |
-| `contract_nature` | ``$STRING`` |  |
-| `html` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `link` | ``$STRING`` |  |
-| `notice_type` | ``$STRING`` |  |
-| `official_language` | ``$STRING`` |  |
-| `pdf` | ``$STRING`` |  |
-| `place_of_performance` | ``$STRING`` |  |
-| `procedure_type` | ``$STRING`` |  |
-| `publication_date` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
-| `vat` | ``$OBJECT`` |  |
+| `buyer` | `str` |  |
+| `buyer_country` | `str` |  |
+| `contract_nature` | `str` |  |
+| `html` | `str` |  |
+| `id` | `str` |  |
+| `link` | `str` |  |
+| `notice_type` | `str` |  |
+| `official_language` | `str` |  |
+| `pdf` | `str` |  |
+| `place_of_performance` | `str` |  |
+| `procedure_type` | `str` |  |
+| `publication_date` | `str` |  |
+| `status` | `str` |  |
+| `title` | `str` |  |
+| `vat` | `dict` |  |
 
 #### Example: Load
 
@@ -361,7 +395,7 @@ eu_ap_i = client.EuApI().load({"id": "eu_ap_i_id"})
 #### Example: List
 
 ```python
-eu_ap_is = client.EuApI().list({})
+eu_ap_is = client.EuApI().list()
 ```
 
 
@@ -374,57 +408,57 @@ Create an instance: `global_ap_i = client.GlobalApI()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addition` | ``$STRING`` |  |
-| `admin1` | ``$STRING`` |  |
-| `admin2` | ``$STRING`` |  |
-| `admin3` | ``$STRING`` |  |
-| `bic` | ``$OBJECT`` |  |
-| `city` | ``$STRING`` |  |
-| `currency` | ``$OBJECT`` |  |
-| `date` | ``$STRING`` |  |
-| `dns` | ``$OBJECT`` |  |
-| `email` | ``$OBJECT`` |  |
-| `found` | ``$INTEGER`` |  |
-| `freeformaddress` | ``$STRING`` |  |
-| `from_currency` | ``$STRING`` |  |
-| `iban` | ``$OBJECT`` |  |
-| `ip` | ``$OBJECT`` |  |
-| `lat` | ``$NUMBER`` |  |
-| `lei` | ``$OBJECT`` |  |
-| `letter` | ``$STRING`` |  |
-| `lon` | ``$NUMBER`` |  |
-| `municipality` | ``$STRING`` |  |
-| `number` | ``$INTEGER`` |  |
-| `password` | ``$OBJECT`` |  |
-| `phone` | ``$OBJECT`` |  |
-| `population` | ``$INTEGER`` |  |
-| `postcode` | ``$STRING`` |  |
-| `province` | ``$STRING`` |  |
-| `province_code` | ``$STRING`` |  |
-| `score` | ``$NUMBER`` |  |
-| `status` | ``$STRING`` |  |
-| `street` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `url` | ``$OBJECT`` |  |
-| `webrank` | ``$OBJECT`` |  |
+| `addition` | `str` |  |
+| `admin1` | `str` |  |
+| `admin2` | `str` |  |
+| `admin3` | `str` |  |
+| `bic` | `dict` |  |
+| `city` | `str` |  |
+| `currency` | `dict` |  |
+| `date` | `str` |  |
+| `dns` | `dict` |  |
+| `email` | `dict` |  |
+| `found` | `int` |  |
+| `freeformaddress` | `str` |  |
+| `from_currency` | `str` |  |
+| `iban` | `dict` |  |
+| `ip` | `dict` |  |
+| `lat` | `float` |  |
+| `lei` | `dict` |  |
+| `letter` | `str` |  |
+| `lon` | `float` |  |
+| `municipality` | `str` |  |
+| `number` | `int` |  |
+| `password` | `dict` |  |
+| `phone` | `dict` |  |
+| `population` | `int` |  |
+| `postcode` | `str` |  |
+| `province` | `str` |  |
+| `province_code` | `str` |  |
+| `score` | `float` |  |
+| `status` | `str` |  |
+| `street` | `str` |  |
+| `type` | `str` |  |
+| `url` | `dict` |  |
+| `webrank` | `dict` |  |
 
 #### Example: Load
 
 ```python
-global_ap_i = client.GlobalApI().load({"id": "global_ap_i_id"})
+global_ap_i = client.GlobalApI().load()
 ```
 
 #### Example: List
 
 ```python
-global_ap_is = client.GlobalApI().list({})
+global_ap_is = client.GlobalApI().list()
 ```
 
 #### Example: Create
@@ -443,47 +477,51 @@ Create an instance: `netherlands_ap_i = client.NetherlandsApI()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `list()` | List entities, optionally matching the given criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active` | ``$INTEGER`` |  |
-| `addition` | ``$STRING`` |  |
-| `city` | ``$STRING`` |  |
-| `coc` | ``$STRING`` |  |
-| `construction_year` | ``$INTEGER`` |  |
-| `floor_area` | ``$INTEGER`` |  |
-| `freeformaddress` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `lat` | ``$NUMBER`` |  |
-| `letter` | ``$STRING`` |  |
-| `lon` | ``$NUMBER`` |  |
-| `municipality` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `number` | ``$STRING`` |  |
-| `postcode` | ``$STRING`` |  |
-| `province` | ``$STRING`` |  |
-| `province_code` | ``$STRING`` |  |
-| `purpose` | ``$STRING`` |  |
-| `street` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `vestiging` | ``$STRING`` |  |
+| `active` | `int` |  |
+| `addition` | `str` |  |
+| `city` | `str` |  |
+| `coc` | `str` |  |
+| `construction_year` | `int` |  |
+| `floor_area` | `int` |  |
+| `freeformaddress` | `str` |  |
+| `id` | `str` |  |
+| `lat` | `float` |  |
+| `letter` | `str` |  |
+| `lon` | `float` |  |
+| `municipality` | `str` |  |
+| `name` | `str` |  |
+| `number` | `str` |  |
+| `postcode` | `str` |  |
+| `province` | `str` |  |
+| `province_code` | `str` |  |
+| `purpose` | `str` |  |
+| `street` | `str` |  |
+| `type` | `str` |  |
+| `vestiging` | `str` |  |
 
 #### Example: List
 
 ```python
-netherlands_ap_is = client.NetherlandsApI().list({})
+netherlands_ap_is = client.NetherlandsApI().list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -500,8 +538,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as the second element in the return tuple.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -544,14 +583,14 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
 euapi = client.EuApI()
-euapi.load({"id": "example_id"})
+euapi.list()
 
-# euapi.data_get() now returns the loaded euapi data
+# euapi.data_get() now returns the euapi data from the last list
 # euapi.match_get() returns the last match criteria
 ```
 

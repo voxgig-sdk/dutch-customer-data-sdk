@@ -4,6 +4,8 @@
 
 The Ruby SDK for the DutchCustomerData API — an entity-oriented client using idiomatic Ruby conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.EuApI` — with named operations (`list`/`load`/`create`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -35,7 +37,7 @@ begin
   # list returns an Array of EuApI records — iterate directly.
   euapis = client.EuApI.list
   euapis.each do |item|
-    puts "#{item["id"]} #{item["name"]}"
+    puts "#{item["id"]} #{item["buyer"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -52,6 +54,33 @@ begin
 rescue => err
   warn "load failed: #{err}"
 end
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so rescue them:
+
+```ruby
+begin
+  euapis = client.EuApI.list()
+rescue => err
+  warn "list failed: #{err}"
+end
+```
+
+`direct` does **not** raise — it returns the result hash. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```ruby
+result = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example_id" },
+})
+
+warn "request failed: #{result["err"] || "HTTP #{result["status"]}"}" unless result["ok"]
 ```
 
 
@@ -72,7 +101,9 @@ if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
 else
-  warn result["err"]
+  # On an HTTP error status there is no err (only a transport failure sets
+  # it), so fall back to the status code.
+  warn(result["err"] || "HTTP #{result["status"]}")
 end
 ```
 
@@ -103,8 +134,8 @@ client = DutchCustomerDataSDK.test({
   "entity" => { "euapi" => { "test01" => { "id" => "test01" } } },
 })
 
-# load returns the bare mock record (raises on error).
-euapi = client.EuApI.load({ "id" => "test01" })
+# Entity ops return the bare mock record (raises on error).
+euapi = client.EuApI.list()
 puts euapi
 ```
 
@@ -192,10 +223,8 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
 | `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -338,21 +367,21 @@ Create an instance: `eu_ap_i = client.EuApI`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buyer` | ``$STRING`` |  |
-| `buyer_country` | ``$STRING`` |  |
-| `contract_nature` | ``$STRING`` |  |
-| `html` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `link` | ``$STRING`` |  |
-| `notice_type` | ``$STRING`` |  |
-| `official_language` | ``$STRING`` |  |
-| `pdf` | ``$STRING`` |  |
-| `place_of_performance` | ``$STRING`` |  |
-| `procedure_type` | ``$STRING`` |  |
-| `publication_date` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
-| `vat` | ``$OBJECT`` |  |
+| `buyer` | `String` |  |
+| `buyer_country` | `String` |  |
+| `contract_nature` | `String` |  |
+| `html` | `String` |  |
+| `id` | `String` |  |
+| `link` | `String` |  |
+| `notice_type` | `String` |  |
+| `official_language` | `String` |  |
+| `pdf` | `String` |  |
+| `place_of_performance` | `String` |  |
+| `procedure_type` | `String` |  |
+| `publication_date` | `String` |  |
+| `status` | `String` |  |
+| `title` | `String` |  |
+| `vat` | `Hash` |  |
 
 #### Example: Load
 
@@ -385,45 +414,45 @@ Create an instance: `global_ap_i = client.GlobalApI`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addition` | ``$STRING`` |  |
-| `admin1` | ``$STRING`` |  |
-| `admin2` | ``$STRING`` |  |
-| `admin3` | ``$STRING`` |  |
-| `bic` | ``$OBJECT`` |  |
-| `city` | ``$STRING`` |  |
-| `currency` | ``$OBJECT`` |  |
-| `date` | ``$STRING`` |  |
-| `dns` | ``$OBJECT`` |  |
-| `email` | ``$OBJECT`` |  |
-| `found` | ``$INTEGER`` |  |
-| `freeformaddress` | ``$STRING`` |  |
-| `from_currency` | ``$STRING`` |  |
-| `iban` | ``$OBJECT`` |  |
-| `ip` | ``$OBJECT`` |  |
-| `lat` | ``$NUMBER`` |  |
-| `lei` | ``$OBJECT`` |  |
-| `letter` | ``$STRING`` |  |
-| `lon` | ``$NUMBER`` |  |
-| `municipality` | ``$STRING`` |  |
-| `number` | ``$INTEGER`` |  |
-| `password` | ``$OBJECT`` |  |
-| `phone` | ``$OBJECT`` |  |
-| `population` | ``$INTEGER`` |  |
-| `postcode` | ``$STRING`` |  |
-| `province` | ``$STRING`` |  |
-| `province_code` | ``$STRING`` |  |
-| `score` | ``$NUMBER`` |  |
-| `status` | ``$STRING`` |  |
-| `street` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `url` | ``$OBJECT`` |  |
-| `webrank` | ``$OBJECT`` |  |
+| `addition` | `String` |  |
+| `admin1` | `String` |  |
+| `admin2` | `String` |  |
+| `admin3` | `String` |  |
+| `bic` | `Hash` |  |
+| `city` | `String` |  |
+| `currency` | `Hash` |  |
+| `date` | `String` |  |
+| `dns` | `Hash` |  |
+| `email` | `Hash` |  |
+| `found` | `Integer` |  |
+| `freeformaddress` | `String` |  |
+| `from_currency` | `String` |  |
+| `iban` | `Hash` |  |
+| `ip` | `Hash` |  |
+| `lat` | `Float` |  |
+| `lei` | `Hash` |  |
+| `letter` | `String` |  |
+| `lon` | `Float` |  |
+| `municipality` | `String` |  |
+| `number` | `Integer` |  |
+| `password` | `Hash` |  |
+| `phone` | `Hash` |  |
+| `population` | `Integer` |  |
+| `postcode` | `String` |  |
+| `province` | `String` |  |
+| `province_code` | `String` |  |
+| `score` | `Float` |  |
+| `status` | `String` |  |
+| `street` | `String` |  |
+| `type` | `String` |  |
+| `url` | `Hash` |  |
+| `webrank` | `Hash` |  |
 
 #### Example: Load
 
 ```ruby
 # load returns the bare GlobalApI record (raises on error).
-global_ap_i = client.GlobalApI.load({ "id" => "global_ap_i_id" })
+global_ap_i = client.GlobalApI.load()
 ```
 
 #### Example: List
@@ -455,27 +484,27 @@ Create an instance: `netherlands_ap_i = client.NetherlandsApI`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active` | ``$INTEGER`` |  |
-| `addition` | ``$STRING`` |  |
-| `city` | ``$STRING`` |  |
-| `coc` | ``$STRING`` |  |
-| `construction_year` | ``$INTEGER`` |  |
-| `floor_area` | ``$INTEGER`` |  |
-| `freeformaddress` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `lat` | ``$NUMBER`` |  |
-| `letter` | ``$STRING`` |  |
-| `lon` | ``$NUMBER`` |  |
-| `municipality` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `number` | ``$STRING`` |  |
-| `postcode` | ``$STRING`` |  |
-| `province` | ``$STRING`` |  |
-| `province_code` | ``$STRING`` |  |
-| `purpose` | ``$STRING`` |  |
-| `street` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `vestiging` | ``$STRING`` |  |
+| `active` | `Integer` |  |
+| `addition` | `String` |  |
+| `city` | `String` |  |
+| `coc` | `String` |  |
+| `construction_year` | `Integer` |  |
+| `floor_area` | `Integer` |  |
+| `freeformaddress` | `String` |  |
+| `id` | `String` |  |
+| `lat` | `Float` |  |
+| `letter` | `String` |  |
+| `lon` | `Float` |  |
+| `municipality` | `String` |  |
+| `name` | `String` |  |
+| `number` | `String` |  |
+| `postcode` | `String` |  |
+| `province` | `String` |  |
+| `province_code` | `String` |  |
+| `purpose` | `String` |  |
+| `street` | `String` |  |
+| `type` | `String` |  |
+| `vestiging` | `String` |  |
 
 #### Example: List
 
@@ -485,12 +514,16 @@ netherlands_ap_is = client.NetherlandsApI.list
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -507,8 +540,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -552,14 +586,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
 euapi = client.EuApI
-euapi.load({ "id" => "example_id" })
+euapi.list()
 
-# euapi.data_get now returns the loaded euapi data
+# euapi.data_get now returns the euapi data from the last list
 # euapi.match_get returns the last match criteria
 ```
 

@@ -8,7 +8,7 @@ Complete API reference for the DutchCustomerData Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'dutch-customer-data_sdk'
+require_relative 'DutchCustomerData_sdk'
 
 client = DutchCustomerDataSDK.new(options)
 ```
@@ -101,30 +101,30 @@ eu_ap_i = client.EuApI
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buyer` | ``$STRING`` | No |  |
-| `buyer_country` | ``$STRING`` | No |  |
-| `contract_nature` | ``$STRING`` | No |  |
-| `html` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$STRING`` | No |  |
-| `notice_type` | ``$STRING`` | No |  |
-| `official_language` | ``$STRING`` | No |  |
-| `pdf` | ``$STRING`` | No |  |
-| `place_of_performance` | ``$STRING`` | No |  |
-| `procedure_type` | ``$STRING`` | No |  |
-| `publication_date` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `vat` | ``$OBJECT`` | No |  |
+| `buyer` | `String` | No |  |
+| `buyer_country` | `String` | No |  |
+| `contract_nature` | `String` | No |  |
+| `html` | `String` | No |  |
+| `id` | `String` | No |  |
+| `link` | `String` | No |  |
+| `notice_type` | `String` | No |  |
+| `official_language` | `String` | No |  |
+| `pdf` | `String` | No |  |
+| `place_of_performance` | `String` | No |  |
+| `procedure_type` | `String` | No |  |
+| `publication_date` | `String` | No |  |
+| `status` | `String` | No |  |
+| `title` | `String` | No |  |
+| `vat` | `Hash` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.EuApI.list(nil)
+results = client.EuApI.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -175,39 +175,39 @@ global_ap_i = client.GlobalApI
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addition` | ``$STRING`` | No |  |
-| `admin1` | ``$STRING`` | No |  |
-| `admin2` | ``$STRING`` | No |  |
-| `admin3` | ``$STRING`` | No |  |
-| `bic` | ``$OBJECT`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `currency` | ``$OBJECT`` | No |  |
-| `date` | ``$STRING`` | No |  |
-| `dns` | ``$OBJECT`` | No |  |
-| `email` | ``$OBJECT`` | No |  |
-| `found` | ``$INTEGER`` | No |  |
-| `freeformaddress` | ``$STRING`` | No |  |
-| `from_currency` | ``$STRING`` | No |  |
-| `iban` | ``$OBJECT`` | No |  |
-| `ip` | ``$OBJECT`` | No |  |
-| `lat` | ``$NUMBER`` | No |  |
-| `lei` | ``$OBJECT`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `lon` | ``$NUMBER`` | No |  |
-| `municipality` | ``$STRING`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `password` | ``$OBJECT`` | No |  |
-| `phone` | ``$OBJECT`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
-| `postcode` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `province_code` | ``$STRING`` | No |  |
-| `score` | ``$NUMBER`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `street` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$OBJECT`` | No |  |
-| `webrank` | ``$OBJECT`` | No |  |
+| `addition` | `String` | No |  |
+| `admin1` | `String` | No |  |
+| `admin2` | `String` | No |  |
+| `admin3` | `String` | No |  |
+| `bic` | `Hash` | No |  |
+| `city` | `String` | No |  |
+| `currency` | `Hash` | No |  |
+| `date` | `String` | No |  |
+| `dns` | `Hash` | No |  |
+| `email` | `Hash` | No |  |
+| `found` | `Integer` | No |  |
+| `freeformaddress` | `String` | No |  |
+| `from_currency` | `String` | No |  |
+| `iban` | `Hash` | No |  |
+| `ip` | `Hash` | No |  |
+| `lat` | `Float` | No |  |
+| `lei` | `Hash` | No |  |
+| `letter` | `String` | No |  |
+| `lon` | `Float` | No |  |
+| `municipality` | `String` | No |  |
+| `number` | `Integer` | No |  |
+| `password` | `Hash` | No |  |
+| `phone` | `Hash` | No |  |
+| `population` | `Integer` | No |  |
+| `postcode` | `String` | No |  |
+| `province` | `String` | No |  |
+| `province_code` | `String` | No |  |
+| `score` | `Float` | No |  |
+| `status` | `String` | No |  |
+| `street` | `String` | No |  |
+| `type` | `String` | No |  |
+| `url` | `Hash` | No |  |
+| `webrank` | `Hash` | No |  |
 
 ### Operations
 
@@ -220,12 +220,12 @@ result = client.GlobalApI.create({
 })
 ```
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.GlobalApI.list(nil)
+results = client.GlobalApI.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -233,7 +233,7 @@ results = client.GlobalApI.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GlobalApI.load({ "id" => "global_ap_i_id" })
+result = client.GlobalApI.load()
 ```
 
 ### Common Methods
@@ -276,36 +276,36 @@ netherlands_ap_i = client.NetherlandsApI
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active` | ``$INTEGER`` | No |  |
-| `addition` | ``$STRING`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `coc` | ``$STRING`` | No |  |
-| `construction_year` | ``$INTEGER`` | No |  |
-| `floor_area` | ``$INTEGER`` | No |  |
-| `freeformaddress` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `lat` | ``$NUMBER`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `lon` | ``$NUMBER`` | No |  |
-| `municipality` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `number` | ``$STRING`` | No |  |
-| `postcode` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `province_code` | ``$STRING`` | No |  |
-| `purpose` | ``$STRING`` | No |  |
-| `street` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `vestiging` | ``$STRING`` | No |  |
+| `active` | `Integer` | No |  |
+| `addition` | `String` | No |  |
+| `city` | `String` | No |  |
+| `coc` | `String` | No |  |
+| `construction_year` | `Integer` | No |  |
+| `floor_area` | `Integer` | No |  |
+| `freeformaddress` | `String` | No |  |
+| `id` | `String` | No |  |
+| `lat` | `Float` | No |  |
+| `letter` | `String` | No |  |
+| `lon` | `Float` | No |  |
+| `municipality` | `String` | No |  |
+| `name` | `String` | No |  |
+| `number` | `String` | No |  |
+| `postcode` | `String` | No |  |
+| `province` | `String` | No |  |
+| `province_code` | `String` | No |  |
+| `purpose` | `String` | No |  |
+| `street` | `String` | No |  |
+| `type` | `String` | No |  |
+| `vestiging` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.NetherlandsApI.list(nil)
+results = client.NetherlandsApI.list
 ```
 
 ### Common Methods

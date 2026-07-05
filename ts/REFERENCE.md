@@ -140,21 +140,21 @@ const eu_ap_i = client.EuApI()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buyer` | ``$STRING`` | No |  |
-| `buyer_country` | ``$STRING`` | No |  |
-| `contract_nature` | ``$STRING`` | No |  |
-| `html` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$STRING`` | No |  |
-| `notice_type` | ``$STRING`` | No |  |
-| `official_language` | ``$STRING`` | No |  |
-| `pdf` | ``$STRING`` | No |  |
-| `place_of_performance` | ``$STRING`` | No |  |
-| `procedure_type` | ``$STRING`` | No |  |
-| `publication_date` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `vat` | ``$OBJECT`` | No |  |
+| `buyer` | `string` | No |  |
+| `buyer_country` | `string` | No |  |
+| `contract_nature` | `string` | No |  |
+| `html` | `string` | No |  |
+| `id` | `string` | No |  |
+| `link` | `string` | No |  |
+| `notice_type` | `string` | No |  |
+| `official_language` | `string` | No |  |
+| `pdf` | `string` | No |  |
+| `place_of_performance` | `string` | No |  |
+| `procedure_type` | `string` | No |  |
+| `publication_date` | `string` | No |  |
+| `status` | `string` | No |  |
+| `title` | `string` | No |  |
+| `vat` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -212,39 +212,39 @@ const global_ap_i = client.GlobalApI()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addition` | ``$STRING`` | No |  |
-| `admin1` | ``$STRING`` | No |  |
-| `admin2` | ``$STRING`` | No |  |
-| `admin3` | ``$STRING`` | No |  |
-| `bic` | ``$OBJECT`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `currency` | ``$OBJECT`` | No |  |
-| `date` | ``$STRING`` | No |  |
-| `dns` | ``$OBJECT`` | No |  |
-| `email` | ``$OBJECT`` | No |  |
-| `found` | ``$INTEGER`` | No |  |
-| `freeformaddress` | ``$STRING`` | No |  |
-| `from_currency` | ``$STRING`` | No |  |
-| `iban` | ``$OBJECT`` | No |  |
-| `ip` | ``$OBJECT`` | No |  |
-| `lat` | ``$NUMBER`` | No |  |
-| `lei` | ``$OBJECT`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `lon` | ``$NUMBER`` | No |  |
-| `municipality` | ``$STRING`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `password` | ``$OBJECT`` | No |  |
-| `phone` | ``$OBJECT`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
-| `postcode` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `province_code` | ``$STRING`` | No |  |
-| `score` | ``$NUMBER`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `street` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$OBJECT`` | No |  |
-| `webrank` | ``$OBJECT`` | No |  |
+| `addition` | `string` | No |  |
+| `admin1` | `string` | No |  |
+| `admin2` | `string` | No |  |
+| `admin3` | `string` | No |  |
+| `bic` | `Record<string, any>` | No |  |
+| `city` | `string` | No |  |
+| `currency` | `Record<string, any>` | No |  |
+| `date` | `string` | No |  |
+| `dns` | `Record<string, any>` | No |  |
+| `email` | `Record<string, any>` | No |  |
+| `found` | `number` | No |  |
+| `freeformaddress` | `string` | No |  |
+| `from_currency` | `string` | No |  |
+| `iban` | `Record<string, any>` | No |  |
+| `ip` | `Record<string, any>` | No |  |
+| `lat` | `number` | No |  |
+| `lei` | `Record<string, any>` | No |  |
+| `letter` | `string` | No |  |
+| `lon` | `number` | No |  |
+| `municipality` | `string` | No |  |
+| `number` | `number` | No |  |
+| `password` | `Record<string, any>` | No |  |
+| `phone` | `Record<string, any>` | No |  |
+| `population` | `number` | No |  |
+| `postcode` | `string` | No |  |
+| `province` | `string` | No |  |
+| `province_code` | `string` | No |  |
+| `score` | `number` | No |  |
+| `status` | `string` | No |  |
+| `street` | `string` | No |  |
+| `type` | `string` | No |  |
+| `url` | `Record<string, any>` | No |  |
+| `webrank` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -270,7 +270,7 @@ const results = await client.GlobalApI().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GlobalApI().load({ id: 'global_ap_i_id' })
+const result = await client.GlobalApI().load()
 ```
 
 ### Common Methods
@@ -311,27 +311,27 @@ const netherlands_ap_i = client.NetherlandsApI()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active` | ``$INTEGER`` | No |  |
-| `addition` | ``$STRING`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `coc` | ``$STRING`` | No |  |
-| `construction_year` | ``$INTEGER`` | No |  |
-| `floor_area` | ``$INTEGER`` | No |  |
-| `freeformaddress` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `lat` | ``$NUMBER`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `lon` | ``$NUMBER`` | No |  |
-| `municipality` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `number` | ``$STRING`` | No |  |
-| `postcode` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `province_code` | ``$STRING`` | No |  |
-| `purpose` | ``$STRING`` | No |  |
-| `street` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `vestiging` | ``$STRING`` | No |  |
+| `active` | `number` | No |  |
+| `addition` | `string` | No |  |
+| `city` | `string` | No |  |
+| `coc` | `string` | No |  |
+| `construction_year` | `number` | No |  |
+| `floor_area` | `number` | No |  |
+| `freeformaddress` | `string` | No |  |
+| `id` | `string` | No |  |
+| `lat` | `number` | No |  |
+| `letter` | `string` | No |  |
+| `lon` | `number` | No |  |
+| `municipality` | `string` | No |  |
+| `name` | `string` | No |  |
+| `number` | `string` | No |  |
+| `postcode` | `string` | No |  |
+| `province` | `string` | No |  |
+| `province_code` | `string` | No |  |
+| `purpose` | `string` | No |  |
+| `street` | `string` | No |  |
+| `type` | `string` | No |  |
+| `vestiging` | `string` | No |  |
 
 ### Operations
 

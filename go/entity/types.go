@@ -27,14 +27,13 @@ type EuApI struct {
 	Vat *map[string]any `json:"vat,omitempty"`
 }
 
-// EuApILoadMatch mirrors the eu_ap_i fields as an all-optional match
-// filter (Go analog of Partial<EuApI>).
+// EuApILoadMatch is the typed request payload for EuApI.LoadTyped.
 type EuApILoadMatch struct {
 	Buyer *string `json:"buyer,omitempty"`
 	BuyerCountry *string `json:"buyer_country,omitempty"`
 	ContractNature *string `json:"contract_nature,omitempty"`
 	Html *string `json:"html,omitempty"`
-	Id *string `json:"id,omitempty"`
+	Id string `json:"id"`
 	Link *string `json:"link,omitempty"`
 	NoticeType *string `json:"notice_type,omitempty"`
 	OfficialLanguage *string `json:"official_language,omitempty"`
@@ -47,8 +46,7 @@ type EuApILoadMatch struct {
 	Vat *map[string]any `json:"vat,omitempty"`
 }
 
-// EuApIListMatch mirrors the eu_ap_i fields as an all-optional match
-// filter (Go analog of Partial<EuApI>).
+// EuApIListMatch is the typed request payload for EuApI.ListTyped.
 type EuApIListMatch struct {
 	Buyer *string `json:"buyer,omitempty"`
 	BuyerCountry *string `json:"buyer_country,omitempty"`
@@ -104,8 +102,7 @@ type GlobalApI struct {
 	Webrank *map[string]any `json:"webrank,omitempty"`
 }
 
-// GlobalApILoadMatch mirrors the global_ap_i fields as an all-optional match
-// filter (Go analog of Partial<GlobalApI>).
+// GlobalApILoadMatch is the typed request payload for GlobalApI.LoadTyped.
 type GlobalApILoadMatch struct {
 	Addition *string `json:"addition,omitempty"`
 	Admin1 *string `json:"admin1,omitempty"`
@@ -142,8 +139,7 @@ type GlobalApILoadMatch struct {
 	Webrank *map[string]any `json:"webrank,omitempty"`
 }
 
-// GlobalApIListMatch mirrors the global_ap_i fields as an all-optional match
-// filter (Go analog of Partial<GlobalApI>).
+// GlobalApIListMatch is the typed request payload for GlobalApI.ListTyped.
 type GlobalApIListMatch struct {
 	Addition *string `json:"addition,omitempty"`
 	Admin1 *string `json:"admin1,omitempty"`
@@ -180,8 +176,7 @@ type GlobalApIListMatch struct {
 	Webrank *map[string]any `json:"webrank,omitempty"`
 }
 
-// GlobalApICreateData mirrors the global_ap_i fields as an all-optional match
-// filter (Go analog of Partial<GlobalApI>).
+// GlobalApICreateData is the typed request payload for GlobalApI.CreateTyped.
 type GlobalApICreateData struct {
 	Addition *string `json:"addition,omitempty"`
 	Admin1 *string `json:"admin1,omitempty"`
@@ -243,8 +238,7 @@ type NetherlandsApI struct {
 	Vestiging *string `json:"vestiging,omitempty"`
 }
 
-// NetherlandsApIListMatch mirrors the netherlands_ap_i fields as an all-optional match
-// filter (Go analog of Partial<NetherlandsApI>).
+// NetherlandsApIListMatch is the typed request payload for NetherlandsApI.ListTyped.
 type NetherlandsApIListMatch struct {
 	Active *int `json:"active,omitempty"`
 	Addition *string `json:"addition,omitempty"`

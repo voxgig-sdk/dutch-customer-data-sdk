@@ -65,8 +65,13 @@ class EuApIEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: EuApILoadMatch, ctrl=None) -> EuApI:
+    def load(self, reqmatch=None, ctrl=None) -> EuApI:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.EuApI().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class EuApIEntity:
 
 
     
-    def list(self, reqmatch: EuApIListMatch, ctrl=None) -> list[EuApI]:
+    def list(self, reqmatch=None, ctrl=None) -> list[EuApI]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.EuApI().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

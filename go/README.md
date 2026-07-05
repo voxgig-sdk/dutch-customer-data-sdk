@@ -4,6 +4,8 @@
 
 The Golang SDK for the DutchCustomerData API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.EuApI(nil)` — each with the same small set of operations (`List`, `Load`, `Create`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -58,12 +60,41 @@ func main() {
     }
 
     // Load a single euapi — the value is the loaded record.
-    euapi, err := client.EuApI(nil).Load(map[string]any{"id": "example_id"}, nil)
+    euapi, err := client.EuApI(nil).Load(map[string]any{"id": "example"}, nil)
     if err != nil {
         panic(err)
     }
     fmt.Println(euapi)
 }
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+euapis, err := client.EuApI(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = euapis
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
 ```
 
 
@@ -113,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-euapi, err := client.EuApI(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+euapi, err := client.EuApI(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(euapi) // the loaded mock data
+fmt.Println(euapi) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -209,8 +240,6 @@ All entities implement the `DutchCustomerDataEntity` interface.
 | `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
 | `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -223,16 +252,16 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `Load` / `Create` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    euapi, err := client.EuApI(nil).Load(map[string]any{"id": "example_id"}, nil)
+    euapi, err := client.EuApI(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // euapi is the loaded record
+    // euapi is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -355,21 +384,21 @@ Create an instance: `eu_ap_i := client.EuApI(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `buyer` | ``$STRING`` |  |
-| `buyer_country` | ``$STRING`` |  |
-| `contract_nature` | ``$STRING`` |  |
-| `html` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `link` | ``$STRING`` |  |
-| `notice_type` | ``$STRING`` |  |
-| `official_language` | ``$STRING`` |  |
-| `pdf` | ``$STRING`` |  |
-| `place_of_performance` | ``$STRING`` |  |
-| `procedure_type` | ``$STRING`` |  |
-| `publication_date` | ``$STRING`` |  |
-| `status` | ``$STRING`` |  |
-| `title` | ``$STRING`` |  |
-| `vat` | ``$OBJECT`` |  |
+| `buyer` | `string` |  |
+| `buyer_country` | `string` |  |
+| `contract_nature` | `string` |  |
+| `html` | `string` |  |
+| `id` | `string` |  |
+| `link` | `string` |  |
+| `notice_type` | `string` |  |
+| `official_language` | `string` |  |
+| `pdf` | `string` |  |
+| `place_of_performance` | `string` |  |
+| `procedure_type` | `string` |  |
+| `publication_date` | `string` |  |
+| `status` | `string` |  |
+| `title` | `string` |  |
+| `vat` | `map[string]any` |  |
 
 #### Example: Load
 
@@ -408,44 +437,44 @@ Create an instance: `global_ap_i := client.GlobalApI(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addition` | ``$STRING`` |  |
-| `admin1` | ``$STRING`` |  |
-| `admin2` | ``$STRING`` |  |
-| `admin3` | ``$STRING`` |  |
-| `bic` | ``$OBJECT`` |  |
-| `city` | ``$STRING`` |  |
-| `currency` | ``$OBJECT`` |  |
-| `date` | ``$STRING`` |  |
-| `dns` | ``$OBJECT`` |  |
-| `email` | ``$OBJECT`` |  |
-| `found` | ``$INTEGER`` |  |
-| `freeformaddress` | ``$STRING`` |  |
-| `from_currency` | ``$STRING`` |  |
-| `iban` | ``$OBJECT`` |  |
-| `ip` | ``$OBJECT`` |  |
-| `lat` | ``$NUMBER`` |  |
-| `lei` | ``$OBJECT`` |  |
-| `letter` | ``$STRING`` |  |
-| `lon` | ``$NUMBER`` |  |
-| `municipality` | ``$STRING`` |  |
-| `number` | ``$INTEGER`` |  |
-| `password` | ``$OBJECT`` |  |
-| `phone` | ``$OBJECT`` |  |
-| `population` | ``$INTEGER`` |  |
-| `postcode` | ``$STRING`` |  |
-| `province` | ``$STRING`` |  |
-| `province_code` | ``$STRING`` |  |
-| `score` | ``$NUMBER`` |  |
-| `status` | ``$STRING`` |  |
-| `street` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `url` | ``$OBJECT`` |  |
-| `webrank` | ``$OBJECT`` |  |
+| `addition` | `string` |  |
+| `admin1` | `string` |  |
+| `admin2` | `string` |  |
+| `admin3` | `string` |  |
+| `bic` | `map[string]any` |  |
+| `city` | `string` |  |
+| `currency` | `map[string]any` |  |
+| `date` | `string` |  |
+| `dns` | `map[string]any` |  |
+| `email` | `map[string]any` |  |
+| `found` | `int` |  |
+| `freeformaddress` | `string` |  |
+| `from_currency` | `string` |  |
+| `iban` | `map[string]any` |  |
+| `ip` | `map[string]any` |  |
+| `lat` | `float64` |  |
+| `lei` | `map[string]any` |  |
+| `letter` | `string` |  |
+| `lon` | `float64` |  |
+| `municipality` | `string` |  |
+| `number` | `int` |  |
+| `password` | `map[string]any` |  |
+| `phone` | `map[string]any` |  |
+| `population` | `int` |  |
+| `postcode` | `string` |  |
+| `province` | `string` |  |
+| `province_code` | `string` |  |
+| `score` | `float64` |  |
+| `status` | `string` |  |
+| `street` | `string` |  |
+| `type` | `string` |  |
+| `url` | `map[string]any` |  |
+| `webrank` | `map[string]any` |  |
 
 #### Example: Load
 
 ```go
-global_ap_i, err := client.GlobalApI(nil).Load(map[string]any{"id": "global_ap_i_id"}, nil)
+global_ap_i, err := client.GlobalApI(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
@@ -484,27 +513,27 @@ Create an instance: `netherlands_ap_i := client.NetherlandsApI(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active` | ``$INTEGER`` |  |
-| `addition` | ``$STRING`` |  |
-| `city` | ``$STRING`` |  |
-| `coc` | ``$STRING`` |  |
-| `construction_year` | ``$INTEGER`` |  |
-| `floor_area` | ``$INTEGER`` |  |
-| `freeformaddress` | ``$STRING`` |  |
-| `id` | ``$STRING`` |  |
-| `lat` | ``$NUMBER`` |  |
-| `letter` | ``$STRING`` |  |
-| `lon` | ``$NUMBER`` |  |
-| `municipality` | ``$STRING`` |  |
-| `name` | ``$STRING`` |  |
-| `number` | ``$STRING`` |  |
-| `postcode` | ``$STRING`` |  |
-| `province` | ``$STRING`` |  |
-| `province_code` | ``$STRING`` |  |
-| `purpose` | ``$STRING`` |  |
-| `street` | ``$STRING`` |  |
-| `type` | ``$STRING`` |  |
-| `vestiging` | ``$STRING`` |  |
+| `active` | `int` |  |
+| `addition` | `string` |  |
+| `city` | `string` |  |
+| `coc` | `string` |  |
+| `construction_year` | `int` |  |
+| `floor_area` | `int` |  |
+| `freeformaddress` | `string` |  |
+| `id` | `string` |  |
+| `lat` | `float64` |  |
+| `letter` | `string` |  |
+| `lon` | `float64` |  |
+| `municipality` | `string` |  |
+| `name` | `string` |  |
+| `number` | `string` |  |
+| `postcode` | `string` |  |
+| `province` | `string` |  |
+| `province_code` | `string` |  |
+| `purpose` | `string` |  |
+| `street` | `string` |  |
+| `type` | `string` |  |
+| `vestiging` | `string` |  |
 
 #### Example: List
 
@@ -517,12 +546,16 @@ fmt.Println(netherlands_ap_is) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -539,9 +572,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -582,14 +615,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 euapi := client.EuApI(nil)
-euapi.Load(map[string]any{"id": "example_id"}, nil)
+euapi.List(nil, nil)
 
-// euapi.Data() now returns the loaded euapi data
+// euapi.Data() now returns the euapi data from the last list
 // euapi.Match() returns the last match criteria
 ```
 

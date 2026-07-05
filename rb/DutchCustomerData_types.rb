@@ -73,7 +73,7 @@ EuApI = Struct.new(
   keyword_init: true
 )
 
-# Match filter for EuApI#load (any subset of EuApI fields).
+# Request payload for EuApI#load.
 #
 # @!attribute [rw] buyer
 #   @return [String, nil]
@@ -88,7 +88,7 @@ EuApI = Struct.new(
 #   @return [String, nil]
 #
 # @!attribute [rw] id
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] link
 #   @return [String, nil]
@@ -138,7 +138,7 @@ EuApILoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for EuApI#list (any subset of EuApI fields).
+# Request payload for EuApI#list.
 #
 # @!attribute [rw] buyer
 #   @return [String, nil]
@@ -340,7 +340,7 @@ GlobalApI = Struct.new(
   keyword_init: true
 )
 
-# Match filter for GlobalApI#load (any subset of GlobalApI fields).
+# Request payload for GlobalApI#load.
 #
 # @!attribute [rw] addition
 #   @return [String, nil]
@@ -477,7 +477,7 @@ GlobalApILoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for GlobalApI#list (any subset of GlobalApI fields).
+# Request payload for GlobalApI#list.
 #
 # @!attribute [rw] addition
 #   @return [String, nil]
@@ -614,7 +614,7 @@ GlobalApIListMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for GlobalApI#create (any subset of GlobalApI fields).
+# Request payload for GlobalApI#create.
 #
 # @!attribute [rw] addition
 #   @return [String, nil]
@@ -840,7 +840,7 @@ NetherlandsApI = Struct.new(
   keyword_init: true
 )
 
-# Match filter for NetherlandsApI#list (any subset of NetherlandsApI fields).
+# Request payload for NetherlandsApI#list.
 #
 # @!attribute [rw] active
 #   @return [Integer, nil]

@@ -105,21 +105,21 @@ eu_ap_i := client.EuApI(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buyer` | ``$STRING`` | No |  |
-| `buyer_country` | ``$STRING`` | No |  |
-| `contract_nature` | ``$STRING`` | No |  |
-| `html` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$STRING`` | No |  |
-| `notice_type` | ``$STRING`` | No |  |
-| `official_language` | ``$STRING`` | No |  |
-| `pdf` | ``$STRING`` | No |  |
-| `place_of_performance` | ``$STRING`` | No |  |
-| `procedure_type` | ``$STRING`` | No |  |
-| `publication_date` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `vat` | ``$OBJECT`` | No |  |
+| `buyer` | `string` | No |  |
+| `buyer_country` | `string` | No |  |
+| `contract_nature` | `string` | No |  |
+| `html` | `string` | No |  |
+| `id` | `string` | No |  |
+| `link` | `string` | No |  |
+| `notice_type` | `string` | No |  |
+| `official_language` | `string` | No |  |
+| `pdf` | `string` | No |  |
+| `place_of_performance` | `string` | No |  |
+| `procedure_type` | `string` | No |  |
+| `publication_date` | `string` | No |  |
+| `status` | `string` | No |  |
+| `title` | `string` | No |  |
+| `vat` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -173,39 +173,39 @@ global_ap_i := client.GlobalApI(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addition` | ``$STRING`` | No |  |
-| `admin1` | ``$STRING`` | No |  |
-| `admin2` | ``$STRING`` | No |  |
-| `admin3` | ``$STRING`` | No |  |
-| `bic` | ``$OBJECT`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `currency` | ``$OBJECT`` | No |  |
-| `date` | ``$STRING`` | No |  |
-| `dns` | ``$OBJECT`` | No |  |
-| `email` | ``$OBJECT`` | No |  |
-| `found` | ``$INTEGER`` | No |  |
-| `freeformaddress` | ``$STRING`` | No |  |
-| `from_currency` | ``$STRING`` | No |  |
-| `iban` | ``$OBJECT`` | No |  |
-| `ip` | ``$OBJECT`` | No |  |
-| `lat` | ``$NUMBER`` | No |  |
-| `lei` | ``$OBJECT`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `lon` | ``$NUMBER`` | No |  |
-| `municipality` | ``$STRING`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `password` | ``$OBJECT`` | No |  |
-| `phone` | ``$OBJECT`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
-| `postcode` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `province_code` | ``$STRING`` | No |  |
-| `score` | ``$NUMBER`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `street` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$OBJECT`` | No |  |
-| `webrank` | ``$OBJECT`` | No |  |
+| `addition` | `string` | No |  |
+| `admin1` | `string` | No |  |
+| `admin2` | `string` | No |  |
+| `admin3` | `string` | No |  |
+| `bic` | `map[string]any` | No |  |
+| `city` | `string` | No |  |
+| `currency` | `map[string]any` | No |  |
+| `date` | `string` | No |  |
+| `dns` | `map[string]any` | No |  |
+| `email` | `map[string]any` | No |  |
+| `found` | `int` | No |  |
+| `freeformaddress` | `string` | No |  |
+| `from_currency` | `string` | No |  |
+| `iban` | `map[string]any` | No |  |
+| `ip` | `map[string]any` | No |  |
+| `lat` | `float64` | No |  |
+| `lei` | `map[string]any` | No |  |
+| `letter` | `string` | No |  |
+| `lon` | `float64` | No |  |
+| `municipality` | `string` | No |  |
+| `number` | `int` | No |  |
+| `password` | `map[string]any` | No |  |
+| `phone` | `map[string]any` | No |  |
+| `population` | `int` | No |  |
+| `postcode` | `string` | No |  |
+| `province` | `string` | No |  |
+| `province_code` | `string` | No |  |
+| `score` | `float64` | No |  |
+| `status` | `string` | No |  |
+| `street` | `string` | No |  |
+| `type` | `string` | No |  |
+| `url` | `map[string]any` | No |  |
+| `webrank` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -231,7 +231,7 @@ results, err := client.GlobalApI(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GlobalApI(nil).Load(map[string]any{"id": "global_ap_i_id"}, nil)
+result, err := client.GlobalApI(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -268,27 +268,27 @@ netherlands_ap_i := client.NetherlandsApI(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active` | ``$INTEGER`` | No |  |
-| `addition` | ``$STRING`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `coc` | ``$STRING`` | No |  |
-| `construction_year` | ``$INTEGER`` | No |  |
-| `floor_area` | ``$INTEGER`` | No |  |
-| `freeformaddress` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `lat` | ``$NUMBER`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `lon` | ``$NUMBER`` | No |  |
-| `municipality` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `number` | ``$STRING`` | No |  |
-| `postcode` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `province_code` | ``$STRING`` | No |  |
-| `purpose` | ``$STRING`` | No |  |
-| `street` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `vestiging` | ``$STRING`` | No |  |
+| `active` | `int` | No |  |
+| `addition` | `string` | No |  |
+| `city` | `string` | No |  |
+| `coc` | `string` | No |  |
+| `construction_year` | `int` | No |  |
+| `floor_area` | `int` | No |  |
+| `freeformaddress` | `string` | No |  |
+| `id` | `string` | No |  |
+| `lat` | `float64` | No |  |
+| `letter` | `string` | No |  |
+| `lon` | `float64` | No |  |
+| `municipality` | `string` | No |  |
+| `name` | `string` | No |  |
+| `number` | `string` | No |  |
+| `postcode` | `string` | No |  |
+| `province` | `string` | No |  |
+| `province_code` | `string` | No |  |
+| `purpose` | `string` | No |  |
+| `street` | `string` | No |  |
+| `type` | `string` | No |  |
+| `vestiging` | `string` | No |  |
 
 ### Operations
 

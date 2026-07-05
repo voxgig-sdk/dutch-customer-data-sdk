@@ -8,7 +8,7 @@ Complete API reference for the DutchCustomerData Python SDK.
 ### Constructor
 
 ```python
-from dutch-customer-data_sdk import DutchCustomerDataSDK
+from dutchcustomerdata_sdk import DutchCustomerDataSDK
 
 client = DutchCustomerDataSDK(options)
 ```
@@ -95,30 +95,30 @@ eu_ap_i = client.EuApI()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `buyer` | ``$STRING`` | No |  |
-| `buyer_country` | ``$STRING`` | No |  |
-| `contract_nature` | ``$STRING`` | No |  |
-| `html` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$STRING`` | No |  |
-| `notice_type` | ``$STRING`` | No |  |
-| `official_language` | ``$STRING`` | No |  |
-| `pdf` | ``$STRING`` | No |  |
-| `place_of_performance` | ``$STRING`` | No |  |
-| `procedure_type` | ``$STRING`` | No |  |
-| `publication_date` | ``$STRING`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `title` | ``$STRING`` | No |  |
-| `vat` | ``$OBJECT`` | No |  |
+| `buyer` | `str` | No |  |
+| `buyer_country` | `str` | No |  |
+| `contract_nature` | `str` | No |  |
+| `html` | `str` | No |  |
+| `id` | `str` | No |  |
+| `link` | `str` | No |  |
+| `notice_type` | `str` | No |  |
+| `official_language` | `str` | No |  |
+| `pdf` | `str` | No |  |
+| `place_of_performance` | `str` | No |  |
+| `procedure_type` | `str` | No |  |
+| `publication_date` | `str` | No |  |
+| `status` | `str` | No |  |
+| `title` | `str` | No |  |
+| `vat` | `dict` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.EuApI().list({})
+results = client.EuApI().list()
 for eu_ap_i in results:
     print(eu_ap_i)
 ```
@@ -170,39 +170,39 @@ global_ap_i = client.GlobalApI()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addition` | ``$STRING`` | No |  |
-| `admin1` | ``$STRING`` | No |  |
-| `admin2` | ``$STRING`` | No |  |
-| `admin3` | ``$STRING`` | No |  |
-| `bic` | ``$OBJECT`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `currency` | ``$OBJECT`` | No |  |
-| `date` | ``$STRING`` | No |  |
-| `dns` | ``$OBJECT`` | No |  |
-| `email` | ``$OBJECT`` | No |  |
-| `found` | ``$INTEGER`` | No |  |
-| `freeformaddress` | ``$STRING`` | No |  |
-| `from_currency` | ``$STRING`` | No |  |
-| `iban` | ``$OBJECT`` | No |  |
-| `ip` | ``$OBJECT`` | No |  |
-| `lat` | ``$NUMBER`` | No |  |
-| `lei` | ``$OBJECT`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `lon` | ``$NUMBER`` | No |  |
-| `municipality` | ``$STRING`` | No |  |
-| `number` | ``$INTEGER`` | No |  |
-| `password` | ``$OBJECT`` | No |  |
-| `phone` | ``$OBJECT`` | No |  |
-| `population` | ``$INTEGER`` | No |  |
-| `postcode` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `province_code` | ``$STRING`` | No |  |
-| `score` | ``$NUMBER`` | No |  |
-| `status` | ``$STRING`` | No |  |
-| `street` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `url` | ``$OBJECT`` | No |  |
-| `webrank` | ``$OBJECT`` | No |  |
+| `addition` | `str` | No |  |
+| `admin1` | `str` | No |  |
+| `admin2` | `str` | No |  |
+| `admin3` | `str` | No |  |
+| `bic` | `dict` | No |  |
+| `city` | `str` | No |  |
+| `currency` | `dict` | No |  |
+| `date` | `str` | No |  |
+| `dns` | `dict` | No |  |
+| `email` | `dict` | No |  |
+| `found` | `int` | No |  |
+| `freeformaddress` | `str` | No |  |
+| `from_currency` | `str` | No |  |
+| `iban` | `dict` | No |  |
+| `ip` | `dict` | No |  |
+| `lat` | `float` | No |  |
+| `lei` | `dict` | No |  |
+| `letter` | `str` | No |  |
+| `lon` | `float` | No |  |
+| `municipality` | `str` | No |  |
+| `number` | `int` | No |  |
+| `password` | `dict` | No |  |
+| `phone` | `dict` | No |  |
+| `population` | `int` | No |  |
+| `postcode` | `str` | No |  |
+| `province` | `str` | No |  |
+| `province_code` | `str` | No |  |
+| `score` | `float` | No |  |
+| `status` | `str` | No |  |
+| `street` | `str` | No |  |
+| `type` | `str` | No |  |
+| `url` | `dict` | No |  |
+| `webrank` | `dict` | No |  |
 
 ### Operations
 
@@ -215,12 +215,12 @@ result = client.GlobalApI().create({
 })
 ```
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.GlobalApI().list({})
+results = client.GlobalApI().list()
 for global_ap_i in results:
     print(global_ap_i)
 ```
@@ -230,7 +230,7 @@ for global_ap_i in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GlobalApI().load({"id": "global_ap_i_id"})
+result = client.GlobalApI().load()
 ```
 
 ### Common Methods
@@ -272,36 +272,36 @@ netherlands_ap_i = client.NetherlandsApI()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active` | ``$INTEGER`` | No |  |
-| `addition` | ``$STRING`` | No |  |
-| `city` | ``$STRING`` | No |  |
-| `coc` | ``$STRING`` | No |  |
-| `construction_year` | ``$INTEGER`` | No |  |
-| `floor_area` | ``$INTEGER`` | No |  |
-| `freeformaddress` | ``$STRING`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `lat` | ``$NUMBER`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `lon` | ``$NUMBER`` | No |  |
-| `municipality` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `number` | ``$STRING`` | No |  |
-| `postcode` | ``$STRING`` | No |  |
-| `province` | ``$STRING`` | No |  |
-| `province_code` | ``$STRING`` | No |  |
-| `purpose` | ``$STRING`` | No |  |
-| `street` | ``$STRING`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `vestiging` | ``$STRING`` | No |  |
+| `active` | `int` | No |  |
+| `addition` | `str` | No |  |
+| `city` | `str` | No |  |
+| `coc` | `str` | No |  |
+| `construction_year` | `int` | No |  |
+| `floor_area` | `int` | No |  |
+| `freeformaddress` | `str` | No |  |
+| `id` | `str` | No |  |
+| `lat` | `float` | No |  |
+| `letter` | `str` | No |  |
+| `lon` | `float` | No |  |
+| `municipality` | `str` | No |  |
+| `name` | `str` | No |  |
+| `number` | `str` | No |  |
+| `postcode` | `str` | No |  |
+| `province` | `str` | No |  |
+| `province_code` | `str` | No |  |
+| `purpose` | `str` | No |  |
+| `street` | `str` | No |  |
+| `type` | `str` | No |  |
+| `vestiging` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.NetherlandsApI().list({})
+results = client.NetherlandsApI().list()
 for netherlands_ap_i in results:
     print(netherlands_ap_i)
 ```
