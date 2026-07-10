@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -1415,14 +1412,17 @@
           "url": "https://free.bedrijfsdata.nl"
         },
         "description": "Verify and standardize Dutch customer and business data, including addresses, phone numbers, emails, URLs, VAT, IBAN, Chamber of Commerce (KvK) numbers, and postal codes. Forever free (no auth, https/cors enabled) APIs to check and standardize your data.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://free.bedrijfsdata.nl/v1.1"
           }
         ],
+        "summary": "Verify and standardize Dutch customer and business data, including addresses, phone numbers, emails, URLs, VAT, IBAN, Chamber of Commerce (KvK) numbers, and postal codes.",
         "title": "Dutch Customer Data API",
-        "version": "1.1"
+        "version": "1.1",
+        "website": "https://free.bedrijfsdata.nl"
       },
       "option": {},
       "target": {
@@ -1475,6 +1475,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1525,6 +1528,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

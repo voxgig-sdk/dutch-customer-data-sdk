@@ -16,9 +16,9 @@ main: {
           url: "https://free.bedrijfsdata.nl/v1.1"
         }
       ]
+      summary: "Verify and standardize Dutch customer and business data, including addresses, phone numbers, emails, URLs, VAT, IBAN, Chamber of Commerce (KvK) numbers, and postal codes."
       title: "Dutch Customer Data API"
       version: "1.1"
+      website: "https://free.bedrijfsdata.nl"
     }
   }
-}
-

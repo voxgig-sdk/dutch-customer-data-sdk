@@ -98,7 +98,8 @@ same parameters as `Direct()`.
 ## EuApIEntity
 
 ```go
-eu_ap_i := client.EuApI(nil)
+euApI := client.EuApI(nil)
+fmt.Println(euApI.GetName()) // "eu_ap_i"
 ```
 
 ### Fields
@@ -129,6 +130,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.EuApI(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -137,6 +142,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.EuApI(nil).Load(map[string]any{"id": "eu_ap_i_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -166,7 +175,8 @@ Return the entity name.
 ## GlobalApIEntity
 
 ```go
-global_ap_i := client.GlobalApI(nil)
+globalApI := client.GlobalApI(nil)
+fmt.Println(globalApI.GetName()) // "global_ap_i"
 ```
 
 ### Fields
@@ -209,21 +219,16 @@ global_ap_i := client.GlobalApI(nil)
 
 ### Operations
 
-#### `Create(reqdata, ctrl map[string]any) (any, error)`
-
-Create a new entity with the given data.
-
-```go
-result, err := client.GlobalApI(nil).Create(map[string]any{
-}, nil)
-```
-
 #### `List(reqmatch, ctrl map[string]any) (any, error)`
 
 List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.GlobalApI(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -232,6 +237,23 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GlobalApI(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
+#### `Create(reqdata, ctrl map[string]any) (any, error)`
+
+Create a new entity with the given data.
+
+```go
+result, err := client.GlobalApI(nil).Create(map[string]any{
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -261,7 +283,8 @@ Return the entity name.
 ## NetherlandsApIEntity
 
 ```go
-netherlands_ap_i := client.NetherlandsApI(nil)
+netherlandsApI := client.NetherlandsApI(nil)
+fmt.Println(netherlandsApI.GetName()) // "netherlands_ap_i"
 ```
 
 ### Fields
@@ -298,6 +321,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.NetherlandsApI(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

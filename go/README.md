@@ -50,21 +50,21 @@ import (
 func main() {
     client := sdk.New()
 
-    // List euapi records — the value is the array of records itself.
-    euapis, err := client.EuApI(nil).List(nil, nil)
+    // List euApI records — the value is the array of records itself.
+    euApIs, err := client.EuApI(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range euapis.([]any) {
+    for _, item := range euApIs.([]any) {
         fmt.Println(item)
     }
 
-    // Load a single euapi — the value is the loaded record.
-    euapi, err := client.EuApI(nil).Load(map[string]any{"id": "example"}, nil)
+    // Load a single euApI — the value is the loaded record.
+    euApI, err := client.EuApI(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(euapi)
+    fmt.Println(euApI)
 }
 ```
 
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-euapi, err := client.EuApI(nil).List(
+euApI, err := client.EuApI(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(euapi) // the returned mock data
+fmt.Println(euApI) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -259,9 +259,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    euapi, err := client.EuApI(nil).List(map[string]any{/* fields */}, nil)
+    euApI, err := client.EuApI(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // euapi is the returned record
+    // euApI is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -371,7 +371,7 @@ API path: `/bag`
 
 ### EuApI
 
-Create an instance: `eu_ap_i := client.EuApI(nil)`
+Create an instance: `euApI := client.EuApI(nil)`
 
 #### Operations
 
@@ -403,35 +403,35 @@ Create an instance: `eu_ap_i := client.EuApI(nil)`
 #### Example: Load
 
 ```go
-eu_ap_i, err := client.EuApI(nil).Load(map[string]any{"id": "eu_ap_i_id"}, nil)
+euApI, err := client.EuApI(nil).Load(map[string]any{"id": "eu_ap_i_id"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(eu_ap_i) // the loaded record
+fmt.Println(euApI) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-eu_ap_is, err := client.EuApI(nil).List(nil, nil)
+euApIs, err := client.EuApI(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(eu_ap_is) // the array of records
+fmt.Println(euApIs) // the array of records
 ```
 
 
 ### GlobalApI
 
-Create an instance: `global_ap_i := client.GlobalApI(nil)`
+Create an instance: `globalApI := client.GlobalApI(nil)`
 
 #### Operations
 
 | Method | Description |
 | --- | --- |
-| `Create(data, ctrl)` | Create a new entity with the given data. |
 | `List(match, ctrl)` | List entities matching the criteria. |
 | `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
 
 #### Fields
 
@@ -474,21 +474,21 @@ Create an instance: `global_ap_i := client.GlobalApI(nil)`
 #### Example: Load
 
 ```go
-global_ap_i, err := client.GlobalApI(nil).Load(nil, nil)
+globalApI, err := client.GlobalApI(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(global_ap_i) // the loaded record
+fmt.Println(globalApI) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-global_ap_is, err := client.GlobalApI(nil).List(nil, nil)
+globalApIs, err := client.GlobalApI(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(global_ap_is) // the array of records
+fmt.Println(globalApIs) // the array of records
 ```
 
 #### Example: Create
@@ -496,12 +496,16 @@ fmt.Println(global_ap_is) // the array of records
 ```go
 result, err := client.GlobalApI(nil).Create(map[string]any{
 }, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 
 ### NetherlandsApI
 
-Create an instance: `netherlands_ap_i := client.NetherlandsApI(nil)`
+Create an instance: `netherlandsApI := client.NetherlandsApI(nil)`
 
 #### Operations
 
@@ -538,11 +542,11 @@ Create an instance: `netherlands_ap_i := client.NetherlandsApI(nil)`
 #### Example: List
 
 ```go
-netherlands_ap_is, err := client.NetherlandsApI(nil).List(nil, nil)
+netherlandsApIs, err := client.NetherlandsApI(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(netherlands_ap_is) // the array of records
+fmt.Println(netherlandsApIs) // the array of records
 ```
 
 
