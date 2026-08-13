@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import DutchCustomerDataSDK
-from core.error import DutchCustomerDataError
-from core.result import DutchCustomerDataResult
-from core.response import DutchCustomerDataResponse
-from core.spec import DutchCustomerDataSpec
-from feature.base_feature import DutchCustomerDataBaseFeature
+from projectname_sdk.core.error import DutchCustomerDataError
+from projectname_sdk.core.result import DutchCustomerDataResult
+from projectname_sdk.core.response import DutchCustomerDataResponse
+from projectname_sdk.core.spec import DutchCustomerDataSpec
+from projectname_sdk.feature.base_feature import DutchCustomerDataBaseFeature
 
 
 def _client():

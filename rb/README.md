@@ -37,7 +37,7 @@ begin
   # list returns an Array of EuApI records — iterate directly.
   euapis = client.EuApI.list
   euapis.each do |item|
-    puts "#{item["id"]} #{item["buyer"]}"
+    puts "#{item["id"]} #{item["active"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare EuApI record (raises on error).
+  # load returns the ENTITY — call data_get for the EuApI record (raises on error).
   euapi = client.EuApI.load({ "id" => "example_id" })
   puts euapi
 rescue => err
@@ -134,7 +134,8 @@ client = DutchCustomerDataSDK.test({
   "entity" => { "euapi" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 euapi = client.EuApI.list()
 puts euapi
 ```
@@ -255,19 +256,25 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
+| `active` |  |
+| `address` |  |
 | `buyer` |  |
 | `buyer_country` |  |
+| `city` |  |
 | `contract_nature` |  |
+| `country` |  |
 | `html` |  |
 | `id` |  |
 | `link` |  |
+| `name` |  |
 | `notice_type` |  |
 | `official_language` |  |
 | `pdf` |  |
 | `place_of_performance` |  |
+| `postcode` |  |
 | `procedure_type` |  |
 | `publication_date` |  |
-| `status` |  |
+| `response_date` |  |
 | `title` |  |
 | `vat` |  |
 
@@ -280,38 +287,97 @@ API path: `/tender`
 | Field | Description |
 | --- | --- |
 | `addition` |  |
+| `address` |  |
 | `admin1` |  |
 | `admin2` |  |
 | `admin3` |  |
+| `bank` |  |
 | `bic` |  |
+| `browser` |  |
+| `builtwith` |  |
+| `carrier` |  |
 | `city` |  |
-| `currency` |  |
-| `date` |  |
-| `dns` |  |
+| `cloudflare` |  |
+| `commoncrawl` |  |
+| `content_length` |  |
+| `content_type` |  |
+| `country` |  |
+| `country_code` |  |
+| `crux` |  |
+| `device_family` |  |
+| `device_name` |  |
+| `device_type` |  |
+| `disposable` |  |
+| `dns_a` |  |
+| `dns_mx` |  |
+| `dns_ns` |  |
+| `dns_soa` |  |
+| `dns_txt` |  |
+| `dns_www_a` |  |
+| `dnsserver` |  |
+| `domain` |  |
+| `domcop` |  |
 | `email` |  |
 | `found` |  |
+| `free` |  |
 | `freeformaddress` |  |
-| `from_currency` |  |
+| `host` |  |
+| `host_type` |  |
+| `hostio` |  |
+| `http_code` |  |
 | `iban` |  |
+| `iban_human` |  |
+| `int` |  |
+| `international` |  |
 | `ip` |  |
+| `ipint` |  |
+| `ismobile` |  |
 | `lat` |  |
 | `lei` |  |
 | `letter` |  |
+| `local_id` |  |
 | `lon` |  |
+| `mailserver` |  |
+| `majestic` |  |
+| `message` |  |
 | `municipality` |  |
+| `mx_host` |  |
+| `mx_ip` |  |
+| `name` |  |
+| `national` |  |
 | `number` |  |
-| `password` |  |
-| `phone` |  |
+| `ocid` |  |
+| `pagerank` |  |
+| `platform` |  |
 | `population` |  |
 | `postcode` |  |
 | `province` |  |
 | `province_code` |  |
+| `redirect_count` |  |
+| `region` |  |
+| `register_id` |  |
+| `renewal_date` |  |
 | `score` |  |
+| `sepa` |  |
+| `spf` |  |
 | `status` |  |
 | `street` |  |
+| `success` |  |
+| `swift` |  |
+| `tranco` |  |
 | `type` |  |
+| `umbrella` |  |
 | `url` |  |
+| `user` |  |
+| `user_agent` |  |
+| `valid` |  |
+| `verified` |  |
+| `verified_checksum` |  |
 | `webrank` |  |
+| `wrong_email` |  |
+| `wrong_format` |  |
+| `wrong_password` |  |
+| `wrong_phone` |  |
 
 Operations: Create, List, Load.
 
@@ -367,26 +433,32 @@ Create an instance: `eu_ap_i = client.EuApI`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `active` | `Integer` |  |
+| `address` | `String` |  |
 | `buyer` | `String` |  |
 | `buyer_country` | `String` |  |
+| `city` | `String` |  |
 | `contract_nature` | `String` |  |
+| `country` | `String` |  |
 | `html` | `String` |  |
 | `id` | `String` |  |
 | `link` | `String` |  |
+| `name` | `String` |  |
 | `notice_type` | `String` |  |
 | `official_language` | `String` |  |
 | `pdf` | `String` |  |
 | `place_of_performance` | `String` |  |
+| `postcode` | `String` |  |
 | `procedure_type` | `String` |  |
 | `publication_date` | `String` |  |
-| `status` | `String` |  |
+| `response_date` | `String` |  |
 | `title` | `String` |  |
-| `vat` | `Hash` |  |
+| `vat` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare EuApI record (raises on error).
+# load returns the ENTITY — call data_get for the EuApI record (raises on error).
 eu_ap_i = client.EuApI.load({ "id" => "eu_ap_i_id" })
 ```
 
@@ -415,43 +487,102 @@ Create an instance: `global_ap_i = client.GlobalApI`
 | Field | Type | Description |
 | --- | --- | --- |
 | `addition` | `String` |  |
+| `address` | `String` |  |
 | `admin1` | `String` |  |
 | `admin2` | `String` |  |
 | `admin3` | `String` |  |
-| `bic` | `Hash` |  |
+| `bank` | `String` |  |
+| `bic` | `String` |  |
+| `browser` | `String` |  |
+| `builtwith` | `Integer` |  |
+| `carrier` | `String` |  |
 | `city` | `String` |  |
-| `currency` | `Hash` |  |
-| `date` | `String` |  |
-| `dns` | `Hash` |  |
-| `email` | `Hash` |  |
+| `cloudflare` | `Integer` |  |
+| `commoncrawl` | `Integer` |  |
+| `content_length` | `Integer` |  |
+| `content_type` | `String` |  |
+| `country` | `String` |  |
+| `country_code` | `String` |  |
+| `crux` | `Integer` |  |
+| `device_family` | `String` |  |
+| `device_name` | `String` |  |
+| `device_type` | `String` |  |
+| `disposable` | `Integer` |  |
+| `dns_a` | `Array` |  |
+| `dns_mx` | `Array` |  |
+| `dns_ns` | `Array` |  |
+| `dns_soa` | `Array` |  |
+| `dns_txt` | `Array` |  |
+| `dns_www_a` | `Array` |  |
+| `dnsserver` | `String` |  |
+| `domain` | `String` |  |
+| `domcop` | `Integer` |  |
+| `email` | `String` |  |
 | `found` | `Integer` |  |
+| `free` | `Integer` |  |
 | `freeformaddress` | `String` |  |
-| `from_currency` | `String` |  |
-| `iban` | `Hash` |  |
-| `ip` | `Hash` |  |
+| `host` | `String` |  |
+| `host_type` | `String` |  |
+| `hostio` | `Integer` |  |
+| `http_code` | `Integer` |  |
+| `iban` | `String` |  |
+| `iban_human` | `String` |  |
+| `int` | `String` |  |
+| `international` | `String` |  |
+| `ip` | `String` |  |
+| `ipint` | `Integer` |  |
+| `ismobile` | `Integer` |  |
 | `lat` | `Float` |  |
-| `lei` | `Hash` |  |
+| `lei` | `String` |  |
 | `letter` | `String` |  |
+| `local_id` | `String` |  |
 | `lon` | `Float` |  |
+| `mailserver` | `String` |  |
+| `majestic` | `Integer` |  |
+| `message` | `String` |  |
 | `municipality` | `String` |  |
+| `mx_host` | `String` |  |
+| `mx_ip` | `String` |  |
+| `name` | `String` |  |
+| `national` | `String` |  |
 | `number` | `Integer` |  |
-| `password` | `Hash` |  |
-| `phone` | `Hash` |  |
+| `ocid` | `String` |  |
+| `pagerank` | `Integer` |  |
+| `platform` | `String` |  |
 | `population` | `Integer` |  |
 | `postcode` | `String` |  |
 | `province` | `String` |  |
 | `province_code` | `String` |  |
+| `redirect_count` | `Integer` |  |
+| `region` | `String` |  |
+| `register_id` | `String` |  |
+| `renewal_date` | `String` |  |
 | `score` | `Float` |  |
+| `sepa` | `Integer` |  |
+| `spf` | `String` |  |
 | `status` | `String` |  |
 | `street` | `String` |  |
+| `success` | `Integer` |  |
+| `swift` | `Integer` |  |
+| `tranco` | `Integer` |  |
 | `type` | `String` |  |
-| `url` | `Hash` |  |
-| `webrank` | `Hash` |  |
+| `umbrella` | `Integer` |  |
+| `url` | `String` |  |
+| `user` | `String` |  |
+| `user_agent` | `String` |  |
+| `valid` | `Integer` |  |
+| `verified` | `Boolean` |  |
+| `verified_checksum` | `Boolean` |  |
+| `webrank` | `Integer` |  |
+| `wrong_email` | `Integer` |  |
+| `wrong_format` | `Integer` |  |
+| `wrong_password` | `Integer` |  |
+| `wrong_phone` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare GlobalApI record (raises on error).
+# load returns the ENTITY — call data_get for the GlobalApI record (raises on error).
 global_ap_i = client.GlobalApI.load()
 ```
 

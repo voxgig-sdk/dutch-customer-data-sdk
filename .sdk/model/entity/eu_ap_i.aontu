@@ -6,6 +6,16 @@ main: kit: entity: eu_ap_i: {
 
   fields: [
     {
+      name: "active"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "address"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "buyer"
       req: false
       type: "`$STRING`"
@@ -16,7 +26,17 @@ main: kit: entity: eu_ap_i: {
       type: "`$STRING`"
     }
     {
+      name: "city"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "contract_nature"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "country"
       req: false
       type: "`$STRING`"
     }
@@ -32,6 +52,11 @@ main: kit: entity: eu_ap_i: {
     }
     {
       name: "link"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
       req: false
       type: "`$STRING`"
     }
@@ -56,6 +81,11 @@ main: kit: entity: eu_ap_i: {
       type: "`$STRING`"
     }
     {
+      name: "postcode"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "procedure_type"
       req: false
       type: "`$STRING`"
@@ -66,7 +96,7 @@ main: kit: entity: eu_ap_i: {
       type: "`$STRING`"
     }
     {
-      name: "status"
+      name: "response_date"
       req: false
       type: "`$STRING`"
     }
@@ -78,7 +108,7 @@ main: kit: entity: eu_ap_i: {
     {
       name: "vat"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
     }
   ]
 
@@ -117,7 +147,7 @@ main: kit: entity: eu_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.tender`"
           }
         }
       ]
@@ -150,7 +180,7 @@ main: kit: entity: eu_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.vat`"
           }
         }
       ]

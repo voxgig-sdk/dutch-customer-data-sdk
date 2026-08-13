@@ -11,6 +11,11 @@ main: kit: entity: global_ap_i: {
       type: "`$STRING`"
     }
     {
+      name: "address"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "admin1"
       req: false
       type: "`$STRING`"
@@ -26,9 +31,29 @@ main: kit: entity: global_ap_i: {
       type: "`$STRING`"
     }
     {
+      name: "bank"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "bic"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
+    }
+    {
+      name: "browser"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "builtwith"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "carrier"
+      req: false
+      type: "`$STRING`"
     }
     {
       name: "city"
@@ -36,27 +61,117 @@ main: kit: entity: global_ap_i: {
       type: "`$STRING`"
     }
     {
-      name: "currency"
+      name: "cloudflare"
       req: false
-      type: "`$OBJECT`"
+      type: "`$INTEGER`"
     }
     {
-      name: "date"
+      name: "commoncrawl"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "content_length"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "content_type"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "dns"
+      name: "country"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
+    }
+    {
+      name: "country_code"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "crux"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "device_family"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "device_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "device_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "disposable"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "dns_a"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "dns_mx"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "dns_ns"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "dns_soa"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "dns_txt"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "dns_www_a"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "dnsserver"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "domain"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "domcop"
+      req: false
+      type: "`$INTEGER`"
     }
     {
       name: "email"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
     }
     {
       name: "found"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "free"
       req: false
       type: "`$INTEGER`"
     }
@@ -66,19 +181,59 @@ main: kit: entity: global_ap_i: {
       type: "`$STRING`"
     }
     {
-      name: "from_currency"
+      name: "host"
       req: false
       type: "`$STRING`"
     }
     {
+      name: "host_type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "hostio"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "http_code"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
       name: "iban"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
+    }
+    {
+      name: "iban_human"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "int"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "international"
+      req: false
+      type: "`$STRING`"
     }
     {
       name: "ip"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
+    }
+    {
+      name: "ipint"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ismobile"
+      req: false
+      type: "`$INTEGER`"
     }
     {
       name: "lat"
@@ -88,10 +243,15 @@ main: kit: entity: global_ap_i: {
     {
       name: "lei"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
     }
     {
       name: "letter"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "local_id"
       req: false
       type: "`$STRING`"
     }
@@ -101,7 +261,42 @@ main: kit: entity: global_ap_i: {
       type: "`$NUMBER`"
     }
     {
+      name: "mailserver"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "majestic"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "message"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "municipality"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mx_host"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mx_ip"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "national"
       req: false
       type: "`$STRING`"
     }
@@ -111,14 +306,19 @@ main: kit: entity: global_ap_i: {
       type: "`$INTEGER`"
     }
     {
-      name: "password"
+      name: "ocid"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
     }
     {
-      name: "phone"
+      name: "pagerank"
       req: false
-      type: "`$OBJECT`"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "platform"
+      req: false
+      type: "`$STRING`"
     }
     {
       name: "population"
@@ -141,9 +341,39 @@ main: kit: entity: global_ap_i: {
       type: "`$STRING`"
     }
     {
+      name: "redirect_count"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "region"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "register_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "renewal_date"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "score"
       req: false
       type: "`$NUMBER`"
+    }
+    {
+      name: "sepa"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "spf"
+      req: false
+      type: "`$STRING`"
     }
     {
       name: "status"
@@ -156,19 +386,84 @@ main: kit: entity: global_ap_i: {
       type: "`$STRING`"
     }
     {
+      name: "success"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "swift"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "tranco"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
       name: "type"
       req: false
       type: "`$STRING`"
     }
     {
+      name: "umbrella"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
       name: "url"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
+    }
+    {
+      name: "user"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "user_agent"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "valid"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "verified"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "verified_checksum"
+      req: false
+      type: "`$BOOLEAN`"
     }
     {
       name: "webrank"
       req: false
-      type: "`$OBJECT`"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "wrong_email"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "wrong_format"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "wrong_password"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "wrong_phone"
+      req: false
+      type: "`$INTEGER`"
     }
   ]
 
@@ -185,7 +480,7 @@ main: kit: entity: global_ap_i: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.password`"
           }
         }
       ]
@@ -235,7 +530,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.city`"
           }
         }
         {
@@ -272,7 +567,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.postcode`"
           }
         }
         {
@@ -309,7 +604,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.geocoding`"
           }
         }
       ]
@@ -360,7 +655,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.lei`"
           }
         }
         {
@@ -405,7 +700,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.password`"
           }
         }
         {
@@ -442,7 +737,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.phone`"
           }
         }
         {
@@ -470,7 +765,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.bic`"
           }
         }
         {
@@ -498,7 +793,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.currency`"
           }
         }
         {
@@ -526,7 +821,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.dns`"
           }
         }
         {
@@ -554,7 +849,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.webrank`"
           }
         }
         {
@@ -582,7 +877,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.email`"
           }
         }
         {
@@ -610,7 +905,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.iban`"
           }
         }
         {
@@ -637,7 +932,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.ip`"
           }
         }
         {
@@ -665,7 +960,7 @@ main: kit: entity: global_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.url`"
           }
         }
       ]

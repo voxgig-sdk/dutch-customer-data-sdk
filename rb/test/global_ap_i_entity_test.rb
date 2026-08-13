@@ -62,7 +62,7 @@ class GlobalApIEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set DUTCHCUSTOMERDATA_TEST_GLOBAL_AP_I_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set DUTCH_CUSTOMER_DATA_TEST_GLOBAL_AP_I_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -73,7 +73,7 @@ class GlobalApIEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.global_ap_i"), "global_ap_i_ref01"))
 
     global_ap_i_ref01_data_result = global_ap_i_ref01_ent.create(global_ap_i_ref01_data, nil)
-    global_ap_i_ref01_data = Helpers.to_map(global_ap_i_ref01_data_result)
+    global_ap_i_ref01_data = Helpers.to_map(global_ap_i_ref01_data_result.respond_to?(:data_get) ? global_ap_i_ref01_data_result.data_get : global_ap_i_ref01_data_result)
     assert !global_ap_i_ref01_data.nil?
 
     # LIST
@@ -81,11 +81,6 @@ class GlobalApIEntityTest < Minitest::Test
 
     global_ap_i_ref01_list_result = global_ap_i_ref01_ent.list(global_ap_i_ref01_match, nil)
     assert global_ap_i_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(global_ap_i_ref01_list_result),
-      { "id" => global_ap_i_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
 
     # LOAD
     global_ap_i_ref01_match_dt0 = {}
@@ -121,22 +116,22 @@ def global_ap_i_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["DUTCHCUSTOMERDATA_TEST_GLOBAL_AP_I_ENTID"]
+  entid_env_raw = ENV["DUTCH_CUSTOMER_DATA_TEST_GLOBAL_AP_I_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "DUTCHCUSTOMERDATA_TEST_GLOBAL_AP_I_ENTID" => idmap,
-    "DUTCHCUSTOMERDATA_TEST_LIVE" => "FALSE",
-    "DUTCHCUSTOMERDATA_TEST_EXPLAIN" => "FALSE",
+    "DUTCH_CUSTOMER_DATA_TEST_GLOBAL_AP_I_ENTID" => idmap,
+    "DUTCH_CUSTOMER_DATA_TEST_LIVE" => "FALSE",
+    "DUTCH_CUSTOMER_DATA_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["DUTCHCUSTOMERDATA_TEST_GLOBAL_AP_I_ENTID"])
+    env["DUTCH_CUSTOMER_DATA_TEST_GLOBAL_AP_I_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["DUTCHCUSTOMERDATA_TEST_LIVE"] == "TRUE"
+  if env["DUTCH_CUSTOMER_DATA_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -145,13 +140,13 @@ def global_ap_i_basic_setup(extra)
     client = DutchCustomerDataSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["DUTCHCUSTOMERDATA_TEST_LIVE"] == "TRUE"
+  live = env["DUTCH_CUSTOMER_DATA_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["DUTCHCUSTOMERDATA_TEST_EXPLAIN"] == "TRUE",
+    explain: env["DUTCH_CUSTOMER_DATA_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

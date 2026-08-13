@@ -165,7 +165,7 @@ main: kit: entity: netherlands_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.bag`"
           }
         }
         {
@@ -193,7 +193,7 @@ main: kit: entity: netherlands_ap_i: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.kvk`"
           }
         }
       ]

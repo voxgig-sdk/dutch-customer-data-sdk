@@ -5,6 +5,10 @@
       "desc": ""
     },
     "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
       "config": {
         "docs_order": [
           "ts",
@@ -18,6 +22,7 @@
           "content-type": "application/json"
         }
       },
+      "contributor": {},
       "entity": {
         "eu_ap_i": {
           "active": true,
@@ -25,6 +30,18 @@
             "field": {}
           },
           "fields": [
+            {
+              "active": true,
+              "name": "active",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "address",
+              "req": false,
+              "type": "`$STRING`"
+            },
             {
               "active": true,
               "name": "buyer",
@@ -39,7 +56,19 @@
             },
             {
               "active": true,
+              "name": "city",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "contract_nature",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "country",
               "req": false,
               "type": "`$STRING`"
             },
@@ -58,6 +87,12 @@
             {
               "active": true,
               "name": "link",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "name",
               "req": false,
               "type": "`$STRING`"
             },
@@ -87,6 +122,12 @@
             },
             {
               "active": true,
+              "name": "postcode",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "procedure_type",
               "req": false,
               "type": "`$STRING`"
@@ -99,7 +140,7 @@
             },
             {
               "active": true,
-              "name": "status",
+              "name": "response_date",
               "req": false,
               "type": "`$STRING`"
             },
@@ -113,7 +154,7 @@
               "active": true,
               "name": "vat",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$STRING`"
             }
           ],
           "id": {
@@ -141,6 +182,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/tender",
                   "parts": [
@@ -153,7 +195,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.tender`"
                   }
                 }
               ]
@@ -177,6 +219,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/vat",
                   "parts": [
@@ -189,7 +232,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.vat`"
                   }
                 }
               ]
@@ -213,6 +256,12 @@
             },
             {
               "active": true,
+              "name": "address",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "admin1",
               "req": false,
               "type": "`$STRING`"
@@ -231,9 +280,33 @@
             },
             {
               "active": true,
+              "name": "bank",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "bic",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "browser",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "builtwith",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "carrier",
+              "req": false,
+              "type": "`$STRING`"
             },
             {
               "active": true,
@@ -243,31 +316,139 @@
             },
             {
               "active": true,
-              "name": "currency",
+              "name": "cloudflare",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$INTEGER`"
             },
             {
               "active": true,
-              "name": "date",
+              "name": "commoncrawl",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "content_length",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "content_type",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "dns",
+              "name": "country",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "country_code",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "crux",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "device_family",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "device_name",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "device_type",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "disposable",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "dns_a",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "dns_mx",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "dns_ns",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "dns_soa",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "dns_txt",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "dns_www_a",
+              "req": false,
+              "type": "`$ARRAY`"
+            },
+            {
+              "active": true,
+              "name": "dnsserver",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "domain",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "domcop",
+              "req": false,
+              "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "email",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "found",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "free",
               "req": false,
               "type": "`$INTEGER`"
             },
@@ -279,21 +460,69 @@
             },
             {
               "active": true,
-              "name": "from_currency",
+              "name": "host",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "name": "host_type",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "hostio",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "http_code",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
               "name": "iban",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "iban_human",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "int",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "international",
+              "req": false,
+              "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "ip",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "ipint",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "ismobile",
+              "req": false,
+              "type": "`$INTEGER`"
             },
             {
               "active": true,
@@ -305,11 +534,17 @@
               "active": true,
               "name": "lei",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "letter",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "local_id",
               "req": false,
               "type": "`$STRING`"
             },
@@ -321,7 +556,49 @@
             },
             {
               "active": true,
+              "name": "mailserver",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "majestic",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "message",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "municipality",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "mx_host",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "mx_ip",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "name",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "national",
               "req": false,
               "type": "`$STRING`"
             },
@@ -333,15 +610,21 @@
             },
             {
               "active": true,
-              "name": "password",
+              "name": "ocid",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$STRING`"
             },
             {
               "active": true,
-              "name": "phone",
+              "name": "pagerank",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "platform",
+              "req": false,
+              "type": "`$STRING`"
             },
             {
               "active": true,
@@ -369,9 +652,45 @@
             },
             {
               "active": true,
+              "name": "redirect_count",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "region",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "register_id",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "renewal_date",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
               "name": "score",
               "req": false,
               "type": "`$NUMBER`"
+            },
+            {
+              "active": true,
+              "name": "sepa",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "spf",
+              "req": false,
+              "type": "`$STRING`"
             },
             {
               "active": true,
@@ -387,21 +706,99 @@
             },
             {
               "active": true,
+              "name": "success",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "swift",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "tranco",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
               "name": "type",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "name": "umbrella",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
               "name": "url",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "user",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "user_agent",
+              "req": false,
+              "type": "`$STRING`"
+            },
+            {
+              "active": true,
+              "name": "valid",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "verified",
+              "req": false,
+              "type": "`$BOOLEAN`"
+            },
+            {
+              "active": true,
+              "name": "verified_checksum",
+              "req": false,
+              "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "webrank",
               "req": false,
-              "type": "`$OBJECT`"
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "wrong_email",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "wrong_format",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "wrong_password",
+              "req": false,
+              "type": "`$INTEGER`"
+            },
+            {
+              "active": true,
+              "name": "wrong_phone",
+              "req": false,
+              "type": "`$INTEGER`"
             }
           ],
           "name": "global_ap_i",
@@ -413,6 +810,7 @@
                 {
                   "active": true,
                   "args": {},
+                  "kind": "http",
                   "method": "POST",
                   "orig": "/password",
                   "parts": [
@@ -421,7 +819,7 @@
                   "select": {},
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.password`"
                   }
                 }
               ]
@@ -462,6 +860,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/city",
                   "parts": [
@@ -476,7 +875,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.city`"
                   }
                 },
                 {
@@ -503,6 +902,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/postcode",
                   "parts": [
@@ -516,7 +916,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.postcode`"
                   }
                 },
                 {
@@ -543,6 +943,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/geocoding",
                   "parts": [
@@ -556,7 +957,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.geocoding`"
                   }
                 }
               ]
@@ -598,6 +999,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/lei",
                   "parts": [
@@ -612,7 +1014,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.lei`"
                   }
                 },
                 {
@@ -647,6 +1049,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/password",
                   "parts": [
@@ -661,7 +1064,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.password`"
                   }
                 },
                 {
@@ -688,6 +1091,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/phone",
                   "parts": [
@@ -701,7 +1105,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.phone`"
                   }
                 },
                 {
@@ -719,6 +1123,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/bic",
                   "parts": [
@@ -731,7 +1136,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.bic`"
                   }
                 },
                 {
@@ -749,6 +1154,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/currency",
                   "parts": [
@@ -761,7 +1167,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.currency`"
                   }
                 },
                 {
@@ -779,6 +1185,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/dns",
                   "parts": [
@@ -791,7 +1198,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.dns`"
                   }
                 },
                 {
@@ -809,6 +1216,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/webrank",
                   "parts": [
@@ -821,7 +1229,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.webrank`"
                   }
                 },
                 {
@@ -839,6 +1247,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/email",
                   "parts": [
@@ -851,7 +1260,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.email`"
                   }
                 },
                 {
@@ -869,6 +1278,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/iban",
                   "parts": [
@@ -881,7 +1291,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.iban`"
                   }
                 },
                 {
@@ -898,6 +1308,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/ip",
                   "parts": [
@@ -910,7 +1321,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.ip`"
                   }
                 },
                 {
@@ -928,6 +1339,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/url",
                   "parts": [
@@ -940,7 +1352,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.url`"
                   }
                 }
               ]
@@ -1126,6 +1538,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/bag",
                   "parts": [
@@ -1140,7 +1553,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.bag`"
                   }
                 },
                 {
@@ -1158,6 +1571,7 @@
                       }
                     ]
                   },
+                  "kind": "http",
                   "method": "GET",
                   "orig": "/kvk",
                   "parts": [
@@ -1170,7 +1584,7 @@
                   },
                   "transform": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.kvk`"
                   }
                 }
               ]
@@ -1425,18 +1839,41 @@
         "website": "https://free.bedrijfsdata.nl"
       },
       "option": {},
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
       "target": {
         "go": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
           "module": {
-            "name": "dutch-customer-data"
+            "goversion": "",
+            "name": "dutch-customer-data",
+            "package": "",
+            "path": ""
           },
           "name": "go",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1458,22 +1895,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Golang"
         },
         "go-cli": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "dutch-customer-data"
+            "goversion": "",
+            "name": "dutch-customer-data",
+            "package": "",
+            "path": ""
           },
           "name": "go-cli",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1512,21 +1967,39 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go CLI"
         },
         "go-mcp": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "dutch-customer-data"
+            "goversion": "",
+            "name": "dutch-customer-data",
+            "package": "",
+            "path": ""
           },
           "name": "go-mcp",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "phase": {
             "agentguide": {
               "active": false
@@ -1565,12 +2038,17 @@
                 "recipe": "github"
               },
               "via": "root"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "Go MCP server"
         },
         "lua": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "--"
           },
@@ -1582,10 +2060,23 @@
             }
           },
           "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "dutch-customer-data"
+            "goversion": "",
+            "name": "dutch-customer-data",
+            "package": "",
+            "path": ""
           },
           "name": "lua",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1607,22 +2098,40 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Lua"
         },
         "php": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "//"
           },
           "deps": {},
           "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "dutch-customer-data"
+            "goversion": "",
+            "name": "dutch-customer-data",
+            "package": "",
+            "path": ""
           },
           "name": "php",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1644,13 +2153,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "PHP"
         },
         "py": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1662,10 +2176,23 @@
             }
           },
           "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "dutch-customer-data"
+            "goversion": "",
+            "name": "dutch-customer-data",
+            "package": "",
+            "path": ""
           },
           "name": "py",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1687,13 +2214,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Python"
         },
         "rb": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "comment": {
             "line": "#"
           },
@@ -1710,10 +2242,23 @@
             }
           },
           "ext": "rb",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "dutch-customer-data"
+            "goversion": "",
+            "name": "dutch-customer-data",
+            "package": "",
+            "path": ""
           },
           "name": "rb",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1735,13 +2280,18 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "srcfeature": false,
           "title": "Ruby"
         },
         "ts": {
           "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "comment": {
             "line": "//"
@@ -1764,10 +2314,23 @@
             }
           },
           "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
           "module": {
-            "name": "dutch-customer-data"
+            "goversion": "",
+            "name": "dutch-customer-data",
+            "package": "",
+            "path": ""
           },
           "name": "ts",
+          "output": {
+            "adopt": false,
+            "path": "",
+            "repo": "",
+            "sdkrel": ""
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1789,9 +2352,17 @@
                 "recipe": "github"
               },
               "via": "port"
-            }
+            },
+            "version": "0.0.1"
           },
           "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": false
         }
       }
     }

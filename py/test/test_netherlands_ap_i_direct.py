@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from dutchcustomerdata_sdk.utility.voxgig_struct import voxgig_struct as vs
 from dutchcustomerdata_sdk import DutchCustomerDataSDK
-from core import helpers
+from dutchcustomerdata_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _netherlands_ap_i_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "DUTCHCUSTOMERDATA_TEST_NETHERLANDS_AP_I_ENTID": {},
-        "DUTCHCUSTOMERDATA_TEST_LIVE": "FALSE",
+        "DUTCH_CUSTOMER_DATA_TEST_NETHERLANDS_AP_I_ENTID": {},
+        "DUTCH_CUSTOMER_DATA_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("DUTCHCUSTOMERDATA_TEST_LIVE") == "TRUE"
+    live = env.get("DUTCH_CUSTOMER_DATA_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

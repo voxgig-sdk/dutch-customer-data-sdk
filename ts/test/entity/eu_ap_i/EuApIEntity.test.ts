@@ -26,8 +26,8 @@ import {
 describe('EuApIEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when DUTCHCUSTOMERDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('DUTCHCUSTOMERDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when DUTCH_CUSTOMER_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('DUTCH_CUSTOMER_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = DutchCustomerDataSDK.test()
@@ -63,13 +63,13 @@ describe('EuApIEntity', async () => {
     const eu_ap_i_ref01_ent = client.EuApI()
     const eu_ap_i_ref01_match: any = {}
 
-    const eu_ap_i_ref01_list = await eu_ap_i_ref01_ent.list(eu_ap_i_ref01_match)
+    const eu_ap_i_ref01_list = (await eu_ap_i_ref01_ent.list(eu_ap_i_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const eu_ap_i_ref01_match_dt0: any = {}
     eu_ap_i_ref01_match_dt0.id = eu_ap_i_ref01_data.id
-    const eu_ap_i_ref01_data_dt0 = await eu_ap_i_ref01_ent.load(eu_ap_i_ref01_match_dt0)
+    const eu_ap_i_ref01_data_dt0 = (await eu_ap_i_ref01_ent.load(eu_ap_i_ref01_match_dt0)).data()
     assert(eu_ap_i_ref01_data_dt0.id === eu_ap_i_ref01_data.id)
 
 

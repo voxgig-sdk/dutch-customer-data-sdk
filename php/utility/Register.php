@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ DutchCustomerDataUtility::setRegistrar(function (DutchCustomerDataUtility $u): v
     $u->prepare_params = [DutchCustomerDataPrepareParams::class, 'call'];
     $u->prepare_path = [DutchCustomerDataPreparePath::class, 'call'];
     $u->prepare_query = [DutchCustomerDataPrepareQuery::class, 'call'];
+    $u->graphql_body = [DutchCustomerDataGraphql::class, 'body'];
+    $u->graphql_errors = [DutchCustomerDataGraphql::class, 'errors'];
     $u->result_basic = [DutchCustomerDataResultBasic::class, 'call'];
     $u->result_body = [DutchCustomerDataResultBody::class, 'call'];
     $u->result_headers = [DutchCustomerDataResultHeaders::class, 'call'];

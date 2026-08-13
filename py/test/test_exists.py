@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# DutchCustomerData SDK exists test
 
 import pytest
 from dutchcustomerdata_sdk import DutchCustomerDataSDK

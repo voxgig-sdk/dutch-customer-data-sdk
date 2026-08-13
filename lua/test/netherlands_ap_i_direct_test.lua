@@ -61,11 +61,11 @@ function netherlands_ap_i_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["DUTCHCUSTOMERDATA_TEST_NETHERLANDS_AP_I_ENTID"] = {},
-    ["DUTCHCUSTOMERDATA_TEST_LIVE"] = "FALSE",
+    ["DUTCH_CUSTOMER_DATA_TEST_NETHERLANDS_AP_I_ENTID"] = {},
+    ["DUTCH_CUSTOMER_DATA_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["DUTCHCUSTOMERDATA_TEST_LIVE"] == "TRUE"
+  local live = env["DUTCH_CUSTOMER_DATA_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

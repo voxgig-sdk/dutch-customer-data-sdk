@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import DutchCustomerDataControl
-from core.error import DutchCustomerDataError
-from core.result import DutchCustomerDataResult
-from core.spec import DutchCustomerDataSpec
+from dutchcustomerdata_sdk.config import make_config
+from dutchcustomerdata_sdk.features import _make_feature
+from dutchcustomerdata_sdk.core.control import DutchCustomerDataControl
+from dutchcustomerdata_sdk.core.error import DutchCustomerDataError
+from dutchcustomerdata_sdk.core.result import DutchCustomerDataResult
+from dutchcustomerdata_sdk.core.spec import DutchCustomerDataSpec
 
 
 # True when this SDK was generated with the named feature.

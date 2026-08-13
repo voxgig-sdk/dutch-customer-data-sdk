@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load an euapi
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -136,7 +136,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = DutchCustomerDataSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 euapi = client.EuApI().list()
 # euapi contains the mock response record
 ```
@@ -236,7 +237,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -258,19 +259,25 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
+| `active` |  |
+| `address` |  |
 | `buyer` |  |
 | `buyer_country` |  |
+| `city` |  |
 | `contract_nature` |  |
+| `country` |  |
 | `html` |  |
 | `id` |  |
 | `link` |  |
+| `name` |  |
 | `notice_type` |  |
 | `official_language` |  |
 | `pdf` |  |
 | `place_of_performance` |  |
+| `postcode` |  |
 | `procedure_type` |  |
 | `publication_date` |  |
-| `status` |  |
+| `response_date` |  |
 | `title` |  |
 | `vat` |  |
 
@@ -283,38 +290,97 @@ API path: `/tender`
 | Field | Description |
 | --- | --- |
 | `addition` |  |
+| `address` |  |
 | `admin1` |  |
 | `admin2` |  |
 | `admin3` |  |
+| `bank` |  |
 | `bic` |  |
+| `browser` |  |
+| `builtwith` |  |
+| `carrier` |  |
 | `city` |  |
-| `currency` |  |
-| `date` |  |
-| `dns` |  |
+| `cloudflare` |  |
+| `commoncrawl` |  |
+| `content_length` |  |
+| `content_type` |  |
+| `country` |  |
+| `country_code` |  |
+| `crux` |  |
+| `device_family` |  |
+| `device_name` |  |
+| `device_type` |  |
+| `disposable` |  |
+| `dns_a` |  |
+| `dns_mx` |  |
+| `dns_ns` |  |
+| `dns_soa` |  |
+| `dns_txt` |  |
+| `dns_www_a` |  |
+| `dnsserver` |  |
+| `domain` |  |
+| `domcop` |  |
 | `email` |  |
 | `found` |  |
+| `free` |  |
 | `freeformaddress` |  |
-| `from_currency` |  |
+| `host` |  |
+| `host_type` |  |
+| `hostio` |  |
+| `http_code` |  |
 | `iban` |  |
+| `iban_human` |  |
+| `int` |  |
+| `international` |  |
 | `ip` |  |
+| `ipint` |  |
+| `ismobile` |  |
 | `lat` |  |
 | `lei` |  |
 | `letter` |  |
+| `local_id` |  |
 | `lon` |  |
+| `mailserver` |  |
+| `majestic` |  |
+| `message` |  |
 | `municipality` |  |
+| `mx_host` |  |
+| `mx_ip` |  |
+| `name` |  |
+| `national` |  |
 | `number` |  |
-| `password` |  |
-| `phone` |  |
+| `ocid` |  |
+| `pagerank` |  |
+| `platform` |  |
 | `population` |  |
 | `postcode` |  |
 | `province` |  |
 | `province_code` |  |
+| `redirect_count` |  |
+| `region` |  |
+| `register_id` |  |
+| `renewal_date` |  |
 | `score` |  |
+| `sepa` |  |
+| `spf` |  |
 | `status` |  |
 | `street` |  |
+| `success` |  |
+| `swift` |  |
+| `tranco` |  |
 | `type` |  |
+| `umbrella` |  |
 | `url` |  |
+| `user` |  |
+| `user_agent` |  |
+| `valid` |  |
+| `verified` |  |
+| `verified_checksum` |  |
 | `webrank` |  |
+| `wrong_email` |  |
+| `wrong_format` |  |
+| `wrong_password` |  |
+| `wrong_phone` |  |
 
 Operations: Create, List, Load.
 
@@ -370,21 +436,27 @@ Create an instance: `eu_ap_i = client.EuApI()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `active` | `int` |  |
+| `address` | `str` |  |
 | `buyer` | `str` |  |
 | `buyer_country` | `str` |  |
+| `city` | `str` |  |
 | `contract_nature` | `str` |  |
+| `country` | `str` |  |
 | `html` | `str` |  |
 | `id` | `str` |  |
 | `link` | `str` |  |
+| `name` | `str` |  |
 | `notice_type` | `str` |  |
 | `official_language` | `str` |  |
 | `pdf` | `str` |  |
 | `place_of_performance` | `str` |  |
+| `postcode` | `str` |  |
 | `procedure_type` | `str` |  |
 | `publication_date` | `str` |  |
-| `status` | `str` |  |
+| `response_date` | `str` |  |
 | `title` | `str` |  |
-| `vat` | `dict` |  |
+| `vat` | `str` |  |
 
 #### Example: Load
 
@@ -416,38 +488,97 @@ Create an instance: `global_ap_i = client.GlobalApI()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `addition` | `str` |  |
+| `address` | `str` |  |
 | `admin1` | `str` |  |
 | `admin2` | `str` |  |
 | `admin3` | `str` |  |
-| `bic` | `dict` |  |
+| `bank` | `str` |  |
+| `bic` | `str` |  |
+| `browser` | `str` |  |
+| `builtwith` | `int` |  |
+| `carrier` | `str` |  |
 | `city` | `str` |  |
-| `currency` | `dict` |  |
-| `date` | `str` |  |
-| `dns` | `dict` |  |
-| `email` | `dict` |  |
+| `cloudflare` | `int` |  |
+| `commoncrawl` | `int` |  |
+| `content_length` | `int` |  |
+| `content_type` | `str` |  |
+| `country` | `str` |  |
+| `country_code` | `str` |  |
+| `crux` | `int` |  |
+| `device_family` | `str` |  |
+| `device_name` | `str` |  |
+| `device_type` | `str` |  |
+| `disposable` | `int` |  |
+| `dns_a` | `list` |  |
+| `dns_mx` | `list` |  |
+| `dns_ns` | `list` |  |
+| `dns_soa` | `list` |  |
+| `dns_txt` | `list` |  |
+| `dns_www_a` | `list` |  |
+| `dnsserver` | `str` |  |
+| `domain` | `str` |  |
+| `domcop` | `int` |  |
+| `email` | `str` |  |
 | `found` | `int` |  |
+| `free` | `int` |  |
 | `freeformaddress` | `str` |  |
-| `from_currency` | `str` |  |
-| `iban` | `dict` |  |
-| `ip` | `dict` |  |
+| `host` | `str` |  |
+| `host_type` | `str` |  |
+| `hostio` | `int` |  |
+| `http_code` | `int` |  |
+| `iban` | `str` |  |
+| `iban_human` | `str` |  |
+| `int` | `str` |  |
+| `international` | `str` |  |
+| `ip` | `str` |  |
+| `ipint` | `int` |  |
+| `ismobile` | `int` |  |
 | `lat` | `float` |  |
-| `lei` | `dict` |  |
+| `lei` | `str` |  |
 | `letter` | `str` |  |
+| `local_id` | `str` |  |
 | `lon` | `float` |  |
+| `mailserver` | `str` |  |
+| `majestic` | `int` |  |
+| `message` | `str` |  |
 | `municipality` | `str` |  |
+| `mx_host` | `str` |  |
+| `mx_ip` | `str` |  |
+| `name` | `str` |  |
+| `national` | `str` |  |
 | `number` | `int` |  |
-| `password` | `dict` |  |
-| `phone` | `dict` |  |
+| `ocid` | `str` |  |
+| `pagerank` | `int` |  |
+| `platform` | `str` |  |
 | `population` | `int` |  |
 | `postcode` | `str` |  |
 | `province` | `str` |  |
 | `province_code` | `str` |  |
+| `redirect_count` | `int` |  |
+| `region` | `str` |  |
+| `register_id` | `str` |  |
+| `renewal_date` | `str` |  |
 | `score` | `float` |  |
+| `sepa` | `int` |  |
+| `spf` | `str` |  |
 | `status` | `str` |  |
 | `street` | `str` |  |
+| `success` | `int` |  |
+| `swift` | `int` |  |
+| `tranco` | `int` |  |
 | `type` | `str` |  |
-| `url` | `dict` |  |
-| `webrank` | `dict` |  |
+| `umbrella` | `int` |  |
+| `url` | `str` |  |
+| `user` | `str` |  |
+| `user_agent` | `str` |  |
+| `valid` | `int` |  |
+| `verified` | `bool` |  |
+| `verified_checksum` | `bool` |  |
+| `webrank` | `int` |  |
+| `wrong_email` | `int` |  |
+| `wrong_format` | `int` |  |
+| `wrong_password` | `int` |  |
+| `wrong_phone` | `int` |  |
 
 #### Example: Load
 

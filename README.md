@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = DutchCustomerDataSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = DutchCustomerDataSDK.test({
+  entity: {
+    eu_ap_i: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const euapis = await client.EuApI().list()
-// euapis is an array of bare EuApI records populated with mock data
+// euapis is an array of EuApI entities, populated with mock data
+// — call euapis[0].data() for the record itself
 console.log(euapis)
 ```
 
@@ -110,7 +119,7 @@ import { DutchCustomerDataSDK } from '@voxgig-sdk/dutch-customer-data'
 
 const client = new DutchCustomerDataSDK()
 
-// List all euapis (returns EuApI[])
+// List all euapis (returns EuApIEntity[] — .data() for the record)
 const euapis = await client.EuApI().list()
 for (const euapi of euapis) {
   console.log(euapi)
@@ -156,7 +165,7 @@ The API exposes 3 entities:
 | Entity | Description | API path |
 | --- | --- | --- |
 | **EuApI** | The EuApI entity (list, load). | `/tender` |
-| **GlobalApI** | The GlobalApI entity (create, list, load). | `/password` |
+| **GlobalApI** | The GlobalApI entity (create, list, load). | `/city` |
 | **NetherlandsApI** | The NetherlandsApI entity (list). | `/bag` |
 
 The operations available across these entities are **load**, **list**, **create** — see each entity's
@@ -193,7 +202,7 @@ $client = new DutchCustomerDataSDK();
 $euapis = $client->EuApI()->list();
 print_r($euapis);
 
-// Load a specific euapi (returns the bare record; throws on error)
+// Load a specific euapi (returns the ENTITY; call data_get() for the record; throws on error)
 $euapi = $client->EuApI()->load(["id" => "example_id"]);
 print_r($euapi);
 ```
@@ -224,7 +233,7 @@ client = DutchCustomerDataSDK.new
 euapis = client.EuApI.list
 puts euapis
 
-# Load a specific euapi (returns the bare record; raises on error)
+# Load a specific euapi (returns the ENTITY; call data_get for the record)
 euapi = client.EuApI.load({ "id" => "example_id" })
 puts euapi
 ```
@@ -361,6 +370,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://free.bedrijfsdata.nl](https://free.bedrijfsdata.nl)
 

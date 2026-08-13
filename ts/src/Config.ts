@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'DutchCustomerData',
   }
 
 
@@ -62,108 +62,150 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "buyer",
+          "name": "active",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "buyer_country",
+          "name": "address",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "contract_nature",
+          "name": "buyer",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "html",
+          "name": "buyer_country",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "id",
+          "name": "city",
           "req": false,
           "type": "`$STRING`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "link",
+          "name": "contract_nature",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "notice_type",
+          "name": "country",
           "req": false,
           "type": "`$STRING`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "official_language",
+          "name": "html",
           "req": false,
           "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "pdf",
+          "name": "id",
           "req": false,
           "type": "`$STRING`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "place_of_performance",
+          "name": "link",
           "req": false,
           "type": "`$STRING`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "procedure_type",
+          "name": "name",
           "req": false,
           "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "publication_date",
+          "name": "notice_type",
           "req": false,
           "type": "`$STRING`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "status",
+          "name": "official_language",
           "req": false,
           "type": "`$STRING`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "title",
+          "name": "pdf",
           "req": false,
           "type": "`$STRING`",
           "index$": 13
         },
         {
           "active": true,
+          "name": "place_of_performance",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 14
+        },
+        {
+          "active": true,
+          "name": "postcode",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 15
+        },
+        {
+          "active": true,
+          "name": "procedure_type",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 16
+        },
+        {
+          "active": true,
+          "name": "publication_date",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 17
+        },
+        {
+          "active": true,
+          "name": "response_date",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 18
+        },
+        {
+          "active": true,
+          "name": "title",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 19
+        },
+        {
+          "active": true,
           "name": "vat",
           "req": false,
-          "type": "`$OBJECT`",
-          "index$": 14
+          "type": "`$STRING`",
+          "index$": 20
         }
       ],
       "name": "eu_ap_i",
@@ -187,6 +229,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/tender",
               "parts": [
@@ -199,7 +242,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.tender`"
               },
               "index$": 0
             }
@@ -225,6 +268,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/vat",
               "parts": [
@@ -237,7 +281,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.vat`"
               },
               "index$": 0
             }
@@ -260,227 +304,640 @@ class Config {
         },
         {
           "active": true,
-          "name": "admin1",
+          "name": "address",
           "req": false,
           "type": "`$STRING`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "admin2",
+          "name": "admin1",
           "req": false,
           "type": "`$STRING`",
           "index$": 2
         },
         {
           "active": true,
-          "name": "admin3",
+          "name": "admin2",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
         },
         {
           "active": true,
-          "name": "bic",
+          "name": "admin3",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 4
         },
         {
           "active": true,
-          "name": "city",
+          "name": "bank",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
         },
         {
           "active": true,
-          "name": "currency",
+          "name": "bic",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 6
         },
         {
           "active": true,
-          "name": "date",
+          "name": "browser",
           "req": false,
           "type": "`$STRING`",
           "index$": 7
         },
         {
           "active": true,
-          "name": "dns",
+          "name": "builtwith",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$INTEGER`",
           "index$": 8
         },
         {
           "active": true,
-          "name": "email",
+          "name": "carrier",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 9
         },
         {
           "active": true,
-          "name": "found",
+          "name": "city",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 10
         },
         {
           "active": true,
-          "name": "freeformaddress",
+          "name": "cloudflare",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 11
         },
         {
           "active": true,
-          "name": "from_currency",
+          "name": "commoncrawl",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "iban",
+          "name": "content_length",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$INTEGER`",
           "index$": 13
         },
         {
           "active": true,
-          "name": "ip",
+          "name": "content_type",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 14
         },
         {
           "active": true,
-          "name": "lat",
+          "name": "country",
           "req": false,
-          "type": "`$NUMBER`",
+          "type": "`$STRING`",
           "index$": 15
         },
         {
           "active": true,
-          "name": "lei",
+          "name": "country_code",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 16
         },
         {
           "active": true,
-          "name": "letter",
+          "name": "crux",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$INTEGER`",
           "index$": 17
         },
         {
           "active": true,
-          "name": "lon",
+          "name": "device_family",
           "req": false,
-          "type": "`$NUMBER`",
+          "type": "`$STRING`",
           "index$": 18
         },
         {
           "active": true,
-          "name": "municipality",
+          "name": "device_name",
           "req": false,
           "type": "`$STRING`",
           "index$": 19
         },
         {
           "active": true,
-          "name": "number",
+          "name": "device_type",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$STRING`",
           "index$": 20
         },
         {
           "active": true,
-          "name": "password",
+          "name": "disposable",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$INTEGER`",
           "index$": 21
         },
         {
           "active": true,
-          "name": "phone",
+          "name": "dns_a",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$ARRAY`",
           "index$": 22
         },
         {
           "active": true,
-          "name": "population",
+          "name": "dns_mx",
           "req": false,
-          "type": "`$INTEGER`",
+          "type": "`$ARRAY`",
           "index$": 23
         },
         {
           "active": true,
-          "name": "postcode",
+          "name": "dns_ns",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$ARRAY`",
           "index$": 24
         },
         {
           "active": true,
-          "name": "province",
+          "name": "dns_soa",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$ARRAY`",
           "index$": 25
         },
         {
           "active": true,
-          "name": "province_code",
+          "name": "dns_txt",
           "req": false,
-          "type": "`$STRING`",
+          "type": "`$ARRAY`",
           "index$": 26
         },
         {
           "active": true,
-          "name": "score",
+          "name": "dns_www_a",
           "req": false,
-          "type": "`$NUMBER`",
+          "type": "`$ARRAY`",
           "index$": 27
         },
         {
           "active": true,
-          "name": "status",
+          "name": "dnsserver",
           "req": false,
           "type": "`$STRING`",
           "index$": 28
         },
         {
           "active": true,
-          "name": "street",
+          "name": "domain",
           "req": false,
           "type": "`$STRING`",
           "index$": 29
         },
         {
           "active": true,
+          "name": "domcop",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 30
+        },
+        {
+          "active": true,
+          "name": "email",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 31
+        },
+        {
+          "active": true,
+          "name": "found",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 32
+        },
+        {
+          "active": true,
+          "name": "free",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 33
+        },
+        {
+          "active": true,
+          "name": "freeformaddress",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 34
+        },
+        {
+          "active": true,
+          "name": "host",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 35
+        },
+        {
+          "active": true,
+          "name": "host_type",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 36
+        },
+        {
+          "active": true,
+          "name": "hostio",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 37
+        },
+        {
+          "active": true,
+          "name": "http_code",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 38
+        },
+        {
+          "active": true,
+          "name": "iban",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 39
+        },
+        {
+          "active": true,
+          "name": "iban_human",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 40
+        },
+        {
+          "active": true,
+          "name": "int",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 41
+        },
+        {
+          "active": true,
+          "name": "international",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 42
+        },
+        {
+          "active": true,
+          "name": "ip",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 43
+        },
+        {
+          "active": true,
+          "name": "ipint",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 44
+        },
+        {
+          "active": true,
+          "name": "ismobile",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 45
+        },
+        {
+          "active": true,
+          "name": "lat",
+          "req": false,
+          "type": "`$NUMBER`",
+          "index$": 46
+        },
+        {
+          "active": true,
+          "name": "lei",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 47
+        },
+        {
+          "active": true,
+          "name": "letter",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 48
+        },
+        {
+          "active": true,
+          "name": "local_id",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 49
+        },
+        {
+          "active": true,
+          "name": "lon",
+          "req": false,
+          "type": "`$NUMBER`",
+          "index$": 50
+        },
+        {
+          "active": true,
+          "name": "mailserver",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 51
+        },
+        {
+          "active": true,
+          "name": "majestic",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 52
+        },
+        {
+          "active": true,
+          "name": "message",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 53
+        },
+        {
+          "active": true,
+          "name": "municipality",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 54
+        },
+        {
+          "active": true,
+          "name": "mx_host",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 55
+        },
+        {
+          "active": true,
+          "name": "mx_ip",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 56
+        },
+        {
+          "active": true,
+          "name": "name",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 57
+        },
+        {
+          "active": true,
+          "name": "national",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 58
+        },
+        {
+          "active": true,
+          "name": "number",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 59
+        },
+        {
+          "active": true,
+          "name": "ocid",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 60
+        },
+        {
+          "active": true,
+          "name": "pagerank",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 61
+        },
+        {
+          "active": true,
+          "name": "platform",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 62
+        },
+        {
+          "active": true,
+          "name": "population",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 63
+        },
+        {
+          "active": true,
+          "name": "postcode",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 64
+        },
+        {
+          "active": true,
+          "name": "province",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 65
+        },
+        {
+          "active": true,
+          "name": "province_code",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 66
+        },
+        {
+          "active": true,
+          "name": "redirect_count",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 67
+        },
+        {
+          "active": true,
+          "name": "region",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 68
+        },
+        {
+          "active": true,
+          "name": "register_id",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 69
+        },
+        {
+          "active": true,
+          "name": "renewal_date",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 70
+        },
+        {
+          "active": true,
+          "name": "score",
+          "req": false,
+          "type": "`$NUMBER`",
+          "index$": 71
+        },
+        {
+          "active": true,
+          "name": "sepa",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 72
+        },
+        {
+          "active": true,
+          "name": "spf",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 73
+        },
+        {
+          "active": true,
+          "name": "status",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 74
+        },
+        {
+          "active": true,
+          "name": "street",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 75
+        },
+        {
+          "active": true,
+          "name": "success",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 76
+        },
+        {
+          "active": true,
+          "name": "swift",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 77
+        },
+        {
+          "active": true,
+          "name": "tranco",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 78
+        },
+        {
+          "active": true,
           "name": "type",
           "req": false,
           "type": "`$STRING`",
-          "index$": 30
+          "index$": 79
+        },
+        {
+          "active": true,
+          "name": "umbrella",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 80
         },
         {
           "active": true,
           "name": "url",
           "req": false,
-          "type": "`$OBJECT`",
-          "index$": 31
+          "type": "`$STRING`",
+          "index$": 81
+        },
+        {
+          "active": true,
+          "name": "user",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 82
+        },
+        {
+          "active": true,
+          "name": "user_agent",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 83
+        },
+        {
+          "active": true,
+          "name": "valid",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 84
+        },
+        {
+          "active": true,
+          "name": "verified",
+          "req": false,
+          "type": "`$BOOLEAN`",
+          "index$": 85
+        },
+        {
+          "active": true,
+          "name": "verified_checksum",
+          "req": false,
+          "type": "`$BOOLEAN`",
+          "index$": 86
         },
         {
           "active": true,
           "name": "webrank",
           "req": false,
-          "type": "`$OBJECT`",
-          "index$": 32
+          "type": "`$INTEGER`",
+          "index$": 87
+        },
+        {
+          "active": true,
+          "name": "wrong_email",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 88
+        },
+        {
+          "active": true,
+          "name": "wrong_format",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 89
+        },
+        {
+          "active": true,
+          "name": "wrong_password",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 90
+        },
+        {
+          "active": true,
+          "name": "wrong_phone",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 91
         }
       ],
       "name": "global_ap_i",
@@ -492,6 +949,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "POST",
               "orig": "/password",
               "parts": [
@@ -500,7 +958,7 @@ class Config {
               "select": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.password`"
               },
               "index$": 0
             }
@@ -543,6 +1001,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/city",
               "parts": [
@@ -557,7 +1016,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.city`"
               },
               "index$": 0
             },
@@ -585,6 +1044,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/postcode",
               "parts": [
@@ -598,7 +1058,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.postcode`"
               },
               "index$": 1
             },
@@ -626,6 +1086,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/geocoding",
               "parts": [
@@ -639,7 +1100,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.geocoding`"
               },
               "index$": 2
             }
@@ -683,6 +1144,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/lei",
               "parts": [
@@ -697,7 +1159,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.lei`"
               },
               "index$": 0
             },
@@ -733,6 +1195,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/password",
               "parts": [
@@ -747,7 +1210,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.password`"
               },
               "index$": 1
             },
@@ -775,6 +1238,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/phone",
               "parts": [
@@ -788,7 +1252,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.phone`"
               },
               "index$": 2
             },
@@ -807,6 +1271,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/bic",
               "parts": [
@@ -819,7 +1284,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.bic`"
               },
               "index$": 3
             },
@@ -838,6 +1303,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/currency",
               "parts": [
@@ -850,7 +1316,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.currency`"
               },
               "index$": 4
             },
@@ -869,6 +1335,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/dns",
               "parts": [
@@ -881,7 +1348,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.dns`"
               },
               "index$": 5
             },
@@ -900,6 +1367,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/webrank",
               "parts": [
@@ -912,7 +1380,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.webrank`"
               },
               "index$": 6
             },
@@ -931,6 +1399,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/email",
               "parts": [
@@ -943,7 +1412,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.email`"
               },
               "index$": 7
             },
@@ -962,6 +1431,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/iban",
               "parts": [
@@ -974,7 +1444,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.iban`"
               },
               "index$": 8
             },
@@ -992,6 +1462,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/ip",
               "parts": [
@@ -1004,7 +1475,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.ip`"
               },
               "index$": 9
             },
@@ -1023,6 +1494,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/url",
               "parts": [
@@ -1035,7 +1507,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.url`"
               },
               "index$": 10
             }
@@ -1236,6 +1708,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/bag",
               "parts": [
@@ -1250,7 +1723,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.bag`"
               },
               "index$": 0
             },
@@ -1269,6 +1742,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/kvk",
               "parts": [
@@ -1281,7 +1755,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.kvk`"
               },
               "index$": 1
             }

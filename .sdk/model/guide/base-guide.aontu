@@ -8,64 +8,83 @@ guide: {
   entity: eu_ap_i: {
     path: "/tender": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.tender`")|top
     }
     path: "/vat": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.vat`")|top
     }
   }
 
   entity: global_ap_i: {
     path: "/bic": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.bic`")|top
     }
     path: "/city": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.city`")|top
     }
     path: "/currency": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.currency`")|top
     }
     path: "/dns": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.dns`")|top
     }
     path: "/email": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.email`")|top
     }
     path: "/geocoding": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.geocoding`")|top
     }
     path: "/iban": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.iban`")|top
     }
     path: "/ip": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.ip`")|top
     }
     path: "/lei": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.lei`")|top
     }
     path: "/password": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.password`")|top
       op: load: method: *GET
+      op: load: transform: res: *("`body.password`")|top
     }
     path: "/phone": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.phone`")|top
     }
     path: "/postcode": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.postcode`")|top
     }
     path: "/url": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.url`")|top
     }
     path: "/webrank": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.webrank`")|top
     }
   }
 
   entity: netherlands_ap_i: {
     path: "/bag": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.bag`")|top
     }
     path: "/kvk": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.kvk`")|top
     }
   }
 

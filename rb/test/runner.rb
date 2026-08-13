@@ -23,8 +23,8 @@ module DutchCustomerDataTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("DUTCHCUSTOMERDATA_TEST_LIVE")
-    override = getenv("DUTCHCUSTOMERDATA_TEST_OVERRIDE")
+    live = getenv("DUTCH_CUSTOMER_DATA_TEST_LIVE")
+    override = getenv("DUTCH_CUSTOMER_DATA_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module DutchCustomerDataTestRunner
       end
     end
 
-    explain = getenv("DUTCHCUSTOMERDATA_TEST_EXPLAIN")
-    m["DUTCHCUSTOMERDATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("DUTCH_CUSTOMER_DATA_TEST_EXPLAIN")
+    m["DUTCH_CUSTOMER_DATA_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

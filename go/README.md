@@ -272,19 +272,25 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
+| `"active"` |  |
+| `"address"` |  |
 | `"buyer"` |  |
 | `"buyer_country"` |  |
+| `"city"` |  |
 | `"contract_nature"` |  |
+| `"country"` |  |
 | `"html"` |  |
 | `"id"` |  |
 | `"link"` |  |
+| `"name"` |  |
 | `"notice_type"` |  |
 | `"official_language"` |  |
 | `"pdf"` |  |
 | `"place_of_performance"` |  |
+| `"postcode"` |  |
 | `"procedure_type"` |  |
 | `"publication_date"` |  |
-| `"status"` |  |
+| `"response_date"` |  |
 | `"title"` |  |
 | `"vat"` |  |
 
@@ -297,38 +303,97 @@ API path: `/tender`
 | Field | Description |
 | --- | --- |
 | `"addition"` |  |
+| `"address"` |  |
 | `"admin1"` |  |
 | `"admin2"` |  |
 | `"admin3"` |  |
+| `"bank"` |  |
 | `"bic"` |  |
+| `"browser"` |  |
+| `"builtwith"` |  |
+| `"carrier"` |  |
 | `"city"` |  |
-| `"currency"` |  |
-| `"date"` |  |
-| `"dns"` |  |
+| `"cloudflare"` |  |
+| `"commoncrawl"` |  |
+| `"content_length"` |  |
+| `"content_type"` |  |
+| `"country"` |  |
+| `"country_code"` |  |
+| `"crux"` |  |
+| `"device_family"` |  |
+| `"device_name"` |  |
+| `"device_type"` |  |
+| `"disposable"` |  |
+| `"dns_a"` |  |
+| `"dns_mx"` |  |
+| `"dns_ns"` |  |
+| `"dns_soa"` |  |
+| `"dns_txt"` |  |
+| `"dns_www_a"` |  |
+| `"dnsserver"` |  |
+| `"domain"` |  |
+| `"domcop"` |  |
 | `"email"` |  |
 | `"found"` |  |
+| `"free"` |  |
 | `"freeformaddress"` |  |
-| `"from_currency"` |  |
+| `"host"` |  |
+| `"host_type"` |  |
+| `"hostio"` |  |
+| `"http_code"` |  |
 | `"iban"` |  |
+| `"iban_human"` |  |
+| `"int"` |  |
+| `"international"` |  |
 | `"ip"` |  |
+| `"ipint"` |  |
+| `"ismobile"` |  |
 | `"lat"` |  |
 | `"lei"` |  |
 | `"letter"` |  |
+| `"local_id"` |  |
 | `"lon"` |  |
+| `"mailserver"` |  |
+| `"majestic"` |  |
+| `"message"` |  |
 | `"municipality"` |  |
+| `"mx_host"` |  |
+| `"mx_ip"` |  |
+| `"name"` |  |
+| `"national"` |  |
 | `"number"` |  |
-| `"password"` |  |
-| `"phone"` |  |
+| `"ocid"` |  |
+| `"pagerank"` |  |
+| `"platform"` |  |
 | `"population"` |  |
 | `"postcode"` |  |
 | `"province"` |  |
 | `"province_code"` |  |
+| `"redirect_count"` |  |
+| `"region"` |  |
+| `"register_id"` |  |
+| `"renewal_date"` |  |
 | `"score"` |  |
+| `"sepa"` |  |
+| `"spf"` |  |
 | `"status"` |  |
 | `"street"` |  |
+| `"success"` |  |
+| `"swift"` |  |
+| `"tranco"` |  |
 | `"type"` |  |
+| `"umbrella"` |  |
 | `"url"` |  |
+| `"user"` |  |
+| `"user_agent"` |  |
+| `"valid"` |  |
+| `"verified"` |  |
+| `"verified_checksum"` |  |
 | `"webrank"` |  |
+| `"wrong_email"` |  |
+| `"wrong_format"` |  |
+| `"wrong_password"` |  |
+| `"wrong_phone"` |  |
 
 Operations: Create, List, Load.
 
@@ -384,21 +449,27 @@ Create an instance: `euApI := client.EuApI(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `active` | `int` |  |
+| `address` | `string` |  |
 | `buyer` | `string` |  |
 | `buyer_country` | `string` |  |
+| `city` | `string` |  |
 | `contract_nature` | `string` |  |
+| `country` | `string` |  |
 | `html` | `string` |  |
 | `id` | `string` |  |
 | `link` | `string` |  |
+| `name` | `string` |  |
 | `notice_type` | `string` |  |
 | `official_language` | `string` |  |
 | `pdf` | `string` |  |
 | `place_of_performance` | `string` |  |
+| `postcode` | `string` |  |
 | `procedure_type` | `string` |  |
 | `publication_date` | `string` |  |
-| `status` | `string` |  |
+| `response_date` | `string` |  |
 | `title` | `string` |  |
-| `vat` | `map[string]any` |  |
+| `vat` | `string` |  |
 
 #### Example: Load
 
@@ -438,38 +509,97 @@ Create an instance: `globalApI := client.GlobalApI(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `addition` | `string` |  |
+| `address` | `string` |  |
 | `admin1` | `string` |  |
 | `admin2` | `string` |  |
 | `admin3` | `string` |  |
-| `bic` | `map[string]any` |  |
+| `bank` | `string` |  |
+| `bic` | `string` |  |
+| `browser` | `string` |  |
+| `builtwith` | `int` |  |
+| `carrier` | `string` |  |
 | `city` | `string` |  |
-| `currency` | `map[string]any` |  |
-| `date` | `string` |  |
-| `dns` | `map[string]any` |  |
-| `email` | `map[string]any` |  |
+| `cloudflare` | `int` |  |
+| `commoncrawl` | `int` |  |
+| `content_length` | `int` |  |
+| `content_type` | `string` |  |
+| `country` | `string` |  |
+| `country_code` | `string` |  |
+| `crux` | `int` |  |
+| `device_family` | `string` |  |
+| `device_name` | `string` |  |
+| `device_type` | `string` |  |
+| `disposable` | `int` |  |
+| `dns_a` | `[]any` |  |
+| `dns_mx` | `[]any` |  |
+| `dns_ns` | `[]any` |  |
+| `dns_soa` | `[]any` |  |
+| `dns_txt` | `[]any` |  |
+| `dns_www_a` | `[]any` |  |
+| `dnsserver` | `string` |  |
+| `domain` | `string` |  |
+| `domcop` | `int` |  |
+| `email` | `string` |  |
 | `found` | `int` |  |
+| `free` | `int` |  |
 | `freeformaddress` | `string` |  |
-| `from_currency` | `string` |  |
-| `iban` | `map[string]any` |  |
-| `ip` | `map[string]any` |  |
+| `host` | `string` |  |
+| `host_type` | `string` |  |
+| `hostio` | `int` |  |
+| `http_code` | `int` |  |
+| `iban` | `string` |  |
+| `iban_human` | `string` |  |
+| `int` | `string` |  |
+| `international` | `string` |  |
+| `ip` | `string` |  |
+| `ipint` | `int` |  |
+| `ismobile` | `int` |  |
 | `lat` | `float64` |  |
-| `lei` | `map[string]any` |  |
+| `lei` | `string` |  |
 | `letter` | `string` |  |
+| `local_id` | `string` |  |
 | `lon` | `float64` |  |
+| `mailserver` | `string` |  |
+| `majestic` | `int` |  |
+| `message` | `string` |  |
 | `municipality` | `string` |  |
+| `mx_host` | `string` |  |
+| `mx_ip` | `string` |  |
+| `name` | `string` |  |
+| `national` | `string` |  |
 | `number` | `int` |  |
-| `password` | `map[string]any` |  |
-| `phone` | `map[string]any` |  |
+| `ocid` | `string` |  |
+| `pagerank` | `int` |  |
+| `platform` | `string` |  |
 | `population` | `int` |  |
 | `postcode` | `string` |  |
 | `province` | `string` |  |
 | `province_code` | `string` |  |
+| `redirect_count` | `int` |  |
+| `region` | `string` |  |
+| `register_id` | `string` |  |
+| `renewal_date` | `string` |  |
 | `score` | `float64` |  |
+| `sepa` | `int` |  |
+| `spf` | `string` |  |
 | `status` | `string` |  |
 | `street` | `string` |  |
+| `success` | `int` |  |
+| `swift` | `int` |  |
+| `tranco` | `int` |  |
 | `type` | `string` |  |
-| `url` | `map[string]any` |  |
-| `webrank` | `map[string]any` |  |
+| `umbrella` | `int` |  |
+| `url` | `string` |  |
+| `user` | `string` |  |
+| `user_agent` | `string` |  |
+| `valid` | `int` |  |
+| `verified` | `bool` |  |
+| `verified_checksum` | `bool` |  |
+| `webrank` | `int` |  |
+| `wrong_email` | `int` |  |
+| `wrong_format` | `int` |  |
+| `wrong_password` | `int` |  |
+| `wrong_phone` | `int` |  |
 
 #### Example: Load
 

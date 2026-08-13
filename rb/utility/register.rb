@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ DutchCustomerDataUtility.registrar = ->(u) {
   u.prepare_params = DutchCustomerDataUtilities::PrepareParams
   u.prepare_path = DutchCustomerDataUtilities::PreparePath
   u.prepare_query = DutchCustomerDataUtilities::PrepareQuery
+  u.graphql_body = DutchCustomerDataUtilities::GraphqlBody
+  u.graphql_errors = DutchCustomerDataUtilities::GraphqlErrors
   u.result_basic = DutchCustomerDataUtilities::ResultBasic
   u.result_body = DutchCustomerDataUtilities::ResultBody
   u.result_headers = DutchCustomerDataUtilities::ResultHeaders

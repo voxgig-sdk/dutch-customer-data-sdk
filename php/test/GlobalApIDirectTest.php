@@ -111,11 +111,11 @@ function global_ap_i_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "DUTCHCUSTOMERDATA_TEST_GLOBAL_AP_I_ENTID" => [],
-        "DUTCHCUSTOMERDATA_TEST_LIVE" => "FALSE",
+        "DUTCH_CUSTOMER_DATA_TEST_GLOBAL_AP_I_ENTID" => [],
+        "DUTCH_CUSTOMER_DATA_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["DUTCHCUSTOMERDATA_TEST_LIVE"] === "TRUE";
+    $live = $env["DUTCH_CUSTOMER_DATA_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

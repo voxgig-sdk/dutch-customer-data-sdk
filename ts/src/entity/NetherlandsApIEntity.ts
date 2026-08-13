@@ -37,7 +37,7 @@ class NetherlandsApIEntity extends DutchCustomerDataEntityBase<NetherlandsApI> {
 
 
 
-  async list(this: any, reqmatch?: NetherlandsApIListMatch, ctrl?: Control): Promise<NetherlandsApI[]> {
+  async list(this: any, reqmatch?: NetherlandsApIListMatch, ctrl?: Control): Promise<NetherlandsApIEntity[]> {
 
     const utility = this._utility
 

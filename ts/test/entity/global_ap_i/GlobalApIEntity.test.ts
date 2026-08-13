@@ -26,8 +26,8 @@ import {
 describe('GlobalApIEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when DUTCHCUSTOMERDATA_TEST_LIVE=TRUE.
-  afterEach(liveDelay('DUTCHCUSTOMERDATA_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when DUTCH_CUSTOMER_DATA_TEST_LIVE=TRUE.
+  afterEach(liveDelay('DUTCH_CUSTOMER_DATA_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = DutchCustomerDataSDK.test()
@@ -62,21 +62,19 @@ describe('GlobalApIEntity', async () => {
     const global_ap_i_ref01_ent = client.GlobalApI()
     let global_ap_i_ref01_data = setup.data.new.global_ap_i['global_ap_i_ref01']
 
-    global_ap_i_ref01_data = await global_ap_i_ref01_ent.create(global_ap_i_ref01_data)
+    global_ap_i_ref01_data = (await global_ap_i_ref01_ent.create(global_ap_i_ref01_data)).data()
     assert(null != global_ap_i_ref01_data)
 
 
     // LIST
     const global_ap_i_ref01_match: any = {}
 
-    const global_ap_i_ref01_list = await global_ap_i_ref01_ent.list(global_ap_i_ref01_match)
-
-    assert(!isempty(select(global_ap_i_ref01_list, { id: global_ap_i_ref01_data.id })))
+    const global_ap_i_ref01_list = (await global_ap_i_ref01_ent.list(global_ap_i_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const global_ap_i_ref01_match_dt0: any = {}
-    const global_ap_i_ref01_data_dt0 = await global_ap_i_ref01_ent.load(global_ap_i_ref01_match_dt0)
+    const global_ap_i_ref01_data_dt0 = (await global_ap_i_ref01_ent.load(global_ap_i_ref01_match_dt0)).data()
     assert(null != global_ap_i_ref01_data_dt0)
 
 

@@ -140,21 +140,27 @@ const eu_ap_i = client.EuApI()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `active` | `number` | No |  |
+| `address` | `string` | No |  |
 | `buyer` | `string` | No |  |
 | `buyer_country` | `string` | No |  |
+| `city` | `string` | No |  |
 | `contract_nature` | `string` | No |  |
+| `country` | `string` | No |  |
 | `html` | `string` | No |  |
 | `id` | `string` | No |  |
 | `link` | `string` | No |  |
+| `name` | `string` | No |  |
 | `notice_type` | `string` | No |  |
 | `official_language` | `string` | No |  |
 | `pdf` | `string` | No |  |
 | `place_of_performance` | `string` | No |  |
+| `postcode` | `string` | No |  |
 | `procedure_type` | `string` | No |  |
 | `publication_date` | `string` | No |  |
-| `status` | `string` | No |  |
+| `response_date` | `string` | No |  |
 | `title` | `string` | No |  |
-| `vat` | `Record<string, any>` | No |  |
+| `vat` | `string` | No |  |
 
 ### Operations
 
@@ -213,38 +219,97 @@ const global_ap_i = client.GlobalApI()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `addition` | `string` | No |  |
+| `address` | `string` | No |  |
 | `admin1` | `string` | No |  |
 | `admin2` | `string` | No |  |
 | `admin3` | `string` | No |  |
-| `bic` | `Record<string, any>` | No |  |
+| `bank` | `string` | No |  |
+| `bic` | `string` | No |  |
+| `browser` | `string` | No |  |
+| `builtwith` | `number` | No |  |
+| `carrier` | `string` | No |  |
 | `city` | `string` | No |  |
-| `currency` | `Record<string, any>` | No |  |
-| `date` | `string` | No |  |
-| `dns` | `Record<string, any>` | No |  |
-| `email` | `Record<string, any>` | No |  |
+| `cloudflare` | `number` | No |  |
+| `commoncrawl` | `number` | No |  |
+| `content_length` | `number` | No |  |
+| `content_type` | `string` | No |  |
+| `country` | `string` | No |  |
+| `country_code` | `string` | No |  |
+| `crux` | `number` | No |  |
+| `device_family` | `string` | No |  |
+| `device_name` | `string` | No |  |
+| `device_type` | `string` | No |  |
+| `disposable` | `number` | No |  |
+| `dns_a` | `any[]` | No |  |
+| `dns_mx` | `any[]` | No |  |
+| `dns_ns` | `any[]` | No |  |
+| `dns_soa` | `any[]` | No |  |
+| `dns_txt` | `any[]` | No |  |
+| `dns_www_a` | `any[]` | No |  |
+| `dnsserver` | `string` | No |  |
+| `domain` | `string` | No |  |
+| `domcop` | `number` | No |  |
+| `email` | `string` | No |  |
 | `found` | `number` | No |  |
+| `free` | `number` | No |  |
 | `freeformaddress` | `string` | No |  |
-| `from_currency` | `string` | No |  |
-| `iban` | `Record<string, any>` | No |  |
-| `ip` | `Record<string, any>` | No |  |
+| `host` | `string` | No |  |
+| `host_type` | `string` | No |  |
+| `hostio` | `number` | No |  |
+| `http_code` | `number` | No |  |
+| `iban` | `string` | No |  |
+| `iban_human` | `string` | No |  |
+| `int` | `string` | No |  |
+| `international` | `string` | No |  |
+| `ip` | `string` | No |  |
+| `ipint` | `number` | No |  |
+| `ismobile` | `number` | No |  |
 | `lat` | `number` | No |  |
-| `lei` | `Record<string, any>` | No |  |
+| `lei` | `string` | No |  |
 | `letter` | `string` | No |  |
+| `local_id` | `string` | No |  |
 | `lon` | `number` | No |  |
+| `mailserver` | `string` | No |  |
+| `majestic` | `number` | No |  |
+| `message` | `string` | No |  |
 | `municipality` | `string` | No |  |
+| `mx_host` | `string` | No |  |
+| `mx_ip` | `string` | No |  |
+| `name` | `string` | No |  |
+| `national` | `string` | No |  |
 | `number` | `number` | No |  |
-| `password` | `Record<string, any>` | No |  |
-| `phone` | `Record<string, any>` | No |  |
+| `ocid` | `string` | No |  |
+| `pagerank` | `number` | No |  |
+| `platform` | `string` | No |  |
 | `population` | `number` | No |  |
 | `postcode` | `string` | No |  |
 | `province` | `string` | No |  |
 | `province_code` | `string` | No |  |
+| `redirect_count` | `number` | No |  |
+| `region` | `string` | No |  |
+| `register_id` | `string` | No |  |
+| `renewal_date` | `string` | No |  |
 | `score` | `number` | No |  |
+| `sepa` | `number` | No |  |
+| `spf` | `string` | No |  |
 | `status` | `string` | No |  |
 | `street` | `string` | No |  |
+| `success` | `number` | No |  |
+| `swift` | `number` | No |  |
+| `tranco` | `number` | No |  |
 | `type` | `string` | No |  |
-| `url` | `Record<string, any>` | No |  |
-| `webrank` | `Record<string, any>` | No |  |
+| `umbrella` | `number` | No |  |
+| `url` | `string` | No |  |
+| `user` | `string` | No |  |
+| `user_agent` | `string` | No |  |
+| `valid` | `number` | No |  |
+| `verified` | `boolean` | No |  |
+| `verified_checksum` | `boolean` | No |  |
+| `webrank` | `number` | No |  |
+| `wrong_email` | `number` | No |  |
+| `wrong_format` | `number` | No |  |
+| `wrong_password` | `number` | No |  |
+| `wrong_phone` | `number` | No |  |
 
 ### Operations
 

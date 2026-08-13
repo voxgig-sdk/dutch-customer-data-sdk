@@ -6,201 +6,455 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface EuApI {
+  active?: number
+  address?: string
   buyer?: string
   buyer_country?: string
+  city?: string
   contract_nature?: string
+  country?: string
   html?: string
   id?: string
   link?: string
+  name?: string
   notice_type?: string
   official_language?: string
   pdf?: string
   place_of_performance?: string
+  postcode?: string
   procedure_type?: string
   publication_date?: string
-  status?: string
+  response_date?: string
   title?: string
-  vat?: Record<string, any>
+  vat?: string
 }
 
 export interface EuApILoadMatch {
+  active?: number
+  address?: string
   buyer?: string
   buyer_country?: string
+  city?: string
   contract_nature?: string
+  country?: string
   html?: string
   id: string
   link?: string
+  name?: string
   notice_type?: string
   official_language?: string
   pdf?: string
   place_of_performance?: string
+  postcode?: string
   procedure_type?: string
   publication_date?: string
-  status?: string
+  response_date?: string
   title?: string
-  vat?: Record<string, any>
+  vat?: string
 }
 
 export interface EuApIListMatch {
+  active?: number
+  address?: string
   buyer?: string
   buyer_country?: string
+  city?: string
   contract_nature?: string
+  country?: string
   html?: string
   id?: string
   link?: string
+  name?: string
   notice_type?: string
   official_language?: string
   pdf?: string
   place_of_performance?: string
+  postcode?: string
   procedure_type?: string
   publication_date?: string
-  status?: string
+  response_date?: string
   title?: string
-  vat?: Record<string, any>
+  vat?: string
 }
 
 export interface GlobalApI {
   addition?: string
+  address?: string
   admin1?: string
   admin2?: string
   admin3?: string
-  bic?: Record<string, any>
+  bank?: string
+  bic?: string
+  browser?: string
+  builtwith?: number
+  carrier?: string
   city?: string
-  currency?: Record<string, any>
-  date?: string
-  dns?: Record<string, any>
-  email?: Record<string, any>
+  cloudflare?: number
+  commoncrawl?: number
+  content_length?: number
+  content_type?: string
+  country?: string
+  country_code?: string
+  crux?: number
+  device_family?: string
+  device_name?: string
+  device_type?: string
+  disposable?: number
+  dns_a?: any[]
+  dns_mx?: any[]
+  dns_ns?: any[]
+  dns_soa?: any[]
+  dns_txt?: any[]
+  dns_www_a?: any[]
+  dnsserver?: string
+  domain?: string
+  domcop?: number
+  email?: string
   found?: number
+  free?: number
   freeformaddress?: string
-  from_currency?: string
-  iban?: Record<string, any>
-  ip?: Record<string, any>
+  host?: string
+  host_type?: string
+  hostio?: number
+  http_code?: number
+  iban?: string
+  iban_human?: string
+  int?: string
+  international?: string
+  ip?: string
+  ipint?: number
+  ismobile?: number
   lat?: number
-  lei?: Record<string, any>
+  lei?: string
   letter?: string
+  local_id?: string
   lon?: number
+  mailserver?: string
+  majestic?: number
+  message?: string
   municipality?: string
+  mx_host?: string
+  mx_ip?: string
+  name?: string
+  national?: string
   number?: number
-  password?: Record<string, any>
-  phone?: Record<string, any>
+  ocid?: string
+  pagerank?: number
+  platform?: string
   population?: number
   postcode?: string
   province?: string
   province_code?: string
+  redirect_count?: number
+  region?: string
+  register_id?: string
+  renewal_date?: string
   score?: number
+  sepa?: number
+  spf?: string
   status?: string
   street?: string
+  success?: number
+  swift?: number
+  tranco?: number
   type?: string
-  url?: Record<string, any>
-  webrank?: Record<string, any>
+  umbrella?: number
+  url?: string
+  user?: string
+  user_agent?: string
+  valid?: number
+  verified?: boolean
+  verified_checksum?: boolean
+  webrank?: number
+  wrong_email?: number
+  wrong_format?: number
+  wrong_password?: number
+  wrong_phone?: number
 }
 
 export interface GlobalApILoadMatch {
   addition?: string
+  address?: string
   admin1?: string
   admin2?: string
   admin3?: string
-  bic?: Record<string, any>
+  bank?: string
+  bic?: string
+  browser?: string
+  builtwith?: number
+  carrier?: string
   city?: string
-  currency?: Record<string, any>
-  date?: string
-  dns?: Record<string, any>
-  email?: Record<string, any>
+  cloudflare?: number
+  commoncrawl?: number
+  content_length?: number
+  content_type?: string
+  country?: string
+  country_code?: string
+  crux?: number
+  device_family?: string
+  device_name?: string
+  device_type?: string
+  disposable?: number
+  dns_a?: any[]
+  dns_mx?: any[]
+  dns_ns?: any[]
+  dns_soa?: any[]
+  dns_txt?: any[]
+  dns_www_a?: any[]
+  dnsserver?: string
+  domain?: string
+  domcop?: number
+  email?: string
   found?: number
+  free?: number
   freeformaddress?: string
-  from_currency?: string
-  iban?: Record<string, any>
-  ip?: Record<string, any>
+  host?: string
+  host_type?: string
+  hostio?: number
+  http_code?: number
+  iban?: string
+  iban_human?: string
+  int?: string
+  international?: string
+  ip?: string
+  ipint?: number
+  ismobile?: number
   lat?: number
-  lei?: Record<string, any>
+  lei?: string
   letter?: string
+  local_id?: string
   lon?: number
+  mailserver?: string
+  majestic?: number
+  message?: string
   municipality?: string
+  mx_host?: string
+  mx_ip?: string
+  name?: string
+  national?: string
   number?: number
-  password?: Record<string, any>
-  phone?: Record<string, any>
+  ocid?: string
+  pagerank?: number
+  platform?: string
   population?: number
   postcode?: string
   province?: string
   province_code?: string
+  redirect_count?: number
+  region?: string
+  register_id?: string
+  renewal_date?: string
   score?: number
+  sepa?: number
+  spf?: string
   status?: string
   street?: string
+  success?: number
+  swift?: number
+  tranco?: number
   type?: string
-  url?: Record<string, any>
-  webrank?: Record<string, any>
+  umbrella?: number
+  url?: string
+  user?: string
+  user_agent?: string
+  valid?: number
+  verified?: boolean
+  verified_checksum?: boolean
+  webrank?: number
+  wrong_email?: number
+  wrong_format?: number
+  wrong_password?: number
+  wrong_phone?: number
 }
 
 export interface GlobalApIListMatch {
   addition?: string
+  address?: string
   admin1?: string
   admin2?: string
   admin3?: string
-  bic?: Record<string, any>
+  bank?: string
+  bic?: string
+  browser?: string
+  builtwith?: number
+  carrier?: string
   city?: string
-  currency?: Record<string, any>
-  date?: string
-  dns?: Record<string, any>
-  email?: Record<string, any>
+  cloudflare?: number
+  commoncrawl?: number
+  content_length?: number
+  content_type?: string
+  country?: string
+  country_code?: string
+  crux?: number
+  device_family?: string
+  device_name?: string
+  device_type?: string
+  disposable?: number
+  dns_a?: any[]
+  dns_mx?: any[]
+  dns_ns?: any[]
+  dns_soa?: any[]
+  dns_txt?: any[]
+  dns_www_a?: any[]
+  dnsserver?: string
+  domain?: string
+  domcop?: number
+  email?: string
   found?: number
+  free?: number
   freeformaddress?: string
-  from_currency?: string
-  iban?: Record<string, any>
-  ip?: Record<string, any>
+  host?: string
+  host_type?: string
+  hostio?: number
+  http_code?: number
+  iban?: string
+  iban_human?: string
+  int?: string
+  international?: string
+  ip?: string
+  ipint?: number
+  ismobile?: number
   lat?: number
-  lei?: Record<string, any>
+  lei?: string
   letter?: string
+  local_id?: string
   lon?: number
+  mailserver?: string
+  majestic?: number
+  message?: string
   municipality?: string
+  mx_host?: string
+  mx_ip?: string
+  name?: string
+  national?: string
   number?: number
-  password?: Record<string, any>
-  phone?: Record<string, any>
+  ocid?: string
+  pagerank?: number
+  platform?: string
   population?: number
   postcode?: string
   province?: string
   province_code?: string
+  redirect_count?: number
+  region?: string
+  register_id?: string
+  renewal_date?: string
   score?: number
+  sepa?: number
+  spf?: string
   status?: string
   street?: string
+  success?: number
+  swift?: number
+  tranco?: number
   type?: string
-  url?: Record<string, any>
-  webrank?: Record<string, any>
+  umbrella?: number
+  url?: string
+  user?: string
+  user_agent?: string
+  valid?: number
+  verified?: boolean
+  verified_checksum?: boolean
+  webrank?: number
+  wrong_email?: number
+  wrong_format?: number
+  wrong_password?: number
+  wrong_phone?: number
 }
 
 export interface GlobalApICreateData {
   addition?: string
+  address?: string
   admin1?: string
   admin2?: string
   admin3?: string
-  bic?: Record<string, any>
+  bank?: string
+  bic?: string
+  browser?: string
+  builtwith?: number
+  carrier?: string
   city?: string
-  currency?: Record<string, any>
-  date?: string
-  dns?: Record<string, any>
-  email?: Record<string, any>
+  cloudflare?: number
+  commoncrawl?: number
+  content_length?: number
+  content_type?: string
+  country?: string
+  country_code?: string
+  crux?: number
+  device_family?: string
+  device_name?: string
+  device_type?: string
+  disposable?: number
+  dns_a?: any[]
+  dns_mx?: any[]
+  dns_ns?: any[]
+  dns_soa?: any[]
+  dns_txt?: any[]
+  dns_www_a?: any[]
+  dnsserver?: string
+  domain?: string
+  domcop?: number
+  email?: string
   found?: number
+  free?: number
   freeformaddress?: string
-  from_currency?: string
-  iban?: Record<string, any>
-  ip?: Record<string, any>
+  host?: string
+  host_type?: string
+  hostio?: number
+  http_code?: number
+  iban?: string
+  iban_human?: string
+  int?: string
+  international?: string
+  ip?: string
+  ipint?: number
+  ismobile?: number
   lat?: number
-  lei?: Record<string, any>
+  lei?: string
   letter?: string
+  local_id?: string
   lon?: number
+  mailserver?: string
+  majestic?: number
+  message?: string
   municipality?: string
+  mx_host?: string
+  mx_ip?: string
+  name?: string
+  national?: string
   number?: number
-  password?: Record<string, any>
-  phone?: Record<string, any>
+  ocid?: string
+  pagerank?: number
+  platform?: string
   population?: number
   postcode?: string
   province?: string
   province_code?: string
+  redirect_count?: number
+  region?: string
+  register_id?: string
+  renewal_date?: string
   score?: number
+  sepa?: number
+  spf?: string
   status?: string
   street?: string
+  success?: number
+  swift?: number
+  tranco?: number
   type?: string
-  url?: Record<string, any>
-  webrank?: Record<string, any>
+  umbrella?: number
+  url?: string
+  user?: string
+  user_agent?: string
+  valid?: number
+  verified?: boolean
+  verified_checksum?: boolean
+  webrank?: number
+  wrong_email?: number
+  wrong_format?: number
+  wrong_password?: number
+  wrong_phone?: number
 }
 
 export interface NetherlandsApI {
