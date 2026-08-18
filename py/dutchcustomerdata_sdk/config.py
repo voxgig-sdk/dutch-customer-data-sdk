@@ -1,7 +1,30 @@
 # DutchCustomerData SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "DutchCustomerData",
@@ -28,151 +51,88 @@ def make_config():
       "eu_ap_i": {
         "fields": [
           {
-            "active": True,
             "name": "active",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "address",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "buyer",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "buyer_country",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "city",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "contract_nature",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "country",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "html",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "link",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "notice_type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "official_language",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "pdf",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "place_of_performance",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "postcode",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 15,
           },
           {
-            "active": True,
             "name": "procedure_type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 16,
           },
           {
-            "active": True,
             "name": "publication_date",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 17,
           },
           {
-            "active": True,
             "name": "response_date",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 18,
           },
           {
-            "active": True,
             "name": "title",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 19,
           },
           {
-            "active": True,
             "name": "vat",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 20,
           },
         ],
         "name": "eu_ap_i",
@@ -182,11 +142,9 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "37080091",
                       "kind": "query",
                       "name": "q",
@@ -211,21 +169,17 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.tender`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "NL001672022B01",
                       "kind": "query",
                       "name": "vat",
@@ -250,10 +204,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.vat`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -263,648 +215,372 @@ def make_config():
       "global_ap_i": {
         "fields": [
           {
-            "active": True,
             "name": "addition",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "address",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "admin1",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "admin2",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "admin3",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "bank",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "bic",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "browser",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "builtwith",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "carrier",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "city",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "cloudflare",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "commoncrawl",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "content_length",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "content_type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "country",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 15,
           },
           {
-            "active": True,
             "name": "country_code",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 16,
           },
           {
-            "active": True,
             "name": "crux",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 17,
           },
           {
-            "active": True,
             "name": "device_family",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 18,
           },
           {
-            "active": True,
             "name": "device_name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 19,
           },
           {
-            "active": True,
             "name": "device_type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 20,
           },
           {
-            "active": True,
             "name": "disposable",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 21,
           },
           {
-            "active": True,
             "name": "dns_a",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 22,
           },
           {
-            "active": True,
             "name": "dns_mx",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 23,
           },
           {
-            "active": True,
             "name": "dns_ns",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 24,
           },
           {
-            "active": True,
             "name": "dns_soa",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 25,
           },
           {
-            "active": True,
             "name": "dns_txt",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 26,
           },
           {
-            "active": True,
             "name": "dns_www_a",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 27,
           },
           {
-            "active": True,
             "name": "dnsserver",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 28,
           },
           {
-            "active": True,
             "name": "domain",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 29,
           },
           {
-            "active": True,
             "name": "domcop",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 30,
           },
           {
-            "active": True,
             "name": "email",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 31,
           },
           {
-            "active": True,
             "name": "found",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 32,
           },
           {
-            "active": True,
             "name": "free",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 33,
           },
           {
-            "active": True,
             "name": "freeformaddress",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 34,
           },
           {
-            "active": True,
             "name": "host",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 35,
           },
           {
-            "active": True,
             "name": "host_type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 36,
           },
           {
-            "active": True,
             "name": "hostio",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 37,
           },
           {
-            "active": True,
             "name": "http_code",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 38,
           },
           {
-            "active": True,
             "name": "iban",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 39,
           },
           {
-            "active": True,
             "name": "iban_human",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 40,
           },
           {
-            "active": True,
             "name": "int",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 41,
           },
           {
-            "active": True,
             "name": "international",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 42,
           },
           {
-            "active": True,
             "name": "ip",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 43,
           },
           {
-            "active": True,
             "name": "ipint",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 44,
           },
           {
-            "active": True,
             "name": "ismobile",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 45,
           },
           {
-            "active": True,
             "name": "lat",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 46,
           },
           {
-            "active": True,
             "name": "lei",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 47,
           },
           {
-            "active": True,
             "name": "letter",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 48,
           },
           {
-            "active": True,
             "name": "local_id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 49,
           },
           {
-            "active": True,
             "name": "lon",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 50,
           },
           {
-            "active": True,
             "name": "mailserver",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 51,
           },
           {
-            "active": True,
             "name": "majestic",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 52,
           },
           {
-            "active": True,
             "name": "message",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 53,
           },
           {
-            "active": True,
             "name": "municipality",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 54,
           },
           {
-            "active": True,
             "name": "mx_host",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 55,
           },
           {
-            "active": True,
             "name": "mx_ip",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 56,
           },
           {
-            "active": True,
             "name": "name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 57,
           },
           {
-            "active": True,
             "name": "national",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 58,
           },
           {
-            "active": True,
             "name": "number",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 59,
           },
           {
-            "active": True,
             "name": "ocid",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 60,
           },
           {
-            "active": True,
             "name": "pagerank",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 61,
           },
           {
-            "active": True,
             "name": "platform",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 62,
           },
           {
-            "active": True,
             "name": "population",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 63,
           },
           {
-            "active": True,
             "name": "postcode",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 64,
           },
           {
-            "active": True,
             "name": "province",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 65,
           },
           {
-            "active": True,
             "name": "province_code",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 66,
           },
           {
-            "active": True,
             "name": "redirect_count",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 67,
           },
           {
-            "active": True,
             "name": "region",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 68,
           },
           {
-            "active": True,
             "name": "register_id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 69,
           },
           {
-            "active": True,
             "name": "renewal_date",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 70,
           },
           {
-            "active": True,
             "name": "score",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 71,
           },
           {
-            "active": True,
             "name": "sepa",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 72,
           },
           {
-            "active": True,
             "name": "spf",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 73,
           },
           {
-            "active": True,
             "name": "status",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 74,
           },
           {
-            "active": True,
             "name": "street",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 75,
           },
           {
-            "active": True,
             "name": "success",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 76,
           },
           {
-            "active": True,
             "name": "swift",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 77,
           },
           {
-            "active": True,
             "name": "tranco",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 78,
           },
           {
-            "active": True,
             "name": "type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 79,
           },
           {
-            "active": True,
             "name": "umbrella",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 80,
           },
           {
-            "active": True,
             "name": "url",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 81,
           },
           {
-            "active": True,
             "name": "user",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 82,
           },
           {
-            "active": True,
             "name": "user_agent",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 83,
           },
           {
-            "active": True,
             "name": "valid",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 84,
           },
           {
-            "active": True,
             "name": "verified",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 85,
           },
           {
-            "active": True,
             "name": "verified_checksum",
-            "req": False,
             "type": "`$BOOLEAN`",
-            "index$": 86,
           },
           {
-            "active": True,
             "name": "webrank",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 87,
           },
           {
-            "active": True,
             "name": "wrong_email",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 88,
           },
           {
-            "active": True,
             "name": "wrong_format",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 89,
           },
           {
-            "active": True,
             "name": "wrong_password",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 90,
           },
           {
-            "active": True,
             "name": "wrong_phone",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 91,
           },
         ],
         "name": "global_ap_i",
@@ -914,7 +590,6 @@ def make_config():
             "name": "create",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "POST",
@@ -927,21 +602,17 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.password`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "create",
           },
           "list": {
             "input": "data",
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "Haarlem",
                       "kind": "query",
                       "name": "city",
@@ -950,7 +621,6 @@ def make_config():
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "NL",
                       "kind": "query",
                       "name": "country_code",
@@ -959,11 +629,9 @@ def make_config():
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "full",
                       "orig": "full",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                   ],
@@ -985,14 +653,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.city`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "NL",
                       "kind": "query",
                       "name": "country_code",
@@ -1001,7 +666,6 @@ def make_config():
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "1013PN",
                       "kind": "query",
                       "name": "postcode",
@@ -1027,14 +691,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.postcode`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "nl",
                       "kind": "query",
                       "name": "country_code",
@@ -1043,7 +704,6 @@ def make_config():
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "Kalverstraat 1, 1012NX",
                       "kind": "query",
                       "name": "q",
@@ -1069,44 +729,35 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.geocoding`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "AKZONL2AXXX",
                       "kind": "query",
                       "name": "bic",
                       "orig": "bic",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "724500XYIJUGXAA5QD70",
                       "kind": "query",
                       "name": "lei",
                       "orig": "lei",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "09007809",
                       "kind": "query",
                       "name": "local_id",
                       "orig": "local_id",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1128,36 +779,28 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.lei`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "password",
                       "orig": "password",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2c4c3891e2ac6958e9810a1e49c6705784fbfa1a",
                       "kind": "query",
                       "name": "password_sha1",
                       "orig": "password_sha1",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": 25,
                       "kind": "query",
                       "name": "threshold",
                       "orig": "threshold",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                   ],
@@ -1179,23 +822,18 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.password`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "nl",
                       "kind": "query",
                       "name": "country_code",
                       "orig": "country_code",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "+31207895050",
                       "kind": "query",
                       "name": "phone",
@@ -1221,14 +859,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.phone`",
                 },
-                "index$": 2,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "AKZONL2A",
                       "kind": "query",
                       "name": "bic",
@@ -1253,14 +888,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.bic`",
                 },
-                "index$": 3,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "eur",
                       "kind": "query",
                       "name": "currency",
@@ -1285,14 +917,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.currency`",
                 },
-                "index$": 4,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "bedrijfsdata.nl",
                       "kind": "query",
                       "name": "domain",
@@ -1317,14 +946,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.dns`",
                 },
-                "index$": 5,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "google.com",
                       "kind": "query",
                       "name": "domain",
@@ -1349,14 +975,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.webrank`",
                 },
-                "index$": 6,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "piet@bedrijfsdata.nl",
                       "kind": "query",
                       "name": "email",
@@ -1381,14 +1004,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.email`",
                 },
-                "index$": 7,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "NL17ADYB2017400505",
                       "kind": "query",
                       "name": "iban",
@@ -1413,18 +1033,14 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.iban`",
                 },
-                "index$": 8,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "ua",
                       "orig": "ua",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                   ],
@@ -1444,14 +1060,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.ip`",
                 },
-                "index$": 9,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "http://www.bedrijfsdata.nl",
                       "kind": "query",
                       "name": "url",
@@ -1476,10 +1089,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.url`",
                 },
-                "index$": 10,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -1489,151 +1100,88 @@ def make_config():
       "netherlands_ap_i": {
         "fields": [
           {
-            "active": True,
             "name": "active",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "addition",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "city",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "coc",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "construction_year",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "floor_area",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "freeformaddress",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "id",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "lat",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "letter",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "lon",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "municipality",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "number",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "postcode",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "province",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 15,
           },
           {
-            "active": True,
             "name": "province_code",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 16,
           },
           {
-            "active": True,
             "name": "purpose",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 17,
           },
           {
-            "active": True,
             "name": "street",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 18,
           },
           {
-            "active": True,
             "name": "type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 19,
           },
           {
-            "active": True,
             "name": "vestiging",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 20,
           },
         ],
         "name": "netherlands_ap_i",
@@ -1643,11 +1191,9 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "3",
                       "kind": "query",
                       "name": "number",
@@ -1656,7 +1202,6 @@ def make_config():
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "1011PN",
                       "kind": "query",
                       "name": "postcode",
@@ -1665,12 +1210,10 @@ def make_config():
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "a",
                       "kind": "query",
                       "name": "suffix",
                       "orig": "suffix",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -1692,14 +1235,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.bag`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "89395808",
                       "kind": "query",
                       "name": "kvk",
@@ -1724,10 +1264,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.kvk`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {

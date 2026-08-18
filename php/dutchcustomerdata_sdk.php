@@ -40,7 +40,7 @@ class DutchCustomerDataSDK
         $utility = new DutchCustomerDataUtility();
         $this->_utility = $utility;
 
-        $config = DutchCustomerDataConfig::make_config();
+        $config = DutchCustomerDataConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

@@ -15,7 +15,7 @@ require_relative "../DutchCustomerData_sdk"
 module DutchCustomerDataFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = DutchCustomerDataConfig.make_config["feature"]
+    f = DutchCustomerDataConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

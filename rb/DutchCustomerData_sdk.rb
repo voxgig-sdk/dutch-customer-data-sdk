@@ -28,7 +28,7 @@ class DutchCustomerDataSDK
     utility = DutchCustomerDataUtility.new
     @_utility = utility
 
-    config = DutchCustomerDataConfig.make_config
+    config = DutchCustomerDataConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
