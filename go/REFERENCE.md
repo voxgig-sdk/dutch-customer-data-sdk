@@ -198,13 +198,13 @@ fmt.Println(globalApI.GetName()) // "global_ap_i"
 | `bic` | `string` | No |  |
 | `browser` | `string` | No |  |
 | `builtwith` | `int` | No |  |
-| `carrier` | `string` | No |  |
+| `carrier` | `string` | No | Carrier name |
 | `city` | `string` | No |  |
 | `cloudflare` | `int` | No |  |
 | `commoncrawl` | `int` | No |  |
 | `content_length` | `int` | No |  |
 | `content_type` | `string` | No |  |
-| `country` | `string` | No |  |
+| `country` | `string` | No | ISO country code |
 | `country_code` | `string` | No |  |
 | `crux` | `int` | No |  |
 | `device_family` | `string` | No |  |
@@ -230,11 +230,11 @@ fmt.Println(globalApI.GetName()) // "global_ap_i"
 | `http_code` | `int` | No |  |
 | `iban` | `string` | No |  |
 | `iban_human` | `string` | No |  |
-| `int` | `string` | No |  |
-| `international` | `string` | No |  |
+| `int` | `string` | No | International format without plus sign |
+| `international` | `string` | No | International formatted phone number |
 | `ip` | `string` | No |  |
 | `ipint` | `int` | No |  |
-| `ismobile` | `int` | No |  |
+| `ismobile` | `int` | No | 1 if mobile, 0 if not |
 | `lat` | `float64` | No |  |
 | `lei` | `string` | No |  |
 | `letter` | `string` | No |  |
@@ -247,7 +247,7 @@ fmt.Println(globalApI.GetName()) // "global_ap_i"
 | `mx_host` | `string` | No |  |
 | `mx_ip` | `string` | No |  |
 | `name` | `string` | No |  |
-| `national` | `string` | No |  |
+| `national` | `string` | No | National formatted phone number |
 | `number` | `int` | No |  |
 | `ocid` | `string` | No |  |
 | `pagerank` | `int` | No |  |
@@ -257,7 +257,7 @@ fmt.Println(globalApI.GetName()) // "global_ap_i"
 | `province` | `string` | No |  |
 | `province_code` | `string` | No |  |
 | `redirect_count` | `int` | No |  |
-| `region` | `string` | No |  |
+| `region` | `string` | No | Geographic region |
 | `register_id` | `string` | No |  |
 | `renewal_date` | `string` | No |  |
 | `score` | `float64` | No |  |
@@ -265,7 +265,7 @@ fmt.Println(globalApI.GetName()) // "global_ap_i"
 | `spf` | `string` | No |  |
 | `status` | `string` | No |  |
 | `street` | `string` | No |  |
-| `success` | `int` | No |  |
+| `success` | `int` | No | 1 if successful, 0 if not |
 | `swift` | `int` | No |  |
 | `tranco` | `int` | No |  |
 | `type` | `string` | No |  |
@@ -273,14 +273,14 @@ fmt.Println(globalApI.GetName()) // "global_ap_i"
 | `url` | `string` | No |  |
 | `user` | `string` | No |  |
 | `user_agent` | `string` | No |  |
-| `valid` | `int` | No |  |
+| `valid` | `int` | No | 1 if valid, 0 if not |
 | `verified` | `bool` | No |  |
 | `verified_checksum` | `bool` | No |  |
 | `webrank` | `int` | No |  |
 | `wrong_email` | `int` | No |  |
 | `wrong_format` | `int` | No |  |
 | `wrong_password` | `int` | No |  |
-| `wrong_phone` | `int` | No |  |
+| `wrong_phone` | `int` | No | 1 if wrong, 0 if correct |
 
 ### Operations
 

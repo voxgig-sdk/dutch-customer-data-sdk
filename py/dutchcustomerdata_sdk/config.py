@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "DutchCustomerData",
+            "slug": "dutch-customer-data",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -252,6 +255,7 @@ def make_config():
           },
           {
             "name": "carrier",
+            "short": "Carrier name",
             "type": "`$STRING`",
           },
           {
@@ -276,6 +280,7 @@ def make_config():
           },
           {
             "name": "country",
+            "short": "ISO country code",
             "type": "`$STRING`",
           },
           {
@@ -380,10 +385,12 @@ def make_config():
           },
           {
             "name": "int",
+            "short": "International format without plus sign",
             "type": "`$STRING`",
           },
           {
             "name": "international",
+            "short": "International formatted phone number",
             "type": "`$STRING`",
           },
           {
@@ -396,6 +403,7 @@ def make_config():
           },
           {
             "name": "ismobile",
+            "short": "1 if mobile, 0 if not",
             "type": "`$INTEGER`",
           },
           {
@@ -448,6 +456,7 @@ def make_config():
           },
           {
             "name": "national",
+            "short": "National formatted phone number",
             "type": "`$STRING`",
           },
           {
@@ -488,6 +497,7 @@ def make_config():
           },
           {
             "name": "region",
+            "short": "Geographic region",
             "type": "`$STRING`",
           },
           {
@@ -520,6 +530,7 @@ def make_config():
           },
           {
             "name": "success",
+            "short": "1 if successful, 0 if not",
             "type": "`$INTEGER`",
           },
           {
@@ -552,6 +563,7 @@ def make_config():
           },
           {
             "name": "valid",
+            "short": "1 if valid, 0 if not",
             "type": "`$INTEGER`",
           },
           {
@@ -580,6 +592,7 @@ def make_config():
           },
           {
             "name": "wrong_phone",
+            "short": "1 if wrong, 0 if correct",
             "type": "`$INTEGER`",
           },
         ],

@@ -295,13 +295,13 @@ API path: `/tender`
 | `bic` |  |
 | `browser` |  |
 | `builtwith` |  |
-| `carrier` |  |
+| `carrier` | Carrier name |
 | `city` |  |
 | `cloudflare` |  |
 | `commoncrawl` |  |
 | `content_length` |  |
 | `content_type` |  |
-| `country` |  |
+| `country` | ISO country code |
 | `country_code` |  |
 | `crux` |  |
 | `device_family` |  |
@@ -327,11 +327,11 @@ API path: `/tender`
 | `http_code` |  |
 | `iban` |  |
 | `iban_human` |  |
-| `int` |  |
-| `international` |  |
+| `int` | International format without plus sign |
+| `international` | International formatted phone number |
 | `ip` |  |
 | `ipint` |  |
-| `ismobile` |  |
+| `ismobile` | 1 if mobile, 0 if not |
 | `lat` |  |
 | `lei` |  |
 | `letter` |  |
@@ -344,7 +344,7 @@ API path: `/tender`
 | `mx_host` |  |
 | `mx_ip` |  |
 | `name` |  |
-| `national` |  |
+| `national` | National formatted phone number |
 | `number` |  |
 | `ocid` |  |
 | `pagerank` |  |
@@ -354,7 +354,7 @@ API path: `/tender`
 | `province` |  |
 | `province_code` |  |
 | `redirect_count` |  |
-| `region` |  |
+| `region` | Geographic region |
 | `register_id` |  |
 | `renewal_date` |  |
 | `score` |  |
@@ -362,7 +362,7 @@ API path: `/tender`
 | `spf` |  |
 | `status` |  |
 | `street` |  |
-| `success` |  |
+| `success` | 1 if successful, 0 if not |
 | `swift` |  |
 | `tranco` |  |
 | `type` |  |
@@ -370,14 +370,14 @@ API path: `/tender`
 | `url` |  |
 | `user` |  |
 | `user_agent` |  |
-| `valid` |  |
+| `valid` | 1 if valid, 0 if not |
 | `verified` |  |
 | `verified_checksum` |  |
 | `webrank` |  |
 | `wrong_email` |  |
 | `wrong_format` |  |
 | `wrong_password` |  |
-| `wrong_phone` |  |
+| `wrong_phone` | 1 if wrong, 0 if correct |
 
 Operations: Create, List, Load.
 
@@ -495,13 +495,13 @@ Create an instance: `global_ap_i = client.GlobalApI`
 | `bic` | `String` |  |
 | `browser` | `String` |  |
 | `builtwith` | `Integer` |  |
-| `carrier` | `String` |  |
+| `carrier` | `String` | Carrier name |
 | `city` | `String` |  |
 | `cloudflare` | `Integer` |  |
 | `commoncrawl` | `Integer` |  |
 | `content_length` | `Integer` |  |
 | `content_type` | `String` |  |
-| `country` | `String` |  |
+| `country` | `String` | ISO country code |
 | `country_code` | `String` |  |
 | `crux` | `Integer` |  |
 | `device_family` | `String` |  |
@@ -527,11 +527,11 @@ Create an instance: `global_ap_i = client.GlobalApI`
 | `http_code` | `Integer` |  |
 | `iban` | `String` |  |
 | `iban_human` | `String` |  |
-| `int` | `String` |  |
-| `international` | `String` |  |
+| `int` | `String` | International format without plus sign |
+| `international` | `String` | International formatted phone number |
 | `ip` | `String` |  |
 | `ipint` | `Integer` |  |
-| `ismobile` | `Integer` |  |
+| `ismobile` | `Integer` | 1 if mobile, 0 if not |
 | `lat` | `Float` |  |
 | `lei` | `String` |  |
 | `letter` | `String` |  |
@@ -544,7 +544,7 @@ Create an instance: `global_ap_i = client.GlobalApI`
 | `mx_host` | `String` |  |
 | `mx_ip` | `String` |  |
 | `name` | `String` |  |
-| `national` | `String` |  |
+| `national` | `String` | National formatted phone number |
 | `number` | `Integer` |  |
 | `ocid` | `String` |  |
 | `pagerank` | `Integer` |  |
@@ -554,7 +554,7 @@ Create an instance: `global_ap_i = client.GlobalApI`
 | `province` | `String` |  |
 | `province_code` | `String` |  |
 | `redirect_count` | `Integer` |  |
-| `region` | `String` |  |
+| `region` | `String` | Geographic region |
 | `register_id` | `String` |  |
 | `renewal_date` | `String` |  |
 | `score` | `Float` |  |
@@ -562,7 +562,7 @@ Create an instance: `global_ap_i = client.GlobalApI`
 | `spf` | `String` |  |
 | `status` | `String` |  |
 | `street` | `String` |  |
-| `success` | `Integer` |  |
+| `success` | `Integer` | 1 if successful, 0 if not |
 | `swift` | `Integer` |  |
 | `tranco` | `Integer` |  |
 | `type` | `String` |  |
@@ -570,14 +570,14 @@ Create an instance: `global_ap_i = client.GlobalApI`
 | `url` | `String` |  |
 | `user` | `String` |  |
 | `user_agent` | `String` |  |
-| `valid` | `Integer` |  |
+| `valid` | `Integer` | 1 if valid, 0 if not |
 | `verified` | `Boolean` |  |
 | `verified_checksum` | `Boolean` |  |
 | `webrank` | `Integer` |  |
 | `wrong_email` | `Integer` |  |
 | `wrong_format` | `Integer` |  |
 | `wrong_password` | `Integer` |  |
-| `wrong_phone` | `Integer` |  |
+| `wrong_phone` | `Integer` | 1 if wrong, 0 if correct |
 
 #### Example: Load
 

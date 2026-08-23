@@ -227,13 +227,13 @@ const global_ap_i = client.GlobalApI()
 | `bic` | `string` | No |  |
 | `browser` | `string` | No |  |
 | `builtwith` | `number` | No |  |
-| `carrier` | `string` | No |  |
+| `carrier` | `string` | No | Carrier name |
 | `city` | `string` | No |  |
 | `cloudflare` | `number` | No |  |
 | `commoncrawl` | `number` | No |  |
 | `content_length` | `number` | No |  |
 | `content_type` | `string` | No |  |
-| `country` | `string` | No |  |
+| `country` | `string` | No | ISO country code |
 | `country_code` | `string` | No |  |
 | `crux` | `number` | No |  |
 | `device_family` | `string` | No |  |
@@ -259,11 +259,11 @@ const global_ap_i = client.GlobalApI()
 | `http_code` | `number` | No |  |
 | `iban` | `string` | No |  |
 | `iban_human` | `string` | No |  |
-| `int` | `string` | No |  |
-| `international` | `string` | No |  |
+| `int` | `string` | No | International format without plus sign |
+| `international` | `string` | No | International formatted phone number |
 | `ip` | `string` | No |  |
 | `ipint` | `number` | No |  |
-| `ismobile` | `number` | No |  |
+| `ismobile` | `number` | No | 1 if mobile, 0 if not |
 | `lat` | `number` | No |  |
 | `lei` | `string` | No |  |
 | `letter` | `string` | No |  |
@@ -276,7 +276,7 @@ const global_ap_i = client.GlobalApI()
 | `mx_host` | `string` | No |  |
 | `mx_ip` | `string` | No |  |
 | `name` | `string` | No |  |
-| `national` | `string` | No |  |
+| `national` | `string` | No | National formatted phone number |
 | `number` | `number` | No |  |
 | `ocid` | `string` | No |  |
 | `pagerank` | `number` | No |  |
@@ -286,7 +286,7 @@ const global_ap_i = client.GlobalApI()
 | `province` | `string` | No |  |
 | `province_code` | `string` | No |  |
 | `redirect_count` | `number` | No |  |
-| `region` | `string` | No |  |
+| `region` | `string` | No | Geographic region |
 | `register_id` | `string` | No |  |
 | `renewal_date` | `string` | No |  |
 | `score` | `number` | No |  |
@@ -294,7 +294,7 @@ const global_ap_i = client.GlobalApI()
 | `spf` | `string` | No |  |
 | `status` | `string` | No |  |
 | `street` | `string` | No |  |
-| `success` | `number` | No |  |
+| `success` | `number` | No | 1 if successful, 0 if not |
 | `swift` | `number` | No |  |
 | `tranco` | `number` | No |  |
 | `type` | `string` | No |  |
@@ -302,14 +302,14 @@ const global_ap_i = client.GlobalApI()
 | `url` | `string` | No |  |
 | `user` | `string` | No |  |
 | `user_agent` | `string` | No |  |
-| `valid` | `number` | No |  |
+| `valid` | `number` | No | 1 if valid, 0 if not |
 | `verified` | `boolean` | No |  |
 | `verified_checksum` | `boolean` | No |  |
 | `webrank` | `number` | No |  |
 | `wrong_email` | `number` | No |  |
 | `wrong_format` | `number` | No |  |
 | `wrong_password` | `number` | No |  |
-| `wrong_phone` | `number` | No |  |
+| `wrong_phone` | `number` | No | 1 if wrong, 0 if correct |
 
 ### Operations
 

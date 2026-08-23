@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'DutchCustomerData',
+        slug: "dutch-customer-data",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -262,6 +273,7 @@ class Config {
         },
         {
           "name": "carrier",
+          "short": "Carrier name",
           "type": "`$STRING`"
         },
         {
@@ -286,6 +298,7 @@ class Config {
         },
         {
           "name": "country",
+          "short": "ISO country code",
           "type": "`$STRING`"
         },
         {
@@ -390,10 +403,12 @@ class Config {
         },
         {
           "name": "int",
+          "short": "International format without plus sign",
           "type": "`$STRING`"
         },
         {
           "name": "international",
+          "short": "International formatted phone number",
           "type": "`$STRING`"
         },
         {
@@ -406,6 +421,7 @@ class Config {
         },
         {
           "name": "ismobile",
+          "short": "1 if mobile, 0 if not",
           "type": "`$INTEGER`"
         },
         {
@@ -458,6 +474,7 @@ class Config {
         },
         {
           "name": "national",
+          "short": "National formatted phone number",
           "type": "`$STRING`"
         },
         {
@@ -498,6 +515,7 @@ class Config {
         },
         {
           "name": "region",
+          "short": "Geographic region",
           "type": "`$STRING`"
         },
         {
@@ -530,6 +548,7 @@ class Config {
         },
         {
           "name": "success",
+          "short": "1 if successful, 0 if not",
           "type": "`$INTEGER`"
         },
         {
@@ -562,6 +581,7 @@ class Config {
         },
         {
           "name": "valid",
+          "short": "1 if valid, 0 if not",
           "type": "`$INTEGER`"
         },
         {
@@ -590,6 +610,7 @@ class Config {
         },
         {
           "name": "wrong_phone",
+          "short": "1 if wrong, 0 if correct",
           "type": "`$INTEGER`"
         }
       ],

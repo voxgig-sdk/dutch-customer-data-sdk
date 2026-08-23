@@ -185,13 +185,13 @@ global_ap_i = client.GlobalApI()
 | `bic` | `str` | No |  |
 | `browser` | `str` | No |  |
 | `builtwith` | `int` | No |  |
-| `carrier` | `str` | No |  |
+| `carrier` | `str` | No | Carrier name |
 | `city` | `str` | No |  |
 | `cloudflare` | `int` | No |  |
 | `commoncrawl` | `int` | No |  |
 | `content_length` | `int` | No |  |
 | `content_type` | `str` | No |  |
-| `country` | `str` | No |  |
+| `country` | `str` | No | ISO country code |
 | `country_code` | `str` | No |  |
 | `crux` | `int` | No |  |
 | `device_family` | `str` | No |  |
@@ -217,11 +217,11 @@ global_ap_i = client.GlobalApI()
 | `http_code` | `int` | No |  |
 | `iban` | `str` | No |  |
 | `iban_human` | `str` | No |  |
-| `int` | `str` | No |  |
-| `international` | `str` | No |  |
+| `int` | `str` | No | International format without plus sign |
+| `international` | `str` | No | International formatted phone number |
 | `ip` | `str` | No |  |
 | `ipint` | `int` | No |  |
-| `ismobile` | `int` | No |  |
+| `ismobile` | `int` | No | 1 if mobile, 0 if not |
 | `lat` | `float` | No |  |
 | `lei` | `str` | No |  |
 | `letter` | `str` | No |  |
@@ -234,7 +234,7 @@ global_ap_i = client.GlobalApI()
 | `mx_host` | `str` | No |  |
 | `mx_ip` | `str` | No |  |
 | `name` | `str` | No |  |
-| `national` | `str` | No |  |
+| `national` | `str` | No | National formatted phone number |
 | `number` | `int` | No |  |
 | `ocid` | `str` | No |  |
 | `pagerank` | `int` | No |  |
@@ -244,7 +244,7 @@ global_ap_i = client.GlobalApI()
 | `province` | `str` | No |  |
 | `province_code` | `str` | No |  |
 | `redirect_count` | `int` | No |  |
-| `region` | `str` | No |  |
+| `region` | `str` | No | Geographic region |
 | `register_id` | `str` | No |  |
 | `renewal_date` | `str` | No |  |
 | `score` | `float` | No |  |
@@ -252,7 +252,7 @@ global_ap_i = client.GlobalApI()
 | `spf` | `str` | No |  |
 | `status` | `str` | No |  |
 | `street` | `str` | No |  |
-| `success` | `int` | No |  |
+| `success` | `int` | No | 1 if successful, 0 if not |
 | `swift` | `int` | No |  |
 | `tranco` | `int` | No |  |
 | `type` | `str` | No |  |
@@ -260,14 +260,14 @@ global_ap_i = client.GlobalApI()
 | `url` | `str` | No |  |
 | `user` | `str` | No |  |
 | `user_agent` | `str` | No |  |
-| `valid` | `int` | No |  |
+| `valid` | `int` | No | 1 if valid, 0 if not |
 | `verified` | `bool` | No |  |
 | `verified_checksum` | `bool` | No |  |
 | `webrank` | `int` | No |  |
 | `wrong_email` | `int` | No |  |
 | `wrong_format` | `int` | No |  |
 | `wrong_password` | `int` | No |  |
-| `wrong_phone` | `int` | No |  |
+| `wrong_phone` | `int` | No | 1 if wrong, 0 if correct |
 
 ### Operations
 

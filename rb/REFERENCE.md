@@ -190,13 +190,13 @@ global_ap_i = client.GlobalApI
 | `bic` | `String` | No |  |
 | `browser` | `String` | No |  |
 | `builtwith` | `Integer` | No |  |
-| `carrier` | `String` | No |  |
+| `carrier` | `String` | No | Carrier name |
 | `city` | `String` | No |  |
 | `cloudflare` | `Integer` | No |  |
 | `commoncrawl` | `Integer` | No |  |
 | `content_length` | `Integer` | No |  |
 | `content_type` | `String` | No |  |
-| `country` | `String` | No |  |
+| `country` | `String` | No | ISO country code |
 | `country_code` | `String` | No |  |
 | `crux` | `Integer` | No |  |
 | `device_family` | `String` | No |  |
@@ -222,11 +222,11 @@ global_ap_i = client.GlobalApI
 | `http_code` | `Integer` | No |  |
 | `iban` | `String` | No |  |
 | `iban_human` | `String` | No |  |
-| `int` | `String` | No |  |
-| `international` | `String` | No |  |
+| `int` | `String` | No | International format without plus sign |
+| `international` | `String` | No | International formatted phone number |
 | `ip` | `String` | No |  |
 | `ipint` | `Integer` | No |  |
-| `ismobile` | `Integer` | No |  |
+| `ismobile` | `Integer` | No | 1 if mobile, 0 if not |
 | `lat` | `Float` | No |  |
 | `lei` | `String` | No |  |
 | `letter` | `String` | No |  |
@@ -239,7 +239,7 @@ global_ap_i = client.GlobalApI
 | `mx_host` | `String` | No |  |
 | `mx_ip` | `String` | No |  |
 | `name` | `String` | No |  |
-| `national` | `String` | No |  |
+| `national` | `String` | No | National formatted phone number |
 | `number` | `Integer` | No |  |
 | `ocid` | `String` | No |  |
 | `pagerank` | `Integer` | No |  |
@@ -249,7 +249,7 @@ global_ap_i = client.GlobalApI
 | `province` | `String` | No |  |
 | `province_code` | `String` | No |  |
 | `redirect_count` | `Integer` | No |  |
-| `region` | `String` | No |  |
+| `region` | `String` | No | Geographic region |
 | `register_id` | `String` | No |  |
 | `renewal_date` | `String` | No |  |
 | `score` | `Float` | No |  |
@@ -257,7 +257,7 @@ global_ap_i = client.GlobalApI
 | `spf` | `String` | No |  |
 | `status` | `String` | No |  |
 | `street` | `String` | No |  |
-| `success` | `Integer` | No |  |
+| `success` | `Integer` | No | 1 if successful, 0 if not |
 | `swift` | `Integer` | No |  |
 | `tranco` | `Integer` | No |  |
 | `type` | `String` | No |  |
@@ -265,14 +265,14 @@ global_ap_i = client.GlobalApI
 | `url` | `String` | No |  |
 | `user` | `String` | No |  |
 | `user_agent` | `String` | No |  |
-| `valid` | `Integer` | No |  |
+| `valid` | `Integer` | No | 1 if valid, 0 if not |
 | `verified` | `Boolean` | No |  |
 | `verified_checksum` | `Boolean` | No |  |
 | `webrank` | `Integer` | No |  |
 | `wrong_email` | `Integer` | No |  |
 | `wrong_format` | `Integer` | No |  |
 | `wrong_password` | `Integer` | No |  |
-| `wrong_phone` | `Integer` | No |  |
+| `wrong_phone` | `Integer` | No | 1 if wrong, 0 if correct |
 
 ### Operations
 

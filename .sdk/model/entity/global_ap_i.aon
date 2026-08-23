@@ -53,6 +53,7 @@ main: kit: entity: global_ap_i: {
     {
       name: "carrier"
       req: false
+      short: "Carrier name"
       type: "`$STRING`"
     }
     {
@@ -83,6 +84,7 @@ main: kit: entity: global_ap_i: {
     {
       name: "country"
       req: false
+      short: "ISO country code"
       type: "`$STRING`"
     }
     {
@@ -213,11 +215,13 @@ main: kit: entity: global_ap_i: {
     {
       name: "int"
       req: false
+      short: "International format without plus sign"
       type: "`$STRING`"
     }
     {
       name: "international"
       req: false
+      short: "International formatted phone number"
       type: "`$STRING`"
     }
     {
@@ -233,6 +237,7 @@ main: kit: entity: global_ap_i: {
     {
       name: "ismobile"
       req: false
+      short: "1 if mobile, 0 if not"
       type: "`$INTEGER`"
     }
     {
@@ -298,6 +303,7 @@ main: kit: entity: global_ap_i: {
     {
       name: "national"
       req: false
+      short: "National formatted phone number"
       type: "`$STRING`"
     }
     {
@@ -348,6 +354,7 @@ main: kit: entity: global_ap_i: {
     {
       name: "region"
       req: false
+      short: "Geographic region"
       type: "`$STRING`"
     }
     {
@@ -388,6 +395,7 @@ main: kit: entity: global_ap_i: {
     {
       name: "success"
       req: false
+      short: "1 if successful, 0 if not"
       type: "`$INTEGER`"
     }
     {
@@ -428,6 +436,7 @@ main: kit: entity: global_ap_i: {
     {
       name: "valid"
       req: false
+      short: "1 if valid, 0 if not"
       type: "`$INTEGER`"
     }
     {
@@ -463,6 +472,7 @@ main: kit: entity: global_ap_i: {
     {
       name: "wrong_phone"
       req: false
+      short: "1 if wrong, 0 if correct"
       type: "`$INTEGER`"
     }
   ]

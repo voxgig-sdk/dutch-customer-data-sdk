@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "DutchCustomerData",
+			"slug": "dutch-customer-data",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -235,6 +238,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "carrier",
+						"short": "Carrier name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -259,6 +263,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "country",
+						"short": "ISO country code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -363,10 +368,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "int",
+						"short": "International format without plus sign",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "international",
+						"short": "International formatted phone number",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -379,6 +386,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "ismobile",
+						"short": "1 if mobile, 0 if not",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -431,6 +439,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "national",
+						"short": "National formatted phone number",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -471,6 +480,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "region",
+						"short": "Geographic region",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -503,6 +513,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "success",
+						"short": "1 if successful, 0 if not",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -535,6 +546,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "valid",
+						"short": "1 if valid, 0 if not",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -563,6 +575,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "wrong_phone",
+						"short": "1 if wrong, 0 if correct",
 						"type": "`$INTEGER`",
 					},
 				},

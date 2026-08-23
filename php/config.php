@@ -33,6 +33,9 @@ class DutchCustomerDataConfig
         return [
             "main" => [
                 "name" => "DutchCustomerData",
+                "slug" => "dutch-customer-data",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -257,6 +260,7 @@ class DutchCustomerDataConfig
             ],
             [
               'name' => 'carrier',
+              'short' => 'Carrier name',
               'type' => '`$STRING`',
             ],
             [
@@ -281,6 +285,7 @@ class DutchCustomerDataConfig
             ],
             [
               'name' => 'country',
+              'short' => 'ISO country code',
               'type' => '`$STRING`',
             ],
             [
@@ -385,10 +390,12 @@ class DutchCustomerDataConfig
             ],
             [
               'name' => 'int',
+              'short' => 'International format without plus sign',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'international',
+              'short' => 'International formatted phone number',
               'type' => '`$STRING`',
             ],
             [
@@ -401,6 +408,7 @@ class DutchCustomerDataConfig
             ],
             [
               'name' => 'ismobile',
+              'short' => '1 if mobile, 0 if not',
               'type' => '`$INTEGER`',
             ],
             [
@@ -453,6 +461,7 @@ class DutchCustomerDataConfig
             ],
             [
               'name' => 'national',
+              'short' => 'National formatted phone number',
               'type' => '`$STRING`',
             ],
             [
@@ -493,6 +502,7 @@ class DutchCustomerDataConfig
             ],
             [
               'name' => 'region',
+              'short' => 'Geographic region',
               'type' => '`$STRING`',
             ],
             [
@@ -525,6 +535,7 @@ class DutchCustomerDataConfig
             ],
             [
               'name' => 'success',
+              'short' => '1 if successful, 0 if not',
               'type' => '`$INTEGER`',
             ],
             [
@@ -557,6 +568,7 @@ class DutchCustomerDataConfig
             ],
             [
               'name' => 'valid',
+              'short' => '1 if valid, 0 if not',
               'type' => '`$INTEGER`',
             ],
             [
@@ -585,6 +597,7 @@ class DutchCustomerDataConfig
             ],
             [
               'name' => 'wrong_phone',
+              'short' => '1 if wrong, 0 if correct',
               'type' => '`$INTEGER`',
             ],
           ],
