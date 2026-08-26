@@ -42,6 +42,7 @@ class DutchCustomerDataConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
