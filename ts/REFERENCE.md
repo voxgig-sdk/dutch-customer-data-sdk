@@ -169,7 +169,7 @@ const eu_ap_i = client.EuApI()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.EuApI().list()
+const results = await client.EuApI().list({ q: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -177,7 +177,7 @@ const results = await client.EuApI().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.EuApI().load({ id: 'eu_ap_i_id' })
+const result = await client.EuApI().load({ vat: 'vat' })
 ```
 
 ### Common Methods
@@ -327,7 +327,7 @@ const result = await client.GlobalApI().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.GlobalApI().list()
+const results = await client.GlobalApI().list({ country_code: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -405,7 +405,7 @@ const netherlands_ap_i = client.NetherlandsApI()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.NetherlandsApI().list()
+const results = await client.NetherlandsApI().list({ number: "example", postcode: "example" })
 ```
 
 ### Common Methods
@@ -452,4 +452,42 @@ const client = new DutchCustomerDataSDK({
   }
 })
 ```
+
+
+### Configuring features
+
+Each feature is inactive until switched on, and an SDK with no feature
+configured does no feature work at all. Every option below keeps its default
+unless you name it.
+
+The array form of \`feature\` is significant: several features wrap the
+transport, and the order you list them in is the order they nest.
+
+#### `test`
+
+In-memory mock transport for testing without a live server.
+
+**Configuration**
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Options above are those the model carries a default for. A feature may
+also accept callback options — a `sink` to receive each record, for
+instance — which have no default and are covered in the full feature
+reference.
+
+**Usage**
+
+Set `feature.test.active` to true in the client options, and override any option above in the same entry. Every option keeps
+its default unless you name it.
+
+**Considerations**
+
+- Attaches to pipeline hooks, not the transport, so activation order does
+  not change what it observes.
+- Installs the BASE transport that the wrapping features wrap, so it must be
+  activated before them.
+- Inactive by default: leaving it out costs nothing at runtime.
 

@@ -14,6 +14,10 @@ Metadata kindly supplied by [www.freepublicapis.com](https://www.freepublicapis.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI with an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
+> **Features:** `test` — opt-in,
+> inactive until switched on, and configured per client. See the Features
+> section of any SDK README below for what each one does.
+
 ## Entities, not endpoints
 
 This SDK exposes the API as a small set of **semantic entities** — EuApI, GlobalApI and NetherlandsApI — that you
@@ -23,7 +27,7 @@ support (`list`, `load`, `create`):
 
 ```ts
 const client = new DutchCustomerDataSDK()
-const items = await client.EuApI().list()
+const items = await client.EuApI().list({ q: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -66,7 +70,7 @@ print(euapis)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = DutchCustomerDataSDK::test([
-    "entity" => ["euapi" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["euapi" => ["test01" => []]],
 ]);
 $euapis = $client->EuApI()->list();
 ```
@@ -85,7 +89,7 @@ result, err := client.EuApI(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = DutchCustomerDataSDK.test({
-  "entity" => { "euapi" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "euapi" => { "test01" => {} } },
 })
 euapis = client.EuApI.list()
 ```
@@ -120,7 +124,7 @@ import { DutchCustomerDataSDK } from '@voxgig-sdk/dutch-customer-data'
 const client = new DutchCustomerDataSDK()
 
 // List all euapis (returns EuApIEntity[] — .data() for the record)
-const euapis = await client.EuApI().list()
+const euapis = await client.EuApI().list({ q: "example" })
 for (const euapi of euapis) {
   console.log(euapi)
 }
@@ -181,12 +185,12 @@ from dutchcustomerdata_sdk import DutchCustomerDataSDK
 client = DutchCustomerDataSDK()
 
 # List all euapis (returns a list, raises on error)
-euapis = client.EuApI().list()
+euapis = client.EuApI().list({"q": "example"})
 for euapi in euapis:
     print(euapi)
 
 # Load a specific euapi (returns the record, raises on error)
-euapi = client.EuApI().load({"id": "example_id"})
+euapi = client.EuApI().load({"vat": "example_vat"})
 print(euapi)
 ```
 
@@ -203,7 +207,7 @@ $euapis = $client->EuApI()->list();
 print_r($euapis);
 
 // Load a specific euapi (returns the ENTITY; call data_get() for the record; throws on error)
-$euapi = $client->EuApI()->load(["id" => "example_id"]);
+$euapi = $client->EuApI()->load(["vat" => "example_vat"]);
 print_r($euapi);
 ```
 
@@ -234,7 +238,7 @@ euapis = client.EuApI.list
 puts euapis
 
 # Load a specific euapi (returns the ENTITY; call data_get for the record)
-euapi = client.EuApI.load({ "id" => "example_id" })
+euapi = client.EuApI.load({ "vat" => "example_vat" })
 puts euapi
 ```
 
@@ -250,7 +254,7 @@ local euapis, err = client:EuApI():list()
 print(euapis)
 
 -- Load a specific euapi
-local euapi, err = client:EuApI():load({ id = "example_id" })
+local euapi, err = client:EuApI():load({ vat = "example_vat" })
 print(euapi)
 ```
 
@@ -356,6 +360,32 @@ forking the SDK.
 | **TestFeature** | In-memory mock transport for testing without a live server |
 
 Pass custom features via the `extend` option at construction time.
+
+## Customizing this SDK
+
+This repository contains its own generator (`.sdk/`), so the SDK is
+customizable without forking any upstream tool:
+
+- **The model** (`.sdk/model/`) declares everything this project owns:
+  package names, versions, active features, per-target settings. It is
+  written in [aontu](https://github.com/aontu-lang/aontu), a JSON-based
+  specification language designed for building ontologies: easy to edit
+  by hand, and files unify rather than override, so small declarations
+  compose into one model. Regeneration re-reads it every time.
+- **Templates** (`.sdk/tm/`) and **components** (`.sdk/src/cmp/`) are
+  the two layers of generation, copied into this repo: templates are the
+  literal per-language source, components generate the API-shaped parts.
+- **Regeneration merges.** By default, newly generated content is
+  three-way merged into existing files, so generator updates and local
+  edits usually converge without manual conflict handling. A project can
+  opt for plain overwrite instead.
+- **Custom features and entire custom targets** arrive through sdkgen
+  packages (`voxgig-sdkgen package add`), on the same rails as the
+  bundled languages, and `voxgig-sdkgen doctor` reports any drift from
+  what a resync would write.
+
+How-to: [customize and propagate templates](https://github.com/voxgig/sdkgen/blob/main/docs/how-to/customize-and-propagate-templates.md).
+The full story: [voxgig.com/sdk/custom](https://voxgig.com/sdk/custom).
 
 ## Per-language documentation
 

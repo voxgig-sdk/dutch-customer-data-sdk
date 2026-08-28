@@ -43,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    euapis = client.EuApI().list()
+    euapis = client.EuApI().list({"q": "example"})
     for euapi in euapis:
         print(euapi)
 except Exception as err:
@@ -56,7 +56,7 @@ except Exception as err:
 
 ```python
 try:
-    euapi = client.EuApI().load({"id": "example_id"})
+    euapi = client.EuApI().load({"vat": "example_vat"})
     print(euapi)
 except Exception as err:
     print(f"load failed: {err}")
@@ -461,13 +461,13 @@ Create an instance: `eu_ap_i = client.EuApI()`
 #### Example: Load
 
 ```python
-eu_ap_i = client.EuApI().load({"id": "eu_ap_i_id"})
+eu_ap_i = client.EuApI().load({"vat": "vat"})
 ```
 
 #### Example: List
 
 ```python
-eu_ap_is = client.EuApI().list()
+eu_ap_is = client.EuApI().list({"q": "example"})
 ```
 
 
@@ -589,7 +589,7 @@ global_ap_i = client.GlobalApI().load()
 #### Example: List
 
 ```python
-global_ap_is = client.GlobalApI().list()
+global_ap_is = client.GlobalApI().list({"country_code": "example"})
 ```
 
 #### Example: Create
@@ -639,8 +639,31 @@ Create an instance: `netherlands_ap_i = client.NetherlandsApI()`
 #### Example: List
 
 ```python
-netherlands_ap_is = client.NetherlandsApI().list()
+netherlands_ap_is = client.NetherlandsApI().list({"number": "example", "postcode": "example"})
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

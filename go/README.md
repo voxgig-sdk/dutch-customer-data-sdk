@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single euApI — the value is the loaded record.
-    euApI, err := client.EuApI(nil).Load(map[string]any{"id": "example_id"}, nil)
+    euApI, err := client.EuApI(nil).Load(map[string]any{"vat": "example_vat"}, nil)
     if err != nil {
         panic(err)
     }
@@ -474,7 +474,7 @@ Create an instance: `euApI := client.EuApI(nil)`
 #### Example: Load
 
 ```go
-euApI, err := client.EuApI(nil).Load(map[string]any{"id": "eu_ap_i_id"}, nil)
+euApI, err := client.EuApI(nil).Load(map[string]any{"vat": "vat"}, nil)
 if err != nil {
     panic(err)
 }
@@ -678,6 +678,29 @@ if err != nil {
 }
 fmt.Println(netherlandsApIs) // the array of records
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

@@ -40,7 +40,7 @@ resolves to entities, not raw records. Iterate them directly, and call
 `.data()` on one for the record it holds:
 
 ```ts
-const euapis = await client.EuApI().list()
+const euapis = await client.EuApI().list({ q: "example" })
 
 for (const euapi of euapis) {
   console.log(euapi)
@@ -53,7 +53,7 @@ for (const euapi of euapis) {
 
 ```ts
 try {
-  const euapi = await client.EuApI().load({ id: 'example_id' })
+  const euapi = await client.EuApI().load({ vat: 'example_vat' })
   console.log(euapi)
 } catch (err) {
   console.error('load failed:', err)
@@ -507,13 +507,13 @@ Create an instance: `const eu_ap_i = client.EuApI()`
 #### Example: Load
 
 ```ts
-const eu_ap_i = await client.EuApI().load({ id: 'eu_ap_i_id' })
+const eu_ap_i = await client.EuApI().load({ vat: 'vat' })
 ```
 
 #### Example: List
 
 ```ts
-const eu_ap_is = await client.EuApI().list()
+const eu_ap_is = await client.EuApI().list({ q: "example" })
 ```
 
 
@@ -635,7 +635,7 @@ const global_ap_i = await client.GlobalApI().load()
 #### Example: List
 
 ```ts
-const global_ap_is = await client.GlobalApI().list()
+const global_ap_is = await client.GlobalApI().list({ country_code: "example" })
 ```
 
 #### Example: Create
@@ -685,8 +685,31 @@ Create an instance: `const netherlands_ap_i = client.NetherlandsApI()`
 #### Example: List
 
 ```ts
-const netherlands_ap_is = await client.NetherlandsApI().list()
+const netherlands_ap_is = await client.NetherlandsApI().list({ number: "example", postcode: "example" })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

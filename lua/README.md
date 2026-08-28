@@ -50,7 +50,7 @@ end
 ### 3. Load an euapi
 
 ```lua
-local euapi, err = client:EuApI():load({ id = "example_id" })
+local euapi, err = client:EuApI():load({ vat = "example_vat" })
 if err then error(err) end
 print(euapi)
 ```
@@ -231,7 +231,7 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local eu_ap_i, err = client:EuApI():load({ id = "example_id" })
+    local eu_ap_i, err = client:EuApI():load()
     if err then error(err) end
     -- eu_ap_i is the loaded record
 
@@ -446,7 +446,7 @@ Create an instance: `local eu_ap_i = client:EuApI(nil)`
 #### Example: Load
 
 ```lua
-local eu_ap_i, err = client:EuApI():load({ id = "eu_ap_i_id" })
+local eu_ap_i, err = client:EuApI():load({ vat = "vat" })
 ```
 
 #### Example: List
@@ -626,6 +626,29 @@ Create an instance: `local netherlands_ap_i = client:NetherlandsApI(nil)`
 ```lua
 local netherlands_ap_is, err = client:NetherlandsApI():list()
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

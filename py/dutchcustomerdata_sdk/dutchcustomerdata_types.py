@@ -40,55 +40,12 @@ class EuApI(TypedDict, total=False):
     vat: str
 
 
-class EuApILoadMatchRequired(TypedDict):
-    id: str
-
-
-class EuApILoadMatch(EuApILoadMatchRequired, total=False):
-    active: int
-    address: str
-    buyer: str
-    buyer_country: str
-    city: str
-    contract_nature: str
-    country: str
-    html: str
-    link: str
-    name: str
-    notice_type: str
-    official_language: str
-    pdf: str
-    place_of_performance: str
-    postcode: str
-    procedure_type: str
-    publication_date: str
-    response_date: str
-    title: str
+class EuApILoadMatch(TypedDict):
     vat: str
 
 
-class EuApIListMatch(TypedDict, total=False):
-    active: int
-    address: str
-    buyer: str
-    buyer_country: str
-    city: str
-    contract_nature: str
-    country: str
-    html: str
-    id: str
-    link: str
-    name: str
-    notice_type: str
-    official_language: str
-    pdf: str
-    place_of_performance: str
-    postcode: str
-    procedure_type: str
-    publication_date: str
-    response_date: str
-    title: str
-    vat: str
+class EuApIListMatch(TypedDict):
+    q: str
 
 
 class GlobalApI(TypedDict, total=False):
@@ -187,193 +144,20 @@ class GlobalApI(TypedDict, total=False):
 
 
 class GlobalApILoadMatch(TypedDict, total=False):
-    addition: str
-    address: str
-    admin1: str
-    admin2: str
-    admin3: str
-    bank: str
     bic: str
-    browser: str
-    builtwith: int
-    carrier: str
-    city: str
-    cloudflare: int
-    commoncrawl: int
-    content_length: int
-    content_type: str
-    country: str
-    country_code: str
-    crux: int
-    device_family: str
-    device_name: str
-    device_type: str
-    disposable: int
-    dns_a: list
-    dns_mx: list
-    dns_ns: list
-    dns_soa: list
-    dns_txt: list
-    dns_www_a: list
-    dnsserver: str
-    domain: str
-    domcop: int
-    email: str
-    found: int
-    free: int
-    freeformaddress: str
-    host: str
-    host_type: str
-    hostio: int
-    http_code: int
-    iban: str
-    iban_human: str
-    int: str
-    international: str
-    ip: str
-    ipint: int
-    ismobile: int
-    lat: float
     lei: str
-    letter: str
     local_id: str
-    lon: float
-    mailserver: str
-    majestic: int
-    message: str
-    municipality: str
-    mx_host: str
-    mx_ip: str
-    name: str
-    national: str
-    number: int
-    ocid: str
-    pagerank: int
-    platform: str
-    population: int
-    postcode: str
-    province: str
-    province_code: str
-    redirect_count: int
-    region: str
-    register_id: str
-    renewal_date: str
-    score: float
-    sepa: int
-    spf: str
-    status: str
-    street: str
-    success: int
-    swift: int
-    tranco: int
-    type: str
-    umbrella: int
-    url: str
-    user: str
-    user_agent: str
-    valid: int
-    verified: bool
-    verified_checksum: bool
-    webrank: int
-    wrong_email: int
-    wrong_format: int
-    wrong_password: int
-    wrong_phone: int
 
 
-class GlobalApIListMatch(TypedDict, total=False):
-    addition: str
-    address: str
-    admin1: str
-    admin2: str
-    admin3: str
-    bank: str
-    bic: str
-    browser: str
-    builtwith: int
-    carrier: str
-    city: str
-    cloudflare: int
-    commoncrawl: int
-    content_length: int
-    content_type: str
-    country: str
+class GlobalApIListMatchRequired(TypedDict):
     country_code: str
-    crux: int
-    device_family: str
-    device_name: str
-    device_type: str
-    disposable: int
-    dns_a: list
-    dns_mx: list
-    dns_ns: list
-    dns_soa: list
-    dns_txt: list
-    dns_www_a: list
-    dnsserver: str
-    domain: str
-    domcop: int
-    email: str
-    found: int
-    free: int
-    freeformaddress: str
-    host: str
-    host_type: str
-    hostio: int
-    http_code: int
-    iban: str
-    iban_human: str
-    int: str
-    international: str
-    ip: str
-    ipint: int
-    ismobile: int
-    lat: float
-    lei: str
-    letter: str
-    local_id: str
-    lon: float
-    mailserver: str
-    majestic: int
-    message: str
-    municipality: str
-    mx_host: str
-    mx_ip: str
-    name: str
-    national: str
-    number: int
-    ocid: str
-    pagerank: int
-    platform: str
-    population: int
+
+
+class GlobalApIListMatch(GlobalApIListMatchRequired, total=False):
+    city: str
+    full: int
     postcode: str
-    province: str
-    province_code: str
-    redirect_count: int
-    region: str
-    register_id: str
-    renewal_date: str
-    score: float
-    sepa: int
-    spf: str
-    status: str
-    street: str
-    success: int
-    swift: int
-    tranco: int
-    type: str
-    umbrella: int
-    url: str
-    user: str
-    user_agent: str
-    valid: int
-    verified: bool
-    verified_checksum: bool
-    webrank: int
-    wrong_email: int
-    wrong_format: int
-    wrong_password: int
-    wrong_phone: int
+    q: str
 
 
 class GlobalApICreateData(TypedDict, total=False):
@@ -495,25 +279,10 @@ class NetherlandsApI(TypedDict, total=False):
     vestiging: str
 
 
-class NetherlandsApIListMatch(TypedDict, total=False):
-    active: int
-    addition: str
-    city: str
-    coc: str
-    construction_year: int
-    floor_area: int
-    freeformaddress: str
-    id: str
-    lat: float
-    letter: str
-    lon: float
-    municipality: str
-    name: str
+class NetherlandsApIListMatchRequired(TypedDict):
     number: str
     postcode: str
-    province: str
-    province_code: str
-    purpose: str
-    street: str
-    type: str
-    vestiging: str
+
+
+class NetherlandsApIListMatch(NetherlandsApIListMatchRequired, total=False):
+    suffix: str

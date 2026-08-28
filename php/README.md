@@ -50,7 +50,7 @@ try {
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the EuApI record (throws on error).
-    $euapi = $client->EuApI()->load(["id" => "example_id"]);
+    $euapi = $client->EuApI()->load(["vat" => "example_vat"]);
     print_r($euapi);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -132,13 +132,10 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```php
-$client = DutchCustomerDataSDK::test([
-    "entity" => ["euapi" => ["test01" => ["id" => "test01"]]],
-]);
+$client = DutchCustomerDataSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
@@ -469,7 +466,7 @@ Create an instance: `$eu_ap_i = $client->EuApI();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the EuApI record (throws on error).
-$eu_ap_i = $client->EuApI()->load(["id" => "eu_ap_i_id"]);
+$eu_ap_i = $client->EuApI()->load(["vat" => "vat"]);
 ```
 
 #### Example: List
@@ -653,6 +650,29 @@ Create an instance: `$netherlands_ap_i = $client->NetherlandsApI();`
 // list() returns an array of NetherlandsApI records (throws on error).
 $netherlands_ap_is = $client->NetherlandsApI()->list();
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
