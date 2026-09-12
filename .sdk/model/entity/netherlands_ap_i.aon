@@ -46,6 +46,7 @@ main: kit: entity: netherlands_ap_i: {
       type: "`$STRING`"
     }
     {
+      format: "double"
       name: "lat"
       req: false
       type: "`$NUMBER`"
@@ -56,6 +57,7 @@ main: kit: entity: netherlands_ap_i: {
       type: "`$STRING`"
     }
     {
+      format: "double"
       name: "lon"
       req: false
       type: "`$NUMBER`"
@@ -153,8 +155,10 @@ main: kit: entity: netherlands_ap_i: {
           }
           method: "GET"
           orig: "/bag"
-          parts: [
-            "bag"
+          segments: [
+            {
+              lit: "bag"
+            }
           ]
           select: {
             exist: [
@@ -183,8 +187,10 @@ main: kit: entity: netherlands_ap_i: {
           }
           method: "GET"
           orig: "/kvk"
-          parts: [
-            "kvk"
+          segments: [
+            {
+              lit: "kvk"
+            }
           ]
           select: {
             exist: [

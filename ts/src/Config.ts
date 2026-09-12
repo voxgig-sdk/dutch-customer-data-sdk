@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -101,6 +112,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "html",
           "type": "`$STRING`"
         },
@@ -109,6 +121,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "link",
           "type": "`$STRING`"
         },
@@ -125,6 +138,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "pdf",
           "type": "`$STRING`"
         },
@@ -141,10 +155,12 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date",
           "name": "publication_date",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "response_date",
           "type": "`$STRING`"
         },
@@ -157,6 +173,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "eu_ap_i",
       "op": {
         "list": {
@@ -179,8 +199,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/tender",
-              "parts": [
-                "tender"
+              "segments": [
+                {
+                  "lit": "tender"
+                }
               ],
               "select": {
                 "exist": [
@@ -190,7 +212,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.tender`"
-              }
+              },
+              "parts": [
+                "tender"
+              ]
             }
           ]
         },
@@ -214,8 +239,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/vat",
-              "parts": [
-                "vat"
+              "segments": [
+                {
+                  "lit": "vat"
+                }
               ],
               "select": {
                 "exist": [
@@ -225,7 +252,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.vat`"
-              }
+              },
+              "parts": [
+                "vat"
+              ]
             }
           ]
         }
@@ -426,6 +456,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "double",
           "name": "lat",
           "type": "`$NUMBER`"
         },
@@ -442,6 +473,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "double",
           "name": "lon",
           "type": "`$NUMBER`"
         },
@@ -524,10 +556,12 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "renewal_date",
           "type": "`$STRING`"
         },
         {
+          "format": "double",
           "name": "score",
           "type": "`$NUMBER`"
         },
@@ -626,14 +660,19 @@ class Config {
               "kind": "http",
               "method": "POST",
               "orig": "/password",
-              "parts": [
-                "password"
+              "segments": [
+                {
+                  "lit": "password"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.password`"
-              }
+              },
+              "parts": [
+                "password"
+              ]
             }
           ]
         },
@@ -671,8 +710,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/city",
-              "parts": [
-                "city"
+              "segments": [
+                {
+                  "lit": "city"
+                }
               ],
               "select": {
                 "exist": [
@@ -684,7 +725,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.city`"
-              }
+              },
+              "parts": [
+                "city"
+              ]
             },
             {
               "args": {
@@ -710,8 +754,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/postcode",
-              "parts": [
-                "postcode"
+              "segments": [
+                {
+                  "lit": "postcode"
+                }
               ],
               "select": {
                 "exist": [
@@ -722,7 +768,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.postcode`"
-              }
+              },
+              "parts": [
+                "postcode"
+              ]
             },
             {
               "args": {
@@ -748,8 +797,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/geocoding",
-              "parts": [
-                "geocoding"
+              "segments": [
+                {
+                  "lit": "geocoding"
+                }
               ],
               "select": {
                 "exist": [
@@ -760,7 +811,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.geocoding`"
-              }
+              },
+              "parts": [
+                "geocoding"
+              ]
             }
           ]
         },
@@ -797,8 +851,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/lei",
-              "parts": [
-                "lei"
+              "segments": [
+                {
+                  "lit": "lei"
+                }
               ],
               "select": {
                 "exist": [
@@ -810,7 +866,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.lei`"
-              }
+              },
+              "parts": [
+                "lei"
+              ]
             },
             {
               "args": {
@@ -840,8 +899,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/password",
-              "parts": [
-                "password"
+              "segments": [
+                {
+                  "lit": "password"
+                }
               ],
               "select": {
                 "exist": [
@@ -853,7 +914,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.password`"
-              }
+              },
+              "parts": [
+                "password"
+              ]
             },
             {
               "args": {
@@ -878,8 +942,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/phone",
-              "parts": [
-                "phone"
+              "segments": [
+                {
+                  "lit": "phone"
+                }
               ],
               "select": {
                 "exist": [
@@ -890,7 +956,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.phone`"
-              }
+              },
+              "parts": [
+                "phone"
+              ]
             },
             {
               "args": {
@@ -908,8 +977,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/bic",
-              "parts": [
-                "bic"
+              "segments": [
+                {
+                  "lit": "bic"
+                }
               ],
               "select": {
                 "exist": [
@@ -919,7 +990,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.bic`"
-              }
+              },
+              "parts": [
+                "bic"
+              ]
             },
             {
               "args": {
@@ -937,8 +1011,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/currency",
-              "parts": [
-                "currency"
+              "segments": [
+                {
+                  "lit": "currency"
+                }
               ],
               "select": {
                 "exist": [
@@ -948,7 +1024,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.currency`"
-              }
+              },
+              "parts": [
+                "currency"
+              ]
             },
             {
               "args": {
@@ -966,8 +1045,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/dns",
-              "parts": [
-                "dns"
+              "segments": [
+                {
+                  "lit": "dns"
+                }
               ],
               "select": {
                 "exist": [
@@ -977,7 +1058,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.dns`"
-              }
+              },
+              "parts": [
+                "dns"
+              ]
             },
             {
               "args": {
@@ -995,8 +1079,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/webrank",
-              "parts": [
-                "webrank"
+              "segments": [
+                {
+                  "lit": "webrank"
+                }
               ],
               "select": {
                 "exist": [
@@ -1006,7 +1092,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.webrank`"
-              }
+              },
+              "parts": [
+                "webrank"
+              ]
             },
             {
               "args": {
@@ -1024,8 +1113,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/email",
-              "parts": [
-                "email"
+              "segments": [
+                {
+                  "lit": "email"
+                }
               ],
               "select": {
                 "exist": [
@@ -1035,7 +1126,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.email`"
-              }
+              },
+              "parts": [
+                "email"
+              ]
             },
             {
               "args": {
@@ -1053,8 +1147,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/iban",
-              "parts": [
-                "iban"
+              "segments": [
+                {
+                  "lit": "iban"
+                }
               ],
               "select": {
                 "exist": [
@@ -1064,7 +1160,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.iban`"
-              }
+              },
+              "parts": [
+                "iban"
+              ]
             },
             {
               "args": {
@@ -1080,8 +1179,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/ip",
-              "parts": [
-                "ip"
+              "segments": [
+                {
+                  "lit": "ip"
+                }
               ],
               "select": {
                 "exist": [
@@ -1091,7 +1192,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.ip`"
-              }
+              },
+              "parts": [
+                "ip"
+              ]
             },
             {
               "args": {
@@ -1109,8 +1213,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/url",
-              "parts": [
-                "url"
+              "segments": [
+                {
+                  "lit": "url"
+                }
               ],
               "select": {
                 "exist": [
@@ -1120,7 +1226,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.url`"
-              }
+              },
+              "parts": [
+                "url"
+              ]
             }
           ]
         }
@@ -1164,6 +1273,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "double",
           "name": "lat",
           "type": "`$NUMBER`"
         },
@@ -1172,6 +1282,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "double",
           "name": "lon",
           "type": "`$NUMBER`"
         },
@@ -1216,6 +1327,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "netherlands_ap_i",
       "op": {
         "list": {
@@ -1253,8 +1368,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/bag",
-              "parts": [
-                "bag"
+              "segments": [
+                {
+                  "lit": "bag"
+                }
               ],
               "select": {
                 "exist": [
@@ -1266,7 +1383,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.bag`"
-              }
+              },
+              "parts": [
+                "bag"
+              ]
             },
             {
               "args": {
@@ -1284,8 +1404,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/kvk",
-              "parts": [
-                "kvk"
+              "segments": [
+                {
+                  "lit": "kvk"
+                }
               ],
               "select": {
                 "exist": [
@@ -1295,7 +1417,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.kvk`"
-              }
+              },
+              "parts": [
+                "kvk"
+              ]
             }
           ]
         }
@@ -1311,6 +1436,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

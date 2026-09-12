@@ -66,6 +66,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "html",
 						"type": "`$STRING`",
 					},
@@ -74,6 +75,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "link",
 						"type": "`$STRING`",
 					},
@@ -90,6 +92,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "uri",
 						"name": "pdf",
 						"type": "`$STRING`",
 					},
@@ -106,10 +109,12 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date",
 						"name": "publication_date",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "response_date",
 						"type": "`$STRING`",
 					},
@@ -121,6 +126,10 @@ func MakeConfig() map[string]any {
 						"name": "vat",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "eu_ap_i",
 				"op": map[string]any{
@@ -144,8 +153,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/tender",
-								"parts": []any{
-									"tender",
+								"segments": []any{
+									map[string]any{
+										"lit": "tender",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -155,6 +166,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.tender`",
+								},
+								"parts": []any{
+									"tender",
 								},
 							},
 						},
@@ -179,8 +193,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/vat",
-								"parts": []any{
-									"vat",
+								"segments": []any{
+									map[string]any{
+										"lit": "vat",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -190,6 +206,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.vat`",
+								},
+								"parts": []any{
+									"vat",
 								},
 							},
 						},
@@ -391,6 +410,7 @@ func MakeConfig() map[string]any {
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
+						"format": "double",
 						"name": "lat",
 						"type": "`$NUMBER`",
 					},
@@ -407,6 +427,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "double",
 						"name": "lon",
 						"type": "`$NUMBER`",
 					},
@@ -489,10 +510,12 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "date-time",
 						"name": "renewal_date",
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "double",
 						"name": "score",
 						"type": "`$NUMBER`",
 					},
@@ -591,13 +614,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/password",
-								"parts": []any{
-									"password",
+								"segments": []any{
+									map[string]any{
+										"lit": "password",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.password`",
+								},
+								"parts": []any{
+									"password",
 								},
 							},
 						},
@@ -636,8 +664,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/city",
-								"parts": []any{
-									"city",
+								"segments": []any{
+									map[string]any{
+										"lit": "city",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -649,6 +679,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.city`",
+								},
+								"parts": []any{
+									"city",
 								},
 							},
 							map[string]any{
@@ -675,8 +708,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/postcode",
-								"parts": []any{
-									"postcode",
+								"segments": []any{
+									map[string]any{
+										"lit": "postcode",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -687,6 +722,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.postcode`",
+								},
+								"parts": []any{
+									"postcode",
 								},
 							},
 							map[string]any{
@@ -713,8 +751,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/geocoding",
-								"parts": []any{
-									"geocoding",
+								"segments": []any{
+									map[string]any{
+										"lit": "geocoding",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -725,6 +765,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.geocoding`",
+								},
+								"parts": []any{
+									"geocoding",
 								},
 							},
 						},
@@ -762,8 +805,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/lei",
-								"parts": []any{
-									"lei",
+								"segments": []any{
+									map[string]any{
+										"lit": "lei",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -775,6 +820,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.lei`",
+								},
+								"parts": []any{
+									"lei",
 								},
 							},
 							map[string]any{
@@ -805,8 +853,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/password",
-								"parts": []any{
-									"password",
+								"segments": []any{
+									map[string]any{
+										"lit": "password",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -818,6 +868,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.password`",
+								},
+								"parts": []any{
+									"password",
 								},
 							},
 							map[string]any{
@@ -843,8 +896,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/phone",
-								"parts": []any{
-									"phone",
+								"segments": []any{
+									map[string]any{
+										"lit": "phone",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -855,6 +910,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.phone`",
+								},
+								"parts": []any{
+									"phone",
 								},
 							},
 							map[string]any{
@@ -873,8 +931,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/bic",
-								"parts": []any{
-									"bic",
+								"segments": []any{
+									map[string]any{
+										"lit": "bic",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -884,6 +944,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.bic`",
+								},
+								"parts": []any{
+									"bic",
 								},
 							},
 							map[string]any{
@@ -902,8 +965,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/currency",
-								"parts": []any{
-									"currency",
+								"segments": []any{
+									map[string]any{
+										"lit": "currency",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -913,6 +978,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.currency`",
+								},
+								"parts": []any{
+									"currency",
 								},
 							},
 							map[string]any{
@@ -931,8 +999,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/dns",
-								"parts": []any{
-									"dns",
+								"segments": []any{
+									map[string]any{
+										"lit": "dns",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -942,6 +1012,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.dns`",
+								},
+								"parts": []any{
+									"dns",
 								},
 							},
 							map[string]any{
@@ -960,8 +1033,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/webrank",
-								"parts": []any{
-									"webrank",
+								"segments": []any{
+									map[string]any{
+										"lit": "webrank",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -971,6 +1046,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.webrank`",
+								},
+								"parts": []any{
+									"webrank",
 								},
 							},
 							map[string]any{
@@ -989,8 +1067,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/email",
-								"parts": []any{
-									"email",
+								"segments": []any{
+									map[string]any{
+										"lit": "email",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1000,6 +1080,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.email`",
+								},
+								"parts": []any{
+									"email",
 								},
 							},
 							map[string]any{
@@ -1018,8 +1101,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/iban",
-								"parts": []any{
-									"iban",
+								"segments": []any{
+									map[string]any{
+										"lit": "iban",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1029,6 +1114,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.iban`",
+								},
+								"parts": []any{
+									"iban",
 								},
 							},
 							map[string]any{
@@ -1045,8 +1133,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/ip",
-								"parts": []any{
-									"ip",
+								"segments": []any{
+									map[string]any{
+										"lit": "ip",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1056,6 +1146,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.ip`",
+								},
+								"parts": []any{
+									"ip",
 								},
 							},
 							map[string]any{
@@ -1074,8 +1167,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/url",
-								"parts": []any{
-									"url",
+								"segments": []any{
+									map[string]any{
+										"lit": "url",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1085,6 +1180,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.url`",
+								},
+								"parts": []any{
+									"url",
 								},
 							},
 						},
@@ -1129,6 +1227,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "double",
 						"name": "lat",
 						"type": "`$NUMBER`",
 					},
@@ -1137,6 +1236,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "double",
 						"name": "lon",
 						"type": "`$NUMBER`",
 					},
@@ -1181,6 +1281,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "netherlands_ap_i",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -1218,8 +1322,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/bag",
-								"parts": []any{
-									"bag",
+								"segments": []any{
+									map[string]any{
+										"lit": "bag",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1231,6 +1337,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.bag`",
+								},
+								"parts": []any{
+									"bag",
 								},
 							},
 							map[string]any{
@@ -1249,8 +1358,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/kvk",
-								"parts": []any{
-									"kvk",
+								"segments": []any{
+									map[string]any{
+										"lit": "kvk",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -1260,6 +1371,9 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.kvk`",
+								},
+								"parts": []any{
+									"kvk",
 								},
 							},
 						},
@@ -1271,6 +1385,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

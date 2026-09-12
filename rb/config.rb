@@ -74,6 +74,7 @@ module DutchCustomerDataConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "html",
               "type" => "`$STRING`",
             },
@@ -82,6 +83,7 @@ module DutchCustomerDataConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "link",
               "type" => "`$STRING`",
             },
@@ -98,6 +100,7 @@ module DutchCustomerDataConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "pdf",
               "type" => "`$STRING`",
             },
@@ -114,10 +117,12 @@ module DutchCustomerDataConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date",
               "name" => "publication_date",
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "response_date",
               "type" => "`$STRING`",
             },
@@ -130,6 +135,10 @@ module DutchCustomerDataConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "eu_ap_i",
           "op" => {
             "list" => {
@@ -152,8 +161,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/tender",
-                  "parts" => [
-                    "tender",
+                  "segments" => [
+                    {
+                      "lit" => "tender",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -164,6 +175,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.tender`",
                   },
+                  "parts" => [
+                    "tender",
+                  ],
                 },
               ],
             },
@@ -187,8 +201,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/vat",
-                  "parts" => [
-                    "vat",
+                  "segments" => [
+                    {
+                      "lit" => "vat",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -199,6 +215,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.vat`",
                   },
+                  "parts" => [
+                    "vat",
+                  ],
                 },
               ],
             },
@@ -399,6 +418,7 @@ module DutchCustomerDataConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "double",
               "name" => "lat",
               "type" => "`$NUMBER`",
             },
@@ -415,6 +435,7 @@ module DutchCustomerDataConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "double",
               "name" => "lon",
               "type" => "`$NUMBER`",
             },
@@ -497,10 +518,12 @@ module DutchCustomerDataConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "renewal_date",
               "type" => "`$STRING`",
             },
             {
+              "format" => "double",
               "name" => "score",
               "type" => "`$NUMBER`",
             },
@@ -599,14 +622,19 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/password",
-                  "parts" => [
-                    "password",
+                  "segments" => [
+                    {
+                      "lit" => "password",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.password`",
                   },
+                  "parts" => [
+                    "password",
+                  ],
                 },
               ],
             },
@@ -644,8 +672,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/city",
-                  "parts" => [
-                    "city",
+                  "segments" => [
+                    {
+                      "lit" => "city",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -658,6 +688,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.city`",
                   },
+                  "parts" => [
+                    "city",
+                  ],
                 },
                 {
                   "args" => {
@@ -683,8 +716,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/postcode",
-                  "parts" => [
-                    "postcode",
+                  "segments" => [
+                    {
+                      "lit" => "postcode",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -696,6 +731,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.postcode`",
                   },
+                  "parts" => [
+                    "postcode",
+                  ],
                 },
                 {
                   "args" => {
@@ -721,8 +759,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/geocoding",
-                  "parts" => [
-                    "geocoding",
+                  "segments" => [
+                    {
+                      "lit" => "geocoding",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -734,6 +774,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.geocoding`",
                   },
+                  "parts" => [
+                    "geocoding",
+                  ],
                 },
               ],
             },
@@ -770,8 +813,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/lei",
-                  "parts" => [
-                    "lei",
+                  "segments" => [
+                    {
+                      "lit" => "lei",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -784,6 +829,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.lei`",
                   },
+                  "parts" => [
+                    "lei",
+                  ],
                 },
                 {
                   "args" => {
@@ -813,8 +861,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/password",
-                  "parts" => [
-                    "password",
+                  "segments" => [
+                    {
+                      "lit" => "password",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -827,6 +877,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.password`",
                   },
+                  "parts" => [
+                    "password",
+                  ],
                 },
                 {
                   "args" => {
@@ -851,8 +904,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/phone",
-                  "parts" => [
-                    "phone",
+                  "segments" => [
+                    {
+                      "lit" => "phone",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -864,6 +919,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.phone`",
                   },
+                  "parts" => [
+                    "phone",
+                  ],
                 },
                 {
                   "args" => {
@@ -881,8 +939,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/bic",
-                  "parts" => [
-                    "bic",
+                  "segments" => [
+                    {
+                      "lit" => "bic",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -893,6 +953,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.bic`",
                   },
+                  "parts" => [
+                    "bic",
+                  ],
                 },
                 {
                   "args" => {
@@ -910,8 +973,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/currency",
-                  "parts" => [
-                    "currency",
+                  "segments" => [
+                    {
+                      "lit" => "currency",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -922,6 +987,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.currency`",
                   },
+                  "parts" => [
+                    "currency",
+                  ],
                 },
                 {
                   "args" => {
@@ -939,8 +1007,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/dns",
-                  "parts" => [
-                    "dns",
+                  "segments" => [
+                    {
+                      "lit" => "dns",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -951,6 +1021,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.dns`",
                   },
+                  "parts" => [
+                    "dns",
+                  ],
                 },
                 {
                   "args" => {
@@ -968,8 +1041,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/webrank",
-                  "parts" => [
-                    "webrank",
+                  "segments" => [
+                    {
+                      "lit" => "webrank",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -980,6 +1055,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.webrank`",
                   },
+                  "parts" => [
+                    "webrank",
+                  ],
                 },
                 {
                   "args" => {
@@ -997,8 +1075,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/email",
-                  "parts" => [
-                    "email",
+                  "segments" => [
+                    {
+                      "lit" => "email",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1009,6 +1089,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.email`",
                   },
+                  "parts" => [
+                    "email",
+                  ],
                 },
                 {
                   "args" => {
@@ -1026,8 +1109,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/iban",
-                  "parts" => [
-                    "iban",
+                  "segments" => [
+                    {
+                      "lit" => "iban",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1038,6 +1123,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.iban`",
                   },
+                  "parts" => [
+                    "iban",
+                  ],
                 },
                 {
                   "args" => {
@@ -1053,8 +1141,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ip",
-                  "parts" => [
-                    "ip",
+                  "segments" => [
+                    {
+                      "lit" => "ip",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1065,6 +1155,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.ip`",
                   },
+                  "parts" => [
+                    "ip",
+                  ],
                 },
                 {
                   "args" => {
@@ -1082,8 +1175,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/url",
-                  "parts" => [
-                    "url",
+                  "segments" => [
+                    {
+                      "lit" => "url",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1094,6 +1189,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.url`",
                   },
+                  "parts" => [
+                    "url",
+                  ],
                 },
               ],
             },
@@ -1137,6 +1235,7 @@ module DutchCustomerDataConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "double",
               "name" => "lat",
               "type" => "`$NUMBER`",
             },
@@ -1145,6 +1244,7 @@ module DutchCustomerDataConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "double",
               "name" => "lon",
               "type" => "`$NUMBER`",
             },
@@ -1189,6 +1289,10 @@ module DutchCustomerDataConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "netherlands_ap_i",
           "op" => {
             "list" => {
@@ -1226,8 +1330,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/bag",
-                  "parts" => [
-                    "bag",
+                  "segments" => [
+                    {
+                      "lit" => "bag",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1240,6 +1346,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.bag`",
                   },
+                  "parts" => [
+                    "bag",
+                  ],
                 },
                 {
                   "args" => {
@@ -1257,8 +1366,10 @@ module DutchCustomerDataConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/kvk",
-                  "parts" => [
-                    "kvk",
+                  "segments" => [
+                    {
+                      "lit" => "kvk",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -1269,6 +1380,9 @@ module DutchCustomerDataConfig
                     "req" => "`reqdata`",
                     "res" => "`body.kvk`",
                   },
+                  "parts" => [
+                    "kvk",
+                  ],
                 },
               ],
             },

@@ -76,6 +76,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "html",
               "req": false,
               "type": "`$STRING`"
@@ -88,6 +89,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "link",
               "req": false,
               "type": "`$STRING`"
@@ -112,6 +114,7 @@
             },
             {
               "active": true,
+              "format": "uri",
               "name": "pdf",
               "req": false,
               "type": "`$STRING`"
@@ -136,12 +139,14 @@
             },
             {
               "active": true,
+              "format": "date",
               "name": "publication_date",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "response_date",
               "req": false,
               "type": "`$STRING`"
@@ -187,8 +192,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/tender",
-                  "parts": [
-                    "tender"
+                  "segments": [
+                    {
+                      "lit": "tender"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -224,8 +231,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/vat",
-                  "parts": [
-                    "vat"
+                  "segments": [
+                    {
+                      "lit": "vat"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -533,6 +542,7 @@
             },
             {
               "active": true,
+              "format": "double",
               "name": "lat",
               "req": false,
               "type": "`$NUMBER`"
@@ -557,6 +567,7 @@
             },
             {
               "active": true,
+              "format": "double",
               "name": "lon",
               "req": false,
               "type": "`$NUMBER`"
@@ -679,12 +690,14 @@
             },
             {
               "active": true,
+              "format": "date-time",
               "name": "renewal_date",
               "req": false,
               "type": "`$STRING`"
             },
             {
               "active": true,
+              "format": "double",
               "name": "score",
               "req": false,
               "type": "`$NUMBER`"
@@ -825,8 +838,10 @@
                   "kind": "http",
                   "method": "POST",
                   "orig": "/password",
-                  "parts": [
-                    "password"
+                  "segments": [
+                    {
+                      "lit": "password"
+                    }
                   ],
                   "select": {},
                   "transform": {
@@ -875,8 +890,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/city",
-                  "parts": [
-                    "city"
+                  "segments": [
+                    {
+                      "lit": "city"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -917,8 +934,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/postcode",
-                  "parts": [
-                    "postcode"
+                  "segments": [
+                    {
+                      "lit": "postcode"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -958,8 +977,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/geocoding",
-                  "parts": [
-                    "geocoding"
+                  "segments": [
+                    {
+                      "lit": "geocoding"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1014,8 +1035,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/lei",
-                  "parts": [
-                    "lei"
+                  "segments": [
+                    {
+                      "lit": "lei"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1064,8 +1087,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/password",
-                  "parts": [
-                    "password"
+                  "segments": [
+                    {
+                      "lit": "password"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1106,8 +1131,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/phone",
-                  "parts": [
-                    "phone"
+                  "segments": [
+                    {
+                      "lit": "phone"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1138,8 +1165,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/bic",
-                  "parts": [
-                    "bic"
+                  "segments": [
+                    {
+                      "lit": "bic"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1169,8 +1198,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/currency",
-                  "parts": [
-                    "currency"
+                  "segments": [
+                    {
+                      "lit": "currency"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1200,8 +1231,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/dns",
-                  "parts": [
-                    "dns"
+                  "segments": [
+                    {
+                      "lit": "dns"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1231,8 +1264,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/webrank",
-                  "parts": [
-                    "webrank"
+                  "segments": [
+                    {
+                      "lit": "webrank"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1262,8 +1297,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/email",
-                  "parts": [
-                    "email"
+                  "segments": [
+                    {
+                      "lit": "email"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1293,8 +1330,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/iban",
-                  "parts": [
-                    "iban"
+                  "segments": [
+                    {
+                      "lit": "iban"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1323,8 +1362,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/ip",
-                  "parts": [
-                    "ip"
+                  "segments": [
+                    {
+                      "lit": "ip"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1354,8 +1395,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/url",
-                  "parts": [
-                    "url"
+                  "segments": [
+                    {
+                      "lit": "url"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1430,6 +1473,7 @@
             },
             {
               "active": true,
+              "format": "double",
               "name": "lat",
               "req": false,
               "type": "`$NUMBER`"
@@ -1442,6 +1486,7 @@
             },
             {
               "active": true,
+              "format": "double",
               "name": "lon",
               "req": false,
               "type": "`$NUMBER`"
@@ -1553,8 +1598,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/bag",
-                  "parts": [
-                    "bag"
+                  "segments": [
+                    {
+                      "lit": "bag"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1586,8 +1633,10 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/kvk",
-                  "parts": [
-                    "kvk"
+                  "segments": [
+                    {
+                      "lit": "kvk"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -1671,8 +1720,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -1894,6 +1946,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1919,6 +1974,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -1970,6 +2029,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1994,6 +2054,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -2045,6 +2106,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -2069,6 +2131,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -2109,6 +2172,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2134,6 +2200,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -2168,6 +2237,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2193,6 +2265,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -2233,6 +2308,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2258,6 +2336,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -2303,6 +2384,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2328,6 +2412,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -2345,11 +2432,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -2378,6 +2460,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -2402,6 +2487,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },

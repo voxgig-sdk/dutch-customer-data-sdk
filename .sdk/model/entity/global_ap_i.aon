@@ -241,6 +241,7 @@ main: kit: entity: global_ap_i: {
       type: "`$INTEGER`"
     }
     {
+      format: "double"
       name: "lat"
       req: false
       type: "`$NUMBER`"
@@ -261,6 +262,7 @@ main: kit: entity: global_ap_i: {
       type: "`$STRING`"
     }
     {
+      format: "double"
       name: "lon"
       req: false
       type: "`$NUMBER`"
@@ -363,11 +365,13 @@ main: kit: entity: global_ap_i: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "renewal_date"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "double"
       name: "score"
       req: false
       type: "`$NUMBER`"
@@ -485,8 +489,10 @@ main: kit: entity: global_ap_i: {
         {
           method: "POST"
           orig: "/password"
-          parts: [
-            "password"
+          segments: [
+            {
+              lit: "password"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -528,8 +534,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/city"
-          parts: [
-            "city"
+          segments: [
+            {
+              lit: "city"
+            }
           ]
           select: {
             exist: [
@@ -566,8 +574,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/postcode"
-          parts: [
-            "postcode"
+          segments: [
+            {
+              lit: "postcode"
+            }
           ]
           select: {
             exist: [
@@ -603,8 +613,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/geocoding"
-          parts: [
-            "geocoding"
+          segments: [
+            {
+              lit: "geocoding"
+            }
           ]
           select: {
             exist: [
@@ -653,8 +665,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/lei"
-          parts: [
-            "lei"
+          segments: [
+            {
+              lit: "lei"
+            }
           ]
           select: {
             exist: [
@@ -698,8 +712,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/password"
-          parts: [
-            "password"
+          segments: [
+            {
+              lit: "password"
+            }
           ]
           select: {
             exist: [
@@ -736,8 +752,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/phone"
-          parts: [
-            "phone"
+          segments: [
+            {
+              lit: "phone"
+            }
           ]
           select: {
             exist: [
@@ -765,8 +783,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/bic"
-          parts: [
-            "bic"
+          segments: [
+            {
+              lit: "bic"
+            }
           ]
           select: {
             exist: [
@@ -793,8 +813,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/currency"
-          parts: [
-            "currency"
+          segments: [
+            {
+              lit: "currency"
+            }
           ]
           select: {
             exist: [
@@ -821,8 +843,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/dns"
-          parts: [
-            "dns"
+          segments: [
+            {
+              lit: "dns"
+            }
           ]
           select: {
             exist: [
@@ -849,8 +873,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/webrank"
-          parts: [
-            "webrank"
+          segments: [
+            {
+              lit: "webrank"
+            }
           ]
           select: {
             exist: [
@@ -877,8 +903,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/email"
-          parts: [
-            "email"
+          segments: [
+            {
+              lit: "email"
+            }
           ]
           select: {
             exist: [
@@ -905,8 +933,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/iban"
-          parts: [
-            "iban"
+          segments: [
+            {
+              lit: "iban"
+            }
           ]
           select: {
             exist: [
@@ -932,8 +962,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/ip"
-          parts: [
-            "ip"
+          segments: [
+            {
+              lit: "ip"
+            }
           ]
           select: {
             exist: [
@@ -960,8 +992,10 @@ main: kit: entity: global_ap_i: {
           }
           method: "GET"
           orig: "/url"
-          parts: [
-            "url"
+          segments: [
+            {
+              lit: "url"
+            }
           ]
           select: {
             exist: [

@@ -1,6 +1,14 @@
 # DutchCustomerData SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -83,6 +91,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "html",
             "type": "`$STRING`",
           },
@@ -91,6 +100,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "link",
             "type": "`$STRING`",
           },
@@ -107,6 +117,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "pdf",
             "type": "`$STRING`",
           },
@@ -123,10 +134,12 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date",
             "name": "publication_date",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "response_date",
             "type": "`$STRING`",
           },
@@ -139,6 +152,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "eu_ap_i",
         "op": {
           "list": {
@@ -161,8 +178,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/tender",
-                "parts": [
-                  "tender",
+                "segments": [
+                  {
+                    "lit": "tender",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -173,6 +192,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.tender`",
                 },
+                "parts": [
+                  "tender",
+                ],
               },
             ],
           },
@@ -196,8 +218,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/vat",
-                "parts": [
-                  "vat",
+                "segments": [
+                  {
+                    "lit": "vat",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -208,6 +232,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.vat`",
                 },
+                "parts": [
+                  "vat",
+                ],
               },
             ],
           },
@@ -408,6 +435,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "double",
             "name": "lat",
             "type": "`$NUMBER`",
           },
@@ -424,6 +452,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "double",
             "name": "lon",
             "type": "`$NUMBER`",
           },
@@ -506,10 +535,12 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "renewal_date",
             "type": "`$STRING`",
           },
           {
+            "format": "double",
             "name": "score",
             "type": "`$NUMBER`",
           },
@@ -608,14 +639,19 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/password",
-                "parts": [
-                  "password",
+                "segments": [
+                  {
+                    "lit": "password",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.password`",
                 },
+                "parts": [
+                  "password",
+                ],
               },
             ],
           },
@@ -653,8 +689,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/city",
-                "parts": [
-                  "city",
+                "segments": [
+                  {
+                    "lit": "city",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -667,6 +705,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.city`",
                 },
+                "parts": [
+                  "city",
+                ],
               },
               {
                 "args": {
@@ -692,8 +733,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/postcode",
-                "parts": [
-                  "postcode",
+                "segments": [
+                  {
+                    "lit": "postcode",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -705,6 +748,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.postcode`",
                 },
+                "parts": [
+                  "postcode",
+                ],
               },
               {
                 "args": {
@@ -730,8 +776,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/geocoding",
-                "parts": [
-                  "geocoding",
+                "segments": [
+                  {
+                    "lit": "geocoding",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -743,6 +791,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.geocoding`",
                 },
+                "parts": [
+                  "geocoding",
+                ],
               },
             ],
           },
@@ -779,8 +830,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/lei",
-                "parts": [
-                  "lei",
+                "segments": [
+                  {
+                    "lit": "lei",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -793,6 +846,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.lei`",
                 },
+                "parts": [
+                  "lei",
+                ],
               },
               {
                 "args": {
@@ -822,8 +878,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/password",
-                "parts": [
-                  "password",
+                "segments": [
+                  {
+                    "lit": "password",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -836,6 +894,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.password`",
                 },
+                "parts": [
+                  "password",
+                ],
               },
               {
                 "args": {
@@ -860,8 +921,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/phone",
-                "parts": [
-                  "phone",
+                "segments": [
+                  {
+                    "lit": "phone",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -873,6 +936,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.phone`",
                 },
+                "parts": [
+                  "phone",
+                ],
               },
               {
                 "args": {
@@ -890,8 +956,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/bic",
-                "parts": [
-                  "bic",
+                "segments": [
+                  {
+                    "lit": "bic",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -902,6 +970,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.bic`",
                 },
+                "parts": [
+                  "bic",
+                ],
               },
               {
                 "args": {
@@ -919,8 +990,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/currency",
-                "parts": [
-                  "currency",
+                "segments": [
+                  {
+                    "lit": "currency",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -931,6 +1004,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.currency`",
                 },
+                "parts": [
+                  "currency",
+                ],
               },
               {
                 "args": {
@@ -948,8 +1024,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/dns",
-                "parts": [
-                  "dns",
+                "segments": [
+                  {
+                    "lit": "dns",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -960,6 +1038,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.dns`",
                 },
+                "parts": [
+                  "dns",
+                ],
               },
               {
                 "args": {
@@ -977,8 +1058,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/webrank",
-                "parts": [
-                  "webrank",
+                "segments": [
+                  {
+                    "lit": "webrank",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -989,6 +1072,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.webrank`",
                 },
+                "parts": [
+                  "webrank",
+                ],
               },
               {
                 "args": {
@@ -1006,8 +1092,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/email",
-                "parts": [
-                  "email",
+                "segments": [
+                  {
+                    "lit": "email",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1018,6 +1106,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.email`",
                 },
+                "parts": [
+                  "email",
+                ],
               },
               {
                 "args": {
@@ -1035,8 +1126,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/iban",
-                "parts": [
-                  "iban",
+                "segments": [
+                  {
+                    "lit": "iban",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1047,6 +1140,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.iban`",
                 },
+                "parts": [
+                  "iban",
+                ],
               },
               {
                 "args": {
@@ -1062,8 +1158,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/ip",
-                "parts": [
-                  "ip",
+                "segments": [
+                  {
+                    "lit": "ip",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1074,6 +1172,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.ip`",
                 },
+                "parts": [
+                  "ip",
+                ],
               },
               {
                 "args": {
@@ -1091,8 +1192,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/url",
-                "parts": [
-                  "url",
+                "segments": [
+                  {
+                    "lit": "url",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1103,6 +1206,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.url`",
                 },
+                "parts": [
+                  "url",
+                ],
               },
             ],
           },
@@ -1146,6 +1252,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "double",
             "name": "lat",
             "type": "`$NUMBER`",
           },
@@ -1154,6 +1261,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "double",
             "name": "lon",
             "type": "`$NUMBER`",
           },
@@ -1198,6 +1306,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "netherlands_ap_i",
         "op": {
           "list": {
@@ -1235,8 +1347,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/bag",
-                "parts": [
-                  "bag",
+                "segments": [
+                  {
+                    "lit": "bag",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1249,6 +1363,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.bag`",
                 },
+                "parts": [
+                  "bag",
+                ],
               },
               {
                 "args": {
@@ -1266,8 +1383,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/kvk",
-                "parts": [
-                  "kvk",
+                "segments": [
+                  {
+                    "lit": "kvk",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -1278,6 +1397,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.kvk`",
                 },
+                "parts": [
+                  "kvk",
+                ],
               },
             ],
           },

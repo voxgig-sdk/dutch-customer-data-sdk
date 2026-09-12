@@ -41,6 +41,7 @@ main: kit: entity: eu_ap_i: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "html"
       req: false
       type: "`$STRING`"
@@ -51,6 +52,7 @@ main: kit: entity: eu_ap_i: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "link"
       req: false
       type: "`$STRING`"
@@ -71,6 +73,7 @@ main: kit: entity: eu_ap_i: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "pdf"
       req: false
       type: "`$STRING`"
@@ -91,11 +94,13 @@ main: kit: entity: eu_ap_i: {
       type: "`$STRING`"
     }
     {
+      format: "date"
       name: "publication_date"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "response_date"
       req: false
       type: "`$STRING`"
@@ -137,8 +142,10 @@ main: kit: entity: eu_ap_i: {
           }
           method: "GET"
           orig: "/tender"
-          parts: [
-            "tender"
+          segments: [
+            {
+              lit: "tender"
+            }
           ]
           select: {
             exist: [
@@ -170,8 +177,10 @@ main: kit: entity: eu_ap_i: {
           }
           method: "GET"
           orig: "/vat"
-          parts: [
-            "vat"
+          segments: [
+            {
+              lit: "vat"
+            }
           ]
           select: {
             exist: [
