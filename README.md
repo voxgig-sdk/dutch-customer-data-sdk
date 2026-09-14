@@ -105,7 +105,7 @@ local results, err = client:EuApI():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/dutch-customer-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases) |
+| TypeScript | `@voxgig-sdk/dutch-customer-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases) |
 | Python | `voxgig-sdk-dutch-customer-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases) |
 | PHP | `voxgig-sdk/dutch-customer-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/dutch-customer-data-sdk/go` | `go get github.com/voxgig-sdk/dutch-customer-data-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:EuApI():list()
 ### TypeScript
 
 ```ts
-import { DutchCustomerDataSDK } from '@voxgig-sdk/dutch-customer-data'
+import { DutchCustomerDataSDK } from '@voxgig-sdk/dutch-customer-data-sdk'
 
 const client = new DutchCustomerDataSDK()
 
