@@ -2,7 +2,7 @@
   "existing": {
     "eu_ap_i": {
       "EU_AP_I00": {
-        "active": "sd2",
+        "active": 210,
         "address": "sd3",
         "buyer": "sd4",
         "buyer_country": "sd5",
@@ -25,7 +25,7 @@
         "vat": "se6"
       },
       "EU_AP_I01": {
-        "active": "s1a4",
+        "active": 420,
         "address": "s1a5",
         "buyer": "s1a6",
         "buyer_country": "s1a7",
@@ -48,7 +48,7 @@
         "vat": "s1b8"
       },
       "EU_AP_I02": {
-        "active": "s276",
+        "active": 630,
         "address": "s277",
         "buyer": "s278",
         "buyer_country": "s279",
@@ -75,7 +75,7 @@
   "new": {
     "eu_ap_i": {
       "eu_ap_i_ref01": {
-        "active": "s348",
+        "active": 840,
         "address": "s349",
         "buyer": "s34a",
         "buyer_country": "s34b",
@@ -95,6 +95,166 @@
         "response_date": "s35a",
         "title": "s35b",
         "vat": "s35c"
+      }
+    }
+  },
+  "requests": {
+    "GET /tender": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "searchTenders",
+        "parameters": [
+          {
+            "description": "Search query (name, KvK number, etc.)",
+            "in": "query",
+            "name": "q",
+            "required": true,
+            "schema": {
+              "example": "37080091",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "found": {
+                      "type": "integer"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "tender": {
+                      "items": {
+                        "properties": {
+                          "buyer": {
+                            "type": "string"
+                          },
+                          "buyer_country": {
+                            "type": "string"
+                          },
+                          "contract_nature": {
+                            "type": "string"
+                          },
+                          "html": {
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "link": {
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "notice_type": {
+                            "type": "string"
+                          },
+                          "official_language": {
+                            "type": "string"
+                          },
+                          "pdf": {
+                            "format": "uri",
+                            "type": "string"
+                          },
+                          "place_of_performance": {
+                            "type": "string"
+                          },
+                          "procedure_type": {
+                            "type": "string"
+                          },
+                          "publication_date": {
+                            "format": "date",
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /vat": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verifyVat",
+        "parameters": [
+          {
+            "description": "EU VAT number to verify",
+            "in": "query",
+            "name": "vat",
+            "required": true,
+            "schema": {
+              "example": "NL001672022B01",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "vat": {
+                      "properties": {
+                        "active": {
+                          "type": "integer"
+                        },
+                        "address": {
+                          "type": "string"
+                        },
+                        "city": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "postcode": {
+                          "type": "string"
+                        },
+                        "response_date": {
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "vat": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

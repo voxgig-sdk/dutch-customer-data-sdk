@@ -4,7 +4,10 @@ declare(strict_types=1);
 // DutchCustomerData SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class DutchCustomerDataFeatures
@@ -14,8 +17,14 @@ class DutchCustomerDataFeatures
         switch ($name) {
             case "base":
                 return new DutchCustomerDataBaseFeature();
+            case "ratelimit":
+                return new DutchCustomerDataRatelimitFeature();
+            case "retry":
+                return new DutchCustomerDataRetryFeature();
             case "test":
                 return new DutchCustomerDataTestFeature();
+            case "timeout":
+                return new DutchCustomerDataTimeoutFeature();
             default:
                 return new DutchCustomerDataBaseFeature();
         }
@@ -31,7 +40,10 @@ class DutchCustomerDataFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

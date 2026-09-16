@@ -10,20 +10,20 @@
         "bank": "s39d",
         "bic": "s39e",
         "browser": "s39f",
-        "builtwith": "s3a0",
+        "builtwith": 928,
         "carrier": "s3a1",
         "city": "s3a2",
-        "cloudflare": "s3a3",
-        "commoncrawl": "s3a4",
-        "content_length": "s3a5",
+        "cloudflare": 931,
+        "commoncrawl": 932,
+        "content_length": 933,
         "content_type": "s3a6",
         "country": "s3a7",
         "country_code": "s3a8",
-        "crux": "s3a9",
+        "crux": 937,
         "device_family": "s3aa",
         "device_name": "s3ab",
         "device_type": "s3ac",
-        "disposable": "s3ad",
+        "disposable": 941,
         "dns_a": [],
         "dns_mx": [],
         "dns_ns": [],
@@ -32,68 +32,68 @@
         "dns_www_a": [],
         "dnsserver": "s3b4",
         "domain": "s3b5",
-        "domcop": "s3b6",
+        "domcop": 950,
         "email": "s3b7",
-        "found": "s3b8",
-        "free": "s3b9",
+        "found": 952,
+        "free": 953,
         "freeformaddress": "s3ba",
         "host": "s3bb",
         "host_type": "s3bc",
-        "hostio": "s3bd",
-        "http_code": "s3be",
+        "hostio": 957,
+        "http_code": 958,
         "iban": "s3bf",
         "iban_human": "s3c0",
         "int": "s3c1",
         "international": "s3c2",
         "ip": "s3c3",
-        "ipint": "s3c4",
-        "ismobile": "s3c5",
+        "ipint": 964,
+        "ismobile": 965,
         "lat": 966,
         "lei": "s3c7",
         "letter": "s3c8",
         "local_id": "LOCAL01",
         "lon": 970,
         "mailserver": "s3cb",
-        "majestic": "s3cc",
+        "majestic": 972,
         "message": "s3cd",
         "municipality": "s3ce",
         "mx_host": "s3cf",
         "mx_ip": "s3d0",
         "name": "s3d1",
         "national": "s3d2",
-        "number": "s3d3",
+        "number": 979,
         "ocid": "s3d4",
-        "pagerank": "s3d5",
+        "pagerank": 981,
         "platform": "s3d6",
-        "population": "s3d7",
+        "population": 983,
         "postcode": "s3d8",
         "province": "s3d9",
         "province_code": "s3da",
-        "redirect_count": "s3db",
+        "redirect_count": 987,
         "region": "s3dc",
         "register_id": "REGISTER01",
         "renewal_date": "s3de",
         "score": 991,
-        "sepa": "s3e0",
+        "sepa": 992,
         "spf": "s3e1",
         "status": "s3e2",
         "street": "s3e3",
-        "success": "s3e4",
-        "swift": "s3e5",
-        "tranco": "s3e6",
+        "success": 996,
+        "swift": 997,
+        "tranco": 998,
         "type": "s3e7",
-        "umbrella": "s3e8",
+        "umbrella": 1000,
         "url": "s3e9",
         "user": "s3ea",
         "user_agent": "s3eb",
-        "valid": "s3ec",
+        "valid": 1004,
         "verified": false,
         "verified_checksum": true,
-        "webrank": "s3ef",
-        "wrong_email": "s3f0",
-        "wrong_format": "s3f1",
-        "wrong_password": "s3f2",
-        "wrong_phone": "s3f3",
+        "webrank": 1007,
+        "wrong_email": 1008,
+        "wrong_format": 1009,
+        "wrong_password": 1010,
+        "wrong_phone": 1011,
         "id": "GLOBAL_AP_I00"
       },
       "GLOBAL_AP_I01": {
@@ -105,20 +105,20 @@
         "bank": "s735",
         "bic": "s736",
         "browser": "s737",
-        "builtwith": "s738",
+        "builtwith": 1848,
         "carrier": "s739",
         "city": "s73a",
-        "cloudflare": "s73b",
-        "commoncrawl": "s73c",
-        "content_length": "s73d",
+        "cloudflare": 1851,
+        "commoncrawl": 1852,
+        "content_length": 1853,
         "content_type": "s73e",
         "country": "s73f",
         "country_code": "s740",
-        "crux": "s741",
+        "crux": 1857,
         "device_family": "s742",
         "device_name": "s743",
         "device_type": "s744",
-        "disposable": "s745",
+        "disposable": 1861,
         "dns_a": [],
         "dns_mx": [],
         "dns_ns": [],
@@ -127,68 +127,68 @@
         "dns_www_a": [],
         "dnsserver": "s74c",
         "domain": "s74d",
-        "domcop": "s74e",
+        "domcop": 1870,
         "email": "s74f",
-        "found": "s750",
-        "free": "s751",
+        "found": 1872,
+        "free": 1873,
         "freeformaddress": "s752",
         "host": "s753",
         "host_type": "s754",
-        "hostio": "s755",
-        "http_code": "s756",
+        "hostio": 1877,
+        "http_code": 1878,
         "iban": "s757",
         "iban_human": "s758",
         "int": "s759",
         "international": "s75a",
         "ip": "s75b",
-        "ipint": "s75c",
-        "ismobile": "s75d",
+        "ipint": 1884,
+        "ismobile": 1885,
         "lat": 1886,
         "lei": "s75f",
         "letter": "s760",
         "local_id": "LOCAL01",
         "lon": 1890,
         "mailserver": "s763",
-        "majestic": "s764",
+        "majestic": 1892,
         "message": "s765",
         "municipality": "s766",
         "mx_host": "s767",
         "mx_ip": "s768",
         "name": "s769",
         "national": "s76a",
-        "number": "s76b",
+        "number": 1899,
         "ocid": "s76c",
-        "pagerank": "s76d",
+        "pagerank": 1901,
         "platform": "s76e",
-        "population": "s76f",
+        "population": 1903,
         "postcode": "s770",
         "province": "s771",
         "province_code": "s772",
-        "redirect_count": "s773",
+        "redirect_count": 1907,
         "region": "s774",
         "register_id": "REGISTER01",
         "renewal_date": "s776",
         "score": 1911,
-        "sepa": "s778",
+        "sepa": 1912,
         "spf": "s779",
         "status": "s77a",
         "street": "s77b",
-        "success": "s77c",
-        "swift": "s77d",
-        "tranco": "s77e",
+        "success": 1916,
+        "swift": 1917,
+        "tranco": 1918,
         "type": "s77f",
-        "umbrella": "s780",
+        "umbrella": 1920,
         "url": "s781",
         "user": "s782",
         "user_agent": "s783",
-        "valid": "s784",
+        "valid": 1924,
         "verified": false,
         "verified_checksum": true,
-        "webrank": "s787",
-        "wrong_email": "s788",
-        "wrong_format": "s789",
-        "wrong_password": "s78a",
-        "wrong_phone": "s78b",
+        "webrank": 1927,
+        "wrong_email": 1928,
+        "wrong_format": 1929,
+        "wrong_password": 1930,
+        "wrong_phone": 1931,
         "id": "GLOBAL_AP_I01"
       },
       "GLOBAL_AP_I02": {
@@ -200,20 +200,20 @@
         "bank": "sacd",
         "bic": "sace",
         "browser": "sacf",
-        "builtwith": "sad0",
+        "builtwith": 2768,
         "carrier": "sad1",
         "city": "sad2",
-        "cloudflare": "sad3",
-        "commoncrawl": "sad4",
-        "content_length": "sad5",
+        "cloudflare": 2771,
+        "commoncrawl": 2772,
+        "content_length": 2773,
         "content_type": "sad6",
         "country": "sad7",
         "country_code": "sad8",
-        "crux": "sad9",
+        "crux": 2777,
         "device_family": "sada",
         "device_name": "sadb",
         "device_type": "sadc",
-        "disposable": "sadd",
+        "disposable": 2781,
         "dns_a": [],
         "dns_mx": [],
         "dns_ns": [],
@@ -222,68 +222,68 @@
         "dns_www_a": [],
         "dnsserver": "sae4",
         "domain": "sae5",
-        "domcop": "sae6",
+        "domcop": 2790,
         "email": "sae7",
-        "found": "sae8",
-        "free": "sae9",
+        "found": 2792,
+        "free": 2793,
         "freeformaddress": "saea",
         "host": "saeb",
         "host_type": "saec",
-        "hostio": "saed",
-        "http_code": "saee",
+        "hostio": 2797,
+        "http_code": 2798,
         "iban": "saef",
         "iban_human": "saf0",
         "int": "saf1",
         "international": "saf2",
         "ip": "saf3",
-        "ipint": "saf4",
-        "ismobile": "saf5",
+        "ipint": 2804,
+        "ismobile": 2805,
         "lat": 2806,
         "lei": "saf7",
         "letter": "saf8",
         "local_id": "LOCAL01",
         "lon": 2810,
         "mailserver": "safb",
-        "majestic": "safc",
+        "majestic": 2812,
         "message": "safd",
         "municipality": "safe",
         "mx_host": "saff",
         "mx_ip": "sb00",
         "name": "sb01",
         "national": "sb02",
-        "number": "sb03",
+        "number": 2819,
         "ocid": "sb04",
-        "pagerank": "sb05",
+        "pagerank": 2821,
         "platform": "sb06",
-        "population": "sb07",
+        "population": 2823,
         "postcode": "sb08",
         "province": "sb09",
         "province_code": "sb0a",
-        "redirect_count": "sb0b",
+        "redirect_count": 2827,
         "region": "sb0c",
         "register_id": "REGISTER01",
         "renewal_date": "sb0e",
         "score": 2831,
-        "sepa": "sb10",
+        "sepa": 2832,
         "spf": "sb11",
         "status": "sb12",
         "street": "sb13",
-        "success": "sb14",
-        "swift": "sb15",
-        "tranco": "sb16",
+        "success": 2836,
+        "swift": 2837,
+        "tranco": 2838,
         "type": "sb17",
-        "umbrella": "sb18",
+        "umbrella": 2840,
         "url": "sb19",
         "user": "sb1a",
         "user_agent": "sb1b",
-        "valid": "sb1c",
+        "valid": 2844,
         "verified": false,
         "verified_checksum": true,
-        "webrank": "sb1f",
-        "wrong_email": "sb20",
-        "wrong_format": "sb21",
-        "wrong_password": "sb22",
-        "wrong_phone": "sb23",
+        "webrank": 2847,
+        "wrong_email": 2848,
+        "wrong_format": 2849,
+        "wrong_password": 2850,
+        "wrong_phone": 2851,
         "id": "GLOBAL_AP_I02"
       }
     }
@@ -299,20 +299,20 @@
         "bank": "se65",
         "bic": "se66",
         "browser": "se67",
-        "builtwith": "se68",
+        "builtwith": 3688,
         "carrier": "se69",
         "city": "se6a",
-        "cloudflare": "se6b",
-        "commoncrawl": "se6c",
-        "content_length": "se6d",
+        "cloudflare": 3691,
+        "commoncrawl": 3692,
+        "content_length": 3693,
         "content_type": "se6e",
         "country": "se6f",
         "country_code": "se70",
-        "crux": "se71",
+        "crux": 3697,
         "device_family": "se72",
         "device_name": "se73",
         "device_type": "se74",
-        "disposable": "se75",
+        "disposable": 3701,
         "dns_a": [],
         "dns_mx": [],
         "dns_ns": [],
@@ -321,68 +321,1260 @@
         "dns_www_a": [],
         "dnsserver": "se7c",
         "domain": "se7d",
-        "domcop": "se7e",
+        "domcop": 3710,
         "email": "se7f",
-        "found": "se80",
-        "free": "se81",
+        "found": 3712,
+        "free": 3713,
         "freeformaddress": "se82",
         "host": "se83",
         "host_type": "se84",
-        "hostio": "se85",
-        "http_code": "se86",
+        "hostio": 3717,
+        "http_code": 3718,
         "iban": "se87",
         "iban_human": "se88",
         "int": "se89",
         "international": "se8a",
         "ip": "se8b",
-        "ipint": "se8c",
-        "ismobile": "se8d",
+        "ipint": 3724,
+        "ismobile": 3725,
         "lat": 3726,
         "lei": "se8f",
         "letter": "se90",
         "local_id": "LOCAL01",
         "lon": 3730,
         "mailserver": "se93",
-        "majestic": "se94",
+        "majestic": 3732,
         "message": "se95",
         "municipality": "se96",
         "mx_host": "se97",
         "mx_ip": "se98",
         "name": "se99",
         "national": "se9a",
-        "number": "se9b",
+        "number": 3739,
         "ocid": "se9c",
-        "pagerank": "se9d",
+        "pagerank": 3741,
         "platform": "se9e",
-        "population": "se9f",
+        "population": 3743,
         "postcode": "sea0",
         "province": "sea1",
         "province_code": "sea2",
-        "redirect_count": "sea3",
+        "redirect_count": 3747,
         "region": "sea4",
         "register_id": "REGISTER01",
         "renewal_date": "sea6",
         "score": 3751,
-        "sepa": "sea8",
+        "sepa": 3752,
         "spf": "sea9",
         "status": "seaa",
         "street": "seab",
-        "success": "seac",
-        "swift": "sead",
-        "tranco": "seae",
+        "success": 3756,
+        "swift": 3757,
+        "tranco": 3758,
         "type": "seaf",
-        "umbrella": "seb0",
+        "umbrella": 3760,
         "url": "seb1",
         "user": "seb2",
         "user_agent": "seb3",
-        "valid": "seb4",
+        "valid": 3764,
         "verified": false,
         "verified_checksum": true,
-        "webrank": "seb7",
-        "wrong_email": "seb8",
-        "wrong_format": "seb9",
-        "wrong_password": "seba",
-        "wrong_phone": "sebb"
+        "webrank": 3767,
+        "wrong_email": 3768,
+        "wrong_format": 3769,
+        "wrong_password": 3770,
+        "wrong_phone": 3771
+      }
+    }
+  },
+  "requests": {
+    "POST /password": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "checkPasswordPost",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "properties": {
+                  "password": {
+                    "description": "Plain password to check",
+                    "type": "string"
+                  },
+                  "password_sha1": {
+                    "description": "SHA1 hash of password (recommended)",
+                    "type": "string"
+                  },
+                  "threshold": {
+                    "default": 25,
+                    "description": "Threshold for leak count",
+                    "type": "integer"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "password": {
+                      "properties": {
+                        "found": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "success": {
+                          "type": "integer"
+                        },
+                        "wrong_password": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /city": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "searchCity",
+        "parameters": [
+          {
+            "description": "City name to search",
+            "in": "query",
+            "name": "city",
+            "required": true,
+            "schema": {
+              "example": "Haarlem",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ISO country code",
+            "in": "query",
+            "name": "country_code",
+            "required": true,
+            "schema": {
+              "example": "NL",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Set to 1 for city verification instead of suggestion",
+            "in": "query",
+            "name": "full",
+            "required": false,
+            "schema": {
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "city": {
+                      "items": {
+                        "properties": {
+                          "admin1": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "lat": {
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "lon": {
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "population": {
+                            "type": "integer"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "found": {
+                      "type": "integer"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /postcode": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verifyPostcode",
+        "parameters": [
+          {
+            "description": "Postal code to verify",
+            "in": "query",
+            "name": "postcode",
+            "required": true,
+            "schema": {
+              "example": "1013PN",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ISO country code",
+            "in": "query",
+            "name": "country_code",
+            "required": true,
+            "schema": {
+              "example": "NL",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "found": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "postcode": {
+                      "items": {
+                        "properties": {
+                          "admin1": {
+                            "type": "string"
+                          },
+                          "admin2": {
+                            "type": "string"
+                          },
+                          "admin3": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "lat": {
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "lon": {
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "postcode": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "example": "ok",
+                      "type": "string"
+                    },
+                    "success": {
+                      "type": "integer"
+                    },
+                    "wrong_postcode": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /geocoding": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "geocodeAddress",
+        "parameters": [
+          {
+            "description": "Address query string",
+            "in": "query",
+            "name": "q",
+            "required": true,
+            "schema": {
+              "example": "Kalverstraat 1, 1012NX",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ISO country code",
+            "in": "query",
+            "name": "country_code",
+            "required": true,
+            "schema": {
+              "example": "nl",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "found": {
+                      "type": "integer"
+                    },
+                    "geocoding": {
+                      "items": {
+                        "properties": {
+                          "addition": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "freeformaddress": {
+                            "type": "string"
+                          },
+                          "lat": {
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "letter": {
+                            "type": "string"
+                          },
+                          "lon": {
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "municipality": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "integer"
+                          },
+                          "postcode": {
+                            "type": "string"
+                          },
+                          "province": {
+                            "type": "string"
+                          },
+                          "province_code": {
+                            "type": "string"
+                          },
+                          "score": {
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "street": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /lei": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verifyLei",
+        "parameters": [
+          {
+            "description": "LEI code to verify",
+            "in": "query",
+            "name": "lei",
+            "required": false,
+            "schema": {
+              "example": "724500XYIJUGXAA5QD70",
+              "type": "string"
+            }
+          },
+          {
+            "description": "BIC code to find LEI",
+            "in": "query",
+            "name": "bic",
+            "required": false,
+            "schema": {
+              "example": "AKZONL2AXXX",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Local registration ID to find LEI",
+            "in": "query",
+            "name": "local_id",
+            "required": false,
+            "schema": {
+              "example": "09007809",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "lei": {
+                      "properties": {
+                        "address": {
+                          "type": "string"
+                        },
+                        "bic": {
+                          "type": "string"
+                        },
+                        "city": {
+                          "type": "string"
+                        },
+                        "country_code": {
+                          "type": "string"
+                        },
+                        "lei": {
+                          "type": "string"
+                        },
+                        "local_id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "ocid": {
+                          "type": "string"
+                        },
+                        "postcode": {
+                          "type": "string"
+                        },
+                        "register_id": {
+                          "type": "string"
+                        },
+                        "renewal_date": {
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string"
+                        },
+                        "success": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /password": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "checkPassword",
+        "parameters": [
+          {
+            "description": "SHA1 hash of password (recommended)",
+            "in": "query",
+            "name": "password_sha1",
+            "required": false,
+            "schema": {
+              "example": "2c4c3891e2ac6958e9810a1e49c6705784fbfa1a",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Plain password (use POST method)",
+            "in": "query",
+            "name": "password",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Threshold for leak count (default: 25)",
+            "in": "query",
+            "name": "threshold",
+            "required": false,
+            "schema": {
+              "default": 25,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "password": {
+                      "properties": {
+                        "found": {
+                          "type": "integer"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "success": {
+                          "type": "integer"
+                        },
+                        "wrong_password": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /phone": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verifyPhone",
+        "parameters": [
+          {
+            "description": "Phone number to verify (can include country code with +)",
+            "in": "query",
+            "name": "phone",
+            "required": true,
+            "schema": {
+              "example": "+31207895050",
+              "type": "string"
+            }
+          },
+          {
+            "description": "ISO country code (e.g., 'nl' for Netherlands)",
+            "in": "query",
+            "name": "country_code",
+            "required": false,
+            "schema": {
+              "example": "nl",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "phone": {
+                      "properties": {
+                        "carrier": {
+                          "description": "Carrier name",
+                          "type": "string"
+                        },
+                        "country": {
+                          "description": "ISO country code",
+                          "type": "string"
+                        },
+                        "int": {
+                          "description": "International format without plus sign",
+                          "type": "string"
+                        },
+                        "international": {
+                          "description": "International formatted phone number",
+                          "type": "string"
+                        },
+                        "ismobile": {
+                          "description": "1 if mobile, 0 if not",
+                          "type": "integer"
+                        },
+                        "national": {
+                          "description": "National formatted phone number",
+                          "type": "string"
+                        },
+                        "region": {
+                          "description": "Geographic region",
+                          "type": "string"
+                        },
+                        "success": {
+                          "description": "1 if successful, 0 if not",
+                          "type": "integer"
+                        },
+                        "valid": {
+                          "description": "1 if valid, 0 if not",
+                          "type": "integer"
+                        },
+                        "wrong_phone": {
+                          "description": "1 if wrong, 0 if correct",
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "status": {
+                      "example": "ok",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /bic": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verifyBic",
+        "parameters": [
+          {
+            "description": "BIC/SWIFT code to verify",
+            "in": "query",
+            "name": "bic",
+            "required": true,
+            "schema": {
+              "example": "AKZONL2A",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "bic": {
+                      "properties": {
+                        "bank": {
+                          "type": "string"
+                        },
+                        "bic": {
+                          "type": "string"
+                        },
+                        "city": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        },
+                        "lei": {
+                          "type": "string"
+                        },
+                        "success": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /currency": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCurrencyRates",
+        "parameters": [
+          {
+            "description": "Base currency code (e.g., 'eur', 'usd')",
+            "in": "query",
+            "name": "currency",
+            "required": true,
+            "schema": {
+              "example": "eur",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "currency": {
+                      "additionalProperties": {
+                        "format": "double",
+                        "type": "number"
+                      },
+                      "type": "object"
+                    },
+                    "date": {
+                      "format": "date",
+                      "type": "string"
+                    },
+                    "found": {
+                      "type": "integer"
+                    },
+                    "from_currency": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /dns": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getDnsDetails",
+        "parameters": [
+          {
+            "description": "Domain name to check DNS records",
+            "in": "query",
+            "name": "domain",
+            "required": true,
+            "schema": {
+              "example": "bedrijfsdata.nl",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "dns": {
+                      "properties": {
+                        "dns_a": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "dns_mx": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "dns_ns": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "dns_soa": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "dns_txt": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "dns_www_a": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "dnsserver": {
+                          "type": "string"
+                        },
+                        "domain": {
+                          "type": "string"
+                        },
+                        "host": {
+                          "type": "string"
+                        },
+                        "host_type": {
+                          "type": "string"
+                        },
+                        "ip": {
+                          "type": "string"
+                        },
+                        "ipint": {
+                          "type": "integer"
+                        },
+                        "mailserver": {
+                          "type": "string"
+                        },
+                        "spf": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /webrank": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getWebrank",
+        "parameters": [
+          {
+            "description": "Domain name to check ranking",
+            "in": "query",
+            "name": "domain",
+            "required": true,
+            "schema": {
+              "example": "google.com",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "webrank": {
+                      "properties": {
+                        "builtwith": {
+                          "nullable": true,
+                          "type": "integer"
+                        },
+                        "cloudflare": {
+                          "type": "integer"
+                        },
+                        "commoncrawl": {
+                          "type": "integer"
+                        },
+                        "crux": {
+                          "type": "integer"
+                        },
+                        "domain": {
+                          "type": "string"
+                        },
+                        "domcop": {
+                          "type": "integer"
+                        },
+                        "hostio": {
+                          "type": "integer"
+                        },
+                        "majestic": {
+                          "type": "integer"
+                        },
+                        "pagerank": {
+                          "type": "integer"
+                        },
+                        "tranco": {
+                          "type": "integer"
+                        },
+                        "umbrella": {
+                          "type": "integer"
+                        },
+                        "webrank": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /email": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verifyEmail",
+        "parameters": [
+          {
+            "description": "Email address to verify",
+            "in": "query",
+            "name": "email",
+            "required": true,
+            "schema": {
+              "example": "piet@bedrijfsdata.nl",
+              "format": "email",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "email": {
+                      "properties": {
+                        "disposable": {
+                          "type": "integer"
+                        },
+                        "domain": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "free": {
+                          "type": "integer"
+                        },
+                        "mx_host": {
+                          "type": "string"
+                        },
+                        "mx_ip": {
+                          "type": "string"
+                        },
+                        "success": {
+                          "type": "integer"
+                        },
+                        "user": {
+                          "type": "string"
+                        },
+                        "wrong_email": {
+                          "type": "integer"
+                        },
+                        "wrong_format": {
+                          "type": "integer"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /iban": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verifyIban",
+        "parameters": [
+          {
+            "description": "IBAN account number to verify",
+            "in": "query",
+            "name": "iban",
+            "required": true,
+            "schema": {
+              "example": "NL17ADYB2017400505",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "iban": {
+                      "properties": {
+                        "country": {
+                          "type": "string"
+                        },
+                        "country_code": {
+                          "type": "string"
+                        },
+                        "iban": {
+                          "type": "string"
+                        },
+                        "iban_human": {
+                          "type": "string"
+                        },
+                        "sepa": {
+                          "type": "integer"
+                        },
+                        "success": {
+                          "type": "integer"
+                        },
+                        "swift": {
+                          "type": "integer"
+                        },
+                        "verified": {
+                          "type": "boolean"
+                        },
+                        "verified_checksum": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /ip": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getUserIp",
+        "parameters": [
+          {
+            "description": "Set to 1 to parse the user agent",
+            "in": "query",
+            "name": "ua",
+            "required": false,
+            "schema": {
+              "enum": [
+                0,
+                1
+              ],
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "ip": {
+                      "properties": {
+                        "browser": {
+                          "type": "string"
+                        },
+                        "device_family": {
+                          "type": "string"
+                        },
+                        "device_name": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "device_type": {
+                          "type": "string"
+                        },
+                        "ip": {
+                          "type": "string"
+                        },
+                        "platform": {
+                          "type": "string"
+                        },
+                        "user_agent": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /url": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verifyUrl",
+        "parameters": [
+          {
+            "description": "URL to verify",
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "example": "http://www.bedrijfsdata.nl",
+              "format": "uri",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "properties": {
+                        "content_length": {
+                          "type": "integer"
+                        },
+                        "content_type": {
+                          "type": "string"
+                        },
+                        "domain": {
+                          "type": "string"
+                        },
+                        "http_code": {
+                          "type": "integer"
+                        },
+                        "ip": {
+                          "type": "string"
+                        },
+                        "redirect_count": {
+                          "type": "integer"
+                        },
+                        "success": {
+                          "type": "integer"
+                        },
+                        "url": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

@@ -2,12 +2,12 @@
   "existing": {
     "netherlands_ap_i": {
       "NETHERLANDS_AP_I00": {
-        "active": "sd2",
+        "active": 210,
         "addition": "sd3",
         "city": "sd4",
         "coc": "sd5",
-        "construction_year": "sd6",
-        "floor_area": "sd7",
+        "construction_year": 214,
+        "floor_area": 215,
         "freeformaddress": "sd8",
         "id": "NETHERLANDS_AP_I00",
         "lat": 218,
@@ -25,12 +25,12 @@
         "vestiging": "se6"
       },
       "NETHERLANDS_AP_I01": {
-        "active": "s1a4",
+        "active": 420,
         "addition": "s1a5",
         "city": "s1a6",
         "coc": "s1a7",
-        "construction_year": "s1a8",
-        "floor_area": "s1a9",
+        "construction_year": 424,
+        "floor_area": 425,
         "freeformaddress": "s1aa",
         "id": "NETHERLANDS_AP_I01",
         "lat": 428,
@@ -48,12 +48,12 @@
         "vestiging": "s1b8"
       },
       "NETHERLANDS_AP_I02": {
-        "active": "s276",
+        "active": 630,
         "addition": "s277",
         "city": "s278",
         "coc": "s279",
-        "construction_year": "s27a",
-        "floor_area": "s27b",
+        "construction_year": 634,
+        "floor_area": 635,
         "freeformaddress": "s27c",
         "id": "NETHERLANDS_AP_I02",
         "lat": 638,
@@ -75,12 +75,12 @@
   "new": {
     "netherlands_ap_i": {
       "netherlands_ap_i_ref01": {
-        "active": "s348",
+        "active": 840,
         "addition": "s349",
         "city": "s34a",
         "coc": "s34b",
-        "construction_year": "s34c",
-        "floor_area": "s34d",
+        "construction_year": 844,
+        "floor_area": 845,
         "freeformaddress": "s34e",
         "lat": 848,
         "letter": "s351",
@@ -95,6 +95,192 @@
         "street": "s35a",
         "type": "s35b",
         "vestiging": "s35c"
+      }
+    }
+  },
+  "requests": {
+    "GET /bag": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verifyBag",
+        "parameters": [
+          {
+            "description": "Dutch postcode",
+            "in": "query",
+            "name": "postcode",
+            "required": true,
+            "schema": {
+              "example": "1011PN",
+              "type": "string"
+            }
+          },
+          {
+            "description": "House number",
+            "in": "query",
+            "name": "number",
+            "required": true,
+            "schema": {
+              "example": "3",
+              "type": "string"
+            }
+          },
+          {
+            "description": "House number suffix (letter or addition)",
+            "in": "query",
+            "name": "suffix",
+            "required": false,
+            "schema": {
+              "example": "a",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "bag": {
+                      "items": {
+                        "properties": {
+                          "addition": {
+                            "type": "string"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "construction_year": {
+                            "type": "integer"
+                          },
+                          "floor_area": {
+                            "type": "integer"
+                          },
+                          "freeformaddress": {
+                            "type": "string"
+                          },
+                          "lat": {
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "letter": {
+                            "type": "string"
+                          },
+                          "lon": {
+                            "format": "double",
+                            "type": "number"
+                          },
+                          "municipality": {
+                            "type": "string"
+                          },
+                          "number": {
+                            "type": "string"
+                          },
+                          "postcode": {
+                            "type": "string"
+                          },
+                          "province": {
+                            "type": "string"
+                          },
+                          "province_code": {
+                            "type": "string"
+                          },
+                          "purpose": {
+                            "type": "string"
+                          },
+                          "street": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "found": {
+                      "type": "integer"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /kvk": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verifyKvk",
+        "parameters": [
+          {
+            "description": "Dutch Chamber of Commerce (KvK) number",
+            "in": "query",
+            "name": "kvk",
+            "required": true,
+            "schema": {
+              "example": "89395808",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "found": {
+                      "type": "integer"
+                    },
+                    "kvk": {
+                      "items": {
+                        "properties": {
+                          "active": {
+                            "type": "integer"
+                          },
+                          "city": {
+                            "type": "string"
+                          },
+                          "coc": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "vestiging": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

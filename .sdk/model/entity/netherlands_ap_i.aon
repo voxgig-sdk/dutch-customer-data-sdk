@@ -153,6 +153,12 @@ main: kit: entity: netherlands_ap_i: {
               }
             ]
           }
+          contract: {
+            id: "GET /bag"
+            json: "{\"operationId\":\"verifyBag\",\"parameters\":[{\"description\":\"Dutch postcode\",\"in\":\"query\",\"name\":\"postcode\",\"required\":true,\"schema\":{\"example\":\"1011PN\",\"type\":\"string\"}},{\"description\":\"House number\",\"in\":\"query\",\"name\":\"number\",\"required\":true,\"schema\":{\"example\":\"3\",\"type\":\"string\"}},{\"description\":\"House number suffix (letter or addition)\",\"in\":\"query\",\"name\":\"suffix\",\"required\":false,\"schema\":{\"example\":\"a\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"bag\":{\"items\":{\"properties\":{\"addition\":{\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"construction_year\":{\"type\":\"integer\"},\"floor_area\":{\"type\":\"integer\"},\"freeformaddress\":{\"type\":\"string\"},\"lat\":{\"format\":\"double\",\"type\":\"number\"},\"letter\":{\"type\":\"string\"},\"lon\":{\"format\":\"double\",\"type\":\"number\"},\"municipality\":{\"type\":\"string\"},\"number\":{\"type\":\"string\"},\"postcode\":{\"type\":\"string\"},\"province\":{\"type\":\"string\"},\"province_code\":{\"type\":\"string\"},\"purpose\":{\"type\":\"string\"},\"street\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"found\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/bag"
           segments: [
@@ -184,6 +190,12 @@ main: kit: entity: netherlands_ap_i: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /kvk"
+            json: "{\"operationId\":\"verifyKvk\",\"parameters\":[{\"description\":\"Dutch Chamber of Commerce (KvK) number\",\"in\":\"query\",\"name\":\"kvk\",\"required\":true,\"schema\":{\"example\":\"89395808\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"found\":{\"type\":\"integer\"},\"kvk\":{\"items\":{\"properties\":{\"active\":{\"type\":\"integer\"},\"city\":{\"type\":\"string\"},\"coc\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"},\"vestiging\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/kvk"

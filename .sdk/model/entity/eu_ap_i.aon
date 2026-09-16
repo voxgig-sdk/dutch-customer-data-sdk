@@ -140,6 +140,12 @@ main: kit: entity: eu_ap_i: {
               }
             ]
           }
+          contract: {
+            id: "GET /tender"
+            json: "{\"operationId\":\"searchTenders\",\"parameters\":[{\"description\":\"Search query (name, KvK number, etc.)\",\"in\":\"query\",\"name\":\"q\",\"required\":true,\"schema\":{\"example\":\"37080091\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"found\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"tender\":{\"items\":{\"properties\":{\"buyer\":{\"type\":\"string\"},\"buyer_country\":{\"type\":\"string\"},\"contract_nature\":{\"type\":\"string\"},\"html\":{\"format\":\"uri\",\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"link\":{\"format\":\"uri\",\"type\":\"string\"},\"notice_type\":{\"type\":\"string\"},\"official_language\":{\"type\":\"string\"},\"pdf\":{\"format\":\"uri\",\"type\":\"string\"},\"place_of_performance\":{\"type\":\"string\"},\"procedure_type\":{\"type\":\"string\"},\"publication_date\":{\"format\":\"date\",\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/tender"
           segments: [
@@ -174,6 +180,12 @@ main: kit: entity: eu_ap_i: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /vat"
+            json: "{\"operationId\":\"verifyVat\",\"parameters\":[{\"description\":\"EU VAT number to verify\",\"in\":\"query\",\"name\":\"vat\",\"required\":true,\"schema\":{\"example\":\"NL001672022B01\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"status\":{\"type\":\"string\"},\"vat\":{\"properties\":{\"active\":{\"type\":\"integer\"},\"address\":{\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"country\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"postcode\":{\"type\":\"string\"},\"response_date\":{\"format\":\"date-time\",\"type\":\"string\"},\"vat\":{\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/vat"

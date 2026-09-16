@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "eu_ap_i": {
           "active": true,
@@ -189,6 +253,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /tender",
+                    "json": "{\"operationId\":\"searchTenders\",\"parameters\":[{\"description\":\"Search query (name, KvK number, etc.)\",\"in\":\"query\",\"name\":\"q\",\"required\":true,\"schema\":{\"example\":\"37080091\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"found\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"},\"tender\":{\"items\":{\"properties\":{\"buyer\":{\"type\":\"string\"},\"buyer_country\":{\"type\":\"string\"},\"contract_nature\":{\"type\":\"string\"},\"html\":{\"format\":\"uri\",\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"link\":{\"format\":\"uri\",\"type\":\"string\"},\"notice_type\":{\"type\":\"string\"},\"official_language\":{\"type\":\"string\"},\"pdf\":{\"format\":\"uri\",\"type\":\"string\"},\"place_of_performance\":{\"type\":\"string\"},\"procedure_type\":{\"type\":\"string\"},\"publication_date\":{\"format\":\"date\",\"type\":\"string\"},\"title\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/tender",
@@ -227,6 +297,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /vat",
+                    "json": "{\"operationId\":\"verifyVat\",\"parameters\":[{\"description\":\"EU VAT number to verify\",\"in\":\"query\",\"name\":\"vat\",\"required\":true,\"schema\":{\"example\":\"NL001672022B01\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"status\":{\"type\":\"string\"},\"vat\":{\"properties\":{\"active\":{\"type\":\"integer\"},\"address\":{\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"country\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"postcode\":{\"type\":\"string\"},\"response_date\":{\"format\":\"date-time\",\"type\":\"string\"},\"vat\":{\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -835,6 +911,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "POST /password",
+                    "json": "{\"operationId\":\"checkPasswordPost\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/x-www-form-urlencoded\":{\"schema\":{\"properties\":{\"password\":{\"description\":\"Plain password to check\",\"type\":\"string\"},\"password_sha1\":{\"description\":\"SHA1 hash of password (recommended)\",\"type\":\"string\"},\"threshold\":{\"default\":25,\"description\":\"Threshold for leak count\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"password\":{\"properties\":{\"found\":{\"type\":\"integer\"},\"message\":{\"type\":\"string\"},\"success\":{\"type\":\"integer\"},\"wrong_password\":{\"type\":\"integer\"}},\"type\":\"object\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "POST",
                   "orig": "/password",
@@ -887,6 +969,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /city",
+                    "json": "{\"operationId\":\"searchCity\",\"parameters\":[{\"description\":\"City name to search\",\"in\":\"query\",\"name\":\"city\",\"required\":true,\"schema\":{\"example\":\"Haarlem\",\"type\":\"string\"}},{\"description\":\"ISO country code\",\"in\":\"query\",\"name\":\"country_code\",\"required\":true,\"schema\":{\"example\":\"NL\",\"type\":\"string\"}},{\"description\":\"Set to 1 for city verification instead of suggestion\",\"in\":\"query\",\"name\":\"full\",\"required\":false,\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"city\":{\"items\":{\"properties\":{\"admin1\":{\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"lat\":{\"format\":\"double\",\"type\":\"number\"},\"lon\":{\"format\":\"double\",\"type\":\"number\"},\"population\":{\"type\":\"integer\"}},\"type\":\"object\"},\"type\":\"array\"},\"found\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/city",
@@ -931,6 +1019,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /postcode",
+                    "json": "{\"operationId\":\"verifyPostcode\",\"parameters\":[{\"description\":\"Postal code to verify\",\"in\":\"query\",\"name\":\"postcode\",\"required\":true,\"schema\":{\"example\":\"1013PN\",\"type\":\"string\"}},{\"description\":\"ISO country code\",\"in\":\"query\",\"name\":\"country_code\",\"required\":true,\"schema\":{\"example\":\"NL\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"found\":{\"type\":\"integer\"},\"message\":{\"type\":\"string\"},\"postcode\":{\"items\":{\"properties\":{\"admin1\":{\"type\":\"string\"},\"admin2\":{\"type\":\"string\"},\"admin3\":{\"nullable\":true,\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"lat\":{\"format\":\"double\",\"type\":\"number\"},\"lon\":{\"format\":\"double\",\"type\":\"number\"},\"postcode\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"status\":{\"example\":\"ok\",\"type\":\"string\"},\"success\":{\"type\":\"integer\"},\"wrong_postcode\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/postcode",
@@ -973,6 +1067,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /geocoding",
+                    "json": "{\"operationId\":\"geocodeAddress\",\"parameters\":[{\"description\":\"Address query string\",\"in\":\"query\",\"name\":\"q\",\"required\":true,\"schema\":{\"example\":\"Kalverstraat 1, 1012NX\",\"type\":\"string\"}},{\"description\":\"ISO country code\",\"in\":\"query\",\"name\":\"country_code\",\"required\":true,\"schema\":{\"example\":\"nl\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"found\":{\"type\":\"integer\"},\"geocoding\":{\"items\":{\"properties\":{\"addition\":{\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"freeformaddress\":{\"type\":\"string\"},\"lat\":{\"format\":\"double\",\"type\":\"number\"},\"letter\":{\"type\":\"string\"},\"lon\":{\"format\":\"double\",\"type\":\"number\"},\"municipality\":{\"type\":\"string\"},\"number\":{\"type\":\"integer\"},\"postcode\":{\"type\":\"string\"},\"province\":{\"type\":\"string\"},\"province_code\":{\"type\":\"string\"},\"score\":{\"format\":\"double\",\"type\":\"number\"},\"street\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1032,6 +1132,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /lei",
+                    "json": "{\"operationId\":\"verifyLei\",\"parameters\":[{\"description\":\"LEI code to verify\",\"in\":\"query\",\"name\":\"lei\",\"required\":false,\"schema\":{\"example\":\"724500XYIJUGXAA5QD70\",\"type\":\"string\"}},{\"description\":\"BIC code to find LEI\",\"in\":\"query\",\"name\":\"bic\",\"required\":false,\"schema\":{\"example\":\"AKZONL2AXXX\",\"type\":\"string\"}},{\"description\":\"Local registration ID to find LEI\",\"in\":\"query\",\"name\":\"local_id\",\"required\":false,\"schema\":{\"example\":\"09007809\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"lei\":{\"properties\":{\"address\":{\"type\":\"string\"},\"bic\":{\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"country_code\":{\"type\":\"string\"},\"lei\":{\"type\":\"string\"},\"local_id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"ocid\":{\"type\":\"string\"},\"postcode\":{\"type\":\"string\"},\"register_id\":{\"type\":\"string\"},\"renewal_date\":{\"format\":\"date-time\",\"type\":\"string\"},\"status\":{\"type\":\"string\"},\"success\":{\"type\":\"integer\"}},\"type\":\"object\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/lei",
@@ -1084,6 +1190,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /password",
+                    "json": "{\"operationId\":\"checkPassword\",\"parameters\":[{\"description\":\"SHA1 hash of password (recommended)\",\"in\":\"query\",\"name\":\"password_sha1\",\"required\":false,\"schema\":{\"example\":\"2c4c3891e2ac6958e9810a1e49c6705784fbfa1a\",\"type\":\"string\"}},{\"description\":\"Plain password (use POST method)\",\"in\":\"query\",\"name\":\"password\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Threshold for leak count (default: 25)\",\"in\":\"query\",\"name\":\"threshold\",\"required\":false,\"schema\":{\"default\":25,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"password\":{\"properties\":{\"found\":{\"type\":\"integer\"},\"message\":{\"type\":\"string\"},\"success\":{\"type\":\"integer\"},\"wrong_password\":{\"type\":\"integer\"}},\"type\":\"object\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/password",
@@ -1128,6 +1240,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /phone",
+                    "json": "{\"operationId\":\"verifyPhone\",\"parameters\":[{\"description\":\"Phone number to verify (can include country code with +)\",\"in\":\"query\",\"name\":\"phone\",\"required\":true,\"schema\":{\"example\":\"+31207895050\",\"type\":\"string\"}},{\"description\":\"ISO country code (e.g., 'nl' for Netherlands)\",\"in\":\"query\",\"name\":\"country_code\",\"required\":false,\"schema\":{\"example\":\"nl\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"phone\":{\"properties\":{\"carrier\":{\"description\":\"Carrier name\",\"type\":\"string\"},\"country\":{\"description\":\"ISO country code\",\"type\":\"string\"},\"int\":{\"description\":\"International format without plus sign\",\"type\":\"string\"},\"international\":{\"description\":\"International formatted phone number\",\"type\":\"string\"},\"ismobile\":{\"description\":\"1 if mobile, 0 if not\",\"type\":\"integer\"},\"national\":{\"description\":\"National formatted phone number\",\"type\":\"string\"},\"region\":{\"description\":\"Geographic region\",\"type\":\"string\"},\"success\":{\"description\":\"1 if successful, 0 if not\",\"type\":\"integer\"},\"valid\":{\"description\":\"1 if valid, 0 if not\",\"type\":\"integer\"},\"wrong_phone\":{\"description\":\"1 if wrong, 0 if correct\",\"type\":\"integer\"}},\"type\":\"object\"},\"status\":{\"example\":\"ok\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/phone",
@@ -1162,6 +1280,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /bic",
+                    "json": "{\"operationId\":\"verifyBic\",\"parameters\":[{\"description\":\"BIC/SWIFT code to verify\",\"in\":\"query\",\"name\":\"bic\",\"required\":true,\"schema\":{\"example\":\"AKZONL2A\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"bic\":{\"properties\":{\"bank\":{\"type\":\"string\"},\"bic\":{\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"country\":{\"type\":\"string\"},\"lei\":{\"type\":\"string\"},\"success\":{\"type\":\"integer\"}},\"type\":\"object\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/bic",
@@ -1194,6 +1318,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /currency",
+                    "json": "{\"operationId\":\"getCurrencyRates\",\"parameters\":[{\"description\":\"Base currency code (e.g., 'eur', 'usd')\",\"in\":\"query\",\"name\":\"currency\",\"required\":true,\"schema\":{\"example\":\"eur\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"currency\":{\"additionalProperties\":{\"format\":\"double\",\"type\":\"number\"},\"type\":\"object\"},\"date\":{\"format\":\"date\",\"type\":\"string\"},\"found\":{\"type\":\"integer\"},\"from_currency\":{\"type\":\"string\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1228,6 +1358,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /dns",
+                    "json": "{\"operationId\":\"getDnsDetails\",\"parameters\":[{\"description\":\"Domain name to check DNS records\",\"in\":\"query\",\"name\":\"domain\",\"required\":true,\"schema\":{\"example\":\"bedrijfsdata.nl\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"dns\":{\"properties\":{\"dns_a\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"dns_mx\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"dns_ns\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"dns_soa\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"dns_txt\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"dns_www_a\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"dnsserver\":{\"type\":\"string\"},\"domain\":{\"type\":\"string\"},\"host\":{\"type\":\"string\"},\"host_type\":{\"type\":\"string\"},\"ip\":{\"type\":\"string\"},\"ipint\":{\"type\":\"integer\"},\"mailserver\":{\"type\":\"string\"},\"spf\":{\"type\":\"string\"}},\"type\":\"object\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/dns",
@@ -1260,6 +1396,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /webrank",
+                    "json": "{\"operationId\":\"getWebrank\",\"parameters\":[{\"description\":\"Domain name to check ranking\",\"in\":\"query\",\"name\":\"domain\",\"required\":true,\"schema\":{\"example\":\"google.com\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"status\":{\"type\":\"string\"},\"webrank\":{\"properties\":{\"builtwith\":{\"nullable\":true,\"type\":\"integer\"},\"cloudflare\":{\"type\":\"integer\"},\"commoncrawl\":{\"type\":\"integer\"},\"crux\":{\"type\":\"integer\"},\"domain\":{\"type\":\"string\"},\"domcop\":{\"type\":\"integer\"},\"hostio\":{\"type\":\"integer\"},\"majestic\":{\"type\":\"integer\"},\"pagerank\":{\"type\":\"integer\"},\"tranco\":{\"type\":\"integer\"},\"umbrella\":{\"type\":\"integer\"},\"webrank\":{\"type\":\"integer\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1294,6 +1436,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /email",
+                    "json": "{\"operationId\":\"verifyEmail\",\"parameters\":[{\"description\":\"Email address to verify\",\"in\":\"query\",\"name\":\"email\",\"required\":true,\"schema\":{\"example\":\"piet@bedrijfsdata.nl\",\"format\":\"email\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"email\":{\"properties\":{\"disposable\":{\"type\":\"integer\"},\"domain\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"},\"free\":{\"type\":\"integer\"},\"mx_host\":{\"type\":\"string\"},\"mx_ip\":{\"type\":\"string\"},\"success\":{\"type\":\"integer\"},\"user\":{\"type\":\"string\"},\"wrong_email\":{\"type\":\"integer\"},\"wrong_format\":{\"type\":\"integer\"}},\"type\":\"object\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/email",
@@ -1327,6 +1475,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /iban",
+                    "json": "{\"operationId\":\"verifyIban\",\"parameters\":[{\"description\":\"IBAN account number to verify\",\"in\":\"query\",\"name\":\"iban\",\"required\":true,\"schema\":{\"example\":\"NL17ADYB2017400505\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"iban\":{\"properties\":{\"country\":{\"type\":\"string\"},\"country_code\":{\"type\":\"string\"},\"iban\":{\"type\":\"string\"},\"iban_human\":{\"type\":\"string\"},\"sepa\":{\"type\":\"integer\"},\"success\":{\"type\":\"integer\"},\"swift\":{\"type\":\"integer\"},\"verified\":{\"type\":\"boolean\"},\"verified_checksum\":{\"type\":\"boolean\"}},\"type\":\"object\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/iban",
@@ -1358,6 +1512,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /ip",
+                    "json": "{\"operationId\":\"getUserIp\",\"parameters\":[{\"description\":\"Set to 1 to parse the user agent\",\"in\":\"query\",\"name\":\"ua\",\"required\":false,\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"ip\":{\"properties\":{\"browser\":{\"type\":\"string\"},\"device_family\":{\"type\":\"string\"},\"device_name\":{\"nullable\":true,\"type\":\"string\"},\"device_type\":{\"type\":\"string\"},\"ip\":{\"type\":\"string\"},\"platform\":{\"type\":\"string\"},\"user_agent\":{\"type\":\"string\"}},\"type\":\"object\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1391,6 +1551,12 @@
                         "type": "`$STRING`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /url",
+                    "json": "{\"operationId\":\"verifyUrl\",\"parameters\":[{\"description\":\"URL to verify\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"http://www.bedrijfsdata.nl\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"status\":{\"type\":\"string\"},\"url\":{\"properties\":{\"content_length\":{\"type\":\"integer\"},\"content_type\":{\"type\":\"string\"},\"domain\":{\"type\":\"string\"},\"http_code\":{\"type\":\"integer\"},\"ip\":{\"type\":\"string\"},\"redirect_count\":{\"type\":\"integer\"},\"success\":{\"type\":\"integer\"},\"url\":{\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -1595,6 +1761,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /bag",
+                    "json": "{\"operationId\":\"verifyBag\",\"parameters\":[{\"description\":\"Dutch postcode\",\"in\":\"query\",\"name\":\"postcode\",\"required\":true,\"schema\":{\"example\":\"1011PN\",\"type\":\"string\"}},{\"description\":\"House number\",\"in\":\"query\",\"name\":\"number\",\"required\":true,\"schema\":{\"example\":\"3\",\"type\":\"string\"}},{\"description\":\"House number suffix (letter or addition)\",\"in\":\"query\",\"name\":\"suffix\",\"required\":false,\"schema\":{\"example\":\"a\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"bag\":{\"items\":{\"properties\":{\"addition\":{\"type\":\"string\"},\"city\":{\"type\":\"string\"},\"construction_year\":{\"type\":\"integer\"},\"floor_area\":{\"type\":\"integer\"},\"freeformaddress\":{\"type\":\"string\"},\"lat\":{\"format\":\"double\",\"type\":\"number\"},\"letter\":{\"type\":\"string\"},\"lon\":{\"format\":\"double\",\"type\":\"number\"},\"municipality\":{\"type\":\"string\"},\"number\":{\"type\":\"string\"},\"postcode\":{\"type\":\"string\"},\"province\":{\"type\":\"string\"},\"province_code\":{\"type\":\"string\"},\"purpose\":{\"type\":\"string\"},\"street\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"found\":{\"type\":\"integer\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/bag",
@@ -1630,6 +1802,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /kvk",
+                    "json": "{\"operationId\":\"verifyKvk\",\"parameters\":[{\"description\":\"Dutch Chamber of Commerce (KvK) number\",\"in\":\"query\",\"name\":\"kvk\",\"required\":true,\"schema\":{\"example\":\"89395808\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"found\":{\"type\":\"integer\"},\"kvk\":{\"items\":{\"properties\":{\"active\":{\"type\":\"integer\"},\"city\":{\"type\":\"string\"},\"coc\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"},\"vestiging\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"status\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/kvk",
@@ -1657,13 +1835,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -1753,6 +2141,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -1907,6 +2391,48 @@
         "website": "https://free.bedrijfsdata.nl"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -2461,6 +2987,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -2502,7 +3029,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

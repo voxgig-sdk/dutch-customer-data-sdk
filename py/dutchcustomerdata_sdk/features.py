@@ -1,12 +1,18 @@
 # DutchCustomerData SDK feature factory
 
 from dutchcustomerdata_sdk.feature.base_feature import DutchCustomerDataBaseFeature
+from dutchcustomerdata_sdk.feature.ratelimit_feature import DutchCustomerDataRatelimitFeature
+from dutchcustomerdata_sdk.feature.retry_feature import DutchCustomerDataRetryFeature
 from dutchcustomerdata_sdk.feature.test_feature import DutchCustomerDataTestFeature
+from dutchcustomerdata_sdk.feature.timeout_feature import DutchCustomerDataTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: DutchCustomerDataBaseFeature(),
+    "ratelimit": lambda: DutchCustomerDataRatelimitFeature(),
+    "retry": lambda: DutchCustomerDataRetryFeature(),
     "test": lambda: DutchCustomerDataTestFeature(),
+    "timeout": lambda: DutchCustomerDataTimeoutFeature(),
 }
 
 
