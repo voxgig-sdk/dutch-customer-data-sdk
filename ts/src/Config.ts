@@ -127,15 +127,15 @@ class Config {
 
     entity: {
       
-      eu_ap_i: {
-      },
-
-      global_ap_i: {
-      },
-
-      netherlands_ap_i: {
-      },
-
+        eu_ap_i: {
+        },
+  
+        global_ap_i: {
+        },
+  
+        netherlands_ap_i: {
+        },
+  
     }
   }
 

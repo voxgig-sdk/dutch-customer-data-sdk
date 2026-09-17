@@ -1,5 +1,5 @@
 # Flows
 
-@"BasicEuApIFlow.aon"
-@"BasicGlobalApIFlow.aon"
-@"BasicNetherlandsApIFlow.aon"
+@"./BasicEuApIFlow.aon"
+@"./BasicGlobalApIFlow.aon"
+@"./BasicNetherlandsApIFlow.aon"

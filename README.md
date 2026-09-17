@@ -105,12 +105,12 @@ local results, err = client:EuApI():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/dutch-customer-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases) |
-| Python | `voxgig-sdk-dutch-customer-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases) |
-| PHP | `voxgig-sdk/dutch-customer-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases) |
+| TypeScript | `@voxgig-sdk/dutch-customer-data-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/tags) |
+| Python | `voxgig-sdk-dutch-customer-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/tags) |
+| PHP | `voxgig-sdk/dutch-customer-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/dutch-customer-data-sdk/go` | `go get github.com/voxgig-sdk/dutch-customer-data-sdk/go@latest` |
-| Ruby | `voxgig-sdk-dutch-customer-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases) |
-| Lua | `voxgig-sdk-dutch-customer-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/releases) |
+| Ruby | `voxgig-sdk-dutch-customer-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/tags) |
+| Lua | `voxgig-sdk-dutch-customer-data` | publish pending — [install from git tag](https://github.com/voxgig-sdk/dutch-customer-data-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/dutch-customer-data-sdk/go-cli` | `go install github.com/voxgig-sdk/dutch-customer-data-sdk/go-cli/cmd/dutch-customer-data@latest` |
 | Go MCP server | `github.com/voxgig-sdk/dutch-customer-data-sdk/go-mcp` | `go get github.com/voxgig-sdk/dutch-customer-data-sdk/go-mcp@latest` |
 
